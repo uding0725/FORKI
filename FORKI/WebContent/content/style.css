@@ -1,0 +1,4 @@
+#container  { background-color:#F0F0F0; width:960px; margin:0 auto; padding:10px; }
+#header   { background-color:#FFDC46; height:100px; }
+#content  { background-color:#FFFA82; float:left; width:960px; height:400px; }
+#footer   { background-color:#FFAF00; clear:both; height:100px; }

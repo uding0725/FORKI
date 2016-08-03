@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="layout1" template="/content/template/layout1.jsp">
+		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
+		<put-attribute name="header" value="/content/template/" />
+		<put-attribute name="menu" value="/content/template/" />
+		<put-attribute name="body" value="/content/template/" />
+		<put-attribute name="footer" value="/content/template/" />
+	</definition>
+
+	<definition name="layout2" template="/content/template/layout2.jsp">
+		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
+		<put-attribute name="header" value="/content/template/" />
+		<put-attribute name="body" value="/content/template/" />
+		<put-attribute name="side_top" value="/content/template/" />
+		<put-attribute name="side_bottom" value="/content/template/" />
+		<put-attribute name="footer" value="/content/template/" />
+	</definition>
+
+	<definition name="layout3" template="/content/template/layout3.jsp">
+		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
+		<put-attribute name="header" value="/content/template/header.jsp" />
+		<put-attribute name="menu" value="/content/template/menu.jsp" />
+		<put-attribute name="body" value="/content/template/" />
+		<put-attribute name="footer" value="/content/template/" />
+	</definition>
+
+</tiles-definitions>
