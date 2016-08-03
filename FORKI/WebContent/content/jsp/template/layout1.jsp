@@ -2,18 +2,21 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <html>
 <head>
+<link href="../style.css" rel="stylesheet" type="text/css">
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body>
 
-	<table width="100%" border="1" cellpadding="0" cellspacing="0">
+	<table>
 		<tr>
 			<td colspan="2"><tiles:insertAttribute name="header" /></td>
 		</tr>
 		<tr>
-			<td valign="left"><tiles:insertAttribute name="body" /></td>
-			<td valign="top"><tiles:insertAttribute name="side_top" /></td>
-			<td valign="bottom"><tiles:insertAttribute name="side_bottom" /></td>
+			<td rowspan="2"><tiles:insertAttribute name="body" /></td>
+			<td><tiles:insertAttribute name="side_top" /></td>
+		</tr>
+		<tr>
+			<td><tiles:insertAttribute name="side_bottom" /></td>
 		</tr>
 		<tr>
 			<td colspan="2"><tiles:insertAttribute name="footer" /></td>
