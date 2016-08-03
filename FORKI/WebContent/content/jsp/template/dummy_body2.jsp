@@ -1,2 +1,2 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-메뉴
+<img src="http://placehold.it/760x750">

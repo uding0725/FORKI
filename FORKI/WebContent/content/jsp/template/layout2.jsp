@@ -2,11 +2,12 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <html>
 <head>
+<link href="style.css" rel="stylesheet" type="text/css">
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body>
 
-	<table width="100%" border="1" cellpadding="0" cellspacing="0">
+	<table>
 		<tr>
 			<td><tiles:insertAttribute name="header" /></td>
 		</tr>

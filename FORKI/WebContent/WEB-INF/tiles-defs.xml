@@ -13,19 +13,19 @@
 		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
  	</definition>
 
-	<definition name="layout2" template="/content/template/layout2.jsp">
-		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
+	<definition name="layout2" template="/content/jsp/template/layout2.jsp">
+	    <put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
 		<put-attribute name="header" value="/content/jsp/template/header.jsp" />
-		<put-attribute name="body" value="/content/jsp/template/dummy.jsp" />
-		<put-attribute name="footer" value="/content/template/footer.jsp" />
-	</definition>
+		<put-attribute name="body" value="/content/jsp/template/dummy_body1.jsp" />
+		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
+ 	</definition>
 
-	<definition name="layout3" template="/content/template/layout3.jsp">
-		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
+	<definition name="layout3" template="/content/jsp/template/layout3.jsp">
+	    <put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
 		<put-attribute name="header" value="/content/jsp/template/header.jsp" />
-		<put-attribute name="menu" value="/content/jsp/template/dummy.jsp" />
-		<put-attribute name="body" value="/content/jsp/template/dummy.jsp" />
-		<put-attribute name="footer" value="/content/template/footer.jsp" />
-	</definition>
+		<put-attribute name="menu" value="/content/jsp/template/dummy_,menu.jsp" />
+		<put-attribute name="body" value="/content/jsp/template/dummy_body2.jsp" />
+		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
+ 	</definition>
 
 </tiles-definitions>
