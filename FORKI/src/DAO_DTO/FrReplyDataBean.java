@@ -6,7 +6,7 @@ public class FrReplyDataBean {
 	private int num;
 	private String writer;
 	private int re_num;
-	private String content;
+	private String content; 
 	private Timestamp date;
 	public int getNum() {
 		return num;
