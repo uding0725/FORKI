@@ -9,14 +9,14 @@
 
 	<table>
 		<tr>
-			<td colspan="2"><tiles:insertAttribute name="header" /></td>
+			<td colspan="2"><tiles:insertAttribute name="header"/></td>
 		</tr>
 		<tr>
 			<td rowspan="2"><tiles:insertAttribute name="body" /></td>
 			<td><tiles:insertAttribute name="side_top" /></td>
 		</tr>
 		<tr>
-			<td><tiles:insertAttribute name="side_bottom" /></td>
+			<td><tiles:insertAttribute name="side_bottom"/></td>
 		</tr>
 		<tr>
 			<td colspan="2"><tiles:insertAttribute name="footer" /></td>
