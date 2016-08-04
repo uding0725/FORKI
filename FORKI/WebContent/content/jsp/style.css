@@ -1,4 +1,3 @@
-@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -46,7 +45,7 @@ table {
 
 #header_menubar {
 	position: relative;
-	right: -150px;
+	right: -120px;
 	bottom: 10px;
 	position: relative;
 }
