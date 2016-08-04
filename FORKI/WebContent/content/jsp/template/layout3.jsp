@@ -3,7 +3,7 @@
 <html>
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
-<title><tiles:getAsString name="title" /></title>
+<title><tiles:getAsString name="title"/></title>
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 		</tr>
 		<tr>
 			<td style="width: 200;"><tiles:insertAttribute name="menu" /></td>
-			<td><tiles:insertAttribute name="body" /></td>
+			<td style="width: 760;"><tiles:insertAttribute name="body" /></td>
 		</tr>
 		<tr>
 			<td colspan="2"><tiles:insertAttribute name="footer" /></td>

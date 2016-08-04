@@ -42,14 +42,6 @@ table {
 	padding: 0px;
 	border-collapse: collapse;
 }
-table table {
-	background: #FFFFFF;
-	width: 960;
-	margin: auto;
-	padding: 0px;
-	border-collapse: collapse;
-}
-
 #header_menubar {
 	position: relative;
 	right: -120px;
