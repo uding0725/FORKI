@@ -41,13 +41,16 @@ table {
 	margin: auto;
 	padding: 0px;
 	border-collapse: collapse;
+	/* 	border: 2;
+	padding: 2;
+	border-width: 2px;
+	border-style: ridge; */
 }
 
 #header_menubar {
 	position: relative;
-	right: -120px;
+	right: -25px;
 	bottom: 10px;
-	position: relative;
 }
 
 #header_menubar>ul {
@@ -66,6 +69,7 @@ table {
 	padding: 10px 20px;
 	border: 1px solid #000000;
 }
+
 #header_menubar>ul>li>a:link {
 	background: #ffe641;
 }
@@ -81,6 +85,42 @@ table {
 
 #header_menubar>ul>li:last-child>a {
 	border-radius: 0 10px 10px 0;
+}
+
+#menu {
+	position: relative;
+	right: 0px;
+	top: 0px;
+}
+
+#menu>ul {
+	overflow: hidden;
+}
+
+#menu>ul>li>a {
+	display: block;
+	text-decoration: none;
+	font-family: 'Jeju Hallasan';
+	color: #000000;
+	padding: 10px 10px;
+	border: 1px solid #000000;
+}
+
+#menu>ul>li>a:link {
+	background: #ffe641;
+}
+
+#menu>ul>li>a:hover {
+	background: #ff9100;
+	color: #ffffff;
+}
+
+#menu>ul>li:first-child>a {
+	border-radius: 10px 10px 0 0;
+}
+
+#menu>ul>li:last-child>a {
+	border-radius: 0 0 10px 10px;
 }
 
 li {

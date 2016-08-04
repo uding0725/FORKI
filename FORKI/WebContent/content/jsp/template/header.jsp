@@ -6,7 +6,7 @@
 <body>
 	<table>
 		<tr>
-			<td style="width: 415; height:150;"><img src="../img/logo.jpg" width="415" height="150"></td>
+			<td style="width: 520; height:150;"><img src="../img/logo.jpg" width="520" height="150"></td>
 			<td>
 				<nav id="header_menubar">
 					<ul>

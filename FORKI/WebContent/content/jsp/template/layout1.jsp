@@ -2,7 +2,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <html>
 <head>
-<link href="style.css" rel="stylesheet" type="text/css">
+<!-- <link href="style.css" rel="stylesheet" type="text/css"> -->
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body>
