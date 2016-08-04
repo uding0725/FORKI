@@ -8,7 +8,7 @@
 		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
 		<put-attribute name="header" value="/content/jsp/template/header.jsp" />
 		<put-attribute name="body" value="/content/jsp/template/dummy.jsp" />
-		<put-attribute name="side_top" value="/content/jsp/template/dummy.jsp" />
+		 <put-attribute name="side_top" value="/content/jsp/template/.jsp" />
 		<put-attribute name="side_bottom" value="/content/jsp/template/dummy.jsp" />
 		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
 	</definition>
