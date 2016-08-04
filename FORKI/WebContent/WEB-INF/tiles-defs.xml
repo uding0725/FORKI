@@ -31,6 +31,5 @@
 	<!-- <definition name="test/*" extends="default">
 		<put-attribute name="body" value="/WEB-INF/views/test/test.jsp" />
 	</definition> -->
-</tiles-definitions>
 
 </tiles-definitions>
