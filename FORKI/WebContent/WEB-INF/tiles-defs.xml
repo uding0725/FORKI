@@ -28,8 +28,8 @@
 		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
 	</definition>
 
-	<!-- <definition name="test/*" extends="default">
-		<put-attribute name="body" value="/WEB-INF/views/test/test.jsp" />
+	<!-- <definition name="/content/mypage/*" extends="default">
+		<put-attribute name="body" value="/content/mypage/testbody.jsp" />
 	</definition> -->
 
 </tiles-definitions>
