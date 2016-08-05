@@ -3,14 +3,14 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
-<tiles-definitions>  
+<tiles-definitions>
 	<definition name="layout1" template="/content/template/layout1.jsp">
 		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
 		<put-attribute name="header" value="/content/template/header.jsp" />
 		<put-attribute name="body_top" value="/content/template/dummy.jsp" />
-		<put-attribute name="body_bottom" value="/content/template/dummy.jsp"/>
+		<put-attribute name="body_bottom" value="/content/template/dummy.jsp" />
 		<put-attribute name="side_top" value="/content/template/main_image.jsp" />
-		<put-attribute name="side_bottom" value="/content/template/dummy.jsp"/>
+		<put-attribute name="side_bottom" value="/content/template/dummy.jsp" />
 		<put-attribute name="footer" value="/content/template/footer.jsp" />
 	</definition>
 
@@ -29,8 +29,8 @@
 		<put-attribute name="footer" value="/content/template/footer.jsp" />
 	</definition>
 
-	<!-- <definition name="/content/mypage/*" extends="default">
-		<put-attribute name="body" value="/content/mypage/testbody.jsp" />
-	</definition> -->
+	<definition name="test" extends="layout2">
+		<put-attribute name="body" value="/content/template/{1}.jsp" />
+	</definition>
 
 </tiles-definitions>
