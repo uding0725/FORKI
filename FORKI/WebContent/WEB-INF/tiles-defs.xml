@@ -6,12 +6,11 @@
 <tiles-definitions>
 	<definition name="layout1" template="/content/jsp/template/layout1.jsp">
 		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
-		<put-attribute name="header" value="/content/jsp/template/header.jsp" />
-		<put-attribute name="body_top" value="/content/jsp/template/dummy.jsp" />
-		<put-attribute name="body_bottom" value="/content/jsp/template/dummy.jsp"/>
-		<put-attribute name="side_top" value="/content/jsp/template/main_image.jsp" />
-		<put-attribute name="side_bottom" value="/content/jsp/template/dummy.jsp"/>
-		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
+		<put-attribute name="header" value="/content/main/factor/header.jsp" />
+		<put-attribute name="body_top" value="/content/main/factor/dummy.jsp" />
+		<put-attribute name="left_bottom" value="/content/main/factor/main-nameFind.jsp"/> 
+		<put-attribute name="rigth_bottom" value="/content/main/factor/main-nameFind.jsp"/> 
+		<put-attribute name="footer" value="/content/main/factor/footer.jsp" />
 	</definition>
 
 	<definition name="layout2" template="/content/jsp/template/layout2.jsp">
