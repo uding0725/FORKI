@@ -3,7 +3,7 @@
 <html>
 <head>
 
-<title>Insert title here</title>
+
 <style>
 #p{
  border-radius: 5px;

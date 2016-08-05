@@ -15,7 +15,7 @@
 						<div class="seoulMap">
 
 							<img id="searchGuMap" onmouseout="mouseOutMap();"
-								src="../img/seoul_map.png" alt="서울특별시 자치구 선택" width="310"
+								src="../../content/jsp/temploate/img/seoul_map.png" alt="서울특별시 자치구 선택" width="310"
 								height="254" usemap="#seoulMap" class="mapImg">
 
 

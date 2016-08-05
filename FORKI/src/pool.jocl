@@ -2,8 +2,8 @@
 		xmlns="http://apache.org/xml/xmlns/jakarta/commons/jocl">
 
 	<object class="org.apache.commons.dbcp.DriverManagerConnectionFactory">
-		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
-		<string value="asg"/>
+		<string value="jdbc:oracle:thin:@192.168.20.7:1521:XE"/>
+		<string value="uding"/>
 		<string value="1234"/>
 	</object>
 	

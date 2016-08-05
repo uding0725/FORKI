@@ -8,8 +8,8 @@
 		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
 		<put-attribute name="header" value="/content/main/factor/header.jsp" />
 		<put-attribute name="body_top" value="/content/main/factor/dummy.jsp" />
-		<put-attribute name="left_bottom" value="/content/main/factor/main-nameFind.jsp"/> 
-		<put-attribute name="rigth_bottom" value="/content/main/factor/main-nameFind.jsp"/> 
+		<put-attribute name="left_bottom" value="/content/main/factor/main_nameFind.jsp"/> 
+		<put-attribute name="rigth_bottom" value="/content/main/factor/main_board.jsp"/> 
 		<put-attribute name="footer" value="/content/main/factor/footer.jsp" />
 	</definition>
 
@@ -31,5 +31,31 @@
 	<!-- <definition name="test/*" extends="default">
 		<put-attribute name="body" value="/WEB-INF/views/test/test.jsp" />
 	</definition> -->
-
+	
+	<definition name="freeboard" template="/content/jsp/template/layout3.jsp">
+		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
+		<put-attribute name="header" value="/content/jsp/template/header.jsp" />
+		<put-attribute name="menu" value="/content/jsp/template/menu1.jsp" />
+		<put-attribute name="body" value="/content/board/factor/freeBoard_list.jsp" />
+		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
+	</definition>
+	
+	<definition name="freeboard" template="/content/jsp/template/layout3.jsp">
+		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
+		<put-attribute name="header" value="/content/jsp/template/header.jsp" />
+		<put-attribute name="menu" value="/content/jsp/template/menu1.jsp" />
+		<put-attribute name="body" value="/content/board/factor/freeBoard_list.jsp" />
+		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
+	</definition>
+	
+	<definition name="freeboard_write" template="/content/jsp/template/layout2.jsp">
+		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
+		<put-attribute name="header" value="/content/jsp/template/header.jsp" />
+		<put-attribute name="body" value="/content/board/factor/freeBoard_write.jsp" />
+		<put-attribute name="footer" value="/content/jsp/template/footer.jsp" />
+	</definition>
+	
+	
+	
+	
 </tiles-definitions>

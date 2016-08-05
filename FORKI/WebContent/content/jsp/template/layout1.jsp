@@ -9,18 +9,18 @@
 
 	<table>
 		<tr>
-			<td><tiles:insertAttribute name="header" /></td>
+			<td colspan="2"><tiles:insertAttribute name="header" /></td>
 		</tr>
 		<tr>
-			<td><tiles:insertAttribute name="body_top"/></td>
+			<td colspan="2"><tiles:insertAttribute name="body_top"/></td>
 			
 		</tr>
 		<tr>
 			<td><tiles:insertAttribute name="left_bottom"/></td>
-			 <td><tiles:insertAttribute name="right_bottom" /></td> 
+			<td><tiles:insertAttribute name="right_bottom" /></td> 
 		</tr> 
 		<tr>
-			<td><tiles:insertAttribute name="footer" /></td>
+			<td colspan="2"><tiles:insertAttribute name="footer" /></td>
 		</tr>
 	</table>
 </body>
