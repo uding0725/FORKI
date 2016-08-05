@@ -18,7 +18,7 @@ import action.CommandAction;
 
 public class ControllerUsingURI extends HttpServlet {
 
-	private Map commandMap=new HashMap();
+	private Map commandMap=new HashMap(); 
 	
 	public void init(ServletConfig config)throws ServletException{
 		String props=config.getInitParameter("propertyConfig");
