@@ -12,8 +12,8 @@
 			<td colspan="2"><tiles:insertAttribute name="header" /></td>
 		</tr>
 		<tr>
-			<td style="width: 200;"><tiles:insertAttribute name="menu" /></td>
-			<td style="width: 760;"><tiles:insertAttribute name="body" /></td>
+			<td><tiles:insertAttribute name="menu" /></td>
+			<td><tiles:insertAttribute name="body" /></td>
 		</tr>
 		<tr>
 			<td colspan="2"><tiles:insertAttribute name="footer" /></td>

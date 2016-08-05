@@ -40,7 +40,7 @@ table {
 	width: 960;
 	margin: auto;
 	padding: 0px;
-	border-collapse: collapse;
+	border-collapse: collapse; 
 }
 #header_menubar {
 	position: relative;
