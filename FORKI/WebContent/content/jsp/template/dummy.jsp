@@ -7,7 +7,7 @@
  	top:100px;
  }
 </style>
-</head>
+</head>  
  <!-- Map Search Start -->
 	        <div id="searchMap">
 	            <h4 class="searchMapTitle"><span class="skip">지도로 찾기</span></h4>
