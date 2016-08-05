@@ -12,6 +12,7 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
 	<servlet>
 		<servlet-name>DBCPInit</servlet-name>
 		<servlet-class>loader.DBCPInit</servlet-class>
@@ -21,6 +22,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
 	<servlet>
 		<servlet-name>ControllerUsingURI</servlet-name>
 		<servlet-class>mvc.Controller.ControllerUsingURI</servlet-class>
@@ -29,6 +31,8 @@
 			<param-value></param-value>
 		</init-param>
 	</servlet>
+	
+	<!-- tiles 설정 관련 내용 -->
 	<servlet>
 		<servlet-name>tiles</servlet-name>
 		<servlet-class>org.apache.tiles.web.startup.TilesServlet</servlet-class>
@@ -38,5 +42,14 @@
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
+	<servlet>
+		<servlet-name>TilesDispatchServlet</servlet-name>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TilesDispatchServlet</servlet-name>
+		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
+	<!-- ///////////////////// -->
 
 </web-app>
