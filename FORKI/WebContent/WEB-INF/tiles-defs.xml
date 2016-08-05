@@ -3,7 +3,7 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
-<tiles-definitions> 
+<tiles-definitions>  
 	<definition name="layout1" template="/content/template/layout1.jsp">
 		<put-attribute name="title" value="FORKI::아이들을 위한 종합정도 시스템" />
 		<put-attribute name="header" value="/content/template/header.jsp" />
