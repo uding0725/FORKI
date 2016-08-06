@@ -15,8 +15,9 @@
 }
 
 /**
-  * 헤더메뉴바 설정
+  * 헤더설정
   */
+/* 헤더 메뉴바 설정 */
 #header_menubar {
 	position: relative;
 	right: -90px;
@@ -57,9 +58,23 @@
 	border-radius: 0 10px 10px 0;
 }
 
+/* 로고 설정 */
+#logo {
+	width: 415;
+	height: 150;
+}
+
 /**
   * 사이드 메뉴 설정
   */
+#menuLayout {
+	width: 200;
+	float: left;
+	margin: auto;
+	position: realation;
+	padding: 0;
+}
+  
 #menu {
 	float: left;
 	margin: auto;
@@ -74,6 +89,7 @@
 #menu>ul>li>a {
 	display: block;
 	text-decoration: none;
+	text-align: center;
 	font-family: 'Jeju Hallasan';
 	color: #000000;
 	padding: 10px 10px;
@@ -102,6 +118,9 @@ li {
 	list-style: none;
 }
 
+/**
+  * 메인 설정
+  */
 /* 메인화면 지도 위치 설정 */
 #fieldset {
 	float: left;
@@ -110,9 +129,7 @@ li {
 	padding: 0;
 }
 
-/**
-  * 화면 구성요소들 기본 설정 
-  */
+/* 화면 구성요소들 기본 설정 */
 #factor {
 	width: 400;
 	margin: auto;
@@ -129,7 +146,14 @@ li {
 	border-radius: 5px;
 }
 
-/* 로고 설정 */
-#logo {
-	width: 415; height: 150;
+/**
+  * 게시판 설정
+  */
+/* 게시판 형태 설정 */
+#board {
+	width: 760;
+}
+
+#index {
+	text-align: center;
 }
