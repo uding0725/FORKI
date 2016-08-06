@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% response.sendRedirect("/Certify/certify/inputForm.do"); %>
+<% response.sendRedirect("/FORKI/content/main/main.do"); %>
 </body>
 </html>

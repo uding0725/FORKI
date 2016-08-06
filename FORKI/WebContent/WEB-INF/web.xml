@@ -27,10 +27,15 @@
 		<servlet-name>ControllerUsingURI</servlet-name>
 		<servlet-class>mvc.Controller.ControllerUsingURI</servlet-class>
 		<init-param>
-			<param-name>propertyConfig</param-name>
-			<param-value></param-value>
+			<param-name>propConfig</param-name>
+			<param-value>/WEB-INF/commandHandlerURI.properties</param-value>
 		</init-param>
 	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ControllerUsingURI</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
 	
 	<!-- tiles 설정 관련 내용 -->
 	<servlet>
@@ -42,10 +47,12 @@
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
+	
 	<servlet>
 		<servlet-name>TilesDispatchServlet</servlet-name>
 		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>TilesDispatchServlet</servlet-name>
 		<url-pattern>*.tiles</url-pattern>
