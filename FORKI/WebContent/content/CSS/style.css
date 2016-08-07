@@ -74,10 +74,12 @@
 	position: realation;
 	padding: 0;
 }
-  
+
 #menu {
-	float: left;
-	margin: auto;
+	width:190;
+	/* float: left; */
+	align: center;
+	margin: left;
 	position: realation;
 	padding: 0;
 }

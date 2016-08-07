@@ -10,7 +10,7 @@
 			<nav id="header_menubar">
 				<ul>
 					<li><a href="#">어린이집/유치원 찾기</a></li>
-					<li><a href="#">주변시설 찾기</a></li>
+					<li><a href="/FORKI/content/MedicalSystem/searchLayout.jsp">주변시설 찾기</a></li>
 					<li><a href="/FORKI/content/board/freeBoardList.jsp">게시판</a></li>
 				</ul>
 			</nav>

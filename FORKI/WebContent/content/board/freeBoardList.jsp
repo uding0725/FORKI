@@ -2,6 +2,6 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <tiles:insertDefinition name="layout3" >
-	<tiles:putAttribute name="menu" value="/content/template/menu1.jsp" />
+	<tiles:putAttribute name="menu" value="/content/template/menu3.jsp" />
 	<tiles:putAttribute name="body" value="/content/board/factor/freeBoard_list.jsp" />
 </tiles:insertDefinition>
