@@ -7,17 +7,16 @@
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body>
-
-	<table id="layout">
-		<tr>
-			<td><tiles:insertAttribute name="header" /></td>
-		</tr>
-		<tr>
-			<td><tiles:insertAttribute name="body" /></td>
-		</tr>
-		<tr>
-			<td><tiles:insertAttribute name="footer" /></td>
-		</tr>
-	</table>
+	<div id="box">
+		<div id="top">
+			<tiles:insertAttribute name="header" />
+		</div>
+		<div id="body">
+			<tiles:insertAttribute name="body" />
+		</div>
+		<div id="bottom">
+			<tiles:insertAttribute name="footer" />
+		</div>
+	</div>
 </body>
 </html>

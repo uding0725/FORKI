@@ -6,7 +6,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 
-<%-- <%
+ <%
     int pageSize = 10; //하나의 페이지에서 보여줄 행의 수.
     SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
@@ -16,9 +16,10 @@
 	String search = request.getParameter("search");	
 	int searchn = 0;
 	
+	//pagenum이 parameter값으로 넘어오지 않았다면, 맨 첫번째 페이지로.
     if (pageNum == null) {
         pageNum = "1";
-    }//pagenum이 parameter값으로 넘어오지 않았다면, 맨 첫번째 페이지로.
+    }
     
     if(search == null)
 	{
@@ -37,13 +38,14 @@
     int number=0;
 
     List articleList = null;
-    BoardDBBean dbPro = BoardDBBean.getInstance();
+    FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();
     if(search.equals("") || search == null)
-		count = dbPro.getArticleCount();
+    	// 검색어가 없다면
+		count = fbdbb.getArticleCount();
 	else
-		count = dbPro.getArticleCount(searchn,search);
+		count = fbdbb.getArticleCount(searchn,search);
     
-    CommentDBBean cdb=CommentDBBean.getInstance();
+    FrReplyDBBean cdb=FrReplyDBBean.getInstance();
     
     if (count > 0) {
     	if(search.equals("") || search == null)
@@ -54,7 +56,7 @@
 
 	number=count-(currentPage-1)*pageSize;
            // 11 -(2-1)*3 =8
-%> --%>
+%> 
 <%-- <body bgcolor="<%=bodyback_c%>"> --%>
 <table id="board">
 	<tr>

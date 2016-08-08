@@ -1,19 +1,43 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-
-<table>
-	<tr>
-		<td id="logo" rowspan="2"><a href="../main/main.jsp"><img src="../img/logo.jpg" width="415" height="150"></a></td>
-		<td id="factor" style="height: 100;">상단 미니 메뉴가 들어갈 자리임다</td>
-	</tr>
-	<tr>
-			<td>
-			<nav id="header_menubar">
+<head>
+<link href="../CSS/reset.css" rel="stylesheet" type="text/css">
+<link href="../CSS/global.css" rel="stylesheet" type="text/css">
+<link href="../CSS/style.css" rel="stylesheet" type="text/css">
+</head>
+<div id="header-box">
+	<div id="logo">
+		<a href="../main/main.jsp"><img src="../img/logo.jpg" width="415" height="150"></a>
+	</div>
+	<div>
+		<div id="submenu">
+			<nav id="topmenu-sub">
 				<ul>
-					<li><a href="#">어린이집/유치원 찾기</a></li>
-					<li><a href="/FORKI/content/MedicalSystem/searchLayout.jsp">주변시설 찾기</a></li>
-					<li><a href="/FORKI/content/board/freeBoardList.jsp">게시판</a></li>
+					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">어린이집</a></li>
+					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">어린이집</a></li>
+					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">어린이집</a></li>
 				</ul>
 			</nav>
-		</td>
-	</tr>
-</table>
+		</div>
+		<div id="menubar">
+			<nav id="topmenu">
+				<ul>
+					<li class="topMenuLi"><a class="menuLink" href="#">어린이집/유치원 찾기</a>
+						<ul class="submenu">
+							<li class="pop-up"><a href="#" class="submenuLink longLink">어린이집/유치원 찾기</a></li>
+						</ul></li>
+					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/MedicalSystem/searchLayout.jsp">주변시설 찾기</a>
+						<ul class="submenu">
+							<li class="pop-up"><a href="#" class="submenuLink longLink">의료시설조회</a></li>
+							<li class="pop-up"><a href="#" class="submenuLink longLink">문화시설조회</a></li>
+						</ul></li>
+					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/board/freeBoardList.jsp">게시판</a>
+						<ul class="submenu">
+							<li class="pop-up"><a href="#" class="submenuLink longLink">공지사항</a></li>
+							<li class="pop-up"><a href="#" class="submenuLink longLink">건의사항</a></li>
+							<li class="pop-up"><a href="#" class="submenuLink longLink">맘을 전해요</a></li>
+						</ul></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>

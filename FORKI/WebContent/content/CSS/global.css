@@ -1,0 +1,88 @@
+/* 전체 레이아웃 설정 */
+body {
+	margin: 0px;
+	font-size: 18px;
+}
+
+#box {
+	position: relative;
+	height: auto;
+	width: 960px;
+	margin: auto;
+}
+
+#top {
+	height: 150px;
+	width: 960px;
+	position: relative;
+}
+
+#left {
+	float: left;
+	width: 200px;
+	position: relative;
+}
+@charset "utf-8";
+
+#content {
+	float: left;
+	width: 760px;
+	position: relative;
+}
+
+#body {
+	float: left;
+	width: 960px;
+	position: relative;
+}
+
+#content {
+	height: 500px;
+	float: left;
+	width: 480px;
+	position: relative;
+}
+
+#bottom {
+	height: 60px;
+	width: 960px;
+	position: relative;
+	clear: both;
+	float: left;
+}
+
+/* 헤더 레이아웃 설정 */
+#header-box {
+	position: relative;
+	height: auto;
+	width: 960px;
+	margin: auto;
+}
+
+#logo {
+	float: left;
+	height: 150px;
+	wldth: 415px;
+	/* 	position: relative; */
+}
+
+#header-right {
+	float: left;
+	width: 545px;
+	position: relative;
+}
+
+#submenu {
+	float: left;
+	height: 100px;
+	wldth: 540px;
+	position: relative;
+	float: left;
+}
+
+#menubar {
+	float: left;
+	height: 50px;
+	wldth: 540px;
+	position: relative;
+}

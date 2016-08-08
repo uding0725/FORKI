@@ -1,8 +1,10 @@
+@charset "utf-8";
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 /**
- * 1. ±âº» ±Û²ÃÀ» sans-serif·Î ¼³Á¤.
- * 2. iOS¿Í IE¿¡¼­ ±â±â È¸Àü½Ã¿¡ »ç¿ëÀÚ°¡ È®´ëÇÏÁö ¾Ê¾Æµµ ±Û¾¾ Å©±â°¡ ÀçÁ¶Á¤µÇ´Â °ÍÀ» ¿¹¹æ.
+ * 1. ê¸°ë³¸ ê¸€ê¼´ì„ sans-serifë¡œ ì„¤ì •.
+ * 2. iOSì™€ IEì—ì„œ ê¸°ê¸° íšŒì „ì‹œì— ì‚¬ìš©ìê°€ í™•ëŒ€í•˜ì§€ ì•Šì•„ë„ ê¸€ì”¨ í¬ê¸°ê°€ ì¬ì¡°ì •ë˜ëŠ” ê²ƒì„ ì˜ˆë°©.
  */
 html {
 	font-family: sans-serif; /* 1 */
@@ -11,7 +13,7 @@ html {
 }
 
 /**
- * ±âº» ¸¶Áø°ªÀ» Á¦°Å.
+ * ê¸°ë³¸ ë§ˆì§„ê°’ì„ ì œê±°.
  */
 body {
 	margin: 0;
@@ -21,17 +23,17 @@ body {
    ========================================================================== */
 
 /**
- * IE8/9¿¡¼­ Á¤ÀÇµÇÁö ¾ÊÀº HTML5 ¿ä¼Ò¸¦ 'block'À¸·Î ÁöÁ¤.
- * IE10/11, Firefox¿¡¼­ Á¤ÀÇµÇÁö ¾ÊÀº `detail` È¤Àº `summary` ¸¦ `block`À¸·Î ÁöÁ¤.
- * IE11¿¡¼­ Á¤ÀÇµÇÁö ¾ÊÀº `main`À» `block`À¸·Î ÁöÁ¤
+ * IE8/9ì—ì„œ ì •ì˜ë˜ì§€ ì•Šì€ HTML5 ìš”ì†Œë¥¼ 'block'ìœ¼ë¡œ ì§€ì •.
+ * IE10/11, Firefoxì—ì„œ ì •ì˜ë˜ì§€ ì•Šì€ `detail` í˜¹ì€ `summary` ë¥¼ `block`ìœ¼ë¡œ ì§€ì •.
+ * IE11ì—ì„œ ì •ì˜ë˜ì§€ ì•Šì€ `main`ì„ `block`ìœ¼ë¡œ ì§€ì •
  */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
 	display: block;
 }
 
 /**
- * 1. IE8/9¿¡¼­ `inline-block`À¸·Î Á¤ÀÇµÇÁö ¾ÊÀº °ÍÀ» ¿Ã¹Ù¸£°Ô ÁöÁ¤.
- * 2. Chrome, Firefox, Opera¿¡¼­ `progress`ÀÇ ¼¼·Î Á¤·ÄÀ» Ç¥ÁØÈ­.
+ * 1. IE8/9ì—ì„œ `inline-block`ìœ¼ë¡œ ì •ì˜ë˜ì§€ ì•Šì€ ê²ƒì„ ì˜¬ë°”ë¥´ê²Œ ì§€ì •.
+ * 2. Chrome, Firefox, Operaì—ì„œ `progress`ì˜ ì„¸ë¡œ ì •ë ¬ì„ í‘œì¤€í™”.
  */
 audio, canvas, progress, video {
 	display: inline-block; /* 1 */
@@ -39,8 +41,8 @@ audio, canvas, progress, video {
 }
 
 /**
- * ¸ğ´ø ºê¶ó¿ìÀúµé¿¡¼­ controls ¼Ó¼º¾øÀÌ audio ¿ä¼Ò°¡ ·»´õ¸µ µÇ´Â °ÍÀ» ¿¹¹æ
- * iOS 5 ±â±â¿¡¼­ ³ôÀÌ¸¦ ÃÊ°úÇÏ´Â °ÍÀ» Á¦°Å
+ * ëª¨ë˜ ë¸Œë¼ìš°ì €ë“¤ì—ì„œ controls ì†ì„±ì—†ì´ audio ìš”ì†Œê°€ ë Œë”ë§ ë˜ëŠ” ê²ƒì„ ì˜ˆë°©
+ * iOS 5 ê¸°ê¸°ì—ì„œ ë†’ì´ë¥¼ ì´ˆê³¼í•˜ëŠ” ê²ƒì„ ì œê±°
  */
 audio:not ([controls] ) {
 	display: none;
@@ -48,8 +50,8 @@ audio:not ([controls] ) {
 }
 
 /**
- * `[hidden]` ¼Ó¼ºÀÇ ½ºÅ¸ÀÏÀÌ IE 8/9/10¿¡¼­ Á¸ÀçÇÏÁö ¾Ê´Â °ÍÀ» ÇØ°á. 
- * IE 8/9/10/11, Safari, Firefox < 22 ¿¡¼­ `template` ¿ä¼Ò¸¦ ¼û±è.
+ * `[hidden]` ì†ì„±ì˜ ìŠ¤íƒ€ì¼ì´ IE 8/9/10ì—ì„œ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²ƒì„ í•´ê²°. 
+ * IE 8/9/10/11, Safari, Firefox < 22 ì—ì„œ `template` ìš”ì†Œë¥¼ ìˆ¨ê¹€.
  */
 [hidden], template {
 	display: none;
@@ -59,14 +61,14 @@ audio:not ([controls] ) {
    ========================================================================== */
 
 /**
- * IE10¿¡¼­ È°¼ºÈ­(active)µÈ ¸µÅ©ÀÇ È¸»ö ¹è°æÀ» Á¦°Å.
+ * IE10ì—ì„œ í™œì„±í™”(active)ëœ ë§í¬ì˜ íšŒìƒ‰ ë°°ê²½ì„ ì œê±°.
  */
 a {
 	background-color: transparent;
 }
 
 /**
- * active/hover »óÅÂÀÏ¶§¿¡µµ Æ÷Ä¿½ºµÈ ¿ä¼ÒÀÇ °¡µ¶¼ºÀ» Çâ»ó.
+ * active/hover ìƒíƒœì¼ë•Œì—ë„ í¬ì»¤ìŠ¤ëœ ìš”ì†Œì˜ ê°€ë…ì„±ì„ í–¥ìƒ.
  */
 a:active, a:hover {
 	outline: 0;
@@ -76,28 +78,28 @@ a:active, a:hover {
    ========================================================================== */
 
 /**
- * IE 8/9/10/11, Safari, Chrome¿¡¼­ Á¸ÀçÇÏÁö ¾Ê´Â ½ºÅ¸ÀÏÀ» ºÎ¿©.
+ * IE 8/9/10/11, Safari, Chromeì—ì„œ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ìŠ¤íƒ€ì¼ì„ ë¶€ì—¬.
  */
 abbr[title] {
 	border-bottom: 1px dotted;
 }
 
 /**
- * Firefox 4+, Safari, Chrome¿¡¼­ `bolder`·Î ¼³Á¤µÇ¾î ÀÖ´Â °ÍÀ» `bold`·Î ¼öÁ¤.
+ * Firefox 4+, Safari, Chromeì—ì„œ `bolder`ë¡œ ì„¤ì •ë˜ì–´ ìˆëŠ” ê²ƒì„ `bold`ë¡œ ìˆ˜ì •.
  */
 b, strong {
 	font-weight: bold;
 }
 
 /**
- * Safari,Chrome¿¡¼­ Á¸ÀçÇÏÁö ¾Ê´Â ½ºÅ¸ÀÏÀ» ºÎ¿©.
+ * Safari,Chromeì—ì„œ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ìŠ¤íƒ€ì¼ì„ ë¶€ì—¬.
  */
 dfn {
 	font-style: italic;
 }
 
 /**
- * Firefox 4+, Safari, Chrome¿¡¼­ `section`°ú `article` ³»ºÎÀÇ `h1` ¿ä¼ÒÀÇ ±Û²Ã Å©±â¿Í ¸¶Áø°ªÀÌ ¼­·Î ´Ù¸¥ °ÍÀ» ÅëÀÏ½ÃÅ´.
+ * Firefox 4+, Safari, Chromeì—ì„œ `section`ê³¼ `article` ë‚´ë¶€ì˜ `h1` ìš”ì†Œì˜ ê¸€ê¼´ í¬ê¸°ì™€ ë§ˆì§„ê°’ì´ ì„œë¡œ ë‹¤ë¥¸ ê²ƒì„ í†µì¼ì‹œí‚´.
  */
 h1 {
 	font-size: 2em;
@@ -105,7 +107,7 @@ h1 {
 }
 
 /**
- * IE 8/9¿¡¼­ Á¸ÀçÇÏÁö ¾Ê´Â ½ºÅ¸ÀÏÀ» ºÎ¿©.
+ * IE 8/9ì—ì„œ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ìŠ¤íƒ€ì¼ì„ ë¶€ì—¬.
  */
 mark {
 	background: #ff0;
@@ -113,14 +115,14 @@ mark {
 }
 
 /**
- * ºê¶ó¿ìÀú¸¶´Ù ´Ù¸¥ ±Û²Ã Å©±â¸¦ ÅëÀÏ½ÃÅ´.
+ * ë¸Œë¼ìš°ì €ë§ˆë‹¤ ë‹¤ë¥¸ ê¸€ê¼´ í¬ê¸°ë¥¼ í†µì¼ì‹œí‚´.
  */
 small {
 	font-size: 80%;
 }
 
 /**
- * `sub`°ú `sup`¿ä¼Ò°¡ ¸ğµç ºê¶ó¿ìÀú¿¡¼­ `line-height`¿¡ ¿µÇâÀ» ¹ÌÄ¡´Â °ÍÀ» ¿¹¹æ.
+ * `sub`ê³¼ `sup`ìš”ì†Œê°€ ëª¨ë“  ë¸Œë¼ìš°ì €ì—ì„œ `line-height`ì— ì˜í–¥ì„ ë¯¸ì¹˜ëŠ” ê²ƒì„ ì˜ˆë°©.
  */
 sub, sup {
 	font-size: 75%;
@@ -141,14 +143,14 @@ sub {
    ========================================================================== */
 
 /**
- * IE 8/9/10¿¡¼­ `a` ¿ä¼Ò¾È¿¡ ÀÌ¹ÌÁö°¡ À§Ä¡ÇÒ °æ¿ì »ı±â´Â Å×µÎ¸® Á¦°Å.
+ * IE 8/9/10ì—ì„œ `a` ìš”ì†Œì•ˆì— ì´ë¯¸ì§€ê°€ ìœ„ì¹˜í•  ê²½ìš° ìƒê¸°ëŠ” í…Œë‘ë¦¬ ì œê±°.
  */
 img {
 	border: 0;
 }
 
 /**
- * IE 9/10/11¿¡¼­ `svg` ¿ä¼Ò°¡ ¿µ¿ªÀÇ Å©±â¸¦ ¹ş¾î³ªÁö ¾Êµµ·Ï ¼öÁ¤.
+ * IE 9/10/11ì—ì„œ `svg` ìš”ì†Œê°€ ì˜ì—­ì˜ í¬ê¸°ë¥¼ ë²—ì–´ë‚˜ì§€ ì•Šë„ë¡ ìˆ˜ì •.
  */
 svg:not (:root ) {
 	overflow: hidden;
@@ -158,14 +160,14 @@ svg:not (:root ) {
    ========================================================================== */
 
 /**
- * IE 8/9, Safari¿¡¼­ Á¸ÀçÇÏÁö ¾Ê´Â `margin` °ªÀ» ºÎ¿©.
+ * IE 8/9, Safariì—ì„œ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” `margin` ê°’ì„ ë¶€ì—¬.
  */
 figure {
 	margin: 1em 40px;
 }
 
 /**
- * Firefox¿Í ´Ù¸¥ ºê¶ó¿ìÀúµé »çÀÌÀÇ Â÷ÀÌÁ¡ ÇØ°á.
+ * Firefoxì™€ ë‹¤ë¥¸ ë¸Œë¼ìš°ì €ë“¤ ì‚¬ì´ì˜ ì°¨ì´ì  í•´ê²°.
  */
 hr {
 	box-sizing: content-box;
@@ -173,14 +175,14 @@ hr {
 }
 
 /**
- * ¸ğµç ºê¶ó¿ìÀú¿¡¼­ `pre` ¿ä¼ÒÀÇ `overfolow` °ªÀ» ÅëÀÏ.
+ * ëª¨ë“  ë¸Œë¼ìš°ì €ì—ì„œ `pre` ìš”ì†Œì˜ `overfolow` ê°’ì„ í†µì¼.
  */
 pre {
 	overflow: auto;
 }
 
 /**
- * ¸ğµç ºê¶ó¿ìÀú¿¡¼­ ±Û²Ã°ú ±Û²Ã Å©±â°¡ ´Ù¸¥ °ÍÀ» ÇØ°á. 
+ * ëª¨ë“  ë¸Œë¼ìš°ì €ì—ì„œ ê¸€ê¼´ê³¼ ê¸€ê¼´ í¬ê¸°ê°€ ë‹¤ë¥¸ ê²ƒì„ í•´ê²°. 
  */
 code, kbd, pre, samp {
 	font-family: monospace, monospace;
@@ -191,15 +193,15 @@ code, kbd, pre, samp {
    ========================================================================== */
 
 /**
- * ¾Ë·ÁÁø ÇÑ°è: ±âº»ÀûÀ¸·Î OS XÀÇ  Chrome°ú Safari´Â `border` ¼Ó¼ºÀ» ÁöÁ¤ÇÏÁö ¾Ê´Â ÇÑ 
- * `select` ¿ä¼ÒÀÇ ½ºÅ¸ÀÏ¸µ¿¡ ¸Å¿ì Á¦ÇÑÀûÀÌ´Ù.
+ * ì•Œë ¤ì§„ í•œê³„: ê¸°ë³¸ì ìœ¼ë¡œ OS Xì˜  Chromeê³¼ SafariëŠ” `border` ì†ì„±ì„ ì§€ì •í•˜ì§€ ì•ŠëŠ” í•œ 
+ * `select` ìš”ì†Œì˜ ìŠ¤íƒ€ì¼ë§ì— ë§¤ìš° ì œí•œì ì´ë‹¤.
  */
 
 /**
- * 1. color ¼Ó¼ºÀÌ »ó¼ÓµÇÁö ¾Ê´Â °ÍÀ» ¼öÁ¤.
- *    ¾Ë·ÁÁø ¹®Á¦: disabled µÈ ¿ä¼ÒÀÇ color ¼Ó¼º¿¡µµ ¿µÇâÀ» ¹ÌÄ£´Ù.
- * 2. font ¼Ó¼ºÀÌ »ó¼ÓµÇÁö ¾Ê´Â °ÍÀ» ¼öÁ¤.
- * 3. Firefox 4+, Safari, Chrome¿¡¼­ ¸¶ÁøÀÌ ¼­·Î ´Ù¸¥ °ÍÀ» ÇØ°á.
+ * 1. color ì†ì„±ì´ ìƒì†ë˜ì§€ ì•ŠëŠ” ê²ƒì„ ìˆ˜ì •.
+ *    ì•Œë ¤ì§„ ë¬¸ì œ: disabled ëœ ìš”ì†Œì˜ color ì†ì„±ì—ë„ ì˜í–¥ì„ ë¯¸ì¹œë‹¤.
+ * 2. font ì†ì„±ì´ ìƒì†ë˜ì§€ ì•ŠëŠ” ê²ƒì„ ìˆ˜ì •.
+ * 3. Firefox 4+, Safari, Chromeì—ì„œ ë§ˆì§„ì´ ì„œë¡œ ë‹¤ë¥¸ ê²ƒì„ í•´ê²°.
  */
 button, input, optgroup, select, textarea {
 	color: inherit; /* 1 */
@@ -208,26 +210,26 @@ button, input, optgroup, select, textarea {
 }
 
 /**
- * IE 8/9/10/11¿¡¼­ `overflow` ¼Ó¼º°ªÀÌ `hidden`À¸·Î ¼³Á¤µÇ¾î ÀÖ´Â °ÍÀ» ¼öÁ¤
+ * IE 8/9/10/11ì—ì„œ `overflow` ì†ì„±ê°’ì´ `hidden`ìœ¼ë¡œ ì„¤ì •ë˜ì–´ ìˆëŠ” ê²ƒì„ ìˆ˜ì •
  */
 button {
 	overflow: visible;
 }
 
 /**
- * `button`°ú `select` ¿ä¼Ò¿¡ `text-transform` »ó¼ÓÀÌ ÀÏÄ¡ÇÏÁö ¾Ê´Â °ÍÀ» ÇØ°á
- * ¸ğµç ´Ù¸¥ Æû ÄÁÆ®·Ñ ¿ä¼Ò´Â `text-transform` °ªÀ» »ó¼ÓÇÏÁö ¾Ê´Â´Ù.
- * IE 8/9/10/11, Firefox, Opera¿¡¼­ `button` ¿ä¼ÒÀÇ ½ºÅ¸ÀÏ »ó¼Ó ¼öÁ¤.
- * Firefox¿¡¼­ `select` ¿ä¼ÒÀÇ ½ºÅ¸ÀÏ »ó¼Ó ¼öÁ¤.
+ * `button`ê³¼ `select` ìš”ì†Œì— `text-transform` ìƒì†ì´ ì¼ì¹˜í•˜ì§€ ì•ŠëŠ” ê²ƒì„ í•´ê²°
+ * ëª¨ë“  ë‹¤ë¥¸ í¼ ì»¨íŠ¸ë¡¤ ìš”ì†ŒëŠ” `text-transform` ê°’ì„ ìƒì†í•˜ì§€ ì•ŠëŠ”ë‹¤.
+ * IE 8/9/10/11, Firefox, Operaì—ì„œ `button` ìš”ì†Œì˜ ìŠ¤íƒ€ì¼ ìƒì† ìˆ˜ì •.
+ * Firefoxì—ì„œ `select` ìš”ì†Œì˜ ìŠ¤íƒ€ì¼ ìƒì† ìˆ˜ì •.
  */
 button, select {
 	text-transform: none;
 }
 
 /**
- * 1. Android 4.0.*¿¡¼­ `audio`¿Í `video` ÄÁÆ®·ÑÀ» ÆÄ±«ÇÏ´Â À¥Å¶ ¹ö±×¸¦ ¹æÁö.
- * 2. iOS¿¡¼­ Å¬¸¯°¡´ÉÇÑ `input` À¯Çü¿¡ ½ºÅ¸ÀÏ¸µÀ» ÇÒ ¼ö ¾ø´Â °ÍÀ» ¼öÁ¤.
- * 3. `input` ¿ä¼Ò¿Í ´Ù¸¥ ¿ä¼ÒµéÀÇ image-typeÀÇ Ä¿¼­ ¸ğ¾çÀ» ÀÏÄ¡½ÃÄÑ °¡¿ë¼ºÀ» Çâ»ó.  
+ * 1. Android 4.0.*ì—ì„œ `audio`ì™€ `video` ì»¨íŠ¸ë¡¤ì„ íŒŒê´´í•˜ëŠ” ì›¹í‚· ë²„ê·¸ë¥¼ ë°©ì§€.
+ * 2. iOSì—ì„œ í´ë¦­ê°€ëŠ¥í•œ `input` ìœ í˜•ì— ìŠ¤íƒ€ì¼ë§ì„ í•  ìˆ˜ ì—†ëŠ” ê²ƒì„ ìˆ˜ì •.
+ * 3. `input` ìš”ì†Œì™€ ë‹¤ë¥¸ ìš”ì†Œë“¤ì˜ image-typeì˜ ì»¤ì„œ ëª¨ì–‘ì„ ì¼ì¹˜ì‹œì¼œ ê°€ìš©ì„±ì„ í–¥ìƒ.  
  *    `input` and others.
  */
 button, html input[type="button"], /* 1 */ input[type="reset"], input[type="submit"] {
@@ -236,14 +238,14 @@ button, html input[type="button"], /* 1 */ input[type="reset"], input[type="subm
 }
 
 /**
- * disabledµÈ ¿ä¼ÒÀÇ ±âº» Ä¿¼­¸¦ Àç¼³Á¤
+ * disabledëœ ìš”ì†Œì˜ ê¸°ë³¸ ì»¤ì„œë¥¼ ì¬ì„¤ì •
  */
 button[disabled], html input[disabled] {
 	cursor: default;
 }
 
 /**
- * Firefox 4+¿¡¼­ ³»ºÎ `padding`°ú `border`¸¦ Á¦°Å 
+ * Firefox 4+ì—ì„œ ë‚´ë¶€ `padding`ê³¼ `border`ë¥¼ ì œê±° 
  */
 button::-moz-focus-inner, input::-moz-focus-inner {
 	border: 0;
@@ -251,19 +253,19 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 /**
- * Firefox 4+¿¡¼­ UA(User Agent) ½ºÅ¸ÀÏ½ÃÆ®¿¡ `!important`¸¦ »ç¿ëÇÑ `input` ¿ä¼ÒÀÇ
- * `line-height` ¼³Á¤°ªÀ» ÇØ°á.
+ * Firefox 4+ì—ì„œ UA(User Agent) ìŠ¤íƒ€ì¼ì‹œíŠ¸ì— `!important`ë¥¼ ì‚¬ìš©í•œ `input` ìš”ì†Œì˜
+ * `line-height` ì„¤ì •ê°’ì„ í•´ê²°.
  */
 input {
 	line-height: normal;
 }
 
 /**
- * ÀÌ·¯ÇÑ ¿ä¼ÒÀÇ ½ºÅ¸ÀÏÀ» ¼³Á¤ÇÏ·Á°íÇÏÁö ¾Ê´Â °ÍÀÌ ÁÁ´Ù.
- * Firefox¿¡¼­ ¾Æ·¡ÀÇ ¿ä¼Ò¿¡¼­ box-sizing, padding, width°¡ ±¸ÇöµÉ²¨¶ó ±â´ëÇÏÁö ¸»ÀÚ.
+ * ì´ëŸ¬í•œ ìš”ì†Œì˜ ìŠ¤íƒ€ì¼ì„ ì„¤ì •í•˜ë ¤ê³ í•˜ì§€ ì•ŠëŠ” ê²ƒì´ ì¢‹ë‹¤.
+ * Firefoxì—ì„œ ì•„ë˜ì˜ ìš”ì†Œì—ì„œ box-sizing, padding, widthê°€ êµ¬í˜„ë êº¼ë¼ ê¸°ëŒ€í•˜ì§€ ë§ì.
  * 
- * 1. IE 8/9/10¿¡¼­ box sizing ¼Ó¼º°ªÀ» `content-box`¿¡¼­ `border-box`·Î º¯°æ
- * 2. IE 8/9/10¿¡¼­ ¿µ¿ªÀ» ¹ş¾î³ªÁö ¾Êµµ·Ï `padding`À» Á¦°Å 
+ * 1. IE 8/9/10ì—ì„œ box sizing ì†ì„±ê°’ì„ `content-box`ì—ì„œ `border-box`ë¡œ ë³€ê²½
+ * 2. IE 8/9/10ì—ì„œ ì˜ì—­ì„ ë²—ì–´ë‚˜ì§€ ì•Šë„ë¡ `padding`ì„ ì œê±° 
  */
 input[type="checkbox"], input[type="radio"] {
 	box-sizing: border-box; /* 1 */
@@ -271,15 +273,15 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 /**
- * ChromeÀÇ Áõ°¡/°¨¼Ò ¹öÆ°ÀÇ Ä¿¼­ ¸ğ¾çÀ» ¼öÁ¤.
- * `input` ¿ä¼ÒÀÇ Æ¯Á¤ `font-size` °ª¿¡ ´ëÇØ °¨¼Ò ¹öÆ°ÀÇ Ä¿¼­ ¸ğ¾çÀÌ `default`¿¡¼­ `text`·Î º¯ÇÑ´Ù.
+ * Chromeì˜ ì¦ê°€/ê°ì†Œ ë²„íŠ¼ì˜ ì»¤ì„œ ëª¨ì–‘ì„ ìˆ˜ì •.
+ * `input` ìš”ì†Œì˜ íŠ¹ì • `font-size` ê°’ì— ëŒ€í•´ ê°ì†Œ ë²„íŠ¼ì˜ ì»¤ì„œ ëª¨ì–‘ì´ `default`ì—ì„œ `text`ë¡œ ë³€í•œë‹¤.
  */
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
 	height: auto;
 }
 
 /**
- * OS XÀÇ Safari, Chrome¿¡¼­ ³»ºÎ(inner) `padding`°ú °Ë»ö Ãë¼Ò ¹öÆ°À» Á¦°Å. 
+ * OS Xì˜ Safari, Chromeì—ì„œ ë‚´ë¶€(inner) `padding`ê³¼ ê²€ìƒ‰ ì·¨ì†Œ ë²„íŠ¼ì„ ì œê±°. 
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
@@ -288,7 +290,7 @@ input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webki
 }
 
 /**
- * `border`, `margin`, `padding`À» ÀÏÄ¡.
+ * `border`, `margin`, `padding`ì„ ì¼ì¹˜.
  */
 fieldset {
 	border: 1px solid #c0c0c0;
@@ -297,7 +299,7 @@ fieldset {
 }
 
 /**
- * 1. IE 8/9/10/11¿¡¼­ `color`´Â »ó¼ÓµÇÁö ¾Ê´Â´Ù.
+ * 1. IE 8/9/10/11ì—ì„œ `color`ëŠ” ìƒì†ë˜ì§€ ì•ŠëŠ”ë‹¤.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
 legend {
@@ -306,15 +308,15 @@ legend {
 }
 
 /**
- * IE 8/9/10/11¿¡¼­ ±âº» ¼¼·Î ½ºÅ©·Ñ¹Ù¸¦ Á¦°Å
+ * IE 8/9/10/11ì—ì„œ ê¸°ë³¸ ì„¸ë¡œ ìŠ¤í¬ë¡¤ë°”ë¥¼ ì œê±°
  */
 textarea {
 	overflow: auto;
 }
 
 /**
- * `font-weight`´Â »ó¼ÓµÇÁö ¾Ê´Â´Ù.(applied by a rule above).
- * ÁÖÀÇ: OS XÀÇ Chrome°ú Safari¿¡¼­ ±âº»°ªÀ» º¯°æÇÏ´Â °ÍÀº ¾ÈÀüÇÏÁö ¾Ê´Ù.
+ * `font-weight`ëŠ” ìƒì†ë˜ì§€ ì•ŠëŠ”ë‹¤.(applied by a rule above).
+ * ì£¼ì˜: OS Xì˜ Chromeê³¼ Safariì—ì„œ ê¸°ë³¸ê°’ì„ ë³€ê²½í•˜ëŠ” ê²ƒì€ ì•ˆì „í•˜ì§€ ì•Šë‹¤.
  */
 optgroup {
 	font-weight: bold;
@@ -324,7 +326,7 @@ optgroup {
    ========================================================================== */
 
 /**
- * Å×ÀÌºí ¿ä¼Ò »çÀÌÀÇ °£°İÀ» Á¦°Å
+ * í…Œì´ë¸” ìš”ì†Œ ì‚¬ì´ì˜ ê°„ê²©ì„ ì œê±°
  */
 table {
 	border-collapse: collapse;
