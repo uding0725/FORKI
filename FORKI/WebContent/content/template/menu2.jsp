@@ -22,6 +22,7 @@
 		<li><a href="#">문화시설조회</a></li>
 	</ul>
 </div>
+<!-- 의료시설조회라면 -->
 <table id="md-sidebar">
 	<tr>
 		<td>
@@ -35,3 +36,6 @@
 
 		</td>
 </table>
+
+<!-- 문화시설조회라면 -->
+<!-- md-sidebar 테이블 삭제 -->
