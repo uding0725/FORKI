@@ -6,11 +6,7 @@
 		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
 		<a href="#">>어린이집유치원찾기</a>	
 		</span>
-		
-		
 	<div id="md-container">
-   
-		
 		<div id="md-header">
 			<table border="1" cellpadding=0 cellspacing=0 width="555" height="100">
 				<tr>
@@ -36,8 +32,7 @@
 			</table>
 		</div>
 		<p>총 검색 건수 : ? 건 </p>
-		<div id="md-content">검색결과 나올창</div>
-		
+		<div id="md-content">검색결과 나올창</div>	
 		<div id="md-map">지도 띄울 창</div>
 	</div>
 </div>

@@ -29,7 +29,7 @@
 .menuLink, .submenuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
 	text-decoration: none; /* a 태그의 꾸밈 효과 제거 */
 	display: block; /* a 태그의 클릭 범위를 넓힘 */
-	width: 170px; /* 기본 넓이 설정 */
+	width: 180px; /* 기본 넓이 설정 */
 	font-size: 15px; /* 폰트 사이즈 설정 */
 	font-weight: bold; /* 폰트를 굵게 설정 */
 	font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
@@ -94,10 +94,10 @@
 
 #topMenu-sub ul li { /* 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용 */
 	border: 1px solid black;
-	padding: 3px; color : white; /* 글씨 색을 흰색으로 설정 */
+	padding: 0px; color : white; /* 글씨 색을 흰색으로 설정 */
 	background-color: #ffffff; /* 배경 색  설정 */
 	float: left; /* 왼쪽으로 나열되도록 설정 */
-	line-height: 15px; /* 텍스트 한 줄의 높이 설정 */
+	line-height: 20px; /* 텍스트 한 줄의 높이 설정 */
 	vertical-align: middle; /* 세로 정렬을 가운데로 설정 */
 	text-align: center; /* 텍스트를 가운데로 정렬 */
 	position: relative;
@@ -108,7 +108,7 @@
 	text-decoration: none; /* a 태그의 꾸밈 효과 제거 */
 	display: block; /* a 태그의 클릭 범위를 넓힘 */
 	width: 50px; /* 기본 넓이  설정 */
-	font-size: 10px; /* 폰트 사이즈 설정 */
+	font-size: 11px; /* 폰트 사이즈 설정 */
 	font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
 }
 
