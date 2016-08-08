@@ -2,6 +2,9 @@ package DAO_DTO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 
 public class LogonDBBean {
@@ -76,18 +79,36 @@ public class LogonDBBean {
 	public int deleteMember(String id, String del_reason) throws Exception{
 		return;
 	}
-	
+	//집코드 불러오기
 	public Vector zipcodeRead(String area4) throws Exception {
 		return;
 	}
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
+	//유치원명 사업자번호 불러오기
+	public Vector kidRead(String id)throws Exception{
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Vector vecList =new Vector();
+		try{
+			con=getConnection();
+			String strQuery="select id,schul_nm, schul_num from k_etc where id=?";
+			pstmt.setString(1, id);
+			pstmt=con.prepareStatement(strQuery);
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				KetcDataBean kdb= new KetcDataBean();
+				kdb.setId(rs.getString("id"));
+				kdb.setSchul_nm(rs.getString("schul_nm"));
+				kdb.setSchul_num(rs.getInt("schul_num"));
+				vecList.addElement(kdb);
+			}
+		}catch(Exception ex){
+			System.out.println(ex);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException e){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException e){}
+			if(con!=null)try{con.close();}catch(SQLException e){}
+		}
+		return vecList;
+	}
 }
