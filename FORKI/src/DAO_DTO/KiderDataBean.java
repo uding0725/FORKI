@@ -18,6 +18,20 @@ public class KiderDataBean {
 	private int frl_tcher_co_sm;
 	private int frl_female_tcher_c;
 	private String rm;
+	private String state;
+	private Timestamp Reg_date;
+	public Timestamp getReg_date() {
+		return Reg_date;
+	}
+	public void setReg_date(Timestamp reg_date) {
+		Reg_date = reg_date;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	public int getSchul_num() {
 		return schul_num;
 	}

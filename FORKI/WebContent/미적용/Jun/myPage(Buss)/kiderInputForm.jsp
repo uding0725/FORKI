@@ -103,6 +103,7 @@ function zipCheck(){
 		<td>비고</td>
 		<td>
 			<input type="text" name="rm">
+			<input type="hidden" name="state" value="n">
 		</td>
 	</tr>
 	<tr>
@@ -111,7 +112,7 @@ function zipCheck(){
 		</td>
 	</tr>
 </table>
-<input type="hidden" name="state" value="n">
+
 </form>
 </div>
 </html>

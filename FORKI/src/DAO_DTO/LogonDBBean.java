@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
+import jdbc.JdbcUtil;
+
 public class LogonDBBean {
 
 	public static LogonDBBean instance = new LogonDBBean();
@@ -104,11 +106,37 @@ public class LogonDBBean {
 			}
 		}catch(Exception ex){
 			System.out.println(ex);
-		}finally{
-			if(rs!=null) try{rs.close();}catch(SQLException e){}
-			if(pstmt!=null) try{pstmt.close();}catch(SQLException e){}
-			if(con!=null)try{con.close();}catch(SQLException e){}
+		}finally{//jdbc.close()만든걸로 수정
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);
+			JdbcUtil.close(con);
 		}
 		return vecList;
+	}
+	
+	//유치원등록신청 화면 - ID를 가지고 오는 부분(추가)
+	public String findId(String schul_nm,int schul_num)throws Exception{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String memId="";
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select id from k_etc where schul_nm=? and schul_num=?");
+			pstmt.setString(1, schul_nm);
+			pstmt.setInt(2,schul_num);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				memId=rs.getString("id");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return memId;
 	}
 }
