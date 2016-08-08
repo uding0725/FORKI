@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ include file="color.jspf"%>
 <html>
 <head>
 <title>회원가입</title>
@@ -116,7 +115,7 @@ $(document).ready(function(){
 </script>
 
 
-<body bgcolor="${bodyback_c}">
+<body>
 
 <form method="post" action="inputPro.jsp" name="userinput"  onSubmit="return checkIt()">
   <table id="example" width="400" border="1" cellspacing="0" cellpadding="3" align="center" >

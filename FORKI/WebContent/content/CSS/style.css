@@ -211,3 +211,135 @@
 #index {
 	text-align: center;
 }
+
+
+/*------------------------------------------------------------*/
+/* 의료시설 검색 설정 */
+/*------------------------------------------------------------*/
+/* 검색화면 설정 */
+#md-wrap {
+	width: 700px;
+	height: 790px;
+	margin: 0px auto;
+	padding: 0px;
+	border: 0px solid;
+	padding: 0px;
+	position: relative;
+}
+
+#md-container {
+	width: 680px;
+	height: 700px;
+	margin: 0px auto;
+	padding: 20px;
+	border: 1px solid;
+}
+
+#md-header {
+	width: 550px;
+	margin-bottom: 20px;
+	border: 0px solid;
+}
+
+#md-content {
+	width: 250px;
+	height: 400px;
+	padding: 5px;
+	margin-bottom: 10px;
+	float: left;
+	border: 1px solid;
+}
+
+#md-map {
+	width: 380px;
+	height: 300px;
+	padding: 10px;
+	margin: auto;
+	margin-bottom: 10px;
+	float: right;
+	border: 1px solid;
+}
+
+#md-wrap > a {
+	text-decoration: none;
+}
+
+/* 상세화면 설정 */
+#mddp-container {
+	width: 950px;
+	height: 700px;
+	margin: 0px auto;
+	padding: 20px;
+	border: 0px solid;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+#mddp-detailview {
+	width: 440px;
+	height: 650px;
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid;
+	margin-bottom: 10px;
+	float: left;
+}
+
+#mddp-map {
+	width: 440px;
+	height: 500px;
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid;
+	magin-bottom: 10px;
+	float: right;
+}
+
+.wrapper {
+	padding: 10px;
+	margin: 100px auto;
+	width: 300px;
+	min-height: 50px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	position: absolute;
+	top: 580px;
+	left: 100px;
+}
+
+.rating {
+	z-index: 70;
+	overflow: hidden;
+	vertical-align: bottom;
+	display: inline-block;
+	width: auto;
+	height: 20px;
+}
+
+.rating>input {
+	opacity: 0;
+	margin-right: -100%;
+}
+
+.rating>label {
+	position: relative;
+	display: block;
+	float: right;
+	background: url('../img/star-off-big.png');
+	background-size: 20px 20px;
+}
+
+.rating>label:before {
+	display: block;
+	opacity: 0;
+	content: '';
+	width: 20px;
+	height: 20px;
+	background: url('../img/star-on-big.png');
+	background-size: 20px 20px;
+	transition: opacity 0.2s linear;
+}
+
+.rating>label:hover:before, .rating>label:hover ~ label:before, .rating:not (:hover ) >:checked ~ label:before {
+	opacity: 1;
+}

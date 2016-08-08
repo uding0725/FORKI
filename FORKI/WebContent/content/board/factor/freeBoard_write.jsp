@@ -8,7 +8,7 @@
 				type="hidden" name="re_level" value="<%=re_level%>"> --%>
 			<!-- 클라이언트가 건들면 안되는 곳은 type을 hidden으로 -->
 
-			<table width="760" border="1" cellspacing="0" cellpadding="0"
+			<table width="750" border="1" cellspacing="0" cellpadding="0"
 				bgcolor="" align="center">
 				<tr>
 					<td align="right" colspan="2" bgcolor=""><a href="freeBoardList.jsp"> 글목록</a></td>
@@ -39,7 +39,7 @@
 				</tr> -->
 				<tr>
 					<td width="70" bgcolor="" align="center">내 용</td>
-					<td width="690"><textarea name="content" rows="13" cols="40"></textarea>
+					<td width="680"><textarea name="content" rows="13" cols="40"></textarea>
 					</td>
 				</tr>
 				<!-- <tr>

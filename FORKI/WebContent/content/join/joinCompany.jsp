@@ -1,10 +1,6 @@
-<%@ page contentType="text/html; charset=utf-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Insert title here</title>
-</head> 
-<body>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
-</body>
-</html>
+<tiles:insertDefinition name="layout2" >
+	<tiles:putAttribute name="body" value="/content/join/company/inputForm2.jsp" />
+</tiles:insertDefinition>

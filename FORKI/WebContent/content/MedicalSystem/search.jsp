@@ -1,55 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<html>
 <head>
-<style>
-#md-wrap {
-	width: 700px;
-	height: 790px;
-	margin: 0px auto;
-	padding: 0px;
-	border: 0px solid;
-	padding: 0px;
-	position: relative;
-}
-
-#md-container {
-	width: 680px;
-	height: 700px;
-	margin: 0px auto;
-	padding: 20px;
-	border: 1px solid;
-}
-
-#md-header {
-	width: 550px;
-	margin-bottom: 20px;
-	border: 0px solid;
-}
-
-#md-content {
-	width: 250px;
-	height: 400px;
-	padding: 5px;
-	margin-bottom: 10px;
-	float: left;
-	border: 1px solid;
-}
-
-#md-map {
-	width: 380px;
-	height: 300px;
-	padding: 10px;
-	margin: auto;
-	margin-bottom: 10px;
-	float: right;
-	border: 1px solid;
-}
-
-a {
-	text-decoration: none;
-}
-</style>
+<link href="../CSS/reset.css" rel="stylesheet" type="text/css">
+<link href="../CSS/global.css" rel="stylesheet" type="text/css">
+<link href="../CSS/style.css?var=1.1" rel="stylesheet" type="text/css">
 </head>
 	<div id="md-wrap">
 		<font size="+2">의료시설</font>
@@ -84,4 +38,3 @@ a {
 		</div>
 	</div>
 </div>
-</html>

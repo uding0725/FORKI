@@ -14,7 +14,7 @@
 				<ul>
 					<li class="topMenuLi-sub"><a class="menuLink-sub" href="../main/main.jsp">HOME</a></li>
 					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">로그인</a></li>
-					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">회원가입</a></li>
+					<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/joinSelect_layout.jsp" ">회원가입</a></li>
 					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
 				</ul>
 			</nav>
@@ -22,9 +22,9 @@
 		<div id="menubar">
 			<nav id="topmenu">
 				<ul>
-					<li class="topMenuLi"><a class="menuLink" href="#">어린이집/유치원 찾기</a>
+					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/findKinder/findkinder_layout.jsp">어린이집/유치원 찾기</a>
 						<ul class="submenu">
-							<li class="pop-up"><a href="#" class="submenuLink longLink">어린이집/유치원 찾기</a></li>
+							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder_layout.jsp" class="submenuLink longLink">어린이집/유치원 찾기</a></li>
 						</ul></li>
 					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/MedicalSystem/searchLayout.jsp?">주변시설 찾기</a>
 						<ul class="submenu">
