@@ -12,9 +12,10 @@
 		<div id="submenu">
 			<nav id="topmenu-sub">
 				<ul>
-					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">어린이집</a></li>
-					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">어린이집</a></li>
-					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">어린이집</a></li>
+					<li class="topMenuLi-sub"><a class="menuLink-sub" href="../main/main.jsp">HOME</a></li>
+					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">로그인</a></li>
+					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">회원가입</a></li>
+					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -27,12 +28,12 @@
 						</ul></li>
 					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/MedicalSystem/searchLayout.jsp">주변시설 찾기</a>
 						<ul class="submenu">
-							<li class="pop-up"><a href="#" class="submenuLink longLink">의료시설조회</a></li>
+							<li class="pop-up"><a href="/FORKI/content/MedicalSystem/searchLayout.jsp" class="submenuLink longLink">의료시설조회</a></li>
 							<li class="pop-up"><a href="#" class="submenuLink longLink">문화시설조회</a></li>
 						</ul></li>
 					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/board/freeBoardList.jsp">게시판</a>
 						<ul class="submenu">
-							<li class="pop-up"><a href="#" class="submenuLink longLink">공지사항</a></li>
+							<li class="pop-up"><a href="/FORKI/content/board/freeBoardList.jsp" class="submenuLink longLink">공지사항</a></li>
 							<li class="pop-up"><a href="#" class="submenuLink longLink">건의사항</a></li>
 							<li class="pop-up"><a href="#" class="submenuLink longLink">맘을 전해요</a></li>
 						</ul></li>

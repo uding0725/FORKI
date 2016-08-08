@@ -166,10 +166,12 @@
 
 /* 사이드메뉴 슬라이더 설정 */
 #md-sidebar {
-	position: relative;
-	height: auto;
-	width: 960px;
-	margin: auto;
+	width: 140px;
+	padding: 5px;
+	margin: 0px auto;
+	float: none;
+	border: 1px solid;
+	text-align: center;
 }
 
 /*------------------------------------------------------------*/

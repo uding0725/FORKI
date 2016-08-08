@@ -1,4 +1,6 @@
-/* ÀüÃ¼ ·¹ÀÌ¾Æ¿ô ¼³Á¤ */
+@charset "utf-8";
+
+/* ì „ì²´ ë ˆì´ì•„ì›ƒ ì„¤ì • */
 body {
 	margin: 0px;
 	font-size: 18px;
@@ -22,13 +24,6 @@ body {
 	width: 200px;
 	position: relative;
 }
-@charset "utf-8";
-
-#content {
-	float: left;
-	width: 760px;
-	position: relative;
-}
 
 #body {
 	float: left;
@@ -37,9 +32,9 @@ body {
 }
 
 #content {
-	height: 500px;
 	float: left;
-	width: 480px;
+	width: 470px;
+	padding: 5px;
 	position: relative;
 }
 
@@ -51,7 +46,7 @@ body {
 	float: left;
 }
 
-/* Çì´õ ·¹ÀÌ¾Æ¿ô ¼³Á¤ */
+/* í—¤ë” ë ˆì´ì•„ì›ƒ ì„¤ì • */
 #header-box {
 	position: relative;
 	height: auto;

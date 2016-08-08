@@ -4,7 +4,7 @@
 <head>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css">
 <link href="../CSS/global.css" rel="stylesheet" type="text/css">
-<link href="../CSS/style.css" rel="stylesheet" type="text/css">
+<link href="../CSS/style.css?var=1.1" rel="stylesheet" type="text/css">
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body>
