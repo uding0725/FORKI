@@ -6,7 +6,7 @@
 <link href="../CSS/style.css" rel="stylesheet" type="text/css">
 <title><tiles:getAsString name="title" /></title>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 	<div id="box">
 		<div id="top">
 			<tiles:insertAttribute name="header" />

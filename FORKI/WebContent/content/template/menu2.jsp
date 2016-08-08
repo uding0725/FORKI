@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css">
@@ -6,15 +7,16 @@
 <link href="../CSS/style.css?var=1.1" rel="stylesheet" type="text/css">
 </head>
 <div id="left">
-	<div style="height:160px;">
+	<div style="height:120px;">
 		<nav id="topmenu-side">
 			<ul>
-				<li class="topMenuLi-side"><a class="menuLink-side" href="#">의료시설조회</a></li>
-				<li class="topMenuLi-side"><a class="menuLink-side" href="#">문화시설조회</a></li>
+				<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MedicalSystem/searchLayout.jsp">의료시설조회</a></li>
+				<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/LibrarySystem/searchLayoutLib.jsp">문화시설조회</a></li>
 			</ul>
 		</nav>
 	</div>
 	<!-- 의료시설조회라면 -->
+	<c:if test="${param.medi != null}">
 	<div>
 		<div id="md-sidebar">
 			<p>
@@ -28,5 +30,6 @@
 		</div>
 	</div>
 	<!-- 문화시설조회라면 -->
-	<!-- md-sidebar 테이블 삭제 -->
+	<!-- md-sidebar 미출력 -->
+	</c:if>
 </div>
