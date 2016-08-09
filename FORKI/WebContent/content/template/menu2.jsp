@@ -1,11 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<head>
-<link href="../CSS/reset.css" rel="stylesheet" type="text/css">
-<link href="../CSS/global.css?var=1.1" rel="stylesheet" type="text/css">
-<link href="../CSS/style.css?var=1.1" rel="stylesheet" type="text/css">
-</head>
 <div id="left">
 	<div style="height:120px;">
 		<nav id="topmenu-side">

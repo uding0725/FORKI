@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<div id="md-wrap">
+<div id="mdK-wrap">
 <font size="+2">어린이집/유치원찾기</font>
-		<span style='position:absolute; right:-40px'>
+		<span style='position:absolute; right:0px'>
 		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
 		<a href="#">>어린이집유치원찾기</a>	
 		</span>
-	<div id="md-container">
-		<div id="md-header">
-			<table border="1" cellpadding=0 cellspacing=0 width="555" height="100">
+	<div id="mdK-container">
+		<div id="mdK-header">
+			<table border="1" cellpadding=0 cellspacing=0 width="890" height="100">
 				<tr>
 					<td width="50" align="center">
 					<strong> <h5>조회</h5> </strong>
@@ -32,7 +32,10 @@
 			</table>
 		</div>
 		<p>총 검색 건수 : ? 건 </p>
-		<div id="md-content">검색결과 나올창</div>	
-		<div id="md-map">지도 띄울 창</div>
+		<div id="mdK-content">검색결과 나올창<br>
+		<a target="_blank" href="#" onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;">용산구 이태원동 이태원어린이집</a> 
+		</div>
+			
+		<div id="mdK-map">지도 띄울 창</div>
 	</div>
 </div>

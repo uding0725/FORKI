@@ -343,3 +343,54 @@
 .rating>label:hover:before, .rating>label:hover ~ label:before, .rating:not (:hover ) >:checked ~ label:before {
 	opacity: 1;
 }
+
+/*------------------------------------------------------------*/
+/* 어린이집 검색 설정 */
+/*------------------------------------------------------------*/
+/* 검색화면 설정 */
+#mdK-wrap {
+	width: 950px;
+	height: 790px;
+	margin: 0px auto;
+	padding: 0px;
+	border: 0px solid;
+	padding: 0px;
+	position: relative;
+}
+
+#mdK-container {
+	width: 890px;
+	height: 700px;
+	margin: 0px auto;
+	padding: 20px;
+	border: 1px solid;
+}
+
+#mdK-header {
+	width: 870px;
+	margin-bottom: 20px;
+	border: 0px solid;
+}
+
+#mdK-content {
+	width: 400px;
+	height: 400px;
+	padding: 5px;
+	margin-bottom: 10px;
+	float: left;
+	border: 1px solid;
+}
+
+#mdK-map {
+	width: 400px;
+	height: 300px;
+	padding: 10px;
+	margin: auto;
+	margin-bottom: 10px;
+	float: right;
+	border: 1px solid;
+}
+
+#mdK-wrap > a {
+	text-decoration: none;
+}

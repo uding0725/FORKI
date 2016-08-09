@@ -1,9 +1,4 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<head>
-<link href="../CSS/reset.css" rel="stylesheet" type="text/css">
-<link href="../CSS/global.css" rel="stylesheet" type="text/css">
-<link href="../CSS/style.css?var1.1" rel="stylesheet" type="text/css">
-</head>
 <div id="header-box">
 	<div id="logo">
 		<a href="../main/main.jsp"><img src="../img/logo.jpg" width="415" height="150"></a>
