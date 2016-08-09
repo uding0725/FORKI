@@ -19,12 +19,12 @@ public class KiderDataBean {
 	private int frl_female_tcher_c;
 	private String rm;
 	private String state;
-	private Timestamp Reg_date;
+	private Timestamp reg_date;
 	public Timestamp getReg_date() {
-		return Reg_date;
+		return reg_date; 
 	}
 	public void setReg_date(Timestamp reg_date) {
-		Reg_date = reg_date;
+		this.reg_date = reg_date;
 	}
 	public String getState() {
 		return state;

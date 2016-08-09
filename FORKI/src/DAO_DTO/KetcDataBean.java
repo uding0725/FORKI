@@ -19,7 +19,7 @@ public class KetcDataBean {
 		this.schul_num = schul_num;
 	}
 	public String getSchul_nm() {
-		return schul_nm;
+		return schul_nm;                   
 	}
 	public void setSchul_nm(String schul_nm) {
 		this.schul_nm = schul_nm;

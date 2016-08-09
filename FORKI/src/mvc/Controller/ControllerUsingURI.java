@@ -27,8 +27,8 @@ public class ControllerUsingURI extends HttpServlet {
 		FileInputStream f = null;
 
 		try {		
-			String configFilePath = config.getServletContext().getRealPath(props);
-			f = new FileInputStream(configFilePath);
+			/*String configFilePath = config.getServletContext().getRealPath(props);*/
+			f = new FileInputStream(props);
 			pr.load(f);
 		} catch (IOException e) {
 			throw new ServletException(e);
@@ -79,6 +79,7 @@ public class ControllerUsingURI extends HttpServlet {
 		} catch (Throwable e) {
 			throw new ServletException(e);
 		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

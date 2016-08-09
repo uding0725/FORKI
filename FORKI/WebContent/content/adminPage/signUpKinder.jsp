@@ -18,11 +18,20 @@
 <td align="center"  width="150">신청일</td>
 <td align="center"  width="150">승인란</td>
 </tr>
-<c:if test="true"> 
+<%-- <c:if test="true"> 
 <td colspan="6" align="center">등록 신청한 유치원이 없습니다.</td>
-</c:if>
+</c:if> --%>
 <c:if test="true">
 
+<c:forEach var="i" items="${vecList}" varStatus="status">
+<tr>
+<td align="center"  width="50">${status.index+1}</td>
+<%--  <td align="center"  width="100">${i.id}</td> --%>
+<td align="center"  width="150">${i.schul_nm}</td>
+<td align="center"  width="150">${i.schul_num}</td>
+<td align="center"  width="100">${i.reg_date}</td>
+</tr>
+</c:forEach>
 </c:if>
 </table>
 <center>

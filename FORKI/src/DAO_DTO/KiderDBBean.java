@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 import jdbc.JdbcUtil;
@@ -23,7 +24,7 @@ public class KiderDBBean {
 		String jdbcDriver="jdbc:apache:commons:dbcp:/pool";
 		return DriverManager.getConnection(jdbcDriver);
 	}
-	//유치원 유치원명선택
+/*	//유치원 유치원명선택
 	public Vector selectKid(String matr_gu, String schul_nm)throws Exception{
 		
 	}
@@ -37,7 +38,7 @@ public class KiderDBBean {
 	}
 	//유치원 상세보기
 	public KiderDataBean selectDetKid(String schul_nm)throws Exception{
-	}
+	}*/
 	//유치원 등록
 	public void insertKid(KiderDataBean kidmember)throws Exception{
 		Connection con=null;
@@ -76,24 +77,54 @@ public class KiderDBBean {
 	//유치원 등록(추가)
 	public Vector signKinder()throws Exception{
 		Connection conn=null;
-		PreparedStatement pstmt=null;
+		Statement stmt=null;
 		ResultSet rs=null;
 		Vector vecList=new Vector();
 		try{
 			conn=getConnection();
-			pstmt=conn.prepareStatement("select schul_nm,schul_num,reg_date from kindergarten where state='n'");
-			rs=pstmt.executeQuery();
-			while(rs.next()){
+			/*pstmt=conn.prepareStatement("select schul_nm,schul_num,reg_date,state,id from kindergarten natural join k_etc where state='n'");
+			rs=pstmt.executeQuery();*/
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery("select schul_nm,schul_num,reg_date,state from kindergarten where state='n'");
+		/*	System.out.println("test");
+			if(rs.next()){
+				System.out.println("있어요");
+			}
+			else{
+				System.out.println("없어요");
+			}*/
+			if(rs.next()){
+				do{
+					KiderDataBean tempkdb=new KiderDataBean();
+/*					KetcDataBean ketc=new KetcDataBean();
+					ketc.setId(rs.getString("id"));*/
+					tempkdb.setSchul_nm(rs.getString("schul_nm"));
+					tempkdb.setSchul_num(rs.getInt("schul_num"));
+					tempkdb.setState(rs.getString("state"));
+					tempkdb.setReg_date(rs.getTimestamp("reg_date"));
+//					vecList.addElement(ketc);
+					vecList.addElement(tempkdb);
+				}while(rs.next());
+			}
+			
+			/*while(rs.next()){
 				KiderDataBean tempkdb=new KiderDataBean();
+				KetcDataBean ketc=new KetcDataBean();
+				System.out.println("TEST!!!");
+				System.out.println(rs.getString("id")+"        id");
+				System.out.println(rs.getString("schul_nm")+"        id");
+				ketc.setId(rs.getString("id"));
 				tempkdb.setSchul_nm(rs.getString("schul_nm"));
 				tempkdb.setSchul_num(rs.getInt("schul_num"));
+				tempkdb.setState(rs.getString("state"));
 				tempkdb.setReg_date(rs.getTimestamp("reg_date"));
+				vecList.addElement(ketc);
 				vecList.addElement(tempkdb);
-			}
+			}*/
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
-			JdbcUtil.close(pstmt);
+			JdbcUtil.close(stmt);
 			JdbcUtil.close(rs);
 			JdbcUtil.close(conn);
 		}
