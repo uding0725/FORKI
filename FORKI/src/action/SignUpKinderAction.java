@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO_DTO.KiderDBBean;
+import DAO_DTO.LogonDBBean;
+import DAO_DTO.LogonDataBean;
 
 public class SignUpKinderAction implements CommandAction{
 
@@ -13,9 +15,7 @@ public class SignUpKinderAction implements CommandAction{
 		
 		KiderDBBean kdb=KiderDBBean.getInstance();
 		Vector vecList = kdb.signKinder();
-		
 		request.setAttribute("vecList", vecList);
-		
 		return "/content/adminPage/signUpLayout.jsp";
 	}
 }

@@ -85,7 +85,7 @@ public class KiderDBBean {
 			/*pstmt=conn.prepareStatement("select schul_nm,schul_num,reg_date,state,id from kindergarten natural join k_etc where state='n'");
 			rs=pstmt.executeQuery();*/
 			stmt=conn.createStatement();
-			rs=stmt.executeQuery("select schul_nm,schul_num,reg_date,state from kindergarten where state='n'");
+			rs=stmt.executeQuery("select schul_nm,schul_num,reg_date,state,id from kindergarten natural join k_etc where state='n'");
 		/*	System.out.println("test");
 			if(rs.next()){
 				System.out.println("ÀÖ¾î¿ä");
@@ -96,10 +96,13 @@ public class KiderDBBean {
 			if(rs.next()){
 				do{
 					KiderDataBean tempkdb=new KiderDataBean();
+					KetcDataBean ketcdb=new KetcDataBean();
+					ketcdb.setId(rs.getString("id"));
+					tempkdb.setKdb(ketcdb);
 /*					KetcDataBean ketc=new KetcDataBean();
 					ketc.setId(rs.getString("id"));*/
-					tempkdb.setSchul_nm(rs.getString("schul_nm"));
 					tempkdb.setSchul_num(rs.getInt("schul_num"));
+					tempkdb.setSchul_nm(rs.getString("schul_nm"));
 					tempkdb.setState(rs.getString("state"));
 					tempkdb.setReg_date(rs.getTimestamp("reg_date"));
 //					vecList.addElement(ketc);

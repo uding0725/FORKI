@@ -2,7 +2,7 @@
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ page import="DAO_DTO.LogonDBBean" %>
 <!DOCTYPE html>
 <html>
 <head><title>dd</title></head>
@@ -26,10 +26,14 @@
 <c:forEach var="i" items="${vecList}" varStatus="status">
 <tr>
 <td align="center"  width="50">${status.index+1}</td>
-<%--  <td align="center"  width="100">${i.id}</td> --%>
+<td align="center"  width="100">${i.kdb.id}</td>
 <td align="center"  width="150">${i.schul_nm}</td>
 <td align="center"  width="150">${i.schul_num}</td>
 <td align="center"  width="100">${i.reg_date}</td>
+<td align="center"  width="150">
+<input type="button" name="btnacc" value="승인">
+<input type="button" name="btncan" value="거절">
+</td>
 </tr>
 </c:forEach>
 </c:if>

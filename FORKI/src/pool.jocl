@@ -3,7 +3,7 @@
 
 	<object class="org.apache.commons.dbcp.DriverManagerConnectionFactory">
 		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
-		<string value="asg"/>
+		<string value="jun"/>
 		<string value="1234"/>
 	</object>
 	

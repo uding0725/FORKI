@@ -21,7 +21,7 @@ public class LogonDBBean {
 		String jdbcDriver = "jdbc:apache:commons:dbcp:/pool";
 		return DriverManager.getConnection(jdbcDriver);
 	}
-	
+/*	
 	//id찾기
 	public String searchId(String name, String email) throws Exception {
 		return;
@@ -84,7 +84,7 @@ public class LogonDBBean {
 	//집코드 불러오기
 	public Vector zipcodeRead(String area4) throws Exception {
 		return;
-	}
+	}*/
 
 	//유치원등록신청 화면 - ID를 가지고 오는 부분(추가)
 		public String findId(int schul_num)throws Exception{

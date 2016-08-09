@@ -20,6 +20,15 @@ public class KiderDataBean {
 	private String rm;
 	private String state;
 	private Timestamp reg_date;
+	private KetcDataBean kdb= new KetcDataBean();
+	
+	
+	public KetcDataBean getKdb() {
+		return kdb;
+	}
+	public void setKdb(KetcDataBean kdb) {
+		this.kdb = kdb;
+	}
 	public Timestamp getReg_date() {
 		return reg_date; 
 	}
