@@ -94,7 +94,8 @@
 
 #topMenu-sub ul li { /* 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용 */
 	border: 1px solid black;
-	padding: 0px; color : white; /* 글씨 색을 흰색으로 설정 */
+	padding: 0px;
+	color: white; /* 글씨 색을 흰색으로 설정 */
 	background-color: #ffffff; /* 배경 색  설정 */
 	float: left; /* 왼쪽으로 나열되도록 설정 */
 	line-height: 20px; /* 텍스트 한 줄의 높이 설정 */
@@ -212,7 +213,6 @@
 	text-align: center;
 }
 
-
 /*------------------------------------------------------------*/
 /* 의료시설 검색 설정 */
 /*------------------------------------------------------------*/
@@ -260,7 +260,7 @@
 	border: 1px solid;
 }
 
-#md-wrap > a {
+#md-wrap>a {
 	text-decoration: none;
 }
 
@@ -297,14 +297,13 @@
 
 .wrapper {
 	padding: 10px;
-	margin: 100px auto;
-	width: 300px;
+	margin: 0px auto;
+	width: 400px;
 	min-height: 50px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
 	position: absolute;
-	top: 580px;
-	left: 100px;
+	bottom: 0px;
 }
 
 .rating {
@@ -391,6 +390,113 @@
 	border: 1px solid;
 }
 
-#mdK-wrap > a {
+#mdK-wrap>a {
 	text-decoration: none;
+}
+
+/* 상세화면 설정 */
+#mdK-container {
+	width: 950px;
+	height: 700px;
+	margin: 0px auto;
+	padding: 20px;
+	border: 0px solid;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+#mdK-detailview {
+	width: 440px;
+	height: 550px;
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid;
+	margin-bottom: 10px;
+	float: left;
+}
+
+.wrapper2 {
+	padding: 10px;
+	margin: 0px auto;
+	width: 400px;
+	min-height: 50px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	position: absolute;
+	bottom: 100px;
+}
+
+#mdK-detailview>p {
+	font-size: 15px;
+}
+
+#mdK-inmap {
+	width: 440px;
+	height: 550px;
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid;
+	magin-bottom: 10px;
+	float: right;
+}
+
+.rating {
+	z-index: 70;
+	overflow: hidden;
+	vertical-align: bottom;
+	display: inline-block;
+	width: auto;
+	height: 20px;
+}
+
+.rating>input {
+	opacity: 0;
+	margin-right: -100%;
+}
+
+.rating>label {
+	position: relative;
+	display: block;
+	float: right;
+	background: url('../img/star-off-big.png');
+	background-size: 20px 20px;
+}
+
+.rating>label:before {
+	display: block;
+	opacity: 0;
+	content: '';
+	width: 20px;
+	height: 20px;
+	background: url('../img/star-on-big.png');
+	background-size: 20px 20px;
+	transition: opacity 0.2s linear;
+}
+
+.rating>label:hover:before, .rating>label:hover ~ label:before, .rating:not (:hover ) >:checked ~ label:before {
+	opacity: 1;
+}
+/*------------------------------------------------------------*/
+/* 별점 */
+/*------------------------------------------------------------*/
+.star_rating {
+	font-size: 0;
+	letter-spacing: -4px;
+}
+
+.star_rating a {
+	font-size: 22px;
+	letter-spacing: 0;
+	display: inline-block;
+	margin-left: 5px;
+	color: #ccc;
+	text-decoration: none;
+}
+
+.star_rating a:first-child {
+	margin-left: 0;
+}
+
+.star_rating a.on {
+	color: #ffff00;
 }

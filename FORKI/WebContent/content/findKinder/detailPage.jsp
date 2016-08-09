@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css">
 <link href="../CSS/global.css?var=1.1" rel="stylesheet" type="text/css">
-<link href="../CSS/style.css?var=1.3" rel="stylesheet" type="text/css">
+<link href="../CSS/style.css?var=1.6" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -19,33 +19,33 @@
 		});
 	});
 </script>
-<title>의료시설 상세 페이지</title>
+<title>어린이집 상세 정보</title>
 </head>
 <body>
-	<div id="mddp-container">
+	<div id="mdK-container">
 		<p style="text-align: left;" />
-		<font size="+1"><b>의료시설 세부정보</b></font>
-		<div id="mddp-detailview">
-			<p>세부정보</p>
-			<br>
-			<p>주소 :</p>
-			<br>
-			<p>전화번호 :</p>
-			<br>
-			<p>사이트 :</p>
-			<br>
-			<p>진료시간</p>
-			<br>
-			<div class="wrapper">
-			
+		<font size="+1"><b>이태원 어린이집</b></font>
+		<div id="mdK-detailview">
+			<font size="+1"><b>세부정보</b></font>
+			<p>주소 : 서울시 용산구 대사관로 36길 34</p>
+			<p>전화번호 : 02-353-4264</p>
+			<p>사이트 : 미등록</p>
+			<p>정원: 60명</p>
+			<p>학급수: 3</p>
+			<p>학생수(남/여) : 총 56(30/26)</p>
+			<p>전체선생님/여선생님 : 5/5</p>
+			<p>비교 : 신설</p>
+			<div style="width:30;height:30;border:1px solid black;padding:7px;background-color:red;position:absolute;top:310px;left:250px;">도표</div> 
+			<div class="wrapper2">
 				<!-- 별점  -->
 				<p class="star_rating">
 					<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
 				</p>
 			</div>
 		</div>
-		<div id="mddp-map">지도 넣을 창</div>
+		<div id="mdK-inmap">지도 넣을 창</div>
+		<div><input type="button" value="닫기"></div>
 	</div>
-	<input type="button" value="닫기">
+	
 </body>
 </html>
