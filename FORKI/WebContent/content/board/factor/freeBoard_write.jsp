@@ -1,62 +1,63 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<b>글쓰기</b> <br>
-		<form method="post" name="writeform" action="writePro.jsp"
-			onsubmit="return writeSave()">
-			<%-- <input type="hidden" name="num" value="<%=num%>"> <input
-				type="hidden" name="ref" value="<%=ref%>"> <input
-				type="hidden" name="re_step" value="<%=re_step%>"> <input
-				type="hidden" name="re_level" value="<%=re_level%>"> --%>
-			<!-- 클라이언트가 건들면 안되는 곳은 type을 hidden으로 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-			<table width="750" border="1" cellspacing="0" cellpadding="0"
-				bgcolor="" align="center">
-				<tr>
-					<td align="right" colspan="2" bgcolor=""><a href="freeBoardList.jsp"> 글목록</a></td>
-				</tr>
-				
-				<tr>
-					<td width="70" bgcolor="" align="center">제 목</td>
-					<%-- <td width="330">
-						<%
-							if (request.getParameter("num") == null) {
-						%> 
-						<input type="text" size="40" maxlength="50" name="subject">
-					</td>
-					<%
-						} else {
-					%>
-					<input type="text" size="40" maxlength="50" name="subject"
-						value="[답변]">
-					</td> --%>
-					<%-- <%
-						}
-					%> --%>
-				</tr>
-				<!-- <tr>
-					<td width="70" bgcolor="" align="center">Email</td>
-					<td width="330"><input type="text" size="40" maxlength="30"
-						name="email"></td>
-				</tr> -->
-				<tr>
-					<td width="70" bgcolor="" align="center">내 용</td>
-					<td width="680"><textarea name="content" rows="13" cols="40"></textarea>
-					</td>
-				</tr>
-				<!-- <tr>
-					<td width="70" bgcolor="" align="center">비밀번호</td>
-					<td width="330"><input type="password" size="8"
-						maxlength="12" name="passwd"></td>
-				</tr> -->
-				<tr>
-					<td colspan=2 bgcolor="" align="center">
-					<input type="submit" value="글쓰기"> 
-					<input type="reset"	value="다시작성"> 
-					<input type="button" value="취소"	OnClick="window.location='freeBoard_list.jsp'"></td>
-				</tr>
-			</table>
-			<!-- 한번에 많은 데이터 저장하기위해 useBean객체이용(writePro.jsp) -->			<%-- <%
-				} catch (Exception e) {
-				}
-			%>  --%>
-		</form>
 
+<html>
+<head>
+<title>게시판</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="script.js"></script>
+</head>
+
+  
+<body> 
+
+<br>
+<form method="post" name="writeform" action="/FORKI/content/board/freeBoardwritePro.do" onsubmit="return writeSave()">
+<input type="hidden" name="num" value="${num}">
+<input type="hidden" name="writer" value="${writer}">
+
+
+
+
+<table width="750" cellspacing="0" cellpadding="0"  align="center">
+ <tr>
+	 <td> <b>글쓰기</b> </td>
+ 		<td colspan="2" align="right">  
+ 		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
+		<a href="#">>게시판</a>
+		<a href="#">>맘을 전해요</a>
+		<a href="#">>글쓰기</a>
+	</td>			 
+ </tr>
+  <tr>
+  	<td>
+  		<select name="title">
+			<option value="0">소곤소곤</option>
+			<option value="1">유익한 경로</option>
+			<option value="2">기타</option>
+		</select>
+    <td colspan="2">제 목
+    <input type="text" size="70" name="subject" placeholder="지역구를 지정해주시면 검색이 용이합니다."></td>
+	</td>
+  </tr>
+ 
+  <tr>
+    <td colspan="3"    align="left" >내 용</td>
+  </tr>
+  <tr> 
+    <td  colspan="3">
+     <textarea name="content" rows="13" cols="100" align="center" ></textarea> </td>
+  </tr>
+  
+<tr>     
+<td colspan=3 align="center">
+  <input type="submit" value="글쓰기" > 
+  <input type="reset" value="다시작성">
+  <input type="button" value="목록보기" OnClick="window.location='/FORKI/content/board/freeBoardlist.do'">
+</td>
+</tr>
+</table>   
+</form>     
+</body>
+</html> 
