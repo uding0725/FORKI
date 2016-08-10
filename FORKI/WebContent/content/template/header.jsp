@@ -26,7 +26,7 @@
 							<li class="pop-up"><a href="/FORKI/content/MedicalSystem/searchLayout.jsp" class="submenuLink longLink">의료시설조회</a></li>
 							<li class="pop-up"><a href="/FORKI/content/LibrarySystem/searchLayoutLib.jsp" class="submenuLink longLink">문화시설조회</a></li>
 						</ul></li>
-					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/board/freeBoardList.jsp">게시판</a>
+					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/board/notifyList.jsp">게시판</a>
 						<ul class="submenu">
 							<li class="pop-up"><a href="/FORKI/content/board/notifyList.jsp" class="submenuLink longLink">공지사항</a></li>
 							<li class="pop-up"><a href="/FORKI/content/board/recommendList.jsp" class="submenuLink longLink">건의사항</a></li>

@@ -50,7 +50,7 @@ table{
   <div id="write-header">
   <font size="+2">건의사항</font> 
    <span style='position: absolute; right: 60px'> 
-    <a href="#"><img src="img/home.png" width="20" height="20"></a> 
+    <a href="#"><img src="../img/home.png" width="20" height="20"></a> 
     <a href="#">>게시판</a>
     <a href="#">>건의사항</a> 
    </span>
