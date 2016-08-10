@@ -60,11 +60,7 @@ text-decoration: none;
 		<a href="#">>주변시설</a>
 		<a href="#">>문화시설 조회</a>		
 		</span>
-		
-		
-	<div id="lib-container">
-   
-		
+	<div id="lib-container">	
 		<div id="lib-header">
 			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
 				<tr>

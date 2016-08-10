@@ -6,7 +6,7 @@
 		<nav id="topmenu-side">
 			<ul>
 				<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MedicalSystem/searchLayout.jsp">의료시설조회</a></li>
-				<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/LibrarySystem/searchLayoutLib.jsp">문화시설조회</a></li>
+				<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/LibrarySystem/searchLib.jsp">문화시설조회</a></li>
 			</ul>
 		</nav>
 	</div>
