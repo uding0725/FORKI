@@ -32,7 +32,7 @@
 		<p>총 검색 건수 : ? 건 </p>
 		<div id="md-content">
 			검색결과 나올창<br>
-			<a target="_blank" href="detailPage.jsp" onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;">용산구 순천향대학병원</a> 
+			<a target="_blank" href="/FORKI/content/MedicalSystem/factor/medi_DetailPage.jsp" onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;">용산구 순천향대학병원</a> 
 		</div>
 		<div id="md-map">지도 띄울 창
 		</div>
