@@ -27,8 +27,8 @@ public class ControllerUsingURI extends HttpServlet {
 		FileInputStream f = null;
 
 		try {		
-			/*String configFilePath = config.getServletContext().getRealPath(props);*/
-			f = new FileInputStream(props);
+			String configFilePath = config.getServletContext().getRealPath(props);
+			f = new FileInputStream(configFilePath);
 			pr.load(f);
 		} catch (IOException e) {
 			throw new ServletException(e);
