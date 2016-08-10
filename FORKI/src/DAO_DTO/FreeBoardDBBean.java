@@ -246,9 +246,21 @@ public class FreeBoardDBBean {
 	}   
 	
 	//실제 데이터 삭제
-	/*public int deleteArticle(int num){
+	public int deleteArticle(int num){
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x = 1;
+		
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement("")
+		}
+		
 		return;
 	}
-	*/
+
+
 	
 }
