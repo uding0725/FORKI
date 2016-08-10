@@ -13,21 +13,23 @@ public class FreeBoardWriteProAction implements CommandAction{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		
 		request.setCharacterEncoding("UTF-8");// �븳湲� �씤肄붾뵫
-
+		
+		
 		FreeBoardDataBean article = new FreeBoardDataBean();// �뜲�씠�꽣泥섎━ 鍮�
-		article.setNum(Integer.parseInt(request.getParameter("num")));
-		article.setWriter("ho");
+		article.setNum((Integer)request.getSession().getAttribute("num"));
+		article.setId((String)request.getSession().getAttribute("id"));
+		article.setWriter((String)request.getSession().getAttribute("writer"));
+		article.setTitle(request.getParameter("title"));
 		article.setSubject(request.getParameter("subject"));
-		article.setId("hh");
-		
-		
-		article.setReg_date(new Timestamp(System.currentTimeMillis()));
 		article.setContent(request.getParameter("content"));
-		
+		article.setReadcount(Integer.parseInt(request.getParameter("readcount")));
+		article.setReg_date(new Timestamp(System.currentTimeMillis()));
 	
-
+		
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();// DB泥섎━
 		fbdbb.insertArticle(article);
+		
+		System.out.println(article.getSubject());
 		
 		return "freeBoardWritePro.jsp";
 	}

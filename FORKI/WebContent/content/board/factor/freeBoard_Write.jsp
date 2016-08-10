@@ -13,9 +13,11 @@
 <body> 
 
 <br>
-<form method="post" name="writeform" action="/FORKI/content/board/freeBoardwritePro.do" onsubmit="return writeSave()">
+<form method="post" name="writeform" action="/FORKI/content/board/freeBoardWritePro.do" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="${num}">
 <input type="hidden" name="writer" value="${writer}">
+<input type="hidden" name="id" value="${id}">
+<input type="hidden" name="readcount" value=0>
 
 
 
@@ -54,7 +56,7 @@
 <td colspan=3 align="center">
   <input type="submit" value="글쓰기" > 
   <input type="reset" value="다시작성">
-  <input type="button" value="목록보기" OnClick="window.location='/FORKI/content/board/freeBoardlist.do'">
+  <input type="button" value="목록보기" OnClick="window.location='/FORKI/content/board/freeBoardList.do'">
 </td>
 </tr>
 </table>   
