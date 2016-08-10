@@ -5,6 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface CommandAction {
 	public String requestPro(HttpServletRequest request,HttpServletResponse response)throws Throwable;
-	//Ç×»ó request¶û response¸¦ °¡Áö°í ´Ù³à¾ßµÊ
-	//sessionÀÌ ÇÊ¿äÇÏ´Ù¸é request¸¸ °¡Áö°í °¡¸ç³ëµò´Ù
+	//ï¿½×»ï¿½ requestï¿½ï¿½ responseï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù³ï¿½ßµï¿½
+	//sessionï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Ï´Ù¸ï¿½ requestï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }

@@ -60,11 +60,7 @@ text-decoration: none;
 		<a href="#">>주변시설</a>
 		<a href="#">>문화시설 조회</a>		
 		</span>
-		
-		
-	<div id="lib-container">
-   
-		
+	<div id="lib-container">	
 		<div id="lib-header">
 			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
 				<tr>
@@ -93,7 +89,7 @@ text-decoration: none;
 		<p>총 검색 건수 : ? 건 </p>
 		<div id="md-content">
 			검색결과 나올창<br>
-			<a target="_blank" href="detailPage.jsp" onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> 
+			<a target="_blank" href="#" onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> 
 		</div>
 		
 		<div id="md-map">지도 띄울 창</div>

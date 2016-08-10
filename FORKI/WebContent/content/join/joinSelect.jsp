@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
-<div id="body">
-<div style="height:500;" id="content"><a href="joinCompany.jsp">기업</a></div>
-<div style="height:500;" id="content"><a href="joinUser.jsp">개인</a></div>
-</div>]
+<tiles:insertDefinition name="layout2" >
+	<tiles:putAttribute name="body" value="/content/join/factor/join_Select.jsp" />
+</tiles:insertDefinition>

@@ -6,9 +6,9 @@
 <meta charset="utf-8" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<link href="../CSS/reset.css" rel="stylesheet" type="text/css">
-<link href="../CSS/global.css?var=1.1" rel="stylesheet" type="text/css">
-<link href="../CSS/style.css?var=1.6" rel="stylesheet" type="text/css">
+<link href="../../CSS/reset.css" rel="stylesheet" type="text/css">
+<link href="../../CSS/global.css?var=1.1" rel="stylesheet" type="text/css">
+<link href="../../CSS/style.css?var=1.6" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 	$(function() {

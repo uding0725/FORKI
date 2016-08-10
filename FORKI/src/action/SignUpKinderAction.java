@@ -6,16 +6,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO_DTO.KiderDBBean;
-import DAO_DTO.LogonDBBean;
-import DAO_DTO.LogonDataBean;
 
 public class SignUpKinderAction implements CommandAction{
 
-	public String requestPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
+	public String requsetPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
 		
 		KiderDBBean kdb=KiderDBBean.getInstance();
 		Vector vecList = kdb.signKinder();
-		request.setAttribute("vecList", vecList);
-		return "/content/adminPage/signUpLayout.jsp";
+		String schul_nm=(String)vecList.get(0);
+		int schul_num=(int)vecList.get(1);
+		
+		
+		return "signUpKinder.jsp";
 	}
 }
