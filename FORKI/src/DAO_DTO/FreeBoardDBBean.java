@@ -129,8 +129,9 @@ public class FreeBoardDBBean {
 			
 		conn=getConnection();
 		
-		pstmt = conn.prepareStatement("select num, id, writer, title, subject, content, readcount, reg_date, rownum r from board" +
-				" order by num desc where r >= ? and r <= ?");
+		pstmt = conn.prepareStatement("select num, id, writer, title, subject, content, readcount, reg_date, r " +
+				"from (select num, id, writer, title, subject, content, readcount, reg_date, rownum r from board order by num desc)"+
+				" where r >= ? and r <= ?");
 		
 		pstmt.setInt(1, start);
 		pstmt.setInt(2, end);
@@ -161,20 +162,12 @@ public class FreeBoardDBBean {
 				JdbcUtil.close(conn);
 				JdbcUtil.close(pstmt);
 			}
+		System.out.println(articleList.size());
 	return articleList;
 		}
 				
-		
-		
 	
-	
-	//
-	public Vector getArticle(int num) throws Exception{
-		Vector c = null;
-		return c;
-	}
-	
-	//수정할때 폼가져오기 update
+	//상세보기 , 수정할때 폼가져오기 update
 	public FreeBoardDataBean updateGetArticle(int num) throws Exception{
 		
 		Connection conn = null;
@@ -251,14 +244,29 @@ public class FreeBoardDBBean {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int x = 1;
+		FreeBoardDataBean fbdb = new FreeBoardDataBean();
+		
+		int x = -1;
 		
 		try{
+			if(fbdb.getId() != null){
 			conn = getConnection();
-			pstmt = conn.prepareStatement("")
+			pstmt = conn.prepareStatement("delete from board where num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			x = 1;
+			}
+			else{
+				x = 0;
+			}
+		} catch(Exception ex){
+			ex.printStackTrace();
+		} finally{
+			JdbcUtil.close(conn);
+			JdbcUtil.close(pstmt);
 		}
 		
-		return;
+		return x;
 	}
 
 

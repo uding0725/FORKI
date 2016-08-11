@@ -30,7 +30,7 @@
 						<ul class="submenu">
 							<li class="pop-up"><a href="/FORKI/content/board/notifyList.jsp" class="submenuLink longLink">공지사항</a></li>
 							<li class="pop-up"><a href="/FORKI/content/board/recommendList.jsp" class="submenuLink longLink">건의사항</a></li>
-							<li class="pop-up"><a href="/FORKI/content/board/freeBoardList.jsp" class="submenuLink longLink">맘을 전해요</a></li>
+							<li class="pop-up"><a href="/FORKI/content/board/freeBoardList.do" class="submenuLink longLink">맘을 전해요</a></li>
 						</ul></li>
 				</ul>
 			</nav>

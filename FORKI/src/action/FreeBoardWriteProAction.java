@@ -29,7 +29,7 @@ public class FreeBoardWriteProAction implements CommandAction{
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();// DB泥섎━
 		fbdbb.insertArticle(article);
 		
-		System.out.println(article.getSubject());
+		
 		
 		return "freeBoardWritePro.jsp";
 	}

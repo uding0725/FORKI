@@ -20,7 +20,7 @@
   </tr>
 </table>
 
-<%-- <c:if test="${count == 0}">
+<c:if test="${count == 0}">
 <table width="700" border="1" cellpadding="0" cellspacing="0">
   <tr>
     <td align="center">
@@ -30,8 +30,8 @@
 </table>
 </c:if>
 
-<c:if test="${count > 0}"> --%>
-<table border="1" width="700" cellpadding="0" cellspacing="0" align="center">
+<c:if test="${count > 0}"> 
+	<table border="1" width="700" cellpadding="0" cellspacing="0" align="center">
     <tr height="30">
       <td align="center"  width="50"  >번 호</td>
       <td align="center"  width="250" >제   목</td>
@@ -39,30 +39,31 @@
       <td align="center"  width="150" >조회수</td>
       <td align="center"  width="50" >등록일</td>  
     </tr>
- </table>   
+ 	</table>   
 
-   <%-- <c:forEach var="article" items="${articleList}">
+    <c:forEach var="article" items="${articleList}">
+   <table witdh="700" cellpadding="0" cellspacing="0" align="center">
    <tr height="30">
     <td align="center"  width="50" >
-  <c:out value="${number}"/>
-  <c:set var="number" value="${number - 1}"/>  
-</td>
+  	<c:out value="${number}"/>
+ 	 <c:set var="number" value="${number - 1}"/>  
+	</td>
     <td  width="250" >
  
           
       <a href="/FORKI/board/freeBoardConent.do?num=${article.num}&pageNum=${currentPage}">
           ${article.subject}</a>
-          <c:if test="${article.readcount >= 20}">
+          <%-- <c:if test="${article.readcount >= 20}">
             <img src="images/hot.gif" border="0"  height="16">
-  </c:if>
+  </c:if> --%>
 </td>
     <td align="center"  width="100">
        ${article.writer}</a>
 </td>
-    <td align="center"  width="150">${article.reg_date}
+    <td align="center"  width="150">${article.readcount}
 </td>
-    <td align="center"  width="50">${article.readcount}</td>
-    <td align="center" width="100" >${article.ip}</td>
+    <td align="center"  width="50">${article.reg_date}</td>
+   
   </tr>
   </c:forEach>
 </table>
@@ -79,18 +80,18 @@
    </c:if>
          
    <c:if test="${startPage > 10}">
-        <a href="/JulyJSP/MVC/list.do?pageNum=${startPage - 10 }">[이전]</a>
+        <a href="/FORKI/content/board/freeBoardList.do?pageNum=${startPage - 10 }">[이전]</a>
    </c:if>
 
    <c:forEach var="i" begin="${startPage}" end="${endPage}">
-       <a href="/JulyJSP/MVC/list.do?pageNum=${i}">[${i}]</a>
+       <a href="/FORKI/content/board/freeBoardList.do?pageNum=${i}">[${i}]</a>
    </c:forEach>
 
    <c:if test="${endPage < pageCount}">
-        <a href="/JulyJSP/MVC/list.do?pageNum=${startPage + 10}">[다음]</a>
+        <a href="/FORKI/content/board/freeBoardList.do?pageNum=${startPage + 10}">[다음]</a>
    </c:if>
 </c:if>
 
-</center> --%>
+</center> 
 </body>
 </html>
