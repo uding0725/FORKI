@@ -11,20 +11,20 @@
 <form>
 <table width="700"  cellspacing="0" cellpadding="0" > 
  <tr>
- <td> 제목 </td>
- <td width="600"> el로 제목을 받아올부분 </td>
+ <td> 제목 </td>  
+ <td width="600"> ${article.subject} </td>
  </tr>
  <tr>
  <td> 내용
  </tr>
  <tr>
- <td colspan="2"> el로 내용을 받아올 부분 </td>
+ <td colspan="2"> ${article.content} </td>
  </tr>
  <tr>
  <td colspan="2" align="right">
- <input type="button" value="수정하기" >
+ <input type="button" value="수정하기" onclick="document.location.href='/FORKI/content/board/freeBoardUpdate.do?num=${num}&pageNum=${pageNum}'">
  <input type="button" value="삭제하기">
- <input type="button" value="목록으로" onclick="document.location.href='/FORKI/content/freeBoardList.do?pageNum=${pageNum}'">
+ <input type="button" value="목록으로" onclick="document.location.href='/FORKI/content/board/freeBoardList.do?pageNum=${pageNum}'">
  </td>
  </tr>
  </table>

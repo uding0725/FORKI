@@ -32,7 +32,6 @@ public class FreeBoardDBBean {
 		ResultSet rs = null;
 		
 		int num = article.getNum();
-		System.out.println(num);
 		
 		int number = 0;
 		String sql = "";
@@ -130,7 +129,7 @@ public class FreeBoardDBBean {
 		conn=getConnection();
 		
 		pstmt = conn.prepareStatement("select num, id, writer, title, subject, content, readcount, reg_date, r " +
-				"from (select num, id, writer, title, subject, content, readcount, reg_date, rownum r from board order by num desc)"+
+				"from (select num, id, writer, title, subject, content, readcount, reg_date, rownum r from board order by reg_date desc)"+
 				" where r >= ? and r <= ?");
 		
 		pstmt.setInt(1, start);

@@ -49,10 +49,9 @@
  	 <c:set var="number" value="${number - 1}"/>  
 	</td>
     <td  width="250" >
- 
-          
-      <a href="/FORKI/board/freeBoardConent.do?num=${article.num}&pageNum=${currentPage}">
-          ${article.subject}</a>
+   
+      <a href="/FORKI/content/board/freeBoardContent.do?num=${article.num}&pageNum=${currentPage}">
+          ${article.subject}</a> 
           <%-- <c:if test="${article.readcount >= 20}">
             <img src="images/hot.gif" border="0"  height="16">
   </c:if> --%>

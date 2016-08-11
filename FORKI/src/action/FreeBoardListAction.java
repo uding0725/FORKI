@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO_DTO.FreeBoardDBBean;
+import DAO_DTO.FreeBoardDataBean;
 
 public class FreeBoardListAction implements CommandAction {
 
@@ -31,7 +32,8 @@ public class FreeBoardListAction implements CommandAction {
 
 		if (count > 0) {
 			articleList = fbdbb.getArticles(startRow, endRow);// 현재 페이지에 해당하는 글의 갯수
-																// 목록
+			FreeBoardDataBean fbdb = new FreeBoardDataBean();
+			System.out.println("1"+fbdb.getNum());												// 목록
 		} else {
 			articleList = Collections.EMPTY_LIST;
 		}
@@ -46,6 +48,7 @@ public class FreeBoardListAction implements CommandAction {
 		request.setAttribute("number", new Integer(number));
 		request.setAttribute("articleList", articleList);
 
+		
 		
 		return "freeBoardList.jsp";
 	}
