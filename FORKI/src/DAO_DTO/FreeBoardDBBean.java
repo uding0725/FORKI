@@ -5,7 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
+
+import DAO_DTO.FreeBoardDataBean;
+import jdbc.JdbcUtil;
 
 public class FreeBoardDBBean {
 	
@@ -20,12 +25,53 @@ public class FreeBoardDBBean {
 		return DriverManager.getConnection(jdbcDriver);
 	}
 	
-	//°Ô½Ã±Û µî·Ï
+	//ê¸€ì“°ê¸°
 	public void insertArticle(FreeBoardDataBean article) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
+		int num = article.getNum();
+		System.out.println(num);
+		
+		int number = 0;
+		String sql = "";
+
+		try {
+			conn = getConnection();
+
+			pstmt = conn.prepareStatement("select max(num) from board");
+			rs = pstmt.executeQuery();
+
+			if (rs.next())
+				number = rs.getInt(1) + 1;
+			else
+				number = 1;
+
+			// ì¿¼ë¦¬ë¥¼ ì‘ì„±
+			sql = "insert into board(num,id,writer,subject,content,reg_date,title,readcount) values(board_num.NEXTVAL,?,?,?,?,?,?,?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, article.getId());
+			pstmt.setString(2, article.getWriter());
+			pstmt.setString(3, article.getSubject());
+			pstmt.setString(4, article.getContent());
+			pstmt.setTimestamp(5, article.getReg_date());
+			pstmt.setString(6, article.getTitle());
+			pstmt.setInt(7,article.getReadcount());
+			
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(conn);
+			JdbcUtil.close(pstmt);
+		}	
 	}
 	
-	//±ÛÀÇ °¹¼öÁ¶È¸
+	
+	//ì „ì²´ ê¸€ ìˆ˜ êµ¬í•˜ê¸°
 	public int getArticleCount() throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -45,18 +91,15 @@ public class FreeBoardDBBean {
 		} catch(Exception ex){
 			ex.printStackTrace();
 		} finally {
-			if (rs != null)
-				try {	rs.close();} catch (SQLException ex) {	}
-			if (pstmt != null)
-				try {	pstmt.close();} catch (SQLException ex) { }
-			if (conn != null)
-				try {	conn.close();} catch (SQLException ex) { }
+			JdbcUtil.close(rs);
+			JdbcUtil.close(conn);
+			JdbcUtil.close(pstmt);
 		}
 		return x;
 	}
 	
-	
-	public int getArticleCount(int searchn, String search) throws Exception{
+	//ê²€ìƒ‰ìˆ˜ì— ë§ì¶˜ ê¸€ìˆ˜ êµ¬í•˜ê¸°
+	/*public int getArticleCount(int searchn, String search) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -72,31 +115,160 @@ public class FreeBoardDBBean {
 			//"select count (*) from board where "+column_name[n]+" like '%"+searchKeyword+"%'"
 			pstmt = conn.prepareStatement("select count(*) from board where "
 		}
-	}
-	//±Û ÆäÀÌÁö
-	public int getArticles(int start, int end) throws Exception{
-		return;
-	}
+	}*/
 	
-	//±Û ¸ñ·Ï
-	public Vector getArticle(int num) throws Exception{
-		return;
-	}
+	//í˜ì´ì§€ë‹¹ ê°¯ìˆ˜ì— ë§ì¶°ì„œ ë‚˜ì˜¤ê¸°
+	public List getArticles(int start, int end) throws Exception{
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List articleList = null;
+		
+		try{
+			
+		conn=getConnection();
+		
+		pstmt = conn.prepareStatement("select num, id, writer, title, subject, content, readcount, reg_date, r " +
+				"from (select num, id, writer, title, subject, content, readcount, reg_date, rownum r from board order by num desc)"+
+				" where r >= ? and r <= ?");
+		
+		pstmt.setInt(1, start);
+		pstmt.setInt(2, end);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()){
+			articleList = new ArrayList(end);
+			do {
+				FreeBoardDataBean article = new FreeBoardDataBean();
+				article.setNum(rs.getInt("num"));
+				article.setId(rs.getString("id"));
+				article.setWriter(rs.getString("writer"));
+				article.setTitle(rs.getString("title"));
+				article.setSubject(rs.getString("subject"));
+				article.setContent(rs.getString("content"));
+				article.setReadcount(rs.getInt("readcount"));
+				article.setReg_date(rs.getTimestamp("reg_date"));
+			
+
+				articleList.add(article);
+				//ë ˆì½”ë“œë¥¼ board.dataBeanì— ì €ì¥í›„ listì— ì €ì¥
+				} while (rs.next());
+					}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				JdbcUtil.close(rs);
+				JdbcUtil.close(conn);
+				JdbcUtil.close(pstmt);
+			}
+		System.out.println(articleList.size());
+	return articleList;
+		}
+				
 	
-	//º¯°æÇÒ ±Û ³»¿ë°¡Á®¿À±â
+	//ìƒì„¸ë³´ê¸° , ìˆ˜ì •í• ë•Œ í¼ê°€ì ¸ì˜¤ê¸° update
 	public FreeBoardDataBean updateGetArticle(int num) throws Exception{
-		return;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		FreeBoardDataBean article = null;
+		try{
+		conn = getConnection();
+		pstmt = conn.prepareStatement("select * from board where num=?");
+		pstmt.setInt(1, num);
+		
+		rs = pstmt.executeQuery();
+		if(rs.next()){
+			article = new FreeBoardDataBean();
+			article.setNum(rs.getInt("num"));
+			article.setId(rs.getString("id"));
+			article.setWriter(rs.getString("writer"));
+			article.setTitle(rs.getString("title"));
+			article.setSubject(rs.getString("subject"));
+			article.setReg_date(rs.getTimestamp("reg_date"));
+			article.setReadcount(rs.getInt("readcount"));
+			article.setContent(rs.getString("content"));
+
+		}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		} finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return article;
 	}
 	
-	//°Ô½Ã±Û ¼öÁ¤
+	//ìˆ˜ì •ë²„íŠ¼ updatePro
 	public int updateArticle(FreeBoardDataBean article){
-		return;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int x = -1;
+		
+		
+		try{
+			conn = getConnection();
+			if(article.getId() != null){
+			pstmt = conn.prepareStatement("update board set title=?, subject=?, content=? where num =?");
+			pstmt.setString(1,article.getTitle());
+			pstmt.setString(2, article.getSubject());
+			pstmt.setString(3, article.getContent());
+			pstmt.setInt(4, article.getNum());
+			
+			pstmt.executeUpdate();
+			x = 1;
+			}
+			
+			else{
+				x = 0;
+			}
+					
+		} catch(Exception ex){
+			ex.printStackTrace();
+		} finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return x;
 	}   
 	
-	//°Ô½Ã±Û »èÁ¦
+	//ì‹¤ì œ ë°ì´í„° ì‚­ì œ
 	public int deleteArticle(int num){
-		return;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		FreeBoardDataBean fbdb = new FreeBoardDataBean();
+		
+		int x = -1;
+		
+		try{
+			if(fbdb.getId() != null){
+			conn = getConnection();
+			pstmt = conn.prepareStatement("delete from board where num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			x = 1;
+			}
+			else{
+				x = 0;
+			}
+		} catch(Exception ex){
+			ex.printStackTrace();
+		} finally{
+			JdbcUtil.close(conn);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return x;
 	}
-	
+
+
 	
 }

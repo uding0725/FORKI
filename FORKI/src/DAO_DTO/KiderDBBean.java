@@ -74,7 +74,7 @@ public class KiderDBBean {
 			JdbcUtil.close(con);
 		}
 	}
-	//유치원 등록(추가-수정)
+	//관리자 페이지- 유치원 승인(추가-수정)
 	public Vector signKinder()throws Exception{
 		Connection conn=null;
 		Statement stmt=null;
