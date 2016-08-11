@@ -7,16 +7,38 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO_DTO.KiderDBBean;
 
+
+
 public class SignUpKinderAction implements CommandAction{
 
-	public String requsetPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
+	public String requestPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
 		
+		int pageSize=10;
+		String pageNum= request.getParameter("pageNum");
+		String search=request.getParameter("search");
+		int searchn=0;
+		if(pageNum==null){
+			pageNum="1";
+		}
+		if(search==null){
+			search="";
+		}else{
+			searchn=Integer.parseInt(request.getParameter("searchn"));
+		}
+		int currentPage =Integer.parseInt(pageNum);
+		int startRow=(currentPage*pageSize)-(pageSize-1);
+		int endRow= currentPage*pageSize;
+		int count=0;
+		int number=0;
+		Vector vecList=null;
 		KiderDBBean kdb=KiderDBBean.getInstance();
-		Vector vecList = kdb.signKinder();
-		String schul_nm=(String)vecList.get(0);
-		int schul_num=(int)vecList.get(1);
+		if(search.equals("")||search==null)
+			count= 
 		
+			vecList = kdb.signKinder();
 		
-		return "signUpKinder.jsp";
+		request.setAttribute("vecList", vecList);
+		
+		return "signUpLayout.jsp";
 	}
 }
