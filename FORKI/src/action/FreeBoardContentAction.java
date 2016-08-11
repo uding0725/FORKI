@@ -11,11 +11,11 @@ public class FreeBoardContentAction implements CommandAction {
 	public String requestPro (HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		
 		String pageNum = request.getParameter("pageNum");
-		int num = Integer.parseInt(request.getParameter("num"));
-		System.out.println(num);
+		int number = Integer.parseInt(request.getParameter("number"));
+		System.out.println(number);
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();
 		FreeBoardDataBean article = new FreeBoardDataBean();
-		article = fbdbb.updateGetArticle(num);
+		article = fbdbb.updateGetArticle(number);
 		request.setAttribute("article", article);
 		System.out.println(article.getId());
 		
