@@ -33,7 +33,7 @@
 		</div>
 		<p>총 검색 건수 : ? 건 </p>
 		<div id="mdK-content">검색결과 나올창<br>
-		<a target="_blank" href="/FORKI/content/findKinder/factor/kinder_DetailPage.jsp" onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;">용산구 이태원동 이태원어린이집</a> 
+		<a target="_blank" href="/FORKI/content/findKinder/factor/kinder_DetailPage.jsp" onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;">성심유치원</a> 
 		</div>
 			
 		<div id="mdK-map">지도 띄울 창</div>
