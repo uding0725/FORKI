@@ -86,28 +86,4 @@ public class LogonDBBean {
 		return;
 	}*/
 
-	//유치원등록신청 화면 - ID를 가지고 오는 부분(추가)
-		public String findId(int schul_num)throws Exception{
-			Connection conn=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			String memId="";
-			try{
-				conn=getConnection();
-				pstmt=conn.prepareStatement("select id from k_etc where schul_num=?");
-				pstmt.setInt(1,schul_num);
-				
-				rs=pstmt.executeQuery();
-				if(rs.next()){
-					memId=rs.getString("id");
-				}
-			}catch(SQLException e){
-				e.printStackTrace();
-			}finally{
-				JdbcUtil.close(rs);
-				JdbcUtil.close(pstmt);
-				JdbcUtil.close(conn);
-			}
-			return memId;
-		}
 }

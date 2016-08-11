@@ -2,10 +2,12 @@
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page import="DAO_DTO.LogonDBBean" %>
+
 <!DOCTYPE html>
 <html>
-<head><title>dd</title></head>
+<head><title>dd</title>
+
+</head>
 <body>
 
 <b>유치원 등록신청</b>
@@ -18,10 +20,10 @@
 <td align="center"  width="150">신청일</td>
 <td align="center"  width="150">승인란</td>
 </tr>
-<%-- <c:if test="true"> 
+<c:if test="${count==0 }"> 
 <td colspan="6" align="center">등록 신청한 유치원이 없습니다.</td>
-</c:if> --%>
-<c:if test="true">
+</c:if>
+<c:if test="${count!=0}">
 
 <c:forEach var="i" items="${vecList}" varStatus="status">
 <tr>
@@ -30,9 +32,10 @@
 <td align="center"  width="150">${i.schul_nm}</td>
 <td align="center"  width="150">${i.schul_num}</td>
 <td align="center"  width="100">${i.reg_date}</td>
-<td align="center"  width="150">
-<input type="button" name="btnacc" value="승인">
-<input type="button" name="btncan" value="거절">
+
+<td align="center"  width="150">   
+<input type="button" name="btnacc" value="승인" onclick="document.location.href='/FORKI/content/adminPage/updateState.do?schul_num=${i.schul_num}'">
+<input type="button" name="btncan" value="거절" onclick="document.location.href='/FORKI/content/adminPage/deleteKinder.do?schul_num=${i.schul_num}'">
 </td>
 </tr>
 </c:forEach>
