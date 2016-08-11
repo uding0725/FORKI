@@ -74,16 +74,68 @@ public class KiderDBBean {
 			JdbcUtil.close(con);
 		}
 	}
-	//관리자 페이지- 유치원 승인(추가-수정)
-	public Vector signKinder()throws Exception{
+	//관리자 페이지- 유치원 승인-페이징을위해 개수를 가지고옴
+	public int getCountKider()throws Exception{
 		Connection conn=null;
-		Statement stmt=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int x=0;
+		try{
+			conn=getConnection();
+			pstmt =conn.prepareStatement("select count(*) from kindergarten where state='n'");
+			rs= pstmt.executeQuery();
+			
+			if(rs.next())
+				x=rs.getInt(1);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return x;
+	}
+	//관리자 페이지- 유치원 승인-페이징을위해 개수를 가지고옴
+	public int getCountKider(int sn,String search)throws Exception{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int x=0;
+		String[] col_name={"id","schul_nm"};
+		try{
+			conn=getConnection();
+			pstmt =conn.prepareStatement("select count(*) from kindergarten where "+col_name[sn]+"like '%"+search+"%'"+ " state='n'");
+			rs= pstmt.executeQuery();
+			
+			if(rs.next())
+				x=rs.getInt(1);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return x;
+	}
+	
+	//관리자 페이지- 유치원 승인(추가-수정) 그냥 검색시
+	public Vector signKinder(int start,int end)throws Exception{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Vector vecList=new Vector();
 		try{
 			conn=getConnection();
-			stmt=conn.createStatement();
-			rs=stmt.executeQuery("select schul_nm,schul_num,reg_date,state,id from kindergarten natural join k_etc where state='n'");
+			
+			pstmt=conn.prepareStatement("select schul_nm,schul_num,reg_date,state,id,r"+ 
+					" from (select schul_nm,schul_num,reg_date,state,id, rownum r from" +
+					" kindergarten natural join k_etc where state='n' order by reg_date )"+
+						" where r>=? and r<=?");
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rs=pstmt.executeQuery();
 			if(rs.next()){
 				do{
 					KiderDataBean tempkdb=new KiderDataBean();
@@ -102,12 +154,54 @@ public class KiderDBBean {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
-			JdbcUtil.close(stmt);
+			JdbcUtil.close(pstmt);
 			JdbcUtil.close(rs);
 			JdbcUtil.close(conn);
 		}
 		return vecList;
 	}
+	//관리자 페이지- 유치원 승인(추가-수정) 그냥 검색시
+		public Vector signKinder(int start,int end,int n,String search)throws Exception{
+			Connection conn=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			String[] col_nm={"id","schul_nm"};
+			Vector vecList=new Vector();
+			try{
+				conn=getConnection();
+				
+				pstmt=conn.prepareStatement("select schul_nm,schul_num,reg_date,state,id,r"+ 
+						" from (select schul_nm,schul_num,reg_date,state,id, rownum r from" +
+						" kindergarten natural join k_etc where state='n' and"+col_nm[n]+"like '%"+search+"%' order by reg_date )"+
+							" where r>=? and r<=?");
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+					do{
+						KiderDataBean tempkdb=new KiderDataBean();
+						KetcDataBean ketcdb=new KetcDataBean();
+						ketcdb.setId(rs.getString("id"));
+						tempkdb.setKdb(ketcdb);
+						tempkdb.setSchul_num(rs.getInt("schul_num"));
+						tempkdb.setSchul_nm(rs.getString("schul_nm"));
+						tempkdb.setState(rs.getString("state"));
+						tempkdb.setReg_date(rs.getTimestamp("reg_date"));
+						vecList.addElement(tempkdb);
+					}while(rs.next());
+				}
+				
+
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				JdbcUtil.close(pstmt);
+				JdbcUtil.close(rs);
+				JdbcUtil.close(conn);
+			}
+			return vecList;
+		}
+	
 	//관리자 페이지- 유치원등록 승인시(추가)
 	public void updateState(int schul_num)throws Throwable{
 		

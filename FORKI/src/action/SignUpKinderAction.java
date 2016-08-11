@@ -32,13 +32,23 @@ public class SignUpKinderAction implements CommandAction{
 		int number=0;
 		Vector vecList=null;
 		KiderDBBean kdb=KiderDBBean.getInstance();
-		if(search.equals("")||search==null)
-			count= 
 		
-			vecList = kdb.signKinder();
+		
+		
+		if(search.equals("")||search==null)
+			count= kdb.getCountKider();
+		else
+			count= kdb.getCountKider(searchn,search);
+		if(count>0){
+			if(search.equals("")||search==null) 
+				vecList = kdb.signKinder(startRow,endRow);	
+			else
+				vecList=kdb.signKinder(startRow, endRow, searchn, search);
+		}
+
 		
 		request.setAttribute("vecList", vecList);
-		
+		request.setAttribute("count", count);
 		return "signUpLayout.jsp";
 	}
 }

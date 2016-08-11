@@ -20,10 +20,10 @@
 <td align="center"  width="150">신청일</td>
 <td align="center"  width="150">승인란</td>
 </tr>
-<%-- <c:if test="true"> 
+<c:if test="${count==0 }"> 
 <td colspan="6" align="center">등록 신청한 유치원이 없습니다.</td>
-</c:if> --%>
-<c:if test="true">
+</c:if>
+<c:if test="${count!=0}">
 
 <c:forEach var="i" items="${vecList}" varStatus="status">
 <tr>
