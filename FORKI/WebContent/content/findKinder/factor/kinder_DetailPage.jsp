@@ -24,7 +24,7 @@
 <body>
 	<div id="mdK-container">
 		<p style="text-align: left;" />
-		<font size="+1"><b>이태원 어린이집</b></font>
+		<font size="+1"><b>"${param.name}"</b></font>
 		<div id="mdK-detailview">
 			<font size="+1"><b>세부정보</b></font>
 			<p>주소 : 서울시 용산구 대사관로 36길 34</p>
