@@ -130,9 +130,9 @@ public class KiderDBBean {
 			conn=getConnection();
 			
 			pstmt=conn.prepareStatement("select schul_nm,schul_num,reg_date,state,id,r"+ 
-					" from (select schul_nm,schul_num,reg_date,state,id, rownum r from" +
-					" kindergarten natural join k_etc where state='n' order by reg_date )"+
-						" where r>=? and r<=?");
+					" from (select schul_nm,schul_num,reg_date,state,id, rownum r from "
+					+"(select schul_nm,schul_num,reg_date,state,id from kindergarten natural join k_etc order by reg_date )"+
+						" where state='n' order by reg_date) where r>=? and r<=?");
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 			rs=pstmt.executeQuery();
@@ -169,11 +169,10 @@ public class KiderDBBean {
 			Vector vecList=new Vector();
 			try{
 				conn=getConnection();
-				
 				pstmt=conn.prepareStatement("select schul_nm,schul_num,reg_date,state,id,r"+ 
-						" from (select schul_nm,schul_num,reg_date,state,id, rownum r from" +
-						" kindergarten natural join k_etc where state='n' and"+col_nm[n]+"like '%"+search+"%' order by reg_date )"+
-							" where r>=? and r<=?");
+						" from (select schul_nm,schul_num,reg_date,state,id, rownum r from "
+						+"(select schul_nm,schul_num,reg_date,state,id from kindergarten natural join k_etc order by reg_date )"+
+							" where state='n' and "+col_nm[n]+" like '%"+search+"%' order by reg_date) where r>=? and r<=?");
 				pstmt.setInt(1, start);
 				pstmt.setInt(2, end);
 				rs=pstmt.executeQuery();
