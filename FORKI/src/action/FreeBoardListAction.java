@@ -15,11 +15,10 @@ public class FreeBoardListAction implements CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		String pageNum = request.getParameter("pageNum"); // 페이지 번호
-
 		if (pageNum == null) {
 			pageNum = "1";
 		}
-		int pageSize = 10;// 한 페이지의 글의 개수
+		int pageSize = 10;// 한 페이지의 글의 개수 한글
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;// 한 페이지의 시작글 번호
 		int endRow = currentPage * pageSize;// 한 페이지의 마지막 글번호
