@@ -129,8 +129,9 @@ public class FreeBoardDBBean {
 		conn=getConnection();
 		
 		pstmt = conn.prepareStatement("select num, id, writer, title, subject, content, readcount, reg_date, r " +
-				"from (select num, id, writer, title, subject, content, readcount, reg_date, rownum r from board order by reg_date desc)"+
-				" where r >= ? and r <= ?");
+				"from (select num, id, writer, title, subject, content, readcount, reg_date, rownum r from"+
+				" (select num, id, writer, title, subject, content, readcount, reg_date from board order by reg_date desc)"+
+				" order by reg_date desc) where r >= ? and r <= ? ");
 		
 		pstmt.setInt(1, start);
 		pstmt.setInt(2, end);
@@ -242,7 +243,6 @@ public class FreeBoardDBBean {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		FreeBoardDataBean fbdb = new FreeBoardDataBean();
 		
 		int x = -1;

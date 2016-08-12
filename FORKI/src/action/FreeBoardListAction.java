@@ -33,7 +33,7 @@ public class FreeBoardListAction implements CommandAction {
 		if (count > 0) {
 			articleList = fbdbb.getArticles(startRow, endRow);// 현재 페이지에 해당하는 글의 갯수
 			FreeBoardDataBean fbdb = new FreeBoardDataBean();
-			System.out.println("1"+fbdb.getNum());												// 목록
+														// 목록
 		} else {
 			articleList = Collections.EMPTY_LIST;
 		}

@@ -2,7 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script>
+function deleteConfirm(){
+	var selectDel = confirm("정말로 삭제하시겠습니까?")
+	if (selectDel) {
+		document.location.href="/FORKI/content/board/freeBoardDelete.do?num=${param.num}&pageNum=${param.pageNum}"
+	} 
+}
+</script>
 
 </head>
 <body>
@@ -23,7 +30,7 @@
  <tr>
  <td colspan="2" align="right">
  <input type="button" value="수정하기" onclick="document.location.href='/FORKI/content/board/freeBoardUpdate.do?num=${num}&pageNum=${pageNum}'">
- <input type="button" value="삭제하기">
+ <input type="button" value="삭제하기" onclick="deleteConfirm();">
  <input type="button" value="목록으로" onclick="document.location.href='/FORKI/content/board/freeBoardList.do?pageNum=${pageNum}'">
  </td>
  </tr>
