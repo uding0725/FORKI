@@ -7,6 +7,28 @@
 <title>게시판</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="script.js"></script>
+<script>
+function writeSave(){
+
+	if(document.writeform.title.value==""){
+		 alert("말머리를 체크해주세요.");
+		 document.writeform.writer.focus();
+		 return false;
+			}	
+
+	if(document.writeform.subject.value==""){
+	  alert("제목을 입력해주세요.");
+	  document.writeform.subject.focus();
+	  return false;
+	}
+
+	if(document.writeform.content.value==""){
+	  alert("내용을 입력해주세요.");
+	  document.writeform.content.focus();
+	  return false;
+	}
+	}
+</script>
 </head>
 
   

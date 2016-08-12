@@ -24,17 +24,15 @@
 <body>
 	<div id="mdK-container">
 		<p style="text-align: left;" />
-		<font size="+1"><b>이태원 어린이집</b></font>
+		<font size="+1"><b>${param.name}</b></font>
 		<div id="mdK-detailview">
 			<font size="+1"><b>세부정보</b></font>
-			<p>주소 : 서울시 용산구 대사관로 36길 34</p>
-			<p>전화번호 : 02-353-4264</p>
-			<p>사이트 : 미등록</p>
-			<p>정원: 60명</p>
-			<p>학급수: 3</p>
-			<p>학생수(남/여) : 총 56(30/26)</p>
-			<p>전체선생님/여선생님 : 5/5</p>
-			<p>비교 : 신설</p>
+			<p>주소 : ${param.adres}</p>
+			<p>전화번호 : ${param.tel}</p>
+			<p>학급수: ${param.classNo}</p>
+			<p>학생수(남/여) : 총 ${param.studentNo}(${param.studentNo - param.girlNo}/${param.girlNo})</p>
+			<p>전체선생님/여선생님 : ${param.tcherNo}/${param.famTcherNo}</p>
+			<p>비교 : ${param.rm}</p>
 			<div style="width:30;height:30;border:1px solid black;padding:7px;background-color:red;position:absolute;top:310px;left:250px;">도표</div> 
 			<div class="wrapper2">
 				<!-- 별점  -->

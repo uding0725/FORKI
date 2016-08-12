@@ -1,5 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<script>
+	function viewDetail(num) {
+		url = "/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=" + num;
+		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
+	}
+</script>
 <div id="mdK-wrap">
 <font size="+2">어린이집/유치원찾기</font>
 		<span style='position:absolute; right:0px'>
@@ -32,8 +39,12 @@
 			</table>
 		</div>
 		<p>총 검색 건수 : ? 건 </p>
-		<div id="mdK-content">검색결과 나올창<br>
-		<a target="_blank" href="/FORKI/content/findKinder/factor/kinder_DetailPage.jsp" onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;">성심유치원</a> 
+		<div id="mdK-content">검색결과 나올창<br> 
+        	<a href="javascript:viewDetail('13800297')">성심유치원</a>
+        	<!-- 추후 검색된 리스트를 링크로 나열하기 위한 코드 -->
+			<%-- <c:forEach var="kinderGarten" items="${searchList}">
+			<a href="javascript:sendAddress('${number}')">${name}</a>
+         	</c:forEach> --%>
 		</div>
 			
 		<div id="mdK-map">지도 띄울 창</div>
