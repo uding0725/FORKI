@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
-	function viewDetail(name) {
-		url = "/FORKI/content/findKinder/factor/kinder_DetailPage.do?name=" + name;
+	function viewDetail(num) {
+		url = "/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=" + num;
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 </script>
@@ -40,10 +40,10 @@
 		</div>
 		<p>총 검색 건수 : ? 건 </p>
 		<div id="mdK-content">검색결과 나올창<br> 
-        	<a href="javascript:viewDetail('성심유치원')">성심유치원</a>
+        	<a href="javascript:viewDetail('13800297')">성심유치원</a>
         	<!-- 추후 검색된 리스트를 링크로 나열하기 위한 코드 -->
 			<%-- <c:forEach var="kinderGarten" items="${searchList}">
-			<a href="javascript:sendAddress('${name}')">${name}</a>
+			<a href="javascript:sendAddress('${number}')">${name}</a>
          	</c:forEach> --%>
 		</div>
 			
