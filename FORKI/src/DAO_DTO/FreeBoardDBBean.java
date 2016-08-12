@@ -97,25 +97,40 @@ public class FreeBoardDBBean {
 		return x;
 	}
 	
-	//검색수에 맞춘 글수 구하기
-	/*public int getArticleCount(int searchn, String search) throws Exception{
+	
+	public int selectArticle(String writer, String subject, String content) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		int x = 0;
-		String[] column_name = {"subject","content"};
-		String[] mal_head = {"free","info","etc"};
-		
-		
-		
-		try{
+
+		String dbwriter = "";
+		String dbsubject = "";
+		String dbcontent = "";
+		int x = -1;
+		try {
 			conn = getConnection();
-			//"select count (*) from board where "+column_name[n]+" like '%"+searchKeyword+"%'"
-			pstmt = conn.prepareStatement("select count(*) from board where "
+
+			pstmt = conn.prepareStatement("select * from board where writer=like '%?%' or subject=like '%?%' or content=like '%?%'");
+			pstmt.setString(1, writer);
+			pstmt.setString(2, subject);
+			pstmt.setString(3, content);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				dbwriter = rs.getString("writer");
+				dbsubject = rs.getString("subject");
+				dbcontent = rs.getString("content");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(conn);
+			JdbcUtil.close(pstmt);
 		}
-	}*/
-	
+		return x;
+	}
+
 	//페이지당 갯수에 맞춰서 나오기
 	public List getArticles(int start, int end) throws Exception{
 		
@@ -162,7 +177,7 @@ public class FreeBoardDBBean {
 				JdbcUtil.close(conn);
 				JdbcUtil.close(pstmt);
 			}
-		System.out.println(articleList.size());
+
 	return articleList;
 		}
 				
@@ -239,7 +254,7 @@ public class FreeBoardDBBean {
 	}   
 	
 	//실제 데이터 삭제
-	public int deleteArticle(int num){
+	public int deleteArticle(int num,String id){
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -248,7 +263,7 @@ public class FreeBoardDBBean {
 		int x = -1;
 		
 		try{
-			if(fbdb.getId() != null){
+			if(id != null){
 			conn = getConnection();
 			pstmt = conn.prepareStatement("delete from board where num=?");
 			pstmt.setInt(1, num);

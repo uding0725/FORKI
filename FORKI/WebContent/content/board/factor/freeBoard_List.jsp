@@ -6,18 +6,54 @@
  
  <html>
 <head>
+<style>
+#free-wrap{
+ width: 700px;
+ height:790px;
+ margin:0px auto;
+ padding : 0px;
+ border :0px solid;
+ padding :0px;
+ position : relative;
+}
+</style>
 <title>게시판</title>
 
 </head>
 
 <body>
 <center><b>글목록(전체 글:${count})</b>
+<div id="free-wrap">
+<font size="+2">문화시설</font>
+		<span style='position:absolute; right:-20px'>
+		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
+		<a href="#">>게시판</a>
+		<a href="#">>맘을 전해요</a>		
+		</span>
 <table width="700">
-  <tr>
-    <td align="right" >
+  <tr align="right">
+  	<form name="search" action="/FORKI/content/board/freeBoardList.do">
+  	<td>
+  	<select name="type">
+			<option value="0">전체</option>
+			<option value="1">제목</option>
+			<option value="2">내용</option>
+		</select>
+	<select name="title">
+			<option value="0">소곤소곤</option>
+			<option value="1">유익한 경로</option>
+			<option value="2">기타</option>
+		</select>	
+  	</td>
+  	<td> 
+  	<input type="text" name=searchn size="30">
+  	<input type="submit" value="검색">
+  	</form> 
+    <td>
        <a href="/FORKI/content/board/freeBoardWrite.do">글쓰기</a>
     </td>
   </tr>
+  
 </table>
 
 <c:if test="${count == 0}">

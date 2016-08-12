@@ -59,7 +59,7 @@ function writeSave(){
   		<select name="title">
 			<option value="0">소곤소곤</option>
 			<option value="1">유익한 경로</option>
-			<option value="2">기타</option>
+			<option value="2" selected>기타</option>
 		</select>
     <td colspan="2">제 목
     <input type="text" size="70" name="subject" placeholder="지역구를 지정해주시면 검색이 용이합니다."></td>
