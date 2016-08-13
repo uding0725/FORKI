@@ -43,7 +43,6 @@ public class KiderDBBean {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		KiderDataBean DBdata = null;
-		System.out.println("디비빈까지 왔는지 확인,   넘어온 값 : " + SCHUL_NUM);
 		try {
 			conn=getConnection();
 			pstmt = conn.prepareStatement("select * From KINDERGARTEN where SCHUL_NUM = ?");

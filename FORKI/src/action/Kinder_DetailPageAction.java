@@ -14,9 +14,7 @@ public class Kinder_DetailPageAction implements CommandAction {
 		KiderDBBean DBpro = KiderDBBean.getInstance();
 		//KiderDataBean DBdata = new KiderDataBean();
 		String kinderNum = request.getParameter("num");
-		System.out.println("메서드 실행 전");
 		KiderDataBean  DBData= DBpro.selectDetKid(kinderNum);
-		System.out.println("메서드 실행 후");
 		request.setAttribute("name", DBData.getSchul_nm());
 		request.setAttribute("addres", DBData.getAdres());
 		request.setAttribute("tel", DBData.getTelno());
