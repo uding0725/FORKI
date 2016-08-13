@@ -6,7 +6,7 @@
 function deleteConfirm(){
 	var selectDel = confirm("정말로 삭제하시겠습니까?")
 	if (selectDel) {
-		document.location.href="/FORKI/content/board/freeBoardDelete.do?num=${param.num}&pageNum=${param.pageNum}"
+		document.location.href="/FORKI/content/board/freeBoardDelete.do?num=${num}&pageNum=${pageNum}&id=${id}"
 	} 
 }
 </script>

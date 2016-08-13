@@ -12,15 +12,17 @@ public class FreeBoardDeleteAction implements CommandAction {
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
+		String id = request.getParameter("id");
+		
 		
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();
-		int check = fbdbb.deleteArticle(num);
+		int check = fbdbb.deleteArticle(num,id);
 		
 		//해당 뷰에서 사용할 속성
 		request.setAttribute("pageNum", new Integer(pageNum));
 		request.setAttribute("check", new Integer(check));
 		
-		System.out.println(check);
+	
 		
 		return "freeBoardDelete.jsp";
 	}

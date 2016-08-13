@@ -36,6 +36,7 @@ if(document.updateform.content.value==""){
 			<option value="0">소곤소곤</option>
 			<option value="1">유익한 경로</option>
 			<option value="2">기타</option>
+			<option value="3" selected> ${article.title}</option>
 		</select>
 		</td>
  <td> <input type="text" name="subject" size="70" value="${article.subject}"></td>
@@ -51,7 +52,7 @@ if(document.updateform.content.value==""){
  <tr>
  <td colspan="3" align="center">
  <input type="submit" value="저장하기" >
- <input type="button" value="글 삭제하기" onclick="document.location.href='/FORKI/content/board/freeBoardDelete.do?num=${article.num}&pageNum=${pageNum}'">
+ <input type="button" value="글 삭제하기" onclick="document.location.href='/FORKI/content/board/freeBoardDelete.do?num=${article.num}&pageNum=${pageNum}&id=${article.id}'">
  <input type="button" value="취소" onclick="document.location.href='/FORKI/content/board/freeBoardList.do?pageNum=${pageNum}'">
  </td>
  </tr>

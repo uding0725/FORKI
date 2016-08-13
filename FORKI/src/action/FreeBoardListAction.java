@@ -15,11 +15,13 @@ public class FreeBoardListAction implements CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		String pageNum = request.getParameter("pageNum"); // 페이지 번호
-
 		if (pageNum == null) {
 			pageNum = "1";
 		}
-		int pageSize = 10;// 한 페이지의 글의 개수
+		int type=Integer.parseInt(request.getParameter("type"));
+		int title = Integer.parseInt(request.getParameter("title"));
+		String searchn = request.getParameter("searchn");
+		int pageSize = 10;// 한 페이지의 글의 개수 한글
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;// 한 페이지의 시작글 번호
 		int endRow = currentPage * pageSize;// 한 페이지의 마지막 글번호
@@ -28,6 +30,8 @@ public class FreeBoardListAction implements CommandAction {
 
 		List articleList = null;
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();// DB연동
+		
+		if(searchn == null && title >= 0){
 		count = fbdbb.getArticleCount();// 전체 글의 수
 
 		if (count > 0) {
