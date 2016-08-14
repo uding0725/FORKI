@@ -14,36 +14,36 @@ public class FreeBoardListAction implements CommandAction {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		
-		String pageNum = request.getParameter("pageNum"); // 페이지 번호
+		String pageNum = request.getParameter("pageNum"); // �럹�씠吏� 踰덊샇
 		if (pageNum == null) {
 			pageNum = "1";
 		}
 		int type=Integer.parseInt(request.getParameter("type"));
 		int title = Integer.parseInt(request.getParameter("title"));
 		String searchn = request.getParameter("searchn");
-		int pageSize = 10;// 한 페이지의 글의 개수 한글
+		int pageSize = 10;// �븳 �럹�씠吏��쓽 湲��쓽 媛쒖닔 �븳湲�
 		int currentPage = Integer.parseInt(pageNum);
-		int startRow = (currentPage - 1) * pageSize + 1;// 한 페이지의 시작글 번호
-		int endRow = currentPage * pageSize;// 한 페이지의 마지막 글번호
+		int startRow = (currentPage - 1) * pageSize + 1;// �븳 �럹�씠吏��쓽 �떆�옉湲� 踰덊샇
+		int endRow = currentPage * pageSize;// �븳 �럹�씠吏��쓽 留덉�留� 湲�踰덊샇
 		int count = 0;
 		int number = 0;
 
 		List articleList = null;
-		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();// DB연동
+		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();// DB�뿰�룞
 		
 		if(searchn == null && title >= 0){
-		count = fbdbb.getArticleCount();// 전체 글의 수
-
+		count = fbdbb.getArticleCount();// �쟾泥� 湲��쓽 �닔
+		}
 		if (count > 0) {
-			articleList = fbdbb.getArticles(startRow, endRow);// 현재 페이지에 해당하는 글의 갯수
+			articleList = fbdbb.getArticles(startRow, endRow);// �쁽�옱 �럹�씠吏��뿉 �빐�떦�븯�뒗 湲��쓽 媛��닔
 			FreeBoardDataBean fbdb = new FreeBoardDataBean();
-														// 목록
+														// 紐⑸줉
 		} else {
 			articleList = Collections.EMPTY_LIST;
 		}
 
-		number = count - (currentPage - 1) * pageSize;// 글목록에 표시할 글번호
-		// 해당 뷰에서 사용할 속성
+		number = count - (currentPage - 1) * pageSize;// 湲�紐⑸줉�뿉 �몴�떆�븷 湲�踰덊샇
+		// �빐�떦 酉곗뿉�꽌 �궗�슜�븷 �냽�꽦
 		request.setAttribute("currentPage", new Integer(currentPage));
 		request.setAttribute("startRow", new Integer(startRow));
 		request.setAttribute("endRow", new Integer(endRow));

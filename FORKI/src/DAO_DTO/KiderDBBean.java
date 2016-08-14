@@ -43,13 +43,14 @@ public class KiderDBBean {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		KiderDataBean DBdata = null;
-		System.out.println("디비빈까지 왔는지 확인,   넘어온 값 : " + SCHUL_NUM);
 		try {
-			pstmt = conn.prepareStatement("select * From E_TEST where SCHUL_NUM = ?");
+			conn=getConnection();
+			pstmt = conn.prepareStatement("select * From KINDERGARTEN where SCHUL_NUM = ?");
 			pstmt.setString(1, SCHUL_NUM);
 			rs = pstmt.executeQuery();
-
+		
 			if (rs.next()) {
+			
 				DBdata = new KiderDataBean();
 				DBdata.setSchul_nm(rs.getString("schul_nm"));
 				DBdata.setAdres(rs.getString("adres"));
@@ -58,7 +59,7 @@ public class KiderDBBean {
 				DBdata.setStdnt_co_sm(rs.getInt("stdnt_co_sm"));
 				DBdata.setGrlstdn_co(rs.getInt("grlstdn_co"));
 				DBdata.setFrl_tcher_co_sm(rs.getInt("frl_tcher_co_sm"));
-				DBdata.setFrl_female_tcher_c(rs.getInt("frl_female_tcher_c"));
+				DBdata.setFrl_female_tcher_c(rs.getInt("frl_female_tcher_co"));
 				DBdata.setRm(rs.getString("rm"));
 			}
 		} catch (Exception e) {

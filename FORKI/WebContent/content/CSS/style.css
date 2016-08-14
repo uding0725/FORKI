@@ -397,7 +397,7 @@
 /* 상세화면 설정 */
 #mdK-container {
 	width: 950px;
-	height: 700px;
+	height: 800px;
 	margin: 0px auto;
 	padding: 20px;
 	border: 0px solid;
@@ -407,7 +407,7 @@
 
 #mdK-detailview {
 	width: 440px;
-	height: 550px;
+	height: 650px;
 	margin: 5px;
 	padding: 10px;
 	border: 1px solid;
@@ -432,7 +432,7 @@
 
 #mdK-inmap {
 	width: 440px;
-	height: 550px;
+	height: 650px;
 	margin: 5px;
 	padding: 10px;
 	border: 1px solid;
