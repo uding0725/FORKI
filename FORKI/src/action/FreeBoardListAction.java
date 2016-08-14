@@ -12,7 +12,7 @@ import DAO_DTO.FreeBoardDataBean;
 public class FreeBoardListAction implements CommandAction {
 
 	@Override
-	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		
 		String pageNum = request.getParameter("pageNum"); // 페이지 번호
 		if (pageNum == null) {
@@ -56,5 +56,5 @@ public class FreeBoardListAction implements CommandAction {
 		
 		return "freeBoardList.jsp";
 	}
-
+}
 }
