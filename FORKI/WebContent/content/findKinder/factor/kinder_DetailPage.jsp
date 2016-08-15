@@ -114,13 +114,6 @@ a:hover {
 		    } 
 		});
 	}
-	
-	jQuery(function() {
-
-		jQuery('#camera_wrap').camera({
-			thumbnails : false
-		});
-	});
 </script>
 <title>어린이집 상세 정보</title>
 </head>
