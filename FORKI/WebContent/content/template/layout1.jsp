@@ -13,7 +13,7 @@
 			<tiles:insertAttribute name="header" />
 		</div>
 		<div>
-			<div id="content">
+			<div id="m_content">
 				<div>
 					<tiles:insertAttribute name="left_top" />
 				</div>
@@ -21,7 +21,7 @@
 					<tiles:insertAttribute name="left_bottom" />
 				</div>
 			</div>
-			<div id="content">
+			<div id="m_content">
 				<div>
 					<tiles:insertAttribute name="right_top" />
 				</div>
