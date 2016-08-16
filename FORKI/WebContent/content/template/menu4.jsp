@@ -14,13 +14,13 @@
 				</c:if>
 				<c:if test="${sessionScope.grade == 1}">
 					<li class="topMenuLi-side"><a class="menuLink-side" href="#">개인정보수정</a></li>
-					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerForm.jsp">쪽지함</a></li>
+					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerForm.do">쪽지함</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="#">관심유치원</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="#">예방접종문진표</a></li>
 				</c:if>
 				<c:if test="${sessionScope.grade == 2}">
 					<li class="topMenuLi-side"><a class="menuLink-side" href="#">유치원수정</a></li>
-					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerForm.jsp">쪽지함</a></li>
+					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerForm.do">쪽지함</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="#">유치원등록하기</a></li>
 				</c:if>
 			</ul>
