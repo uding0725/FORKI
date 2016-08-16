@@ -17,7 +17,7 @@
 					<c:if test="${sessionScope.id != null}">
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="../main/main.jsp">HOME</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">로그아웃</a></li>
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">MyPage</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/MyPage/InfoModify.jsp">MyPage</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
 					</c:if>
 				</ul>

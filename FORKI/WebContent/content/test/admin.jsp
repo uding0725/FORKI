@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%
+	session.removeAttribute("compNum");
 	session.setAttribute("id", "admin");
 	session.setAttribute("grade", "0");
 %>
