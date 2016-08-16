@@ -38,8 +38,8 @@ function writeSave(){
 <form method="post" name="writeform" action="/FORKI/content/board/freeBoardWritePro.do" onsubmit="return writeSave()">
 <input type="hidden" name="num" value="${num}">
 <input type="hidden" name="writer" value="${writer}">
-<input type="hidden" name="id" value="${id}">
-<input type="hidden" name="readcount" value=0>
+<input type="hidden" name="id" value="${sessionScope.id}">
+<input type="hidden" name="readcount" value="0">
 
 
 

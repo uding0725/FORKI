@@ -13,16 +13,17 @@ public class FreeBoardUpdateProAction implements CommandAction {
 	       String pageNum = request.getParameter("pageNum");
 
 	       FreeBoardDataBean article = new FreeBoardDataBean();
-	       
-	       System.out.println(request.getParameter("num"));
+	      
 	       article.setNum(Integer.parseInt(request.getParameter("num")));
 	       article.setTitle(request.getParameter("title"));
 	       article.setSubject(request.getParameter("subject"));
 	       article.setContent(request.getParameter("content"));
-	   
-	  
+	       String id = (String)request.getSession().getAttribute("id");
+	       
+	       
+	       
 	       FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();
-	       int check = fbdbb.updateArticle(article);
+	       int check = fbdbb.updateArticle(article, id);
 
 	       request.setAttribute("pageNum", new Integer(pageNum));
 	       request.setAttribute("check", new Integer(check));	
