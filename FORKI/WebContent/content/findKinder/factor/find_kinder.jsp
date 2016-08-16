@@ -125,7 +125,7 @@ geocoder.addr2coord(coord[i], function(status, result) {
 			<div id="map" style="width:100%;height:100%;"></div>
 			<!-- 지도 종료 -->
 		</div>
-		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
+		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=키&libraries=services"></script>
 		<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +58,7 @@ table{
    </span>
    <br>
    <br>
-     총 ?건이 검색되었습니다.
+     총  ${count}건이 검색되었습니다.
 <span style='position:relative; left:275px' >
    <select name="all">
    <option value="">전체  
@@ -72,15 +74,24 @@ table{
    <table> 
                
 				<tr>
-					<td width="70" height="30" align="center" bgcolor="">번호 </td>
-				    <td width="500" height="30" bgcolor="" align="center">공지사항</td>
-				    <td width="70" height="30" bgcolor="" align="center">닉네임</td>
-				    <td width="70" height="30" bgcolor="" align="center">조회수</td>
-					<td width="70" height="30" bgcolor="" align="center">등록일</td>
+					<td width="100" height="30" align="center" bgcolor="">번호 </td>
+				    <td width="300" height="30" bgcolor="" align="center">공지사항</td>
+				    <td width="100" height="30" bgcolor="" align="center">닉네임</td>
+				    <td width="100" height="30" bgcolor="" align="center">조회수</td>
+					<td width="150" height="30" bgcolor="" align="center">등록일</td>
 				</tr>
 				<tr>
-				    <td>뭘 건의할까?</td>
-				
+				<c:if test="${count==0}">
+				<td align="center">게시판에 저장된 글이 없습니다.</td>
+				</c:if>
+				<c:if test="${count>0}">
+				  <c:forEach var="article" items="${articleList}">
+				  	<td width="100" align="center" bgcolor="">${article.num}</td>
+				  	<td width="300" align="center" bgcolor="">${article.subject}</td>
+				  	<td width="100" align="center" bgcolor="">${article.writer}</td>
+				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
+				  </c:forEach>
+				 </c:if>
 			</table>
    </div>
    </div>
