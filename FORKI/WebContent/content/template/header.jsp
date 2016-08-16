@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="header-box">
 	<div id="logo">
 		<a href="../main/main.jsp"><img src="../img/logo.jpg" width="415" height="150"></a>
@@ -7,10 +8,18 @@
 		<div id="submenu">
 			<nav id="topmenu-sub">
 				<ul>
-					<li class="topMenuLi-sub"><a class="menuLink-sub" href="../main/main.jsp">HOME</a></li>
-					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">로그인</a></li>
-					<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/joinSelect.jsp" ">회원가입</a></li>
-					<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
+					<c:if test="${sessionScope.id == null}">
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="../main/main.jsp">HOME</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">로그인</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/joinSelect.jsp"">회원가입</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
+					</c:if>
+					<c:if test="${sessionScope.id != null}">
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="../main/main.jsp">HOME</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">로그아웃</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/MyPage/InfoModify.jsp">MyPage</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>

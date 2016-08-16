@@ -101,7 +101,7 @@ geocoder.addr2coord(coord[i], function(status, result) {
 			
 		</div>
 		<p>총 검색 건수 : ${count} 건 </p>
-		<div id="mdK-content">
+		<div id="mdK-content" style="overflow: auto; overflow-x: hidden">
         	<!-- 추후 검색된 리스트를 링크로 나열하기 위한 코드 -->
         	<c:if test="${count==0}">
         		검색 결과가 없습니다.

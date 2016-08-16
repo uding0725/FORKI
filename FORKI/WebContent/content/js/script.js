@@ -6,3 +6,9 @@ $(function() {
 		return false;
 	});
 });
+
+jQuery(function() {
+	jQuery('#camera_wrap').camera({
+		thumbnails : false
+	});
+});

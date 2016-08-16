@@ -13,7 +13,8 @@ body {
 	margin: auto;
 }
 
-#top {
+<
+div style ="height: 40px ; text-align: center ;"> <B>쪽지함 </B> </div>#top {
 	height: 150px;
 	width: 960px;
 	position: relative;
@@ -33,7 +34,7 @@ body {
 
 #content {
 	float: left;
-	width: 470px;
+	width: 750px;
 	padding: 5px;
 	position: relative;
 }
@@ -44,6 +45,13 @@ body {
 	position: relative;
 	clear: both;
 	float: left;
+}
+
+#m_content {
+	float: left;
+	width: 470px;
+	padding: 5px;
+	position: relative;
 }
 
 /* 헤더 레이아웃 설정 */
