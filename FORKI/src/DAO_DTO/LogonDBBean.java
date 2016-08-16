@@ -22,68 +22,69 @@ public class LogonDBBean {
 		return DriverManager.getConnection(jdbcDriver);
 	}
 /*	
-	//idÃ£±â
+	//idÃ£ï¿½ï¿½
 	public String searchId(String name, String email) throws Exception {
 		return;
 	}
 	
-	//ºñ¹Ð¹øÈ£Ã£±â
+	//ï¿½ï¿½Ð¹ï¿½È£Ã£ï¿½ï¿½
 	public String searchPwd(String id, String name, String email) throws Exception {
 		return;
 	}
 	
-	//ºñ¹Ð¹øÈ£Ã£±â-ÀÓ½Ãºñ¹Ð¹øÈ£
+	//ï¿½ï¿½Ð¹ï¿½È£Ã£ï¿½ï¿½-ï¿½Ó½Ãºï¿½Ð¹ï¿½È£
 	public int updatePwd(String id, String pwd) throws Exception {
 		return;
 	}
 	
-	//È¸¿ø°¡ÀÔ-°³ÀÎ
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½
 	public void insertMember(LogonDataBean member, PetcDataBean petc, KidDataBean kid) throws Exception {
 		
 	}
 	
-	//È¸¿ø°¡ÀÔ-±â¾÷
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½
 	public void insertMember(LogondataBean member, KetcDataBean ketc) throws Exception {
 		
 	}
 	
-	//·Î±×ÀÎ½Ãµµ
+	//ï¿½Î±ï¿½ï¿½Î½Ãµï¿½
 	public int userCheck(String id, String pwd) throws Exception{
 		return;
 	}
 	
-	//idÁßº¹È®ÀÎ
+	//idï¿½ßºï¿½È®ï¿½ï¿½
 	public int cnfirmId(String id) throws Exception{
 		return;
 	}
 	
-	//È¸¿ø¸ñ·ÏÁ¶È¸
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¸
 	public Vector getMember(String id) throws Exception{
 		return;
 	}
 	
-	//È¸¿øÁ¤º¸¼öÁ¤
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int updateMember(LogonDataBean member) throws Exception{
 		return;
 	}
 	
-	//°æ°í´©ÀûÈ½¼ö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½
 	public int updateYellowcard(String id) throws Exception{
 		return;
 	}
 	
-	//È¸¿ø½º½º·Î Å»Åð
+	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å»ï¿½ï¿½
 	public int deleteMember(String id, String pwd, String del_reason) throws Exception{
 		return;
 	}
 	
-	//°­Á¦Å»Åð
+	//ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½
 	public int deleteMember(String id, String del_reason) throws Exception{
 		return;
 	}
-	//ÁýÄÚµå ºÒ·¯¿À±â
+	//ï¿½ï¿½ï¿½Úµï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Vector zipcodeRead(String area4) throws Exception {
 		return;
 	}*/
 
+	
 }

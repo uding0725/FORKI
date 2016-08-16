@@ -9,7 +9,6 @@
 
 </head>
 <body>
-
 <b>유치원 등록신청</b>
 <table border="1" width="760" cellpadding="0" cellspacing="0" align="center">
 <tr>

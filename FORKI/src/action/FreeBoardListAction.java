@@ -57,4 +57,3 @@ public class FreeBoardListAction implements CommandAction {
 		return "freeBoardList.jsp";
 	}
 }
-}
