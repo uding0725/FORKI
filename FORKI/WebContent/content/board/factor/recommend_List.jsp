@@ -67,7 +67,7 @@ table{
    </select>
    <input type="text" style="width:10%" name="search">
    <input type="button" name="searching" value="검색">
-   <input type="button" name="write" value="글쓰기">
+   <input type="button" name="write" value="글쓰기" onClick="/FORKI/content/board/recommendWrite.do">
 </span>
 
 <div id="write-content"> 
@@ -75,7 +75,7 @@ table{
                
 				<tr>
 					<td width="100" height="30" align="center" bgcolor="">번호 </td>
-				    <td width="300" height="30" bgcolor="" align="center">공지사항</td>
+				    <td width="300" height="30" bgcolor="" align="center">건의사항</td>
 				    <td width="100" height="30" bgcolor="" align="center">닉네임</td>
 				    <td width="100" height="30" bgcolor="" align="center">조회수</td>
 					<td width="150" height="30" bgcolor="" align="center">등록일</td>
@@ -86,13 +86,45 @@ table{
 				</c:if>
 				<c:if test="${count>0}">
 				  <c:forEach var="article" items="${articleList}">
-				  	<td width="100" align="center" bgcolor="">${article.num}</td>
-				  	<td width="300" align="center" bgcolor="">${article.subject}</td>
+				  	<td width="100" align="center" bgcolor="">
+				  	<c:out value="${number}"/>
+				  	<c:set var="number" value="${number-1}"/></td>
+				  	<td width="300" align="center" bgcolor="">
+				  	<c:if test="${article.re_level>0}">
+				  		<img src="image/level.gif" width="${5 * article.re_level}" height="16">
+				  		<img src="images/re.gif">
+				  	</c:if>
+				  	<c:if test="${article.re_level==0}">
+				  		  <img src="images/level.gif" width="${5 * article.re_level}" height="16">
+				  	</c:if>
+				  	<a href="/FORKI/content/board/recommendList.do?num=${article.num}&pageNum=${currentPage}">
+          			${article.subject}</a>
+				  	</td>
 				  	<td width="100" align="center" bgcolor="">${article.writer}</td>
 				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
+				  	<td width="150" align="center" bgcolor="">${article.reg_date}</td>
 				  </c:forEach>
 				 </c:if>
 			</table>
+		<c:if test="${count>0}"	>
+		<c:set var="pageCount" value="${count/pageSize+(count%pageSize==0?0:1)}"/>
+		<c:set var="pageBlock" value="${10}"/>
+		<fmt:parseNumber var="result" value="${currentPage/10}" integerOnly="true"/>
+		<c:set var="startPage" value="${result*10+1}"/>
+		<c:set var="endPage" value="${startPage+pageBlock-1}"/>
+		<c:if test="${endPage>pageCount}">
+			<c:set var="endPage" value="${pageCount}"/>
+		</c:if>
+		 <c:if test="${startPage > 10}">
+        <a href="/FORKI/content/board/recommendList.do?pageNum=${startPage - 10 }">[이전]</a>
+  	 	</c:if>
+		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			<a href="/FORKI/content/board/recommendList.do?pageNum=${i}">[${i}]</a>
+		</c:forEach>
+		<c:if test="${endPage < pageCount}">
+        <a href="/FORKI/content/board/recommendList.do?pageNum=${startPage + 10}">[다음]</a>
+  		 </c:if>
+		</c:if>
    </div>
    </div>
    </div>
