@@ -1,4 +1,4 @@
-location.href=’페이지'<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 
 <%
 	session.invalidate();

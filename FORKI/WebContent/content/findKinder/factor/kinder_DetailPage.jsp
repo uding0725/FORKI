@@ -52,30 +52,7 @@ a:hover {
 <script type='text/javascript' src='../../js/jquery.mobile.customized.min.js'></script>
 <script type='text/javascript' src='../../js/jquery.easing.1.3.js'></script>
 <script type='text/javascript' src='../../js/camera.min.js'></script>
-<script>
-	google.charts.load("current", {	packages : [ "corechart" ]});
-	google.charts.setOnLoadCallback(drawChart);
-	function drawChart() {
-		var data = google.visualization.arrayToDataTable([ 
-			[ 'Pac Man', 'Percentage' ], 
-			[ '남아', ${studentNo - girlNo} ],
-			[ '여아', ${girlNo} ] 
-			]);
-
-        var options = {
- 			legend: 'none',
- 			title: '남아/여아 비율',
-			pieStartAngle: 180,
-			slices: {
-				0: { color: 'blue' },
-				1: { color: 'pink' }
-			}
-		};
-
-		var chart = new google.visualization.PieChart(document.getElementById('chart'));
-		chart.draw(data, options);
-	}
-	
+<script>	
 	window.onload = function () {
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
@@ -135,7 +112,7 @@ a:hover {
 				<div class="camera_wrap camera_azure_skin" id="camera_wrap">
 					<!-- 테스트용 코드(완성시 삭제) -->
 					<div data-thumb="../../images/slides/thumbs/test1.jpeg" data-src="../../images/slides/test1.jpeg">
-						<div class="camera_caption fadeFromBottom">수업시간</div>
+						<div class="camera_caption fadeFromBottom">입시설명회</div>
 					</div>
 					<div data-thumb="../../images/slides/thumbs/test2.jpg" data-src="../../images/slides/test2.jpg">
 						<div class="camera_caption fadeFromBottom">아이들 작품</div>

@@ -25,6 +25,7 @@
 		세션ID :	<%=session.getId()%><br> <!-- 생성된 세션의 아이디값 -->
 		ID : ${sessionScope.id }<br> <!-- ID세션이 가진 값 -->
 		GRADE : ${sessionScope.grade }<br> <!-- KEY세션이 가진 값 -->
+		SCHUL_NUM : ${sessionScope.compNum } (사업자만 세션 생성)<br> <!-- 사업자번호 세션이 가진 값 -->
 		<%	time.setTime(session.getCreationTime());%>
 		세션생성시간 : <%=formatter.format(time)%><br>
 		<%	time.setTime(session.getLastAccessedTime());%>
