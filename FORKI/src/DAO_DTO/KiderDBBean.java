@@ -136,7 +136,7 @@ public class KiderDBBean {
 		String[] col_name={"id","schul_nm"};
 		try{
 			conn=getConnection();
-			pstmt =conn.prepareStatement("select count(*) from kindergarten where "+col_name[sn]+"like '%"+search+"%'"+ " state='n'");
+			pstmt =conn.prepareStatement("select count(*) from kindergarten natural join k_etc where "+col_name[sn]+" like '%"+search+"%'"+ " and state='n'");
 			rs= pstmt.executeQuery();
 			
 			if(rs.next())
