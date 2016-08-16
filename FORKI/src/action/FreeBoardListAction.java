@@ -18,9 +18,9 @@ public class FreeBoardListAction implements CommandAction {
 		if (pageNum == null) {
 			pageNum = "1";
 		}
-		int type=Integer.parseInt(request.getParameter("type"));
+		//int type=Integer.parseInt(request.getParameter("type"));
 		int title = Integer.parseInt(request.getParameter("title"));
-		String searchn = request.getParameter("searchn");
+		//String searchn = request.getParameter("searchn");
 		int pageSize = 10;// �븳 �럹�씠吏��쓽 湲��쓽 媛쒖닔 �븳湲�
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;// �븳 �럹�씠吏��쓽 �떆�옉湲� 踰덊샇
@@ -31,9 +31,9 @@ public class FreeBoardListAction implements CommandAction {
 		List articleList = null;
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();// DB�뿰�룞
 		
-		if(searchn == null && title >= 0){
+		//if(searchn == null && title >= 0){
 		count = fbdbb.getArticleCount();// �쟾泥� 湲��쓽 �닔
-		}
+		//}
 		if (count > 0) {
 			articleList = fbdbb.getArticles(startRow, endRow);// �쁽�옱 �럹�씠吏��뿉 �빐�떦�븯�뒗 湲��쓽 媛��닔
 			FreeBoardDataBean fbdb = new FreeBoardDataBean();
