@@ -67,6 +67,7 @@ a {
  
  			 <p>제목 <input type="text" size="70" name="subject" value="${article.subject}" readonly>
  			 </p>
+ 			 <p>작성자 ${article.writer} &nbsp;&nbsp;작성일 ${article.reg_date}</p>
  		<div id="secret-content">
  		 <p>내용</p>
   		<textarea style="height:100%; width:100%;resize:none;" rows="18"  cols="80"  name="content" readonly>${article.content}</textarea>

@@ -127,7 +127,12 @@ public class PrBoardDBBean {
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				article=new PrBoardDataBean();
-				
+				article.setNum(rs.getInt("num"));
+				article.setId(rs.getString("id"));
+				article.setWriter(rs.getString("writer"));
+				article.setSubject(rs.getString("subject"));
+				article.setContent(rs.getString("content"));
+				article.setReg_date(rs.getTimestamp("reg_date"));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -136,6 +141,7 @@ public class PrBoardDBBean {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
+		return article;
 	}
 	/*
 	//嫄댁쓽�궗�빆 �닔�젙�븷 湲� 媛�吏�怨좎삤湲�

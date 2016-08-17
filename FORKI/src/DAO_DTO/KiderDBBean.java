@@ -23,19 +23,19 @@ public class KiderDBBean {
 		String jdbcDriver="jdbc:apache:commons:dbcp:/pool";
 		return DriverManager.getConnection(jdbcDriver);
 	}
-/*	//��ġ�� ��ġ������
+/*	//占쏙옙치占쏙옙 占쏙옙치占쏙옙占쏙옙占쏙옙
 	public Vector selectKid(String matr_gu, String schul_nm)throws Exception{
 		
 	}
-	//��ġ�� ������
+	//占쏙옙치占쏙옙 占쏙옙占쏙옙占쏙옙
 	public Vector selectKid(String matr_gu,String dong)throws Exception{
 		
 	}
-	//main���� ���� Ŭ���� 
+	//main占쏙옙占쏙옙 占쏙옙占쏙옙 클占쏙옙占쏙옙 
 	public Vector selectKid(String matr_gu)throws Exception{
 		
 	}*/
-	//��ġ�� �󼼺���
+	//占쏙옙치占쏙옙 占쏢세븝옙占쏙옙
 	public KiderDataBean selectDetKid(String SCHUL_NUM)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -69,7 +69,7 @@ public class KiderDBBean {
 		}
 		return DBdata;
 	}
-	//��ġ�� ���
+	//占쏙옙치占쏙옙 占쏙옙占�
 	public void insertKid(KiderDataBean kidmember)throws Exception{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -104,7 +104,7 @@ public class KiderDBBean {
 			JdbcUtil.close(con);
 		}
 	}
-	//������ ������- ��ġ�� ����-����¡������ ������ �������
+	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙- 占쏙옙치占쏙옙 占쏙옙占쏙옙-占쏙옙占쏙옙징占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占�
 	public int getCountKider()throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -126,7 +126,7 @@ public class KiderDBBean {
 		}
 		return x;
 	}
-	//������ ������- ��ġ�� ����-����¡������ ������ �������
+	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙- 占쏙옙치占쏙옙 占쏙옙占쏙옙-占쏙옙占쏙옙징占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占�
 	public int getCountKider(int sn,String search)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -150,7 +150,7 @@ public class KiderDBBean {
 		return x;
 	}
 	
-	//������ ������- ��ġ�� ����(�߰�-����) �׳� �˻���
+	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙- 占쏙옙치占쏙옙 占쏙옙占쏙옙(占쌩곤옙-占쏙옙占쏙옙) 占쌓놂옙 占싯삼옙占쏙옙
 	public Vector signKinder(int start,int end)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -190,7 +190,7 @@ public class KiderDBBean {
 		}
 		return vecList;
 	}
-	//������ ������- ��ġ�� ����(�߰�-����) �׳� �˻���
+	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙- 占쏙옙치占쏙옙 占쏙옙占쏙옙(占쌩곤옙-占쏙옙占쏙옙) 占쌓놂옙 占싯삼옙占쏙옙
 		public Vector signKinder(int start,int end,int n,String search)throws Exception{
 			Connection conn=null;
 			PreparedStatement pstmt=null;
@@ -231,7 +231,7 @@ public class KiderDBBean {
 			return vecList;
 		}
 	
-		//유치원 승인신청 승인시
+		//�쑀移섏썝 �듅�씤�떊泥� �듅�씤�떆
 	public void updateState(int schul_num)throws Throwable{
 		
 		Connection con=null;
@@ -250,7 +250,7 @@ public class KiderDBBean {
 		}
 	}
 	
-	//유치원 승인신청 거절시
+	//�쑀移섏썝 �듅�씤�떊泥� 嫄곗젅�떆
 	public void delKinder(int schul_num)throws Throwable{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -268,7 +268,7 @@ public class KiderDBBean {
 		}
 	}
 	
-	//유치원 선택후 조회
+	//�쑀移섏썝 �꽑�깮�썑 議고쉶
 	public Vector selectKinder(int gunum,String dong,String schul_nm)throws Throwable{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -276,14 +276,15 @@ public class KiderDBBean {
 		Vector vecList =new Vector();
 		String Dong=dong;
 		String Schul_nm=schul_nm;
-
-		String[] gunm={"선택하세요","강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중랑구","중구"};
+  
+		String[] gunm={"전체","강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중랑구","중구"};
 		try{
+	
 			conn=getConnection();
 			if(Dong.equals("")&&Schul_nm.equals("")){
 				pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu="+"'"+gunm[gunum]+"'");
 				rs=pstmt.executeQuery();
-				if(rs.next()){
+				if(rs.next()){                
 				do{
 					KiderDataBean kdb=new KiderDataBean();
 					kdb.setSchul_num(rs.getInt("schul_num"));
@@ -292,8 +293,7 @@ public class KiderDBBean {
 					kdb.setTelno(rs.getString("telno"));
 					vecList.addElement(kdb);
 				}while(rs.next());
-		
-				}
+    			}
 			}else if(!Dong.equals("")&&Schul_nm.equals("")){
 				pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu="+"'"+gunm[gunum]+"'"+" and dong=?");
 				pstmt.setString(1,Dong);
@@ -307,8 +307,7 @@ public class KiderDBBean {
 						kdb.setTelno(rs.getString("telno"));
 						vecList.addElement(kdb);
 					}while(rs.next());
-			
-					}
+				}
 			}else if(Dong.equals("")&&!Schul_nm.equals("")){
 				pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu="+"'"+gunm[gunum]+"'"+" and schul_nm=?");
 				pstmt.setString(1,schul_nm);
@@ -322,8 +321,7 @@ public class KiderDBBean {
 						kdb.setTelno(rs.getString("telno"));
 						vecList.addElement(kdb);
 					}while(rs.next());
-			
-					}
+				}
 			}else{
 				pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu="+"'"+gunm[gunum]+"'"+" and schul_nm=? and dong=?");
 				pstmt.setString(1,Schul_nm);
@@ -338,8 +336,7 @@ public class KiderDBBean {
 						kdb.setTelno(rs.getString("telno"));
 						vecList.addElement(kdb);
 					}while(rs.next());
-			
-					}
+				}
 			}
 		}catch(SQLException e){
 			e.printStackTrace();

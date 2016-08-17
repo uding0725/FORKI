@@ -1,14 +1,15 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/uding0725/FORKI.git
 eclipse.preferences.version=1
 encoding//WebContent/content/CSS/style.css=UTF-8
 encoding//WebContent/content/main/factor/main_board.jsp=UTF-8
 encoding//WebContent/content/main/factor/main_nameFind.jsp=UTF-8
 encoding//WebContent/content/main/factor/map.jsp=UTF-8
 encoding//WebContent/content/template/header.jsp=UTF-8
-<<<<<<< HEAD
 encoding//src/DAO_DTO/FreeBoardDBBean.java=UTF-8
+encoding//src/DAO_DTO/KiderDBBean.java=UTF-8
 encoding//src/DAO_DTO/LogonDBBean.java=UTF-8
 encoding//src/DAO_DTO/PrBoardDBBean.java=UTF-8
 encoding//src/action/FreeBoardListAction.java=UTF-8
 encoding//src/action/FreeBoardWriteProAction.java=UTF-8
-=======
->>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
