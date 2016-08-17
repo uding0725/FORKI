@@ -10,6 +10,6 @@
 	<h2>빠른어린이집 찾기</h2>
 	</div>
 	<div>
-		<input type="text" value="search" /> <input type="search" value="찾기" />
+		<input type="text" value="search" /> <input type="button" value="찾기" />
 	</div>
 </div>
