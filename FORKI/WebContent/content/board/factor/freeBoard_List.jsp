@@ -32,8 +32,9 @@
 		</span>
 		<br>
 <table width="700">
+	<br>
+		<form name="search" action="/FORKI/content/board/freeBoardList.do">
   <tr align="right">
-  	<form name="search" action="/FORKI/content/board/freeBoardList.do">
   	<td>
   	<select name="type">
 			<option value="0">전체</option>
@@ -54,9 +55,8 @@
        <a href="/FORKI/content/board/freeBoardWrite.do">글쓰기</a>
     </td>
   </tr>
-  
 </table>
-
+<br>
 <c:if test="${count == 0}">
 <table width="700" border="1" cellpadding="0" cellspacing="0">
   <tr>
@@ -68,37 +68,40 @@
 </c:if>
 
 <c:if test="${count > 0}"> 
-	<table border="1" width="700" cellpadding="0" cellspacing="0" align="center">
+	<table width="700" cellpadding="0" cellspacing="0" align="center">
     <tr height="30">
       <td align="center"  width="50"  >번 호</td>
-      <td align="center"  width="250" >제   목</td>
+      <td align="center"  width="230" >제   목</td>
       <td align="center"  width="100" >닉네임</td>
-      <td align="center"  width="150" >조회수</td>
-      <td align="center"  width="50" >등록일</td>  
+      <td align="center"  width="50" >조회수</td>
+      <td align="center"  width="120" >등록일</td>  
     </tr>
- 	</table>   
+ 	</table>
 
     <c:forEach var="article" items="${articleList}">
-   <table witdh="700" cellpadding="0" cellspacing="0" align="center">
+   <table width="700" cellpadding="0" cellspacing="0" align="center">
    <tr height="30">
-    <td align="center"  width="50" >
+    <td align="center"  width="60" >
   	<c:out value="${number}"/>
  	 <c:set var="number" value="${number - 1}"/>  
-	</td>
-    <td  width="250" >
-   	${article.title}
+	</td >
+    <td width="60">
+    ${article.title}
+    </td>
+    <td  width="180"  align="center">
+   
       <a href="/FORKI/content/board/freeBoardContent.do?num=${article.num}&pageNum=${currentPage}">
           ${article.subject}</a> 
           <%-- <c:if test="${article.readcount >= 20}">
             <img src="images/hot.gif" border="0"  height="16">
   </c:if> --%>
 </td>
-    <td align="center"  width="100">
+    <td align="center"  width="130">
        ${article.writer}</a>
 </td>
-    <td align="center"  width="150">${article.readcount}
+    <td align="center"  width="50">${article.readcount}
 </td>
-    <td align="center"  width="50">${article.reg_date}</td>
+    <td align="center"  width="120">${date.format(article.reg_date)}</td>
    
   </tr>
   </c:forEach>

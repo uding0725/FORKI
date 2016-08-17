@@ -25,7 +25,7 @@ public class FreeBoardContentAction implements CommandAction {
 		System.out.println(num); 
 		
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();
-		FreeBoardDataBean article = fbdbb.updateGetArticle(num);
+		FreeBoardDataBean article = fbdbb.getArticle(num);
 		
 		System.out.println("updateGetArticle 성공 ");
 		List replyList = null;

@@ -159,7 +159,15 @@ public class FreeBoardDBBean {
 				article.setNum(rs.getInt("num"));
 				article.setId(rs.getString("id"));
 				article.setWriter(rs.getString("writer"));
-				article.setTitle(rs.getString("title"));
+				
+				if((rs.getString("title")).equals("0")){
+					article.setTitle("[소곤소곤]");
+				} else if((rs.getString("title")).equals("1")){
+					article.setTitle("[유익한 경로]");
+				} else{
+					article.setTitle("[기타]");
+				}
+				
 				article.setSubject(rs.getString("subject"));
 				article.setContent(rs.getString("content"));
 				article.setReadcount(rs.getInt("readcount"));
@@ -180,9 +188,47 @@ public class FreeBoardDBBean {
 
 	return articleList;
 		}
+		
+	//상세보기
+	public FreeBoardDataBean getArticle(int num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		FreeBoardDataBean article = null;
+		try {
+			conn = getConnection();
+
+			pstmt = conn.prepareStatement("update board set readcount=readcount+1 where num = ?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+
+			pstmt = conn.prepareStatement("select * from board where num = ?");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				article = new FreeBoardDataBean();
+				article.setNum(rs.getInt("num"));
+				article.setId(rs.getString("id"));
+				article.setWriter(rs.getString("writer"));
+				article.setTitle(rs.getString("title"));
+				article.setSubject(rs.getString("subject"));
+				article.setReg_date(rs.getTimestamp("reg_date"));
+				article.setReadcount(rs.getInt("readcount"));
+				article.setContent(rs.getString("content"));
 				
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return article;
+	}
 	
-	//상세보기 , 수정할때 폼가져오기 update
+	//수정할때 폼가져오기 update
 	public FreeBoardDataBean updateGetArticle(int num) throws Exception{
 		
 		Connection conn = null;

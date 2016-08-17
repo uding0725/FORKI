@@ -1,5 +1,6 @@
 package action;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,11 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO_DTO.FreeBoardDBBean;
 import DAO_DTO.FreeBoardDataBean;
+import sun.java2d.pipe.SpanShapeRenderer.Simple;
 
 public class FreeBoardListAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
+		
+		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 		
 		String pageNum = request.getParameter("pageNum"); // 페이지 번호
 		if (pageNum == null) {
@@ -55,6 +59,8 @@ public class FreeBoardListAction implements CommandAction {
 
 		number = count - (currentPage - 1) * pageSize;// 글목록에 표시할 글번호
 		// 해당 뷰에서 사용할 속성
+		
+		request.setAttribute("date", date);
 		request.setAttribute("currentPage", new Integer(currentPage));
 		request.setAttribute("startRow", new Integer(startRow));
 		request.setAttribute("endRow", new Integer(endRow));
