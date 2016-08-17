@@ -10,7 +10,7 @@
 	margin: 0px auto;
 	padding: 0px;
 	border: 0px solid;
-	padding: 20px;
+	padding: 20px; 
 	position: relative;
 }
 #write-header {

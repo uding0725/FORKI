@@ -12,7 +12,7 @@ public class FreeBoardDeleteAction implements CommandAction {
 		
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
-		String id = request.getParameter("id");
+		String id = (String)request.getSession().getAttribute("id");
 		
 		
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();

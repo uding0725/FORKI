@@ -3,16 +3,24 @@ package DAO_DTO;
 import java.sql.Timestamp;
 
 public class FrReplyDataBean {
-	private int num;
-	private String writer;
+	private int num ;
+	private String id;
+	String writer;
 	private int re_num;
 	private String content;  
-	private Timestamp date;
+	private Timestamp reg_date;
+
 	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}
+	public String getId(){
+		return id;
+	}
+	public void setId(String id){
+		this.id = id;
 	}
 	public String getWriter() {
 		return writer;
@@ -32,11 +40,11 @@ public class FrReplyDataBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Timestamp getDate() {
-		return date;
+	public Timestamp getReg_date() {
+		return reg_date;
 	}
-	public void setDate(Timestamp date) {
-		this.date = date;
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
 	}
 	
 	

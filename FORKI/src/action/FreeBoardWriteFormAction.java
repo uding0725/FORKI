@@ -8,7 +8,7 @@ public class FreeBoardWriteFormAction implements CommandAction {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 	int num=0;
 	String writer = "ho";
-	String id = "id";
+	
 	
 	try{
 		if(request.getParameter("num")!=null){
@@ -16,9 +16,9 @@ public class FreeBoardWriteFormAction implements CommandAction {
 		   }
 		}catch(Exception e){e.printStackTrace();}
 			//해당 뷰에서 사용할 속성
-			request.getSession().setAttribute("num", new Integer(num));
+			request.setAttribute("num", new Integer(num));
 			request.getSession().setAttribute("writer", writer);
-			request.getSession().setAttribute("id", id);
+			
 			
 			
 			return "freeBoardWrite.jsp";

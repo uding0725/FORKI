@@ -24,12 +24,13 @@
 <body>
 <center><b>글목록(전체 글:${count})</b>
 <div id="free-wrap">
-<font size="+2">문화시설</font>
+
 		<span style='position:absolute; right:-20px'>
 		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
 		<a href="#">>게시판</a>
 		<a href="#">>맘을 전해요</a>		
 		</span>
+		<br>
 <table width="700">
   <tr align="right">
   	<form name="search" action="/FORKI/content/board/freeBoardList.do">
@@ -85,7 +86,7 @@
  	 <c:set var="number" value="${number - 1}"/>  
 	</td>
     <td  width="250" >
-   
+   	${article.title}
       <a href="/FORKI/content/board/freeBoardContent.do?num=${article.num}&pageNum=${currentPage}">
           ${article.subject}</a> 
           <%-- <c:if test="${article.readcount >= 20}">

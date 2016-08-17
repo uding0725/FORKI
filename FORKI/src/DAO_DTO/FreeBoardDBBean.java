@@ -218,7 +218,7 @@ public class FreeBoardDBBean {
 	}
 	
 	//수정버튼 updatePro
-	public int updateArticle(FreeBoardDataBean article){
+	public int updateArticle(FreeBoardDataBean article, String id){
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -228,7 +228,7 @@ public class FreeBoardDBBean {
 		
 		try{
 			conn = getConnection();
-			if(article.getId() != null){
+			if(id != null){
 			pstmt = conn.prepareStatement("update board set title=?, subject=?, content=? where num =?");
 			pstmt.setString(1,article.getTitle());
 			pstmt.setString(2, article.getSubject());
@@ -237,6 +237,7 @@ public class FreeBoardDBBean {
 			
 			pstmt.executeUpdate();
 			x = 1;
+			
 			}
 			
 			else{
