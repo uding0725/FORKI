@@ -23,7 +23,7 @@ public class PrBoardDBBean {
 		String jdbcDriver="jdbc:apache:commons:dbcp:/pool";
 		return DriverManager.getConnection(jdbcDriver);
 	}
-	//건의사항 글쓰기
+	//嫄댁쓽�궗�빆 湲��벐湲�
 	public void insertArticle(PrBoardDataBean article)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -49,7 +49,7 @@ public class PrBoardDBBean {
 			JdbcUtil.close(conn);
 		}
 	}
-	//건의사항 글개수 가지고오기
+	//嫄댁쓽�궗�빆 湲�媛쒖닔 媛�吏�怨좎삤湲�
 	public int getArticleCount()throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -71,7 +71,7 @@ public class PrBoardDBBean {
 		}
 		return x;
 	}
-	//건의사항 페이징
+	//嫄댁쓽�궗�빆 �럹�씠吏�
 	public List getArticles(int start,int end)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -110,19 +110,43 @@ public class PrBoardDBBean {
 		}
 		return articleList;
 	}
-/*	//건의사항 글하나 가지고오기
+	//
 	public PrBoardDataBean getArticle(int num)throws Exception{
-		
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		PrBoardDataBean article=null;
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("update prop_board set readcount=readcount+1 where num=?");
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
+			pstmt=conn.prepareStatement("select*from prop_board where num=?");
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				article=new PrBoardDataBean();
+				
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
 	}
-	//건의사항 수정할 글 가지고오기
+	/*
+	//嫄댁쓽�궗�빆 �닔�젙�븷 湲� 媛�吏�怨좎삤湲�
 	public PrBoardDataBean updateGetArticle(int num)throws Exception{
 		
 	}
-	//건의사항 실제 수정부분
+	//嫄댁쓽�궗�빆 �떎�젣 �닔�젙遺�遺�
 	public int updateArticle(PrBoardDataBean article)throws Exception{
 		
 	}
-	//글 삭제
+	//湲� �궘�젣
 	public int deleteArticle(int num)throws Exception{
 		
 	} */

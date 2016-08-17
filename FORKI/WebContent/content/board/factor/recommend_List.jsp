@@ -97,7 +97,7 @@ table{
 				  	<c:if test="${article.re_level==0}">
 				  		  <img src="images/level.gif" width="${5 * article.re_level}" height="16">
 				  	</c:if>
-				  	<a href="/FORKI/content/board/recommendList.do?num=${article.num}&pageNum=${currentPage}">
+				  	<a href="/FORKI/content/board/recommendContent.do?num=${article.num}&pageNum=${currentPage}">
           			${article.subject}</a>
 				  	</td>
 				  	<td width="100" align="center" bgcolor="">${article.writer}</td>

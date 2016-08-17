@@ -43,10 +43,10 @@ geocoder.addr2coord(coord[i], function(status, result) {
 	 */
 </script>
 <div id="mdK-wrap">
-<font size="+2">어린이집/유치원찾기</font>
+<font size="+2">유치원찾기</font>
 		<span style='position:absolute; right:0px'>
 		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
-		<a href="">>어린이집유치원찾기</a>	
+		<a href="">>유치원찾기</a>	
 		</span>
 	<div id="mdK-container">
 		<div id="mdK-header">
@@ -57,11 +57,7 @@ geocoder.addr2coord(coord[i], function(status, result) {
 					<strong> <h5>조회</h5> </strong>
 					</td>
 				<form>	
-					<td colspan="1" align="center">
-					<input type="radio" name="select" value="all">전체 
-					<input type="radio" name="select" value="hospital">어린이집
-					<input type="radio" name="select" value="hcenter">유치원
-					<br> 
+					<td colspan="1" align="center"> 
 				서울 특별시 시/읍/구 <select name="gu">
 							<option value="0">선택하세요</option>
 							<option value="1">강남구</option>
