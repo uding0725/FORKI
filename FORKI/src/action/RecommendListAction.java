@@ -1,5 +1,6 @@
 package action;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,11 +32,13 @@ public class RecommendListAction implements CommandAction{
 		}else{
 			articleList=Collections.EMPTY_LIST;
 		}
+		SimpleDateFormat sim=new SimpleDateFormat("yyyy-MM-dd");
 		number=count-(currentPage-1)*pageSize;
 		request.setAttribute("currentPage",new Integer(currentPage));
 		request.setAttribute("startRow",new Integer(startRow));
 		request.setAttribute("endRow",new Integer(endRow));
 		request.setAttribute("count",new Integer(count));
+		request.setAttribute("sim", sim);
 		request.setAttribute("pageSize",new Integer(pageSize));
 		request.setAttribute("number",new Integer(number));
 		request.setAttribute("articleList", articleList);

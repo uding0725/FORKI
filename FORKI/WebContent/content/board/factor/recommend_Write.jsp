@@ -63,6 +63,7 @@ a {
    <input type="hidden" name="ref" value="${ref}">
    <input type="hidden" name="re_step" value="${re_step}">
    <input type="hidden" name="re_level" value="${re_level}">
+   <input type="hidden" name="writer" value="${writer}">
    <p>제목 
    <c:if test="${num==0}">
    <input type="text" size="70" name="subject"></p>
@@ -77,7 +78,7 @@ a {
       <div id="secret-footer">
     <input type="submit" value="글쓰기">
     <input type="reset" value="다시작성">
-    <input type="button" value="취소">
+    <input type="button" value="취소" OnClick="window.location='/FORKI/content/board/recommendList.do'">
       </div>
       </form>
   </div>

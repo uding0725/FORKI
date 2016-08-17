@@ -23,18 +23,7 @@ public class KiderDBBean {
 		String jdbcDriver="jdbc:apache:commons:dbcp:/pool";
 		return DriverManager.getConnection(jdbcDriver);
 	}
-/*	//占쏙옙치占쏙옙 占쏙옙치占쏙옙占쏙옙占쏙옙
-	public Vector selectKid(String matr_gu, String schul_nm)throws Exception{
-		
-	}
-	//占쏙옙치占쏙옙 占쏙옙占쏙옙占쏙옙
-	public Vector selectKid(String matr_gu,String dong)throws Exception{
-		
-	}
-	//main占쏙옙占쏙옙 占쏙옙占쏙옙 클占쏙옙占쏙옙 
-	public Vector selectKid(String matr_gu)throws Exception{
-		
-	}*/
+
 	//占쏙옙치占쏙옙 占쏢세븝옙占쏙옙
 	public KiderDataBean selectDetKid(String SCHUL_NUM)throws Exception{
 		Connection conn = null;

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import jdbc.JdbcUtil;
@@ -30,17 +31,16 @@ public class PrBoardDBBean {
 		
 		try{
 			conn=getConnection();
-			pstmt=conn.prepareStatement("insert into prop_board values(?,?,?,?,?,?,?,?,?,?)");
-			pstmt.setInt(1,article.getNum());
-			pstmt.setString(2, article.getId());
-			pstmt.setString(3,article.getWriter());
-			pstmt.setString(4,article.getSubject());
-			pstmt.setString(5, article.getContent());
-			pstmt.setInt(6, article.getRef());
-			pstmt.setInt(7, article.getRe_step());
-			pstmt.setInt(8,article.getRe_level());
-			pstmt.setInt(9,article.getReadcount());
-			pstmt.setTimestamp(10,article.getReg_date());
+			pstmt=conn.prepareStatement("insert into prop_board values(propboardnum.NEXTVAL,?,?,?,?,?,?,?,?,?)");
+			pstmt.setString(1, article.getId());
+			pstmt.setString(2,article.getWriter());
+			pstmt.setString(3,article.getSubject());
+			pstmt.setString(4, article.getContent());
+			pstmt.setInt(5, article.getRef());
+			pstmt.setInt(6, article.getRe_step());
+			pstmt.setInt(7,article.getRe_level());
+			pstmt.setInt(8,article.getReadcount());
+			pstmt.setTimestamp(9,article.getReg_date());
 			pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -88,6 +88,7 @@ public class PrBoardDBBean {
 			pstmt.setInt(2, end);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
+				  articleList = new ArrayList(end);
 				do{
 					PrBoardDataBean article= new PrBoardDataBean();
 					article.setNum(rs.getInt("num"));
@@ -108,7 +109,9 @@ public class PrBoardDBBean {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
+		System.out.println(articleList.size());
 		return articleList;
+		
 	}
 	//
 	public PrBoardDataBean getArticle(int num)throws Exception{
@@ -130,6 +133,9 @@ public class PrBoardDBBean {
 				article.setNum(rs.getInt("num"));
 				article.setId(rs.getString("id"));
 				article.setWriter(rs.getString("writer"));
+				article.setRef(rs.getInt("ref"));
+				article.setRe_step(rs.getInt("re_step"));
+				article.setRe_level(rs.getInt("re_level"));
 				article.setSubject(rs.getString("subject"));
 				article.setContent(rs.getString("content"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
@@ -143,17 +149,71 @@ public class PrBoardDBBean {
 		}
 		return article;
 	}
-	/*
-	//嫄댁쓽�궗�빆 �닔�젙�븷 湲� 媛�吏�怨좎삤湲�
+
+	//건의사항 수정할 글을 가지고감
 	public PrBoardDataBean updateGetArticle(int num)throws Exception{
-		
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		PrBoardDataBean article=null;
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select*from prop_board where num=?");
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				article=new PrBoardDataBean();
+				article.setNum(rs.getInt("num"));
+				article.setWriter(rs.getString("writer"));
+				article.setSubject(rs.getString("subject"));
+				article.setContent(rs.getString("content"));
+				article.setReg_date(rs.getTimestamp("reg_date"));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return article;
 	}
-	//嫄댁쓽�궗�빆 �떎�젣 �닔�젙遺�遺�
+	//건의사항 글 수정
 	public int updateArticle(PrBoardDataBean article)throws Exception{
-		
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		int x=0;
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("update prop_board set subject=? and content=? where num=?");
+			pstmt.setString(1, article.getSubject());
+			pstmt.setString(2, article.getContent());
+			pstmt.setInt(3, article.getNum());
+			x=pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return x;
 	}
-	//湲� �궘�젣
+	//건의사항 삭제할 글
 	public int deleteArticle(int num)throws Exception{
-		
-	} */
+		Connection conn =null;
+		PreparedStatement pstmt=null;
+		int check=0;
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("delete from prop_board where num=?");
+			pstmt.setInt(1, num);
+			check =pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return check;
+	}
 }
