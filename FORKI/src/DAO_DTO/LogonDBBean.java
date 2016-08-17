@@ -22,68 +22,95 @@ public class LogonDBBean {
 		return DriverManager.getConnection(jdbcDriver);
 	}
 /*	
-	//idã��
+	//id찾占쏙옙
 	public String searchId(String name, String email) throws Exception {
 		return;
 	}
 	
-	//��й�ȣã��
+	//占쏙옙橘占싫Ｃｏ옙占�
 	public String searchPwd(String id, String name, String email) throws Exception {
 		return;
 	}
 	
-	//��й�ȣã��-�ӽú�й�ȣ
+	//占쏙옙橘占싫Ｃｏ옙占�-占쌈시븝옙橘占싫�
 	public int updatePwd(String id, String pwd) throws Exception {
 		return;
 	}
 	
-	//ȸ������-����
+	//회占쏙옙占쏙옙占쏙옙-占쏙옙占쏙옙
 	public void insertMember(LogonDataBean member, PetcDataBean petc, KidDataBean kid) throws Exception {
 		
 	}
 	
-	//ȸ������-���
+	//회占쏙옙占쏙옙占쏙옙-占쏙옙占�
 	public void insertMember(LogondataBean member, KetcDataBean ketc) throws Exception {
 		
 	}
 	
-	//�α��νõ�
+	//占싸깍옙占싸시듸옙
 	public int userCheck(String id, String pwd) throws Exception{
 		return;
 	}
 	
-	//id�ߺ�Ȯ��
+	//id占쌩븝옙확占쏙옙
 	public int cnfirmId(String id) throws Exception{
 		return;
 	}
 	
-	//ȸ�������ȸ
+	//회占쏙옙占쏙옙占쏙옙占싫�
 	public Vector getMember(String id) throws Exception{
 		return;
 	}
 	
-	//ȸ����������
+	//회占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙
 	public int updateMember(LogonDataBean member) throws Exception{
 		return;
 	}
 	
-	//�������Ƚ��
+	//占쏙옙占쏙옙占싫쏙옙占�
 	public int updateYellowcard(String id) throws Exception{
 		return;
 	}
 	
-	//ȸ�������� Ż��
+	//회占쏙옙占쏙옙占쏙옙占쏙옙 탈占쏙옙
 	public int deleteMember(String id, String pwd, String del_reason) throws Exception{
 		return;
 	}
 	
-	//����Ż��
+	//占쏙옙占쏙옙탈占쏙옙
 	public int deleteMember(String id, String del_reason) throws Exception{
 		return;
 	}
-	//���ڵ� �ҷ�����
+	//占쏙옙占쌘듸옙 占쌀뤄옙占쏙옙占쏙옙
 	public Vector zipcodeRead(String area4) throws Exception {
 		return;
 	}*/
+
+	
+	public Vector kindRead(String id)throws Exception{
+		Connection conn =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Vector vecList=new Vector();
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select schul_num,schul_nm from k_etc where id=?");
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				KetcDataBean ketc=new KetcDataBean();  
+				ketc.setSchul_nm(rs.getString("schul_nm"));
+				ketc.setSchul_num(rs.getInt("schul_num"));
+				vecList.addElement(ketc);
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				JdbcUtil.close(rs);
+				JdbcUtil.close(pstmt);
+				JdbcUtil.close(conn);
+			}
+		return vecList;	
+	}
+		
 
 }

@@ -3,11 +3,27 @@ package DAO_DTO;
 import java.sql.Timestamp;
 
 public class MessageDataBean {
+	private int r;
+	private int num;
 	private String send_id;
 	private String receive_id;
 	private String content;
 	private String state;
 	private Timestamp date;
+	
+	
+	public int getR() {
+		return r;
+	}
+	public void setR(int r) {
+		this.r = r;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getSend_id() {
 		return send_id;
 	}

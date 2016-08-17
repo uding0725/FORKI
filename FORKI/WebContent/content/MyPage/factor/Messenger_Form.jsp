@@ -1,15 +1,15 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
 #m_frame {
 	width: 750px;
-	height: 700px;
+	height: 450px;
 }
 
 #m_list {
 	width: 750px;
-	height: 620px;
+	height: 370px;
 }
 </style>
 <div id="m_frame">
@@ -35,16 +35,22 @@
 				<tr height="30" bgcolor="${value_c}">
 					<td align="center" width="50">번 호</td>
 					<td align="center" width="100">보낸사람</td>
-					<td align="center" width="500">내용</td>
+					<td align="center" width="450">내용</td>
+					<td align="center" width="50">읽음</td>
 					<td align="center" width="100">자세히</td>
 				</tr>
 
 				<c:forEach var="article" items="${articleList}">
 					<tr height="30">
 						<td align="center" width="50"><c:out value="${number}" /> <c:set var="number" value="${number - 1}" /></td>
-						<td align="center" width="100">${article.writer}</td>
-						<td align="center" width="500">${article.content}</td>
-						<td align="center" width="100"><a href="/content/MyPage/factor/m_content.jsp?num=${article.m_num}">자세히</td>
+						<td align="center" width="100">${article.send_id}</td>
+						<td align="center" width="450">${article.content}</td>
+						<td align="center" width="50">
+							<c:if test="${article.state == 0}"><B style="color:#FF0000">★</B></c:if>
+							<c:if test="${article.state == 1}"><B style="color:#828282">★</B></c:if>
+						</td>
+						<td align="center" width="100"><a href="#"
+							onClick="javascript:window.open('/FORKI/content/MyPage/factor/MessageContent.do?num=${article.num}','popup','scrollbars=no, resizable=no, width=400,height=400')">자세히</td>
 
 					</tr>
 				</c:forEach>
@@ -62,15 +68,15 @@
 			</c:if>
 
 			<c:if test="${startPage > 10}">
-				<a href="/JulJSP/MVC/list.do?pageNum=${startPage - 10 }">[이전]</a>
+				<a href="/FORKI/content/MyPage/MessengerForm.do?pageNum=${startPage - 10 }">[이전]</a>
 			</c:if>
 
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<a href="/JulJSP/MVC/list.do?pageNum=${i}">[${i}]</a>
+				<a href="/FORKI/content/MyPage/MessengerForm.do?pageNum=${i}">[${i}]</a>
 			</c:forEach>
 
 			<c:if test="${endPage < pageCount}">
-				<a href="/JulJSP/MVC/list.do?pageNum=${startPage + 10}">[다음]</a>
+				<a href="/FORKI/content/MyPage/MessengerForm.do?pageNum=${startPage + 10}">[다음]</a>
 			</c:if>
 		</c:if>
 	</div>

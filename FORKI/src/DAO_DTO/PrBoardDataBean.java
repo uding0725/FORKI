@@ -9,12 +9,11 @@ public class PrBoardDataBean {
 	private String writer;
 	private String subject;
 	private String content;
-	private String secret;
 	private int ref;
 	private int re_step;
 	private int re_level;
 	private int readcount;
-	private Timestamp date;
+	private Timestamp reg_date;
 	public int getNum() {
 		return num;
 	}
@@ -45,12 +44,7 @@ public class PrBoardDataBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getSecret() {
-		return secret;
-	}
-	public void setSecret(String secret) {
-		this.secret = secret;
-	}
+
 	public int getRef() {
 		return ref;
 	}
@@ -75,11 +69,12 @@ public class PrBoardDataBean {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
-	public Timestamp getDate() {
-		return date;
+	public Timestamp getReg_date() {
+		return reg_date;
 	}
-	public void setDate(Timestamp date) {
-		this.date = date;
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
 	}
+
 	
 }

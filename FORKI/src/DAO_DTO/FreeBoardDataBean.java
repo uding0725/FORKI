@@ -1,7 +1,7 @@
 package DAO_DTO;
 
 import java.sql.Timestamp;
-
+  
 public class FreeBoardDataBean {
 
 	private int num;
