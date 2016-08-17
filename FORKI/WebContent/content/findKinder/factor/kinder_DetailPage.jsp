@@ -46,7 +46,7 @@ a:hover {
 </style>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=키들어갈곳&libraries=services"></script>
 <script type="text/javascript" src="../../js/script.js"></script>
 <script type='text/javascript' src='../../js/jquery.min.js'></script>
 <script type='text/javascript' src='../../js/jquery.mobile.customized.min.js'></script>
