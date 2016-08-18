@@ -27,14 +27,16 @@ public class MessageDBBean {
 	}
 
 	// 쪽지보내기
-	public void insertMessage(MessageDataBean member) throws Exception {
+	public void insertMessage(String sendId, String receiveId, String message) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(/* sql */);
-			pstmt.setString(parameterIndex, x);
+			pstmt = conn.prepareStatement("insert into MESSAGE values (image_num.nextVal, ?, ?, ?, '0', sysdate)");
+			pstmt.setString(1, sendId);
+			pstmt.setString(2, receiveId);
+			pstmt.setString(3, message);
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -168,8 +170,21 @@ public class MessageDBBean {
 	}
 
 	// 쪽지 삭제
-	public int deleteMessage(String send_id) throws Exception {
-		int x;
+	public int deleteMessage(String num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int x = 0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("delete from MESSAGE where NUM = ?");
+			pstmt.setString(1, num);
+			x = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
 		return x;
 	}
 

@@ -50,7 +50,7 @@
 							<c:if test="${article.state == 1}"><B style="color:#828282">★</B></c:if>
 						</td>
 						<td align="center" width="100"><a href="#"
-							onClick="javascript:window.open('/FORKI/content/MyPage/factor/MessageContent.do?num=${article.num}','popup','scrollbars=no, resizable=no, width=400,height=400')">자세히</td>
+							onClick="javascript:window.open('/FORKI/content/MyPage/factor/MessageContent.do?num=${article.num}','popup','scrollbars=no, resizable=no, width=530,height=450')">자세히</td>
 
 					</tr>
 				</c:forEach>
