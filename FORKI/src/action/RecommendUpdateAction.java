@@ -6,17 +6,17 @@ import javax.servlet.http.HttpServletResponse;
 import DAO_DTO.PrBoardDBBean;
 import DAO_DTO.PrBoardDataBean;
 
-public class RecommendContentAction implements CommandAction{
+public class RecommendUpdateAction implements CommandAction{
 
 	public String requestPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
+		
 		int num = Integer.parseInt(request.getParameter("num"));
-		String pageNum = request.getParameter("pageNum");
-		PrBoardDataBean article =new PrBoardDataBean();
-		PrBoardDBBean pbdb=PrBoardDBBean.getInstance();
-		article=pbdb.getArticle(num);
-		request.setAttribute("num", new Integer(num));
+		String pageNum=request.getParameter("pageNum");
+		PrBoardDBBean pdb=PrBoardDBBean.getInstance();
+		PrBoardDataBean article =pdb.updateGetArticle(num);
+		
 		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("article", article);
-		return "recommendContent.jsp";
+		request.setAttribute("article",article);
+		return "recommendUpdate.jsp";
 	}
 }

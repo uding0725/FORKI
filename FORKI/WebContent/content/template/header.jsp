@@ -38,7 +38,7 @@
 					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/board/notifyList.jsp">게시판</a>
 						<ul class="submenu">
 							<li class="pop-up"><a href="/FORKI/content/board/notifyList.jsp" class="submenuLink longLink">공지사항</a></li>
-							<li class="pop-up"><a href="/FORKI/content/board/recommendList.jsp" class="submenuLink longLink">건의사항</a></li>
+							<li class="pop-up"><a href="/FORKI/content/board/recommendList.do" class="submenuLink longLink">건의사항</a></li>
 							<li class="pop-up"><a href="/FORKI/content/board/freeBoardList.do" class="submenuLink longLink">맘을 전해요</a></li>
 						</ul></li>
 				</ul>

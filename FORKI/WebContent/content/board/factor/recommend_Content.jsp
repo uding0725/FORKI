@@ -2,11 +2,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<c:if test="${check ==-1}">
+<c:if test="${article.id!=sessionScope.id}">
+<c:if test="${sessionScope.id!='admin'}">
 <script>
-alert("권한이 없습니다.");
+alert("권한이 없습니다."+"${article.id}"+"  "+"${sessionScope.id}");
 history.go(-1);
 </script>
+<script>
+function deleteConfirm(){
+	var selectDel = confirm("정말로 삭제하시겠습니까?")
+	if (selectDel) {
+		document.location.href="/FORKI/content/board/recommendDelete.do?pageNum=${pageNum}&num=${num}"
+	}
+}
+</script>
+</c:if>
 </c:if>
 <head>
 <title>Insert title here</title>
@@ -70,18 +80,18 @@ a {
  			 <p>작성자 ${article.writer} &nbsp;&nbsp;작성일 ${article.reg_date}</p>
  		<div id="secret-content">
  		 <p>내용</p>
-  		<textarea style="height:100%; width:100%;resize:none;" rows="18"  cols="80"  name="content" readonly>${article.content}</textarea>
+  		<textarea style="height:90%; width:100%;resize:none;" rows="18"  cols="80"  name="content" readonly>${article.content}</textarea>
     	</div>
  		   <div id="secret-footer" align="right">
-				<c:if test="${check==1}">
-						 <input type="button" value="수정하기">
- 					  	<input type="button" value="삭제하기">
-  					  	<input type="button" value="목록으로">
+				<c:if test="${article.id==sessionScope.id}">
+						 <input type="button" value="수정하기" onclick="document.location.href='/FORKI/content/board/recommendUpdate.do?pageNum=${pageNum}&num=${num}'">
+ 					  	<input type="button" value="삭제하기" onclick="deleteConfirm();">
+  					  	<input type="button" value="목록으로" onclick="document.location.href='/FORKI/content/board/recommendList.do?pageNum=${pageNum}'">
 				</c:if>
-				<c:if test="${check==0}">
-					 <input type="button" value="답글쓰기">
- 					  	<input type="button" value="삭제하기">
-  					  	<input type="button" value="목록으로">
+				<c:if test="${sessionScope.id=='admin'}">
+					 <input type="button" value="답글쓰기" onclick="document.location.href='/FORKI/content/board/recommendWrite.do?num=${num}&ref=${article.ref}&re_step=${article.re_step}&re_level=${article.re_level}'">
+ 					  	<input type="button" value="삭제하기" onclick="deleteConfirm();">
+  					  	<input type="button" value="목록으로" onclick="document.location.href='/FORKI/content/board/recommendList.do?pageNum=${pageNum}'">
 				</c:if> 		   	
  		   </div>
  	</div>
