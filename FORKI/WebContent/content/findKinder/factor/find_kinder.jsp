@@ -59,7 +59,7 @@ geocoder.addr2coord(coord[i], function(status, result) {
 				<form>	
 					<td colspan="1" align="center"> 
 				서울 특별시 시/읍/구 <select name="gu">
-							<option value="0">선택하세요</option>
+							<option value="0">전체</option>
 							<option value="1">강남구</option>
 							<option value="2">강동구</option>
 							<option value="3">강북구</option>

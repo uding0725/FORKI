@@ -13,14 +13,15 @@ public class RecommendUpdateProAction implements CommandAction{
 		int num =Integer.parseInt(request.getParameter("num"));
 		String pageNum= request.getParameter("pageNum");
 		PrBoardDataBean article =new PrBoardDataBean();
+
 		article.setNum(num);
 		article.setSubject(request.getParameter("subject"));
 		article.setContent(request.getParameter("content"));
 		PrBoardDBBean pbdb=PrBoardDBBean.getInstance();
 		int check =0;
 		check=pbdb.updateArticle(article);
-		request.setAttribute("pageNum", pageNum);
-		request.setAttribute("check",check);
+		request.setAttribute("pageNum", new Integer(pageNum));
+		request.setAttribute("check",new Integer(check));
 		return "recommendUpdatePro.jsp";
 	}
 }

@@ -24,7 +24,7 @@
 </c:if>
 <c:if test="${count!=0}">
 <c:forEach var="i" items="${vecList}" >
-<tr >
+<tr>
 <td align="center"  width="50">
 <c:out value="${number}"/>
 <c:set var="number" value="${number-1 }"/>

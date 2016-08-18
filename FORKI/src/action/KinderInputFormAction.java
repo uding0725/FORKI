@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO_DTO.LogonDBBean;
 
-public class KiderInputFormAction implements CommandAction{
+public class KinderInputFormAction implements CommandAction{
 
 	public String requestPro(HttpServletRequest request, HttpServletResponse response)throws Throwable{
 		
-		String memId=(String)request.getSession().getAttribute("memId");
-		LogonDBBean ldb =new LogonDBBean();
+		String memId=(String)request.getSession().getAttribute("id");
+		LogonDBBean ldb =LogonDBBean.getInstance();
 		Vector vecList= ldb.kindRead(memId);
-		
+		System.out.println(vecList.size());
 		request.setAttribute("vecList",vecList);
-		return "kiderInputForm.jsp";
+		return "kinderInputForm.jsp";
 	}
 }
