@@ -15,7 +15,7 @@ public class RecommendUpdateAction implements CommandAction{
 		PrBoardDBBean pdb=PrBoardDBBean.getInstance();
 		PrBoardDataBean article =pdb.updateGetArticle(num);
 		
-		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageNum",new Integer(pageNum));
 		request.setAttribute("article",article);
 		return "recommendUpdate.jsp";
 	}

@@ -3,5 +3,5 @@
 
 <tiles:insertDefinition name="layout3" >
 	<tiles:putAttribute name="menu" value="/content/template/menu4.jsp" />
-	<tiles:putAttribute name="body" value="/content/MyPage/factor/Messenger_Form.jsp" />
+	<tiles:putAttribute name="body" value="/content/MyPage/factor/Report_List.jsp" />
 </tiles:insertDefinition>

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO_DTO.KiderDBBean;
 import DAO_DTO.KiderDataBean;
 
-public class KiderInputProAction implements CommandAction{
+public class KinderInputProAction implements CommandAction{
 
 	public String requestPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
 		request.setCharacterEncoding("utf-8");
@@ -33,6 +33,6 @@ public class KiderInputProAction implements CommandAction{
 		KiderDBBean kdb=KiderDBBean.getInstance();
 		kdb.insertKid(member);
 		
-		return "kiderInputPro.jsp";
+		return "kinderInputPro.jsp";
 	}
 }
