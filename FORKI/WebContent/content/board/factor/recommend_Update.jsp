@@ -7,15 +7,16 @@
 <style>
 #secret-wrap{
  width : 750px;
- height : 650px;
+ height : 610px;
  padding : 0px auto;
  border : 1px solid;
  position : relative;
 }
 #secret-header{
-width : 740px;
+width : 750px;
 height : 40px;
 padding : 0px auto;
+
 margin : 0px auto;
 }
 #secret-conline{
@@ -46,32 +47,32 @@ a {
 </style>
 </head>
 <body>
-<form>
-<div id="secret-wrap">
- <div id="secret-header">
-  <font size="+2" >글수정</font>
+<div id="secret-header">
+  <font size="+2" >글쓰기</font>
    <span style='position: absolute; right: 60px'> 
     <a href="#"><img src="img/home.png" width="20" height="20"></a> 
     <a href="#">>게시판</a>
-    <a href="#">>건의사항</a>
-    <a href="#">>글수정</a> 
+    <a href="/FORKI/content/board/recommendList.do?pageNum=${pageNum}">>건의사항</a>
+    <a href="#">>글쓰기</a> 
     </span>
   </div> 
+<div id="secret-wrap">
  	<div id="secret-conline">
- 
+ 	<form method="post" action="/FORKI/content/board/recommendUpdatePro.do?num=${article.num}&pageNum=${pageNum}">
  			 <p>제목 <input type="text" size="70" name="subject" value="${article.subject}">
  			 </p>
  			 <p>작성자 ${article.writer} &nbsp;&nbsp;작성일 ${article.reg_date}</p>
  		<div id="secret-content">
  		 <p>내용</p>
-  		<textarea style="height:90%; width:100%;resize:none;" rows="18"  cols="80"  name="content" readonly>${article.content}</textarea>
+  		<textarea style="height:87%; width:100%;resize:none;" rows="18"  cols="80"  name="content" >${article.content}</textarea>
     	</div>
  		   <div id="secret-footer" align="right">
-						 <input type="button" value="수정하기" onclick="document.location.href='/FORKI/content/board/recommendUpdatePro.do?num=${article.num}&pageNum=${pageNum}'">
+						 <input type="submit" value="수정하기">
   					  	<input type="button" value="목록으로" onclick="document.location.href='/FORKI/content/board/recommendList.do?pageNum=${pageNum}'">  	
  		   </div>
+ 	</form>
  	</div>
 </div>
-</form>
+
 </body>
 </html>

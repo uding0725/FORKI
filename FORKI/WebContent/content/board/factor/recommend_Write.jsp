@@ -7,15 +7,16 @@
 <style>
 #secret-wrap{
  width : 750px;
- height : 650px;
+ height : 610px;
  padding : 0px auto;
  border : 1px solid;
  position : relative;
 }
 #secret-header{
-width : 740px;
+width : 750px;
 height : 40px;
 padding : 0px auto;
+
 margin : 0px auto;
 }
 #secret-conline{
@@ -46,8 +47,7 @@ a {
 </style>
 </head>
 <body>
-<div id="secret-wrap">
- <div id="secret-header">
+<div id="secret-header">
   <font size="+2" >글쓰기</font>
    <span style='position: absolute; right: 60px'> 
     <a href="#"><img src="img/home.png" width="20" height="20"></a> 
@@ -56,6 +56,7 @@ a {
     <a href="#">>글쓰기</a> 
     </span>
   </div> 
+<div id="secret-wrap">
     
   <div id="secret-conline">
    <form method="post" name="writeform" action="/FORKI/content/board/recommendWritePro.do">

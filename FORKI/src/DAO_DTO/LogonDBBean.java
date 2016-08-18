@@ -95,6 +95,7 @@ public class LogonDBBean {
 		try{
 			conn=getConnection();
 			pstmt=conn.prepareStatement("select schul_num,schul_nm from k_etc where id=?");
+			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				KetcDataBean ketc=new KetcDataBean();  

@@ -15,11 +15,12 @@ function zipCheck(){
 </head>
 <div style="width:750;">
 <h2>유치원등록하기</h2>
-<form  method="post" action="kiderInputPro.do" name="kiderinput" onSubmit="return ">
+<form  method="post" action="/FORKI/content/myPage_Buss/kinderInputPro.do" name="kiderinput">
 <table style="width:740; border: 1px solid black;">
 <c:forEach var="i" items="${vecList}">
-<c:set var="Tschul_nm" values="${i.schul_nm}"></c:set>
-<c:set var="Tschul_num" values="${i.schul_num}"></c:set>
+<c:set var="Tschul_nm" value="${i.schul_nm}"/>
+<c:set var="Tschul_num" value="${i.schul_num}"/>
+
 </c:forEach>
 	<tr>
 		<td>유치원명</td> 

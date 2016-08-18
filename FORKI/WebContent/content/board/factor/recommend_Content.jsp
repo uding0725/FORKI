@@ -8,6 +8,8 @@
 alert("권한이 없습니다."+"${article.id}"+"  "+"${sessionScope.id}");
 history.go(-1);
 </script>
+</c:if>
+</c:if>
 <script>
 function deleteConfirm(){
 	var selectDel = confirm("정말로 삭제하시겠습니까?")
@@ -16,22 +18,21 @@ function deleteConfirm(){
 	}
 }
 </script>
-</c:if>
-</c:if>
 <head>
 <title>Insert title here</title>
 <style>
 #secret-wrap{
  width : 750px;
- height : 650px;
+ height : 610px;
  padding : 0px auto;
  border : 1px solid;
  position : relative;
 }
 #secret-header{
-width : 740px;
+width : 750px;
 height : 40px;
 padding : 0px auto;
+
 margin : 0px auto;
 }
 #secret-conline{
@@ -62,17 +63,16 @@ a {
 </style>
 </head>
 <body>
-<form>
-<div id="secret-wrap">
- <div id="secret-header">
-  <font size="+2" >글쓰기</font>
+<div id="secret-header">
+  <font size="+2" >건의사항글</font>
    <span style='position: absolute; right: 60px'> 
     <a href="#"><img src="img/home.png" width="20" height="20"></a> 
     <a href="#">>게시판</a>
-    <a href="#">>건의사항</a>
-    <a href="#">>글쓰기</a> 
+    <a href="/FORKI/content/board/recommendList.do?pageNum=${pageNum}">>건의사항</a>
+    <a href="#">>건의사항글</a> 
     </span>
   </div> 
+<div id="secret-wrap">
  	<div id="secret-conline">
  
  			 <p>제목 <input type="text" size="70" name="subject" value="${article.subject}" readonly>
@@ -80,7 +80,7 @@ a {
  			 <p>작성자 ${article.writer} &nbsp;&nbsp;작성일 ${article.reg_date}</p>
  		<div id="secret-content">
  		 <p>내용</p>
-  		<textarea style="height:90%; width:100%;resize:none;" rows="18"  cols="80"  name="content" readonly>${article.content}</textarea>
+  		<textarea style="height:87%; width:100%;resize:none;" rows="18"  cols="80"  name="content" readonly>${article.content}</textarea>
     	</div>
  		   <div id="secret-footer" align="right">
 				<c:if test="${article.id==sessionScope.id}">

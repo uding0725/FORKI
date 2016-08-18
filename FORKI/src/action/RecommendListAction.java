@@ -15,8 +15,15 @@ public class RecommendListAction implements CommandAction{
 		
 		request.setCharacterEncoding("utf-8");
 		String pageNum=request.getParameter("pageNum");
+		String search=request.getParameter("search");
+		int searchn=0;
 		if(pageNum==null){
 			pageNum="1";
+		}
+		if(search==null){
+			search="";
+		}else{
+			searchn=Integer.parseInt(request.getParameter("searchn"));
 		}
 		int pageSize=10;
 		int currentPage=Integer.parseInt(pageNum);
@@ -26,11 +33,15 @@ public class RecommendListAction implements CommandAction{
 		int number=0;
 		List articleList=null;
 		PrBoardDBBean pbdb=PrBoardDBBean.getInstance();
-		count= pbdb.getArticleCount();
+		if(search.equals("")||search==null)
+			count= pbdb.getArticleCount();
+		else
+			count= pbdb.getArticleCount(searchn, search);
 		if(count>0){
+			if(search.equals("")||search==null)
 			articleList=pbdb.getArticles(startRow, endRow);
-		}else{
-			articleList=Collections.EMPTY_LIST;
+			else
+				articleList=pbdb.getArticles(startRow, endRow,searchn,search);
 		}
 		SimpleDateFormat sim=new SimpleDateFormat("yyyy-MM-dd");
 		number=count-(currentPage-1)*pageSize;

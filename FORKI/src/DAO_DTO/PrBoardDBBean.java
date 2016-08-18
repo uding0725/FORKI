@@ -49,7 +49,7 @@ public class PrBoardDBBean {
 			JdbcUtil.close(conn);
 		}
 	}
-	//嫄댁쓽�궗�빆 湲�媛쒖닔 媛�吏�怨좎삤湲�
+	//건의사항 글개수를 가지고감
 	public int getArticleCount()throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -71,7 +71,29 @@ public class PrBoardDBBean {
 		}
 		return x;
 	}
-	//嫄댁쓽�궗�빆 �럹�씠吏�
+	public int getArticleCount(int n,String search)throws Exception{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		int x=0;
+		String[] col_name={"subject","content"};
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select count(*) from prop_board where "+col_name[n]+" like '%"+search+"%'" );
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				x=rs.getInt(1);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return x;
+	}
+	//건의사항 페이징
 	public List getArticles(int start,int end)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -84,6 +106,49 @@ public class PrBoardDBBean {
 			+"from (select num,writer,subject,ref,re_step,re_level,readcount,reg_date,rownum r "
 		    +"from (select num,writer,subject,ref,re_step,re_level,readcount,reg_date "
 			+"from prop_board order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
+			pstmt.setInt(1,start);
+			pstmt.setInt(2, end);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				  articleList = new ArrayList(end);
+				do{
+					PrBoardDataBean article= new PrBoardDataBean();
+					article.setNum(rs.getInt("num"));
+					article.setWriter(rs.getString("writer"));
+					article.setSubject(rs.getString("subject"));
+					article.setRef(rs.getInt("ref"));
+					article.setRe_step(rs.getInt("re_step"));
+					article.setRe_level(rs.getInt("re_level"));
+					article.setReadcount(rs.getInt("readcount"));
+					article.setReg_date(rs.getTimestamp("reg_date"));
+					articleList.add(article);
+				}while(rs.next());
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		System.out.println(articleList.size());
+		return articleList;
+		
+	}
+	
+	public List getArticles(int start,int end,int n,String search)throws Exception{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List articleList=null;
+		String[] col_name={"subject","content"};
+		try{
+			conn=getConnection();
+			pstmt= conn.prepareStatement(
+			"select num,writer,subject,ref,re_step,re_level,readcount,reg_date,r "
+			+"from (select num,writer,subject,ref,re_step,re_level,readcount,reg_date,rownum r "
+		    +"from (select num,writer,subject,ref,re_step,re_level,readcount,reg_date "
+			+"from prop_board order by ref desc, re_step asc) where "+col_name[n]+" like '%"+search+"%'"+"  order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 			pstmt.setInt(1,start);
 			pstmt.setInt(2, end);
 			rs=pstmt.executeQuery();
@@ -184,8 +249,9 @@ public class PrBoardDBBean {
 		PreparedStatement pstmt=null;
 		int x=0;
 		try{
+			
 			conn=getConnection();
-			pstmt=conn.prepareStatement("update prop_board set subject=? and content=? where num=?");
+			pstmt=conn.prepareStatement("update prop_board set subject=?,content=? where num=?");
 			pstmt.setString(1, article.getSubject());
 			pstmt.setString(2, article.getContent());
 			pstmt.setInt(3, article.getNum());
