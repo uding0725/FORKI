@@ -14,8 +14,7 @@ public class KinderInputFormAction implements CommandAction{
 		String memId=(String)request.getSession().getAttribute("id");
 		LogonDBBean ldb =LogonDBBean.getInstance();
 		Vector vecList= ldb.kindRead(memId);
-		System.out.println(vecList.size());
 		request.setAttribute("vecList",vecList);
-		return "kinderInputForm.jsp";
+		return "kinderInput.jsp";
 	}
 }
