@@ -20,13 +20,8 @@
 				</c:if>
 				<c:if test="${sessionScope.grade == 2}">
 					<li class="topMenuLi-side"><a class="menuLink-side" href="#">유치원수정</a></li>
-<<<<<<< HEAD
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerList.do">쪽지함</a></li>
-					<li class="topMenuLi-side"><a class="menuLink-side" href="#">유치원등록하기</a></li>
-=======
-					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerForm.do">쪽지함</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/myPage_Buss/kinderInput.do">유치원등록하기</a></li>
->>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
 				</c:if>
 			</ul>
 		</nav>

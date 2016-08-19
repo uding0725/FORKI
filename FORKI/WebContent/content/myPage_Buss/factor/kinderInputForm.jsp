@@ -4,24 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
+<!-- <script>
 
 function zipCheck(){
 	url="";//유치원주소
 	window.open(url,"post","toolbar=no,width=500,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
 }
-</script>
+</script> -->
 <!-- <link href="../style.css" rel="stylesheet" type="text/css"> -->
 </head>
 <div style="width:750;">
 <h2>유치원등록하기</h2>
 <form  method="post" action="/FORKI/content/myPage_Buss/kinderInputPro.do" name="kiderinput">
-<table style="width:740; border: 1px solid black;">
+<table style="width:740; height:600; border: 1px solid black;">
 <c:forEach var="i" items="${vecList}">
 <c:set var="Tschul_nm" value="${i.schul_nm}"/>
 <c:set var="Tschul_num" value="${i.schul_num}"/>
-
 </c:forEach>
+<script>alert("${Tschul_nm}"+ "  ${Tschul_num}")</script>
 	<tr>
 		<td>유치원명</td> 
 		<td>
@@ -62,7 +62,7 @@ function zipCheck(){
 	<tr>
 		<td>우편번호</td>
 		<td>
-			<input type="text" name="zip" readonly size="10" maxlength="10"> <input type="button" value="우편번호찾기" onClick="">
+			<input type="text" name="zip"  size="10" maxlength="10"> <input type="button" value="우편번호찾기" onClick="zipCheck()">
 		</td>
 	</tr>
 	<tr>
@@ -97,7 +97,7 @@ function zipCheck(){
 	<tr>
 		<td>여교직원수</td> 
 		<td>
-			<input type="text" name="frl_female_tcher_c"size="10" maxlength="10">
+			<input type="text" name="frl_female_tcher_co"size="10" maxlength="10">
 		</td>
 	</tr>
 	<tr>

@@ -26,7 +26,7 @@ public class KinderInputProAction implements CommandAction{
 		member.setGrlstdn_co(Integer.parseInt(request.getParameter("grlstdn_co")));
 		member.setClas_co(Integer.parseInt(request.getParameter("clas_co")));
 		member.setFrl_tcher_co_sm(Integer.parseInt(request.getParameter("frl_tcher_co_sm")));
-		member.setFrl_female_tcher_c(Integer.parseInt(request.getParameter("frl_female_tcher_c")));
+		member.setFrl_female_tcher_co(Integer.parseInt(request.getParameter("frl_female_tcher_co")));
 		member.setRm(request.getParameter("rm"));
 		member.setState(request.getParameter("state"));
 		member.setReg_date(new Timestamp(System.currentTimeMillis()));
