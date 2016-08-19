@@ -205,7 +205,7 @@
 
 <body>
 
-<form method="post" action="/FORKI/content/join/factor/company2/inputPro.do" name="userinput"  onSubmit="return checkIt()">
+<form method="post" action="/FORKI/content/join/ComInputPro.do" name="userinput"  onSubmit="return checkIt()">
   <table id="example" width="400" border="1" cellspacing="0" cellpadding="3" align="center" >
     <tr>
     <td height="39" align="center" colspan="4">
@@ -355,7 +355,7 @@
 <div align="center">
 <input type="submit" name="confirm" value="등   록" >
 <input type="reset" name="reset" value="다시입력">
-<input type="button" value="가입안함" onclick="javascript:window.location='main.do'">
+<input type="button" value="가입안함" onclick="javascript:window.location='/FORKI/content/join/ComMain.do'">
 </div>
 </form>
 </body>

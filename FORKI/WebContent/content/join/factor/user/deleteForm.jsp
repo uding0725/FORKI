@@ -21,7 +21,7 @@
    </script>
 </head>
 <BODY onload="begin()">
-<form name="delform" action="/FORKI/content/join/factor/user/deletePro.do" 
+<form name="delform" action="/FORKI/content/join/UserDeletePro.do" 
 method="post" onSubmit="return checkIt()">
 <TABLE cellSpacing=1 cellPadding=1 width="260" border=1 align="center" >
  

@@ -15,9 +15,9 @@
   <tr>
     <td align="center">
       <form>
-    <input type="button" value="메인으로" onclick="document.location.href='/FORKI/content/join/factor/company2/main.do'">
+    <input type="button" value="메인으로" onclick="document.location.href='/FORKI/content/join/ComMain.do'">
       </form>
-      5초후에 메인으로 이동합니다.<meta http-equiv="Refresh" content="5;url=/FORKI/content/join/factor/company2/main.do" >
+      5초후에 메인으로 이동합니다.<meta http-equiv="Refresh" content="5;url=/FORKI/content/join/ComMain.do" >
     </td>
   </tr>
 </table>

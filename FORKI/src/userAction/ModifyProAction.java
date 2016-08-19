@@ -39,6 +39,6 @@ public class ModifyProAction implements CommandAction{
 			manager.updateKID_DATA(member);
 		}
 		
-		return "/content/join/factor/user/modifyPro.jsp";
+		return "/content/join/UserModifyPro.jsp";
 	}
 }

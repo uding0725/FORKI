@@ -15,7 +15,7 @@ public class MainAction implements CommandAction{
 		String sessionid = (String) session.getAttribute("memId");
 		request.setAttribute("memId", sessionid);
 		
-		return "/content/join/factor/company2/main.jsp";
+		return "/content/join/ComMain.jsp";
 	}
 
 }

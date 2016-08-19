@@ -340,7 +340,7 @@ try{
 <div align="center">
 <input type="submit" name="confirm" value="수	정" >
 <input type="reset" name="reset" value="다시입력">
-<input type="button" value="취	소" onclick="javascript:window.location='main.do'">
+<input type="button" value="취	소" onclick="javascript:window.location='/FORKI/content/join/ComMain.do'">
 </div>
 </form>
 </body>

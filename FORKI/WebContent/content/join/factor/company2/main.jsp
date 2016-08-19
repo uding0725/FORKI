@@ -54,7 +54,7 @@ function infoCheck(){
 <td colspan="3" align="center">
 <input type="submit" name="Submit" value="로그인">
 <input type="button"  value="회원가입" 
-onclick="document.location.href='/FORKI/content/join/factor/company2/inputForm.do'">
+onclick="document.location.href='/FORKI/content/join/joinSelect.jsp'">
 <input type="button"  value="id/pwd찾기"  onclick="infoCheck();">
 </td>
 </form>
@@ -71,7 +71,7 @@ onclick="document.location.href='/FORKI/content/join/factor/company2/inputForm.d
 <form  method="post" action="/FORKI/content/join/factor/company2/logout.do"> 
 <input type="submit"  value="로그아웃">
 <input type="button" value="회원정보변경" 
-onclick="javascript:window.location='modify.jsp'">
+onclick="javascript:window.location='/FORKI/content/join/ComModify.jsp'">
 </form>
 </td>
 </tr>

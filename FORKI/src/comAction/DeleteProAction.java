@@ -29,6 +29,6 @@ public class DeleteProAction implements CommandAction{
 	System.out.println("[[[["+check+"]]]]");
 	request.setAttribute("check", new Integer(check));
 	
-	return "/content/join/factor/company2/deletePro.jsp";//ÇØ´ç ºä
+	return "/content/join/ComDeletePro.jsp";//ÇØ´ç ºä
 	}
 }

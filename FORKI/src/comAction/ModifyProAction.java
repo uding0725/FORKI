@@ -39,6 +39,6 @@ public class ModifyProAction implements CommandAction{
 			manager.updateK_ETC(member);
 		}
 		
-		return "/content/join/factor/company2/modifyPro.jsp";
+		return "/content/join/ComModifyPro.jsp";
 	}
 }

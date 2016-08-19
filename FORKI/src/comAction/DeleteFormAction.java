@@ -10,6 +10,6 @@ public class DeleteFormAction implements CommandAction{
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
 		
-		return "/content/join/factor/company2/deleteForm.jsp";//ÇØ´ç ºä
+		return "/content/join/ComDeleteForm.jsp";//ÇØ´ç ºä
 	}
 }
