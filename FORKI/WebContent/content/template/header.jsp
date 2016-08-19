@@ -10,7 +10,7 @@
 				<ul>
 					<c:if test="${sessionScope.id == null}">
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="../main/main.jsp">HOME</a></li>
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">로그인</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/UserMain.jsp">로그인</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/joinSelect.jsp"">회원가입</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
 					</c:if>
