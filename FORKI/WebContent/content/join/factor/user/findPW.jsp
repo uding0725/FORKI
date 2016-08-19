@@ -14,8 +14,8 @@
 
 </c:if>
 <c:if test="${check == 1}">
-<form action="/FORKI/content/join/factor/user/updatePWD.do" method="post">
-<table border="1">
+<form action="/FORKI/content/join/UserUpdatePWD.do" method="post">
+<table border="1" align="center">
 <tr>
 <td colspan="2">비밀번호 변경</td>
 </tr>

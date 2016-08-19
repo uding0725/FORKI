@@ -21,7 +21,7 @@
    </script>
 </head>
 <BODY onload="begin()">
-<form name="delform" action="/FORKI/content/join/factor/company2/deletePro.do" 
+<form name="delform" action="/FORKI/content/join/ComDeletePro.do" 
 method="post" onSubmit="return checkIt()">
 <TABLE cellSpacing=1 cellPadding=1 width="260" border=1 align="center" >
  
@@ -39,7 +39,7 @@ method="post" onSubmit="return checkIt()">
     <TD colspan="2" align="middle">
       <INPUT type=submit value="회원탈퇴">
       <input type="button" value="취  소" 
-      onclick="document.location.href='/FORKI/content/join/factor/company2/main.do'">
+      onclick="document.location.href='/FORKI/content/join/ComMain.do'">
       </TD></TR>
 </TABLE>
 </form>

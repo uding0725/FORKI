@@ -28,7 +28,7 @@ public class SendEmail {
     	}
         if (state == 2) {
 	        subject = "U-ding 비밀전호 재발급 안내"; /*이메일의 제목*/
-	        code = "http://localhost:8088/FORKI/content/join/factor/company2/findPW.do?key=" + key; /*키값을 키 파라메터에 입력*/
+	        code = "http://localhost:8088/FORKI/content/join/ComFindPW.do?key=" + key; /*키값을 키 파라메터에 입력*/
 	        content = "위 주소를 클릭하시면 비밀번호를 재설정 하실 수 있습니다."; /*전송할 메세지*/
     	}
         

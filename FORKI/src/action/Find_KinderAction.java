@@ -10,15 +10,18 @@ import DAO_DTO.KiderDBBean;
 public class Find_KinderAction implements CommandAction{
 
 	public String requestPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
+		request.setCharacterEncoding("utf-8");
 		KiderDBBean kdb=KiderDBBean.getInstance();
 		String gu=request.getParameter("gu");
 		int guNum=0;
 		String dong= request.getParameter("dong");
 		String schul_nm=request.getParameter("schul_nm");
+		System.out.println(schul_nm);
 		Vector vecList=new Vector();
 		if(gu==null){
 			gu="0";
 			guNum=Integer.parseInt(gu);
+			vecList=kdb.selectKinder(guNum,dong,schul_nm);
 		}else{
 			guNum=Integer.parseInt(gu);
 			vecList=kdb.selectKinder(guNum,dong,schul_nm);

@@ -24,7 +24,7 @@ public class FindPWAction implements CommandAction {
 		/*세션에 저장된 키값과 파라메터로 받은 키값을 비교하여 인증값을 바꾸는 메서드 실행*/
 		
 		request.setAttribute("check", new Integer(check));
-		return "/content/join/factor/user/findPW.jsp";
+		return "/content/join/UserFindPW.jsp";
 	}
 
 }

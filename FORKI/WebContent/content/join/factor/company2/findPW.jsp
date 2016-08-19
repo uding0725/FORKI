@@ -11,7 +11,7 @@
 <input type="button" onclick="history.go(-1)" value="뒤로가기">
 </c:if>
 <c:if test="${check == 1}">
-<form action="/FORKI/content/join/factor/company2/updatePWD.do" method="post">
+<form action="/FORKI/content/join/ComUpdatePWD.do" method="post">
 <table border="1">
 <tr>
 <td colspan="2">비밀번호 변경</td>
