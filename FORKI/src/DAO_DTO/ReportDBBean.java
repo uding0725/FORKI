@@ -22,7 +22,7 @@ public class ReportDBBean {
 	public Connection getConnection() throws Exception{
 		String jdbcDriver = "jdbc:apache:commons:dbcp:/pool";
 		return DriverManager.getConnection(jdbcDriver);
-		
+		 
 	}
 	
 	//신고접수
