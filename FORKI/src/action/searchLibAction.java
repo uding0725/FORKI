@@ -11,7 +11,7 @@ import DAO_DTO.Tourism_ListDataBean;
 public class searchLibAction implements CommandAction {
 	
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
-		
+		 
 		System.out.println("search action 시작");
 		String select = request.getParameter("select");
 		String gu_nm =request.getParameter("gu_nm");
@@ -41,9 +41,9 @@ public class searchLibAction implements CommandAction {
 		} else if( select.equals( "tourism_list")){
 			vt = ldbb.getTour(gu_n,dongName,searchName);
 		} else if( select.equals("pub_lib")){
-			
+			vt = ldbb.getPubLib(gu_n,dongName,searchName);
 		} else if( select.equals( "toy_lib")){
-			
+			vt = ldbb.getToyLib(gu_n,dongName,searchName);
 		} else{
 			System.out.println("select?::" + select);
 		}
@@ -55,6 +55,7 @@ public class searchLibAction implements CommandAction {
 		}
 		System.out.println( "count::"+count);
 		
+		request.setAttribute("select", select);
 		request.setAttribute("vt",vt);
 		request.setAttribute("count", count);
 		

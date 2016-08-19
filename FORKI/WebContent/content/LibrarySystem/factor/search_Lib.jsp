@@ -121,9 +121,22 @@ a {
 	</c:if>
 	<c:if test="${count>0}">
 		<c:forEach var="v" items="${vt}">
-			${v.park_nm}			
-			검색결과 나올창<br> <a target="_blank" href="#"
+			<c:if test="${select=='tourism_list'}">
+				${v.park_nm}			
+				<br> <a target="_blank" href="#"
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a>
+			</c:if>
+			<c:if test="${select=='pub_lib'}">
+				${v.libry_name}			
+				<br> <a target="_blank" href="#"
+				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a>
+			</c:if>
+			<c:if test="${select=='toy_lib'}">
+				${v.lib_nm}			
+				<br> <a target="_blank" href="#"
+				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a>
+			</c:if>
+			
 		</c:forEach>
 	</c:if>	
 		</div>

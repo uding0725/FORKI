@@ -4,11 +4,12 @@ public class Toy_LibDataBean {
 
 	private String gu_nm;
 	private String lib_nm;
-	private String addr_rd;
+	private String adres;
 	private String tel;
 	private String website;
 	private String x;
 	private String y;
+	
 	public String getGu_nm() {
 		return gu_nm;
 	}
@@ -21,11 +22,11 @@ public class Toy_LibDataBean {
 	public void setLib_nm(String lib_nm) {
 		this.lib_nm = lib_nm;
 	}
-	public String getAddr_rd() {
-		return addr_rd;
+	public String getAdres() {
+		return adres;
 	}
-	public void setAddr_rd(String addr_rd) {
-		this.addr_rd = addr_rd;
+	public void setAdres(String adres) {
+		this.adres = adres;
 	}
 	public String getTel() {
 		return tel;

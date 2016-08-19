@@ -2,9 +2,8 @@ package DAO_DTO;
 
 public class Pub_LibDataBean {
 
-	private String lbrry_name;
+	private String libry_name;
 	private String gu_nm;
-	
 	private String adres;
 	private String tel;
 	private String website;
@@ -13,11 +12,11 @@ public class Pub_LibDataBean {
 	private String x_loc;
 	private String y_loc;
 	
-	public String getLbrry_name() {
-		return lbrry_name;
+	public String getLibry_name() {
+		return libry_name;
 	}
-	public void setLbrry_name(String lbrry_name) {
-		this.lbrry_name = lbrry_name;
+	public void setLibry_name(String libry_name) {
+		this.libry_name = libry_name;
 	}
 	public String getGu_nm() {
 		return gu_nm;
