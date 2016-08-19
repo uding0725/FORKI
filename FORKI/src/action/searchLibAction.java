@@ -11,12 +11,18 @@ public class searchLibAction implements CommandAction {
 	
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		
+		System.out.println("search action 시작");
 		String select = request.getParameter("select");
 		String gu_nm = request.getParameter("gu_nm");
 		String dongName = request.getParameter("dongName");
 		String searchName = request.getParameter("searchName");
 		Vector vt = null;
+		int count = 0;
+		
 		LibDBBean ldbb = LibDBBean.getInstance();
+		
+		System.out.println("se:"+select+ "g_n::" + gu_nm);
+		System.out.println("dongName:"+dongName+ "sN::" + searchName);
 		
 		if(select == "all"){
 			
@@ -27,7 +33,19 @@ public class searchLibAction implements CommandAction {
 		} else if( select == "toy_lib"){
 			
 		}
-		return "search_Lib.jsp";
+		
+		
+		if(vt == null){
+			count = 0;
+		}
+		count = vt.size();
+		
+		
+		
+		request.setAttribute("vt",vt);
+		request.setAttribute("count", count);
+		
+		return "searchLib.jsp";
 	}
 
 }
