@@ -4,16 +4,13 @@
 	<object class="org.apache.commons.dbcp.DriverManagerConnectionFactory">
 		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
 
-
-		<string value="jun"/>
+		<string value="uding"/>
 		<string value="1234"/>
-
-
 	</object>
 	
 	<object class="org.apache.commons.pool.impl.GenericObjectPool">
 		<object class="org.apache.commons.pool.PoolableObjectFactory" null="true" />
-	</object>
+	</object> 
 	
 	<object class="org.apache.commons.pool.KeyedObjectPoolFactory" null="true"/>
 	
