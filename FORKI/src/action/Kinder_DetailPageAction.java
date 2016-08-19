@@ -23,7 +23,7 @@ public class Kinder_DetailPageAction implements CommandAction {
 		request.setAttribute("studentNo", DBData.getStdnt_co_sm());
 		request.setAttribute("girlNo", DBData.getGrlstdn_co());
 		request.setAttribute("tcherNo", DBData.getFrl_tcher_co_sm());
-		request.setAttribute("famTcherNo", DBData.getFrl_female_tcher_c());
+		request.setAttribute("famTcherNo", DBData.getFrl_female_tcher_co());
 		request.setAttribute("rm", DBData.getRm());
 			
 		return "kinder_DetailPage.jsp";
