@@ -4,7 +4,7 @@ public class Pub_LibDataBean {
 
 	private String lbrry_name;
 	private String gu_nm;
-	private String addr_rd_nm;
+	
 	private String adres;
 	private String tel;
 	private String website;
@@ -25,12 +25,7 @@ public class Pub_LibDataBean {
 	public void setGu_nm(String gu_nm) {
 		this.gu_nm = gu_nm;
 	}
-	public String getAddr_rd_nm() {
-		return addr_rd_nm;
-	}
-	public void setAddr_rd_nm(String addr_rd_nm) {
-		this.addr_rd_nm = addr_rd_nm;
-	}
+	
 	public String getAdres() {
 		return adres;
 	}

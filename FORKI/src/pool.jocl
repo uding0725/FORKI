@@ -5,15 +5,17 @@
 		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
 
 
+
 		<string value="forte"/>
 		<string value="0725"/>
+
 
 
 	</object>
 	
 	<object class="org.apache.commons.pool.impl.GenericObjectPool">
 		<object class="org.apache.commons.pool.PoolableObjectFactory" null="true" />
-	</object>
+	</object> 
 	
 	<object class="org.apache.commons.pool.KeyedObjectPoolFactory" null="true"/>
 	

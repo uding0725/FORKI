@@ -10,7 +10,7 @@
 				<ul>
 					<c:if test="${sessionScope.id == null}">
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="../main/main.jsp">HOME</a></li>
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">로그인</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/UserMain.jsp">로그인</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/joinSelect.jsp"">회원가입</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
 					</c:if>
@@ -33,7 +33,7 @@
 					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/MedicalSystem/searchMedi.jsp?">주변시설 찾기</a>
 						<ul class="submenu">
 							<li class="pop-up"><a href="/FORKI/content/MedicalSystem/searchMedi.jsp" class="submenuLink longLink">의료시설조회</a></li>
-							<li class="pop-up"><a href="/FORKI/content/LibrarySystem/searchLib.jsp" class="submenuLink longLink">문화시설조회</a></li>
+							<li class="pop-up"><a href="/FORKI/content/LibrarySystem/searchLib.do" class="submenuLink longLink">문화시설조회</a></li>
 						</ul></li>
 					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/board/notifyList.jsp">게시판</a>
 						<ul class="submenu">

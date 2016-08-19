@@ -1,0 +1,159 @@
+package sysAction;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+
+import comAction.LogonDataBean;
+
+
+public class SystemDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
+	   
+		private static SystemDBBean instance = new SystemDBBean();
+	   
+		//SystemDBBean m = SystemDBBean.getInstance();
+	    public static SystemDBBean getInstance() {
+	        return instance;
+	    }
+	   
+	    private SystemDBBean() {}
+	   
+	    private Connection getConnection() throws Exception {
+	    	String jdbcDriver = "jdbc:apache:commons:dbcp:/pool";        
+	    	return DriverManager.getConnection(jdbcDriver);
+	    }
+	    //black_list.jsp
+	    public Vector getBLACKLIST() throws Exception {
+	    	Vector list = new Vector();
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        SystemDataBean black_list = null;
+	        try {
+	            conn = getConnection();
+	           
+	            pstmt = conn.prepareStatement(
+	            "select * from BLACK_LIST");
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	            	
+	            	do{
+	            	black_list = new SystemDataBean();
+	            	black_list.setId(rs.getString("id"));
+	            	black_list.setM_grade(rs.getInt("m_grade"));
+	            	black_list.setR_date(rs.getTimestamp("r_date"));
+	            	black_list.setContent(rs.getString("content"));
+	            	black_list.setState(rs.getString("state"));
+	            	list.add(black_list);
+	            	}while(rs.next());
+	            }
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+	        return list;
+	    }
+	    //MemberCare.jsp
+	    public Vector getMemcare() throws Exception {
+	    	Vector list = new Vector();
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        LogonDataBean mem_list = null;
+	        try {
+	            conn = getConnection();
+	           
+	            pstmt = conn.prepareStatement(
+	            "select * from MEMBER");
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	            	
+	            	do{
+	            	mem_list = new LogonDataBean();
+	            	mem_list.setId(rs.getString("id"));
+	            	mem_list.setName(rs.getString("name"));
+	            	mem_list.setEmail(rs.getString("e_mail"));
+	            	mem_list.setM_grade(rs.getInt("m_grade"));
+	            	mem_list.setYellow_card(rs.getInt("yellow_card"));
+	            	mem_list.setJoin_date(rs.getTimestamp("join_date"));
+	            	list.add(mem_list);
+	            	}while(rs.next());
+	            }
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+	        return list;
+	    }
+	    
+	    public LogonDataBean getMemUserCheck(String id) throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        LogonDataBean member=null;
+	        try {
+	            conn = getConnection();
+	           
+	            pstmt = conn.prepareStatement(
+	            "select * from MEMBER where id = ?");
+	            pstmt.setString(1, id);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	            	member = new LogonDataBean();
+	            	member.setId(rs.getString("id"));
+	            	member.setYellow_card(rs.getInt("yellow_card"));
+	            	member.setJoin_date(rs.getTimestamp("join_date"));
+	            	member.setEmail(rs.getString("e_mail"));
+	            	member.setAddress(rs.getString("address")); 
+	            }
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+	        return member;
+	    }
+	    
+	    public LogonDataBean getP_etcUserCheck(String id) throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        LogonDataBean member=null;
+	        try {
+	            conn = getConnection();
+	           
+	            pstmt = conn.prepareStatement(
+	            "select * from P_ETC where id = ?");
+	            pstmt.setString(1, id);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	            	member = new LogonDataBean();
+	            	member.setNickname(rs.getString("nickname"));
+	            	member.setSex(rs.getString("sex"));
+	            }
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+	        return member;
+	    }
+
+}
