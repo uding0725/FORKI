@@ -59,12 +59,11 @@ table{
 <span>
 
    <select name="searchn">
-   <option value="0">전체</option>  
-   <option value="1">제목</option>
-   <option value="2">내용</option>
+   <option value="0">제목</option>
+   <option value="1">내용</option>
    </select>
    <input type="text" style="width:10%" name="search">
-   <input type="button" name="searching" value="검색">
+   <input type="button" name="search" value="검색">
    <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/recommendWrite.do'">
 	
 </span>

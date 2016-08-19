@@ -79,7 +79,6 @@ public class ControllerUsingURI extends HttpServlet {
 		} catch (Throwable e) {
 			throw new ServletException(e);
 		}
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}

@@ -46,7 +46,7 @@ public class KiderDBBean {
 				DBdata.setStdnt_co_sm(rs.getInt("stdnt_co_sm"));
 				DBdata.setGrlstdn_co(rs.getInt("grlstdn_co"));
 				DBdata.setFrl_tcher_co_sm(rs.getInt("frl_tcher_co_sm"));
-				DBdata.setFrl_female_tcher_c(rs.getInt("frl_female_tcher_co"));
+				DBdata.setFrl_female_tcher_co(rs.getInt("frl_female_tcher_co"));
 				DBdata.setRm(rs.getString("rm"));
 			}
 		} catch (Exception e) {
@@ -65,26 +65,24 @@ public class KiderDBBean {
 		
 		try{
 			con=getConnection();
-			pstmt=con.prepareStatement("insert into kidergarten values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-			
+			pstmt=con.prepareStatement("insert into kindergarten(schul_nm,schul_num,ofcdc,matr_gu,fond,zip,adres,dong,telno,clas_co,stdnt_co_sm,grlstdn_co,frl_tcher_co_sm,frl_female_tcher_co,rm,state,reg_date) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1,kidmember.getSchul_nm());
 			pstmt.setInt(2, kidmember.getSchul_num());
 			pstmt.setString(3, kidmember.getOfcdc());
 			pstmt.setString(4, kidmember.getMatr_gu());
-			pstmt.setString(5, kidmember.getDong());
-			pstmt.setString(6, kidmember.getFond());
-			pstmt.setString(7,kidmember.getTelno());
-			pstmt.setString(8,kidmember.getZip());
-			pstmt.setString(9, kidmember.getAdres());
-			pstmt.setInt(10, kidmember.getStdnt_co_sm());
-			pstmt.setInt(11, kidmember.getGrlstdn_co());
-			pstmt.setInt(12, kidmember.getClas_co());
+			pstmt.setString(5, kidmember.getFond());
+			pstmt.setString(6,kidmember.getZip());
+			pstmt.setString(7, kidmember.getAdres());
+			pstmt.setString(8, kidmember.getDong());
+			pstmt.setString(9,kidmember.getTelno());
+			pstmt.setInt(10, kidmember.getClas_co());
+			pstmt.setInt(11, kidmember.getStdnt_co_sm());
+			pstmt.setInt(12, kidmember.getGrlstdn_co());
 			pstmt.setInt(13,kidmember.getFrl_tcher_co_sm());
-			pstmt.setInt(14, kidmember.getFrl_female_tcher_c());
+			pstmt.setInt(14, kidmember.getFrl_female_tcher_co());
 			pstmt.setString(15, kidmember.getRm());
 			pstmt.setString(16, kidmember.getState());
 			pstmt.setTimestamp(17, kidmember.getReg_date());
-			
 			pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -270,6 +268,65 @@ public class KiderDBBean {
 		try{
 	
 			conn=getConnection();
+			if(gunum==0){
+				if(Dong.equals("")&&Schul_nm.equals("")){
+					pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten ");
+					rs=pstmt.executeQuery();
+					if(rs.next()){                
+					do{
+						KiderDataBean kdb=new KiderDataBean();
+						kdb.setSchul_num(rs.getInt("schul_num"));
+						kdb.setSchul_nm(rs.getString("schul_nm"));
+						kdb.setAdres(rs.getString("adres"));
+						kdb.setTelno(rs.getString("telno"));
+						vecList.addElement(kdb);
+					}while(rs.next());
+	    			}
+				}else if(!Dong.equals("")&&Schul_nm.equals("")){
+					pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where dong=?");
+					pstmt.setString(1,Dong);
+					rs=pstmt.executeQuery();
+					if(rs.next()){
+						do{
+							KiderDataBean kdb=new KiderDataBean();
+							kdb.setSchul_num(rs.getInt("schul_num"));
+							kdb.setSchul_nm(rs.getString("schul_nm"));
+							kdb.setAdres(rs.getString("adres"));
+							kdb.setTelno(rs.getString("telno"));
+							vecList.addElement(kdb);
+						}while(rs.next());
+					}
+				}else if(Dong.equals("")&&!Schul_nm.equals("")){
+					pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where schul_nm=?");
+					pstmt.setString(1,schul_nm);
+					rs=pstmt.executeQuery();
+					if(rs.next()){
+						do{
+							KiderDataBean kdb=new KiderDataBean();
+							kdb.setSchul_num(rs.getInt("schul_num"));
+							kdb.setSchul_nm(rs.getString("schul_nm"));
+							kdb.setAdres(rs.getString("adres"));
+							kdb.setTelno(rs.getString("telno"));
+							vecList.addElement(kdb);
+						}while(rs.next());
+					}
+				}else{
+					pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where schul_nm=? and dong=?");
+					pstmt.setString(1,Schul_nm);
+					pstmt.setString(2,Dong);
+					rs=pstmt.executeQuery();
+					if(rs.next()){
+						do{
+							KiderDataBean kdb=new KiderDataBean();
+							kdb.setSchul_num(rs.getInt("schul_num"));
+							kdb.setSchul_nm(rs.getString("schul_nm"));
+							kdb.setAdres(rs.getString("adres"));
+							kdb.setTelno(rs.getString("telno"));
+							vecList.addElement(kdb);
+						}while(rs.next());
+					}
+				}
+			}
 			if(Dong.equals("")&&Schul_nm.equals("")){
 				pstmt=conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu="+"'"+gunm[gunum]+"'");
 				rs=pstmt.executeQuery();

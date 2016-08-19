@@ -15,7 +15,7 @@ public class RecommendContentAction implements CommandAction{
 		PrBoardDBBean pbdb=PrBoardDBBean.getInstance();
 		article=pbdb.getArticle(num);
 		request.setAttribute("num", new Integer(num));
-		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("pageNum",  new Integer(pageNum));
 		request.setAttribute("article", article);
 		return "recommendContent.jsp";
 	}

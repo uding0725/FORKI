@@ -1,4 +1,4 @@
-package DAO_DTO;//À¯Ä¡¿ø dto
+package DAO_DTO;//ï¿½ï¿½Ä¡ï¿½ï¿½ dto
 
 import java.sql.Timestamp;
 public class KiderDataBean {
@@ -16,7 +16,7 @@ public class KiderDataBean {
 	private int stdnt_co_sm;
 	private int grlstdn_co;
 	private int frl_tcher_co_sm;
-	private int frl_female_tcher_c;
+	private int frl_female_tcher_co;
 	private String rm;
 	private String state;
 	private Timestamp reg_date;
@@ -119,11 +119,11 @@ public class KiderDataBean {
 	public void setFrl_tcher_co_sm(int frl_tcher_co_sm) {
 		this.frl_tcher_co_sm = frl_tcher_co_sm;
 	}
-	public int getFrl_female_tcher_c() {
-		return frl_female_tcher_c;
+	public int getFrl_female_tcher_co() {
+		return frl_female_tcher_co;
 	}
-	public void setFrl_female_tcher_c(int frl_female_tcher_c) {
-		this.frl_female_tcher_c = frl_female_tcher_c;
+	public void setFrl_female_tcher_co(int frl_female_tcher_co) {
+		this.frl_female_tcher_co = frl_female_tcher_co;
 	}
 	public String getRm() {
 		return rm;

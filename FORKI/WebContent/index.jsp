@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% response.sendRedirect("/FORKI/content/adminPage/signUp.do"); %>
+<% response.sendRedirect("/FORKI/content/main/main.do"); %>
 </body>
 </html>
