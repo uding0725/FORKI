@@ -21,8 +21,10 @@ public class LibDBBean {
 		return DriverManager.getConnection(jdbcDriver);
 	}
 	
+	//전체 주변시설 검색
+	//Public Vector getAll(int gu_nm,String dong)
+	
 	//산,공원 가져오기
-	//구지정안하고 전체일때 지정
 	public Vector getTour(int gu_nm,String dong, String searchN) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -177,6 +179,98 @@ public class LibDBBean {
 		}
 		return vt;
 	}
+	
+	public Toy_LibDataBean viewToy(String adres) throws Exception{
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Toy_LibDataBean article = new Toy_LibDataBean();
+		
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from toy_lib where adres="+adres);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				article.setGu_nm(rs.getString("gu_nm"));
+				article.setLib_nm(rs.getString("lib_nm"));
+				article.setAdres(rs.getString("adres"));
+				article.setTel(rs.getString("tel"));
+				article.setWebsite(rs.getString("website"));
+				article.setX(rs.getString("x"));
+				article.setY(rs.getString("y"));
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			JdbcUtil.close(conn);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);
+		}
+		
+		return article;
+	}
+	
+public Tourism_ListDataBean viewTour(String adres) throws Exception{
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Tourism_ListDataBean article = new Tourism_ListDataBean();
+		
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from tourism_list where adres="+adres);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				article.setPark_nm(rs.getString("park_nm"));
+				article.setPark_se(rs.getString("park_se"));
+				article.setAdres(rs.getString("adres"));
+				article.setTel(rs.getString("tel"));
+				article.setGu_nm(rs.getString("gu_nm"));
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			JdbcUtil.close(conn);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(rs);
+		}
+		
+		return article;
+	}
+
+public Pub_LibDataBean viewPublic(String adres) throws Exception{
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	Pub_LibDataBean article = new Pub_LibDataBean();
+	
+	try{
+		conn = getConnection();
+		pstmt = conn.prepareStatement("select * from pub_lib where adres="+adres);
+		rs = pstmt.executeQuery();
+		if(rs.next()){
+			article.setLibry_name(rs.getString("libry_name"));
+			article.setGu_nm(rs.getString("gu_nm"));
+			article.setAdres(rs.getString("adres"));
+			article.setTel(rs.getString("tel"));
+			article.setLibry_close_date(rs.getString("libry_close_date"));
+			article.setLibry_se(rs.getString("libry_se"));
+			article.setX_loc(rs.getString("x_loc"));
+			article.setY_loc(rs.getString("y_loc"));
+		}
+	}catch(Exception ex){
+		ex.printStackTrace();
+	}finally{
+		JdbcUtil.close(conn);
+		JdbcUtil.close(pstmt);
+		JdbcUtil.close(rs);
+	}
+	
+	return article;
+}
 	
 	
 	

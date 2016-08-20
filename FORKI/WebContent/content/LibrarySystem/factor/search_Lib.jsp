@@ -51,6 +51,17 @@ a {
 	text-decoration: none;
 }
 </style>
+
+<script>
+	function viewDetail(num) {
+		//url = "/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=" + num;
+		//window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
+	}
+	var x =new Array();
+	var y = new Array();
+	var title = new Array();
+	var coord = new Array();
+</script>	
 </head>
 <div id="lib-wrap">
 	<font size="+2">문화시설</font> <span
@@ -61,12 +72,13 @@ a {
 	<div id="lib-container">
 		<form name=search_libForm aciton="/FORKI/content/LibrarySystem/searchLib.do">
 		<div id="lib-header">
-			<table border="1" cellpadding=0 cellspacing=0 width="685"
-				height="100">
+			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
 				<tr>
-					<td width="50" align="center"><strong>
+					<td width="50" align="center">
+					<strong>
 							<h5>조회</h5>
-					</strong></td>
+					</strong>
+					</td>
 
 					<td colspan="1" align="center">
 					<input type="radio" name="select" value="all">전체 &nbsp; &nbsp; 
@@ -115,33 +127,91 @@ a {
 		</div>
 		</form>
 		<p>총 검색 건수 : ${count} 건</p>
-		<div id="lib-content">
+		<div id="lib-content" style="overflow:auto">
+	
 	<c:if test="${count==0 }">
 		검색 결과가 없습니다.
 	</c:if>
 	<c:if test="${count>0}">
 		<c:forEach var="v" items="${vt}">
 			<c:if test="${select=='tourism_list'}">
-				${v.park_nm}			
-				<br> <a target="_blank" href="#"
-				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a>
+				-명칭 :[${v.park_se}] ${v.park_nm}			
+				<a target="_blank" href="#"
+				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
+				 주소 : ${v.adres} <br>
+				
+				 <script>
+        			title.push('${v.park_nm}');
+        			coord.push('${v.adres}')
+        		</script>
 			</c:if>
-			<c:if test="${select=='pub_lib'}">
-				${v.libry_name}			
-				<br> <a target="_blank" href="#"
-				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a>
+			 <c:if test="${select=='pub_lib'}">
+				-명칭 : [${v.libry_se}] ${v.libry_name}			
+				<a target="_blank" href="#"
+				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
+				주소 : ${v.adres} <br>
+				전화번호 : ${v.tel} <br>
+				[자세히 알아보기] <br>
+				<script>
+        			x.push('${v.x_loc}');
+        			y.push('${v.y_loc}')
+        	
+        		</script>
 			</c:if>
+			
 			<c:if test="${select=='toy_lib'}">
-				${v.lib_nm}			
-				<br> <a target="_blank" href="#"
-				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a>
-			</c:if>
+				-명칭 : ${v.lib_nm}			
+				 <a target="_blank" href="#"
+				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
+				주소 : ${v.adres} <br>
+				전화번호 : ${v.tel}  <br>		
+				<script>
+        			x.push('${v.x}');
+        			y.push('${v.y}')
+        	
+        		</script>		
+			</c:if> 
 			
 		</c:forEach>
 	</c:if>	
-		</div>
 	
-		<div id="lib-map">지도 띄울 창</div>
+		</div>
+	<div id="lib-map">
+	<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
+<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new daum.maps.LatLng(x[0], y[0]), // 지도의 중심좌표
+		        level: 4, // 지도의 확대 레벨
+		        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new daum.maps.Map(mapContainer, mapOption); 
+		// 마커 이미지의 주소
+			var markerImageUrl = '../img/toy.png'
+		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
+
+		// 마커 이미지를 생성한다
+		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+
+		// 지도에 마커를 생성하고 표시한다
+		for(i=0; i<x.length; i++ ){
+		var marker = new daum.maps.Marker({
+		    position: new daum.maps.LatLng(x[i], y[i]), // 마커의 좌표
+		    image : markerImage, // 마커의 이미지
+		    map: map // 마커를 표시할 지도 객체
+		});
+		}
+	</script>
+
 	</div>
-</div>
-</html>
+	</div>
+	</div>
+	</html>
+	

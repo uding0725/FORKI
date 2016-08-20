@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import DAO_DTO.LibDBBean;
 import DAO_DTO.Tourism_ListDataBean;
 
-public class searchLibAction implements CommandAction {
+public class LibSearchAction implements CommandAction {
 	
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		 
