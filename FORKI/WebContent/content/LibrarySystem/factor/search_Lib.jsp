@@ -53,9 +53,9 @@ a {
 </style>
 
 <script>
-	function viewDetail(num) {
-		//url = "/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=" + num;
-		//window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
+	function viewDetail(adres,select) {
+		url = "/FORKI/content/LibrarySystem/factor/lib_detailPage.do?adres=" + adres+"&select="+select;
+		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	var x =new Array();
 	var y = new Array();
@@ -151,7 +151,8 @@ a {
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
 				주소 : ${v.adres} <br>
 				전화번호 : ${v.tel} <br>
-				[자세히 알아보기] <br>
+				<a href="javascript:viewDetail('${v.adres}','${select}')">[상세정보 보기]</a>
+				<br>
 				<script>
         			x.push('${v.x_loc}');
         			y.push('${v.y_loc}')
@@ -164,7 +165,9 @@ a {
 				 <a target="_blank" href="#"
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
 				주소 : ${v.adres} <br>
-				전화번호 : ${v.tel}  <br>		
+				전화번호 : ${v.tel}  <br>	
+				<a href="javascript:viewDetail('${v.adres}','${select}')">[상세정보 보기]</a>
+				<br>	
 				<script>
         			x.push('${v.x}');
         			y.push('${v.y}')
