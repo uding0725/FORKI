@@ -16,12 +16,16 @@ public class Find_KinderAction implements CommandAction{
 		int guNum=0;
 		String dong= request.getParameter("dong");
 		String schul_nm=request.getParameter("schul_nm");
-		System.out.println(schul_nm);
 		Vector vecList=new Vector();
+		if(dong==null)
+			dong="";
+		if(schul_nm==null)
+			schul_nm="";
 		if(gu==null){
 			gu="0";
+			if(!dong.equals("")||!schul_nm.equals("")){
 			guNum=Integer.parseInt(gu);
-			vecList=kdb.selectKinder(guNum,dong,schul_nm);
+			vecList=kdb.selectKinder(guNum,dong,schul_nm);}
 		}else{
 			guNum=Integer.parseInt(gu);
 			vecList=kdb.selectKinder(guNum,dong,schul_nm);
