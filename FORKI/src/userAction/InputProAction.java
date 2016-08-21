@@ -86,7 +86,7 @@ public class InputProAction implements CommandAction {
 		
 		request.setAttribute("check", new Integer(check));
 
-		return "/content/join/factor/user/inputPro.jsp";
+		return "/content/join/UserInputPro.jsp";
 	}
 
 }

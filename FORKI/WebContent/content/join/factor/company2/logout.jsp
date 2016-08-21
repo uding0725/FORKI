@@ -1,4 +1,4 @@
 <%
 session.invalidate();
-response.sendRedirect("main.jsp");
+response.sendRedirect("/FORKI/content/join/UserMain.do");
 %>

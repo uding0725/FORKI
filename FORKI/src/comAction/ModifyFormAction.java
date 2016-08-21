@@ -40,7 +40,7 @@ public class ModifyFormAction implements CommandAction{
 			request.setAttribute("schul_nm",k.getSchul_nm());
 			}
 			}
-		return "/content/join/factor/company2/modifyForm2.jsp";
+		return "/content/join/ComModifyForm2.jsp";
 	}
 
 }

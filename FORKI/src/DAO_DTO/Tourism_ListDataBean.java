@@ -6,7 +6,7 @@ public class Tourism_ListDataBean {
 	private String park_se;
 	private String adres;
 	private String gu_nm;
-	private String addr_rd_nm;
+
 	private String tel;
 	public String getPark_nm() {
 		return park_nm;
@@ -32,12 +32,7 @@ public class Tourism_ListDataBean {
 	public void setGu_nm(String gu_nm) {
 		this.gu_nm = gu_nm;
 	}
-	public String getAddr_rd_nm() {
-		return addr_rd_nm;
-	}
-	public void setAddr_rd_nm(String addr_rd_nm) {
-		this.addr_rd_nm = addr_rd_nm;
-	}
+	
 	public String getTel() {
 		return tel;
 	}

@@ -71,7 +71,52 @@ public class FreeBoardDBBean {
 	
 	
 	//전체 글 수 구하기
-	public int getArticleCount() throws Exception{
+	   public int getArticleCount(String type,String title,String f) throws Exception{
+		      Connection conn = null;
+		      PreparedStatement pstmt = null;
+		      ResultSet rs = null;
+		      
+		      int x = 0;
+		      try{
+		         conn = getConnection();
+		         switch(type){
+		         case "0":
+		            pstmt = conn.prepareStatement("select count(*) from board "
+		               + "where title like ? and (subject like ? or content like ? )");
+		            pstmt.setString(1, "%"+title+"%");
+		            pstmt.setString(2, "%"+f+"%");
+		            pstmt.setString(3, "%"+f+"%");
+		         break;
+		         case "1":
+		            pstmt = conn.prepareStatement("select count(*) from board "
+		                  + "where title like ? and subject like ? ");
+		            pstmt.setString(1, "%"+title+"%");
+		            pstmt.setString(2, "%"+f+"%");
+		         break;
+		         case "2":
+		            pstmt = conn.prepareStatement("select count(*) from board "
+		                  + "where title like ? and content like ? ");
+		            pstmt.setString(1, "%"+title+"%");
+		            pstmt.setString(2, "%"+f+"%");
+		         break;
+		         }
+		         rs = pstmt.executeQuery();
+		         if(rs.next()){
+		            x = rs.getInt(1);
+		         } 
+		         
+		      } catch(Exception ex){
+		         ex.printStackTrace();
+		      } finally {
+		         JdbcUtil.close(rs);
+		         JdbcUtil.close(conn);
+		         JdbcUtil.close(pstmt);
+		      }
+		      return x;
+		   }
+		   
+
+	/*public int getArticleCount() throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -95,44 +140,93 @@ public class FreeBoardDBBean {
 			JdbcUtil.close(pstmt);
 		}
 		return x;
-	}
+	}*/
 	
 	
-	public int selectArticle(String writer, String subject, String content) throws Exception {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		String dbwriter = "";
-		String dbsubject = "";
-		String dbcontent = "";
-		int x = -1;
-		try {
-			conn = getConnection();
-
-			pstmt = conn.prepareStatement("select * from board where writer=like '%?%' or subject=like '%?%' or content=like '%?%'");
-			pstmt.setString(1, writer);
-			pstmt.setString(2, subject);
-			pstmt.setString(3, content);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				dbwriter = rs.getString("writer");
-				dbsubject = rs.getString("subject");
-				dbcontent = rs.getString("content");
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(conn);
-			JdbcUtil.close(pstmt);
-		}
-		return x;
-	}
 
 	//페이지당 갯수에 맞춰서 나오기
-	public List getArticles(int start, int end) throws Exception{
+	   public List getArticles(int start, int end,String type,String title,String f) throws Exception{
+		      
+		      Connection conn = null;
+		      PreparedStatement pstmt = null;
+		      ResultSet rs = null;
+		      List articleList = null;
+		      
+		      try{
+		         
+		      conn=getConnection();
+		      switch(type){
+		      case "0":
+		      pstmt = conn.prepareStatement("select * from (select f.*, rownum r from "+
+		              "(select * from board order by reg_date desc) f "+
+		              "order by reg_date desc)  where (r >= ? and r <= ?) and title like ? and (subject like ? or content like ? ) ");
+		      pstmt.setInt(1, start);
+		      pstmt.setInt(2, end);
+		      pstmt.setString(3, "%"+title+"%");
+		      pstmt.setString(4, "%"+f+"%");
+		      pstmt.setString(5, "%"+f+"%");
+		      break;
+		      case "1":
+		         pstmt = conn.prepareStatement("select * from (select f.*, rownum r from "+
+		                 "(select * from board order by reg_date desc) f "+
+		                 "order by reg_date desc)  where (r >= ? and r <= ?) and title like ? and subject like ? ");
+		         pstmt.setInt(1, start);
+		         pstmt.setInt(2, end);
+		         pstmt.setString(3, "%"+title+"%");
+		         pstmt.setString(4, "%"+f+"%");
+		         break;
+		      case "2":
+		         pstmt = conn.prepareStatement("select * from (select f.*, rownum r from "+
+		                 "(select * from board order by reg_date desc) f "+
+		                 "order by reg_date desc)  where (r >= ? and r <= ?) and title like ? and content like ? ");
+		         pstmt.setInt(1, start);
+		         pstmt.setInt(2, end);
+		         pstmt.setString(3, "%"+title+"%");
+		         pstmt.setString(4, "%"+f+"%");
+		         break;
+		      }   
+		      
+		      
+		      
+		      rs = pstmt.executeQuery();
+		      
+		      if(rs.next()){
+		         articleList = new ArrayList(end);
+		         do {
+		            FreeBoardDataBean article = new FreeBoardDataBean();
+		            article.setNum(rs.getInt("num"));
+		            article.setId(rs.getString("id"));
+		            article.setWriter(rs.getString("writer"));
+		            
+		            if((rs.getString("title")).equals("0")){
+		               article.setTitle("[소곤소곤]");
+		            } else if((rs.getString("title")).equals("1")){
+		               article.setTitle("[유익한 경로]");
+		            } else{
+		               article.setTitle("[기타]");
+		            }
+		            
+		            article.setSubject(rs.getString("subject"));
+		            article.setContent(rs.getString("content"));
+		            article.setReadcount(rs.getInt("readcount"));
+		         
+
+		            articleList.add(article);
+		            //레코드를 board.dataBean에 저장후 list에 저장
+		            } while (rs.next());
+		               }
+		         } catch (Exception ex) {
+		            ex.printStackTrace();
+		         } finally {
+		            JdbcUtil.close(rs);
+		            JdbcUtil.close(conn);
+		            JdbcUtil.close(pstmt);
+		         }
+
+		   return articleList;
+		      }
+
+	/*public List getArticles(int start, int end) throws Exception{
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -187,7 +281,7 @@ public class FreeBoardDBBean {
 			}
 
 	return articleList;
-		}
+		}*/
 		
 	//상세보기
 	public FreeBoardDataBean getArticle(int num) throws Exception {

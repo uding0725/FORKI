@@ -5,6 +5,13 @@ function mouseOverMap(guCode)
 {
 	document.getElementById('searchGuMap').src = "../images/map/"+guCode+".png";
 }
+
+function mouseOutMap()
+{
+	
+	document.getElementById('searchGuMap').src = "../img/seoul_map.png";
+  
+}
 </script> 
 			<div id="factor">
 				<h4 class="searchMapTitle">

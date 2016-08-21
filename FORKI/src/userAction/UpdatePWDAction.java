@@ -20,7 +20,7 @@ public class UpdatePWDAction implements CommandAction{
 		System.out.println(x);
 		
 		request.setAttribute("x", x);
-		return "/content/join/factor/user/updatePWD.jsp";
+		return "/content/join/UserUpdatePWD.jsp";
 	}
 }
  

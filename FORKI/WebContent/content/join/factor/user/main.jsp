@@ -29,7 +29,7 @@ function checkIt()
 }
 function infoCheck(){
 
-	window.open("findInfo.jsp","post","toolbar=no ,width=500 ,height=500,directories=no,status=yes,scrollbars=yes,menubar=no");
+	window.open("/FORKI/content/join/factor/user/findInfo.jsp","post","toolbar=no ,width=500 ,height=500,directories=no,status=yes,scrollbars=yes,menubar=no");
 }
 </script>
 </head>
@@ -54,7 +54,7 @@ function infoCheck(){
 <td colspan="3" align="center">
 <input type="submit" name="Submit" value="로그인">
 <input type="button"  value="회원가입" 
-onclick="document.location.href='/FORKI/content/join/factor/user/inputForm.do'">
+onclick="document.location.href='/FORKI/content/join/joinSelect.jsp'">
 <input type="button"  value="id/pwd찾기"  onclick="infoCheck();">
 </td>
 </form>
