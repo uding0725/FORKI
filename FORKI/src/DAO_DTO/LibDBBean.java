@@ -189,7 +189,7 @@ public class LibDBBean {
 		
 		try{
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select * from toy_lib where adres="+adres);
+			pstmt = conn.prepareStatement("select * from toy_lib where adres='"+adres+"'");
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				article.setGu_nm(rs.getString("gu_nm"));
@@ -220,7 +220,7 @@ public Tourism_ListDataBean viewTour(String adres) throws Exception{
 		
 		try{
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select * from tourism_list where adres="+adres);
+			pstmt = conn.prepareStatement("select * from tourism_list where adres='"+adres+"'");
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				article.setPark_nm(rs.getString("park_nm"));
@@ -249,13 +249,14 @@ public Pub_LibDataBean viewPublic(String adres) throws Exception{
 	
 	try{
 		conn = getConnection();
-		pstmt = conn.prepareStatement("select * from pub_lib where adres="+adres);
+		pstmt = conn.prepareStatement("select * from pub_lib where adres='"+adres+"'");
 		rs = pstmt.executeQuery();
 		if(rs.next()){
 			article.setLibry_name(rs.getString("libry_name"));
 			article.setGu_nm(rs.getString("gu_nm"));
 			article.setAdres(rs.getString("adres"));
 			article.setTel(rs.getString("tel"));
+			article.setWebsite(rs.getString("website"));
 			article.setLibry_close_date(rs.getString("libry_close_date"));
 			article.setLibry_se(rs.getString("libry_se"));
 			article.setX_loc(rs.getString("x_loc"));
