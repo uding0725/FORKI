@@ -33,6 +33,7 @@
 		<hr />
 		<input type="button" onclick="location.href='/FORKI/content/test/admin.jsp'" value="관리자 로그인">
 		<input type="button" onclick="location.href='/FORKI/content/test/person.jsp'" value="개인 로그인">
+		<input type="button" onclick="location.href='/FORKI/content/test/person2.jsp'" value="개인2 로그인">
 		<input type="button" onclick="location.href='/FORKI/content/test/company.jsp'" value="유치원 로그인">
 		<input type="button" onclick="location.href='/FORKI/content/test/logout.jsp'" value="로그아웃">
 	</table>
