@@ -17,7 +17,7 @@ table {
 		<c:forEach var="article" items="${chartList}">
 			<li class <c:if test="${article.num == 1}">="active"</c:if> rel="tab${article.num}">${article.name}</li>
 		</c:forEach>
-		<li>추가하기</li>
+		<li class rel="tabIO">추가하기</li>
 	</ul>
 	<c:forEach var="article" items="${chartList}">
 		<div class="tab_container">
@@ -395,5 +395,13 @@ table {
 		</div>
 		<!-- .tab_container -->
 	</c:forEach>
+	<div class="tab_container">
+			<div id="tabIO" class="tab_content">
+				<form method="post" action="#" name="kidIO">
+					
+					
+				</form>
+			</div>
+		</div>
 </div>
 <!-- #container -->
