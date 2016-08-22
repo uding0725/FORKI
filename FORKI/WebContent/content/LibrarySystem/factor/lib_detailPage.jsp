@@ -117,7 +117,12 @@
 	                </select>
 		        </div>  -->
 		 
-		  <c:if test="${select=='toy_lib'}">
+		 
+		 
+		 
+		 
+		 
+		  <c:if test="${type=='toy'}">
 		  <h2> 세부정보 </h2>
 		  <br>
 			<p>명칭: ${article.lib_nm}
@@ -134,7 +139,7 @@
 			 </script>
 			
 		  </c:if>
-		  <c:if test="${select=='pub_lib'}">   
+		  <c:if test="${type=='p'}">   
 		 
 		  <h2> 세부정보 </h2>
 		  <br>

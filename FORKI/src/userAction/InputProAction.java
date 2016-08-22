@@ -1,6 +1,7 @@
 package userAction;
 
 import java.sql.Timestamp;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -64,7 +65,8 @@ public class InputProAction implements CommandAction {
 		manager.insertP_ETC(p_etc);
 		//KID_DATA insert
 		LogonDataBean kid_data = new LogonDataBean();
-
+		/*Vector veclist = new Vector();*/
+		
 		String child_name = request.getParameter("child_name");
 		String schul_nm = request.getParameter("schul_nm");
 /*		System.out.println("child_name:"+child_name + " / schul_nm:"+schul_nm);

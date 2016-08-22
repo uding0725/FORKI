@@ -1,6 +1,6 @@
 package DAO_DTO;
 
-//보건소 DTO
+
 public class HealCenDataBean {
 	private int num;
 	private String h_code;
@@ -14,6 +14,13 @@ public class HealCenDataBean {
 	private String tell;
 	private String week_time;
 	private String weekend_time;
+	private String break_time;
+	public String getBreak_time() {
+		return break_time;
+	}
+	public void setBreak_time(String break_time) {
+		this.break_time = break_time;
+	}
 	private String rm;
 	public String getH_code() {
 		return h_code;
