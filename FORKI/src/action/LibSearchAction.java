@@ -56,7 +56,11 @@ public class LibSearchAction implements CommandAction {
 		if(vt == null){
 			count = 0;
 		}else{
+			if(select.equals("all")){
+				count = vTour.size()+vPub.size()+vToy.size();	
+			} else{
 			count = vt.size();
+			}
 		}
 		System.out.println( "count::"+count);
 		
