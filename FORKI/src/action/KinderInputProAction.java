@@ -20,8 +20,8 @@ public class KinderInputProAction implements CommandAction{
 		member.setDong(request.getParameter("dong"));
 		member.setFond(request.getParameter("fond"));
 		member.setTelno(request.getParameter("telno"));
-		member.setZip(request.getParameter("zip"));
-		member.setAdres(request.getParameter("adres"));
+		member.setZip(request.getParameter("zipcode"));
+		member.setAdres(request.getParameter("address"));
 		member.setStdnt_co_sm(Integer.parseInt(request.getParameter("stdnt_co_sm")));
 		member.setGrlstdn_co(Integer.parseInt(request.getParameter("grlstdn_co")));
 		member.setClas_co(Integer.parseInt(request.getParameter("clas_co")));

@@ -24,7 +24,7 @@ public class KiderDBBean {
 		return DriverManager.getConnection(jdbcDriver);
 	}
 
-	//占쏙옙치占쏙옙 占쏢세븝옙占쏙옙
+	
 	public KiderDataBean selectDetKid(String SCHUL_NUM)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -58,7 +58,7 @@ public class KiderDBBean {
 		}
 		return DBdata;
 	}
-	//占쏙옙치占쏙옙 占쏙옙占�
+	
 	public void insertKid(KiderDataBean kidmember)throws Exception{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -91,7 +91,7 @@ public class KiderDBBean {
 			JdbcUtil.close(con);
 		}
 	}
-	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙- 占쏙옙치占쏙옙 占쏙옙占쏙옙-占쏙옙占쏙옙징占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占�
+	
 	public int getCountKider()throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -113,7 +113,7 @@ public class KiderDBBean {
 		}
 		return x;
 	}
-	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙- 占쏙옙치占쏙옙 占쏙옙占쏙옙-占쏙옙占쏙옙징占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占�
+	
 	public int getCountKider(int sn,String search)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -137,7 +137,7 @@ public class KiderDBBean {
 		return x;
 	}
 	
-	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙- 占쏙옙치占쏙옙 占쏙옙占쏙옙(占쌩곤옙-占쏙옙占쏙옙) 占쌓놂옙 占싯삼옙占쏙옙
+	
 	public Vector signKinder(int start,int end)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -177,7 +177,7 @@ public class KiderDBBean {
 		}
 		return vecList;
 	}
-	//占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙- 占쏙옙치占쏙옙 占쏙옙占쏙옙(占쌩곤옙-占쏙옙占쏙옙) 占쌓놂옙 占싯삼옙占쏙옙
+	
 		public Vector signKinder(int start,int end,int n,String search)throws Exception{
 			Connection conn=null;
 			PreparedStatement pstmt=null;
@@ -218,7 +218,7 @@ public class KiderDBBean {
 			return vecList;
 		}
 	
-		//�쑀移섏썝 �듅�씤�떊泥� �듅�씤�떆
+		
 	public void updateState(int schul_num)throws Throwable{
 		
 		Connection con=null;
@@ -237,7 +237,7 @@ public class KiderDBBean {
 		}
 	}
 	
-	//�쑀移섏썝 �듅�씤�떊泥� 嫄곗젅�떆
+	
 	public void delKinder(int schul_num)throws Throwable{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -253,9 +253,9 @@ public class KiderDBBean {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
-	}
+	} 
 	
-	//�쑀移섏썝 �꽑�깮�썑 議고쉶
+	
 	public Vector selectKinder(int gunum,String dong,String schul_nm)throws Throwable{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -320,4 +320,35 @@ public class KiderDBBean {
 		return vecList;
 	}
 
+	public int checkKinder(String schul_nm,int schul_num)throws Throwable{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int x=-1;
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select*from kindergarten where schul_nm=? and schul_num=? and state='y'");
+			pstmt.setString(1, schul_nm);
+			pstmt.setInt(2, schul_num);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				x=1;
+			}
+			pstmt=conn.prepareStatement("select*from kindergarten where schul_nm=? and schul_num=? and state='n'");
+			pstmt.setString(1, schul_nm);
+			pstmt.setInt(2, schul_num);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				x=0;
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		
+		return x;
+	}
 }

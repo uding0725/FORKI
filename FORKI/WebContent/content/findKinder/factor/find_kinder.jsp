@@ -126,21 +126,12 @@
 	        var marker = new daum.maps.Marker({
 	            map: map,
 	            position: coords,
+	            title:title[i]
 	        });      
-
-	        marker.setMap(map);
-	        
+	        marker.setMap(map);    
 	        }
-
-	    	
-
-	        }	    
-
-	);
-
-	    	   
-	
-
+	});
+	}
 	geocoder.addr2coord(coord[0], function(status, result) {
 			
 	    // 정상적으로 검색이 완료됐으면 

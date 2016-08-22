@@ -87,21 +87,20 @@ public class LogonDBBean {
 	}*/
 
 	
-	public Vector kindRead(String id)throws Exception{
+	public KetcDataBean kindRead(String id)throws Exception{
 		Connection conn =null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		Vector vecList=new Vector();
+		KetcDataBean ketc= null;
 		try{
 			conn=getConnection();
 			pstmt=conn.prepareStatement("select schul_num,schul_nm from k_etc where id=?");
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
-				KetcDataBean ketc=new KetcDataBean();  
+				ketc=new KetcDataBean();  
 				ketc.setSchul_nm(rs.getString("schul_nm"));
 				ketc.setSchul_num(rs.getInt("schul_num"));
-				vecList.addElement(ketc);
 				}
 			}catch(SQLException e){
 				e.printStackTrace();
@@ -110,7 +109,7 @@ public class LogonDBBean {
 				JdbcUtil.close(pstmt);
 				JdbcUtil.close(conn);
 			}
-		return vecList;	
+		return ketc;	
 	}
 		
 

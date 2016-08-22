@@ -64,8 +64,9 @@ table{
    </select>
    <input type="text" style="width:10%" name="search">
    <input type="button" name="search" value="검색">
+   <c:if test="${sessionScope.id!=null}">
    <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/recommendWrite.do'">
-	
+	</c:if>
 </span>
 </form>
 <div id="write-content"> 

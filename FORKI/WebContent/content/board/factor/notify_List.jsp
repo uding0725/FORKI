@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,31 +55,72 @@ table{
    </span>
    <br>
    <br>
-     총 ?건이 검색되었습니다.
-   <span style='position:relative; left:50px'><font size="+1" style=color:red;>관리자 계정만 글쓰기 가능</font>
-   <input type="button" name="write" value="글쓰기">
-   <select name="all">
-   <option value="">전체
-   <option value="제목">제목
-   <option value="내용">내용
+     총  ${count} 건이 검색되었습니다.
+   <form>
+   <span style='position:relative; left:50px'>
+   <c:if test="${sessionScope.id!='admin'}">
+   <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/notifyWrite.do'">
+   </c:if>
+   <select name="searchn">
+   <option value="0">전체
+   <option value="1">제목
+   <option value="2">내용
    </select>
    <input type="text" style="width:10%" name="search">
    <input type="button" name="searching" value="검색">
    </span>
+   </form>
   <div id="write-content">
    <table> 
 
 				<tr>
-					<td width="70" height="30" align="center" bgcolor="">번호 </td>
-				    <td width="500" height="30" bgcolor="" align="center">공지사항</td>
-				    <td width="70" height="30" bgcolor="" align="center">닉네임</td>
-				    <td width="70" height="30" bgcolor="" align="center">조회수</td>
-					<td width="70" height="30" bgcolor="" align="center">등록일</td>
+					<td width="100" height="30" align="center" bgcolor="">번호 </td>
+				    <td width="300" height="30" bgcolor="" align="center">공지사항</td>
+				    <td width="100" height="30" bgcolor="" align="center">닉네임</td>
+				    <td width="100" height="30" bgcolor="" align="center">조회수</td>
+					<td width="150" height="30" bgcolor="" align="center">등록일</td>
 				</tr>
 				<tr>
-				    <td>게시글이 어떻게 들어갈까?</td>
-				
+				<c:if test="${count==0}">
+				<td align="center" colspan="5">게시판에 저장된 글이 없습니다.</td>
+				</c:if>
+				</tr>
+				<c:if test="${count>0}">
+				<c:forEach var="article" items="${articleList}">
+					<tr>
+				  	<td width="100" align="center" bgcolor="">
+				  	<c:out value="${number}"/>
+				  	<c:set var="number" value="${number-1}"/></td>
+				  	<td width="300" align="center" bgcolor="">
+				  	<a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}">
+          			${article.subject}</a>
+				  	</td>
+				  	<td width="100" align="center" bgcolor="">${article.writer}</td>
+				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
+				  	<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>
+				  	</tr>
+				</c:forEach>
+				</c:if>
 			</table>
+			<c:if test="${count>0}"	>
+		<c:set var="pageCount" value="${count/pageSize+(count%pageSize==0?0:1)}"/>
+		<c:set var="pageBlock" value="${10}"/>
+		<fmt:parseNumber var="result" value="${currentPage/10}" integerOnly="true"/>
+		<c:set var="startPage" value="${result*10+1}"/>
+		<c:set var="endPage" value="${startPage+pageBlock-1}"/>
+		<c:if test="${endPage>pageCount}">
+			<c:set var="endPage" value="${pageCount}"/>
+		</c:if>
+		 <c:if test="${startPage > 10}">
+        <a href="/FORKI/content/board/notifyList.do?pageNum=${startPage - 10 }">[이전]</a>
+  	 	</c:if>
+		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			<a href="/FORKI/content/board/notifyList.do?pageNum=${i}">[${i}]</a>
+		</c:forEach>
+		<c:if test="${endPage < pageCount}">
+        <a href="/FORKI/content/board/notifyList.do?pageNum=${startPage + 10}">[다음]</a>
+  		 </c:if>
+		</c:if>
    </div>
    </div>
 </div>   
