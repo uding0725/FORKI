@@ -8,10 +8,7 @@
 <body>
 <c:if test="${check != 1}">
 잘못된 접근입니다.
-
 <input type="button" onclick="history.go(-1)" value="뒤로가기">
-
-
 </c:if>
 <c:if test="${check == 1}">
 <form action="/FORKI/content/join/UserUpdatePWD.do" method="post">

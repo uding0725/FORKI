@@ -3,11 +3,22 @@
 
 	<object class="org.apache.commons.dbcp.DriverManagerConnectionFactory">
 		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
+<<<<<<< HEAD
 
 
+<<<<<<< HEAD
 		<string value="forte"/>
+=======
+		<string value="FORTE"/>
+>>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
 		<string value="0725"/>
 
+=======
+
+		<string value="you"/>
+		<string value="0258"/>
+
+>>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
 	</object>
 	
 	<object class="org.apache.commons.pool.impl.GenericObjectPool">

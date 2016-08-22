@@ -9,9 +9,11 @@ public class ModifyFormAction implements CommandAction{
 	
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
+		
+			request.setCharacterEncoding("UTF-8");
 			
 			HttpSession session = request.getSession();
-			String id = (String)session.getAttribute("memId");
+			String id = (String)session.getAttribute("id");
   
 			LogonDBBean manager = LogonDBBean.getInstance();
 			
@@ -40,7 +42,7 @@ public class ModifyFormAction implements CommandAction{
 			request.setAttribute("schul_nm",k.getSchul_nm());
 			}
 			}
-		return "/content/join/ComModifyForm2.jsp";
+		return "/content/join/ComModifyForm.jsp";
 	}
 
 }

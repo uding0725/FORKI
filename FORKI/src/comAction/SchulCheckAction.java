@@ -6,23 +6,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import action.*;
 
-public class ZipCheckAction implements CommandAction{
+public class SchulCheckAction implements CommandAction{
 	
-		public String requestPro(HttpServletRequest request,
+	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
 	
-		request.setCharacterEncoding("UTF-8");
+			request.setCharacterEncoding("UTF-8");
 
 		   String check = request.getParameter("check");//y or n
-		   String area4 = request.getParameter("area4");//동이름
+		   String dong = request.getParameter("dong");//동이름
 		   LogonDBBean manager = LogonDBBean.getInstance();  
-		   Vector zipcodeList = manager.zipcodeRead(area4);
-		   System.out.println(zipcodeList.size());
+		   Vector SchulList = manager.SchulRead(dong);
+		   System.out.println(SchulList.size());
 		   System.out.println(check);
 		   request.setAttribute("check", check);
-		   request.setAttribute("zipcodeList", zipcodeList);
+		   request.setAttribute("SchulList", SchulList);
 		   
 		
-		return "/content/join/factor/company2/ZipCheck.jsp";
+		return "/content/join/factor/company2/SchulCheck.jsp";
 	}
 }

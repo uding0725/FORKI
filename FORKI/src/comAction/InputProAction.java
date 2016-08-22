@@ -14,6 +14,8 @@ public class InputProAction implements CommandAction {
 
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		//생년월일 8자리로 저장
 		String MM = null;
 		String dd = null;
@@ -33,8 +35,6 @@ public class InputProAction implements CommandAction {
 		SendEmail sendEmail = new SendEmail(); /*이메일을 보내는 클레스*/
 		CreateCode code = new CreateCode(); /*랜덤코드를 생성하는 클레스*/
 		HttpSession session = request.getSession();
-		
-		request.setCharacterEncoding("UTF-8");
 
 		LogonDBBean manager = LogonDBBean.getInstance();
 		//멤버 insert

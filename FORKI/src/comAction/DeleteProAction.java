@@ -14,7 +14,7 @@ public class DeleteProAction implements CommandAction{
 	
 	HttpSession session = request.getSession();
 	
-	String id = (String) session.getAttribute("memId");
+	String id = (String) session.getAttribute("id");
 	String passwd  = request.getParameter("passwd");
 	int check = 0;
 	

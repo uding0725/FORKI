@@ -16,7 +16,7 @@
 	session.invalidate();
 %>
 <body>
-<form method="post" action="/FORKI/content/join/factor/company2/main.do" name="userinput" >
+<form method="post" action="/FORKI/content/join/ComMain.do" name="userinput" >
 <table width="270" border="0" cellspacing="0" cellpadding="5" align="center">
   <tr>
     <td height="39" align="center">
@@ -25,7 +25,7 @@
   <tr>
     <td align="center">
       <p>흑흑.... 서운합니다. 안녕히 가세요.</p>
-      <meta http-equiv="Refresh" content="5;url=/FORKI/content/join/factor/company2/main.do" >
+      <meta http-equiv="Refresh" content="5;url=/FORKI/content/join/ComMain.do" >
     </td>
   </tr>
   <tr>
