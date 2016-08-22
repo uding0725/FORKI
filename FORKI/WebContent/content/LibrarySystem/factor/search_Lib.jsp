@@ -53,8 +53,8 @@ a {
 </style>
 
 <script>
-	function viewDetail(adres,select) {
-		url = "/FORKI/content/LibrarySystem/factor/lib_detailPage.do?adres=" + adres+"&select="+select;
+	function viewDetail(adres,select,type) {
+		url = "/FORKI/content/LibrarySystem/factor/lib_detailPage.do?adres=" + adres+"&select="+select+"&type="+type;
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	var x =new Array();
@@ -135,20 +135,25 @@ a {
 	<c:if test="${count>0}">
 		<c:if test="${select=='all'}">
 			<c:if test="${!empty vTour}">
-			-산 / 공원
+			-산 / 공원 <br>
 		<c:forEach var="tour" items="${vTour}">
 		-명칭 : [${tour.park_se}] ${tour.park_nm} <br>
 		 주소 : ${tour.adres} <br>
+		 	 <script>
+        			title.push('${v.park_nm}');
+        			coord.push('${v.adres}')
+        		</script>
 		 </c:forEach>
 		 </c:if>
 		
 		 <c:if test="${!empty vPub}">
-			-도서관
+			-도서관 <br>
 		<c:forEach var="p" items="${vPub}">
 		-명칭 : [${p.libry_se}] ${p.libry_name}<br>
 		 주소 : ${p.adres} <br>
 		 전화번호 : ${p.tel} <br>
-				<a href="javascript:viewDetail('${p.adres}','${select}')">[상세정보 보기]</a>
+		
+				<a href="javascript:viewDetail('${p.adres}','${select}','p')">[상세정보 보기]</a>
 				<br>
 				<script>
         			x.push('${p.x_loc}');
@@ -159,13 +164,13 @@ a {
 		 </c:if>
 		 
 		 <c:if test="${!empty vToy}">
-			-장난감 도서관
+			-장난감 도서관 <br>
 		
 		<c:forEach var="toy" items="${vToy}">
 		-명칭 : ${toy.lib_nm} <br>
 		 주소 : ${toy.adres} <br>
 		 전화번호 : ${toy.tel}  <br>	
-				<a href="javascript:viewDetail('${toy.adres}','${select}')">[상세정보 보기]</a>
+				<a href="javascript:viewDetail('${toy.adres}','${select}','toy')">[상세정보 보기]</a>
 				<br>	
 				<script>
         			x.push('${toy.x}');
@@ -195,7 +200,7 @@ a {
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
 				주소 : ${v.adres} <br>
 				전화번호 : ${v.tel} <br>
-				<a href="javascript:viewDetail('${v.adres}','${select}')">[상세정보 보기]</a>
+				<a href="javascript:viewDetail('${v.adres}','${select}','p')">[상세정보 보기]</a>
 				<br>
 				<script>
         			x.push('${v.x_loc}');
@@ -210,7 +215,7 @@ a {
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
 				주소 : ${v.adres} <br>
 				전화번호 : ${v.tel}  <br>	
-				<a href="javascript:viewDetail('${v.adres}','${select}')">[상세정보 보기]</a>
+				<a href="javascript:viewDetail('${v.adres}','${select}','toy')">[상세정보 보기]</a>
 				<br>	
 				<script>
         			x.push('${v.x}');
@@ -228,15 +233,30 @@ a {
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
 <script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new daum.maps.LatLng(37.541,126.986), // 지도의 중심좌표
-		        level: 4, // 지도의 확대 레벨
-		        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
-		    }; 
-
-		// 지도를 생성한다 
-		var map = new daum.maps.Map(mapContainer, mapOption); 
+		
+			if(${count}==0){
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = {	
+		    		    center: new daum.maps.LatLng(37.541,126.986), 
+		        		level: 4, // 지도의 확대 레벨
+		        		mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+		    					}; // 지도의 중심좌표
+					// 지도를 생성한다 
+					var map = new daum.maps.Map(mapContainer, mapOption);		
+							}
+			if((${count} != 0) && ('{tour}' != 'tour')){
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = {
+						 center: new daum.maps.LatLng(x[0],y[0]),
+						 level: 4, // 지도의 확대 레벨
+				         mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+				    			}; 
+					// 지도를 생성한다 
+					var map = new daum.maps.Map(mapContainer, mapOption);
+							}
+		      
+		if()
+		
 		// 마커 이미지의 주소
 			var markerImageUrl = '../img/toy.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
@@ -254,6 +274,47 @@ a {
 		    image : markerImage, // 마커의 이미지
 		    map: map // 마커를 표시할 지도 객체
 		});
+		}
+		
+		
+		if('${tour}'=='tour'){
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };  
+
+		// 지도를 생성합니다    
+		var map = new daum.maps.Map(mapContainer, mapOption); 
+ 
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new daum.maps.services.Geocoder();
+
+		for(i=0; i.coord.length; i++){
+		// 주소로 좌표를 검색합니다
+		geocoder.addr2coord(coord[i], function(status, result) {
+
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === daum.maps.services.Status.OK) {
+
+		        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new daum.maps.Marker({
+		            map: map,
+		            position: coords
+		        });
+		     
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new daum.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">title[i]</div>'
+		        });
+		        infowindow.open(map, marker);
+		     }
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		});    
+		}
 		}
 	</script>
 

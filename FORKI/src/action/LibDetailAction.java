@@ -16,33 +16,29 @@ public class LibDetailAction implements CommandAction {
 		request.setCharacterEncoding("UTF-8");
 		String adres = request.getParameter("adres");
 		String select = request.getParameter("select");
+		String type = request.getParameter("type");
 		
 		LibDBBean ldbb = LibDBBean.getInstance();
 		
 		System.out.println("select :: " + select);
+		System.out.println("type ::" + type);
 		
-		if(select == null){
+		if(type==null){
 			
-		}else if(select.equals("all")){
-			
-		} else if( select.equals( "tourism_list")){
-			Tourism_ListDataBean article = new Tourism_ListDataBean();
-			article = ldbb.viewTour(adres);
-			request.setAttribute("article", article);
-		} else if( select.equals("pub_lib")){
+		}else if(type.equals("p")){
 			Pub_LibDataBean article = new Pub_LibDataBean();
 			article = ldbb.viewPublic(adres);
 			request.setAttribute("article", article);
-		} else if( select.equals( "toy_lib")){
+		} else if(type.equals("toy")){
 			Toy_LibDataBean article = new Toy_LibDataBean();
 			article = ldbb.viewToy(adres);
-			System.out.println(article.getLib_nm());
 			request.setAttribute("article", article);
 		} else{
-			System.out.println("select?::" + select);
+			System.out.println("type::"+ type);
 		}
 		
-		request.setAttribute("select",select);
+		
+		request.setAttribute("type",type);
 		
 		System.out.println("detailAction 끝");
 		
