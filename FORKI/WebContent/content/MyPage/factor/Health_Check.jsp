@@ -4,7 +4,7 @@
 <link href="../CSS/chart.css?ver=1.1" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="../js/chart.js"></script>
-<script type="text/javascript" src="../js/var2.js?var=1.9"></script>
+<script type="text/javascript" src="../js/var2.js?var=2.3"></script>
 <style>
 table {
 	font-size: 12.5;
@@ -399,7 +399,8 @@ table {
 	<div class="tab_container">
 		<div id="tabIO" class="tab_content" sytle="width: 750px;">
 			<div style="width: 375px; height: 500px;  margin: auto;">
-				<form method="post" action="#" name="userinput">
+				<form method="post" action="/FORKI/content/MyPage/factor/KidModify.do" onSubmit="return sendVal()" name="userinput">
+					<input type="hidden" name="size" value="0">
 					<input type="button" id="btn-add-row" value="아이추가"> <input type="button" id="btn-delete-row" value="아이삭제">
 					<hr>
 					<table id="mytable" border="1" cellspacing="0">

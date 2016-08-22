@@ -17,7 +17,7 @@
 
 	function sendAddress(schul_nm) {
 		var Schul_nm = schul_nm;
-		opener.document.userinput.schul_nm.value = Schul_nm;		
+		opener.document.userinput.kinderName&{param.num}.value = Schul_nm;		
 		self.close(); 	
 	}
 </script>

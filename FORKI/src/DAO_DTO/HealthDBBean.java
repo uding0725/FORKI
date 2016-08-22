@@ -109,10 +109,8 @@ public class HealthDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update HEALTH_CHECK"
-					+ " set BCG = ?, HEPB = ?, DTAP = ?, TDAP = ?, IPV = ?, PRP_T = ?, PCV = ?, MMR = ?,"
-					+ " VAR = ?, HEPA = ?, JEV = ?, JE = ?, BDG_M = ?, RV1 = ?, RV5 = ?, HPV_G = ?, HPV_C = ?"
-					+ " where ID = ? and NUM = ?");
+			pstmt = conn.prepareStatement("update HEALTH_CHECK" + " set BCG = ?, HEPB = ?, DTAP = ?, TDAP = ?, IPV = ?, PRP_T = ?, PCV = ?, MMR = ?,"
+					+ " VAR = ?, HEPA = ?, JEV = ?, JE = ?, BDG_M = ?, RV1 = ?, RV5 = ?, HPV_G = ?, HPV_C = ?" + " where ID = ? and NUM = ?");
 			pstmt.setInt(1, DBdata.getBcg());
 			pstmt.setInt(2, DBdata.getHepb());
 			pstmt.setInt(3, DBdata.getDtap());
@@ -129,12 +127,49 @@ public class HealthDBBean {
 			pstmt.setInt(14, DBdata.getRv1());
 			pstmt.setInt(15, DBdata.getRv5());
 			pstmt.setInt(16, DBdata.getHpv_g());
-			pstmt.setInt(17, DBdata.getHpv_c());			
+			pstmt.setInt(17, DBdata.getHpv_c());
 			pstmt.setString(18, id);
 			pstmt.setInt(19, DBdata.getNum());
 
 			pstmt.executeUpdate();
 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+	}
+
+	// 아이정보 수정
+	public void updateKid(String id, int size, List DBdata) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("delete from KID_DATA where id = ?");
+			pstmt.setString(1, id);
+			pstmt.executeQuery();
+			
+			for (Object obj : DBdata) {
+				KidDataBean p = (KidDataBean) obj;
+				pstmt = conn.prepareStatement("insert into KID_DATA values (?, ?, ?, ?)");
+				pstmt.setString(1, id);
+				pstmt.setInt(2, p.getNum());
+				pstmt.setString(3, p.getName());
+				pstmt.setString(4, p.getSchul_nm());
+
+				pstmt.executeQuery();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
