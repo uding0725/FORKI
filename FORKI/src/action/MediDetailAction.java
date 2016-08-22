@@ -20,9 +20,9 @@ public class MediDetailAction implements CommandAction{
 			
 		}else{
 			hosp=mdb.detailHosp(num);
-		}
+		}         
 		request.setAttribute("hel", hel);
-		request.setAttribute("hosp", hosp);
+		request.setAttribute("hosp", hosp); 
 		request.setAttribute("check", new Integer(check));
 		return "search-detailPage.jsp";
 	}
