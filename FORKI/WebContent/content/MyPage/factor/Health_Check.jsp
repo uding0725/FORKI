@@ -4,6 +4,7 @@
 <link href="../CSS/chart.css?ver=1.1" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="../js/chart.js"></script>
+<script type="text/javascript" src="../js/var2.js?var=1.9"></script>
 <style>
 table {
 	font-size: 12.5;
@@ -17,7 +18,7 @@ table {
 		<c:forEach var="article" items="${chartList}">
 			<li class <c:if test="${article.num == 1}">="active"</c:if> rel="tab${article.num}">${article.name}</li>
 		</c:forEach>
-		<li class rel="tabIO">추가하기</li>
+		<li class rel="tabIO">추가/삭제</li>
 	</ul>
 	<c:forEach var="article" items="${chartList}">
 		<div class="tab_container">
@@ -396,12 +397,25 @@ table {
 		<!-- .tab_container -->
 	</c:forEach>
 	<div class="tab_container">
-			<div id="tabIO" class="tab_content">
-				<form method="post" action="#" name="kidIO">
-					
-					
+		<div id="tabIO" class="tab_content" sytle="width: 750px;">
+			<div style="width: 375px; height: 500px;  margin: auto;">
+				<form method="post" action="#" name="userinput">
+					<input type="button" id="btn-add-row" value="아이추가"> <input type="button" id="btn-delete-row" value="아이삭제">
+					<hr>
+					<table id="mytable" border="1" cellspacing="0">
+						<tr>
+							<th width="145">아이이름</th>
+							<th width="145">유치원이름</th>
+							<th width="85" style="text-align: center;">유치원검색</th>
+						<tbody></tbody>
+						</tr>
+					</table>
+					<div style="text-align: right;">
+						<input type="submit" value="저장">
+					</div>
 				</form>
 			</div>
 		</div>
+	</div>
 </div>
 <!-- #container -->
