@@ -140,8 +140,9 @@ a {
 		-명칭 : [${tour.park_se}] ${tour.park_nm} <br>
 		 주소 : ${tour.adres} <br>
 		 	 <script>
-        			title.push('${v.park_nm}');
-        			coord.push('${v.adres}')
+        			x.push('${tour.x}');
+        			y.push('${tour.y}')
+        	
         		</script>
 		 </c:forEach>
 		 </c:if>
@@ -190,8 +191,9 @@ a {
 				 주소 : ${v.adres} <br>
 				
 				 <script>
-        			title.push('${v.park_nm}');
-        			coord.push('${v.adres}')
+        			x.push('${v.x}');
+        			y.push('${v.y}')
+        	
         		</script>
 			</c:if>
 			 <c:if test="${select=='pub_lib'}">
@@ -241,21 +243,20 @@ a {
 		        		level: 4, // 지도의 확대 레벨
 		        		mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 		    					}; // 지도의 중심좌표
-					// 지도를 생성한다 
-					var map = new daum.maps.Map(mapContainer, mapOption);		
+						
 							}
-			if((${count} != 0) && ('{tour}' != 'tour')){
+			if(${count} != 0){
 					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 				    mapOption = {
 						 center: new daum.maps.LatLng(x[0],y[0]),
 						 level: 4, // 지도의 확대 레벨
 				         mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 				    			}; 
-					// 지도를 생성한다 
-					var map = new daum.maps.Map(mapContainer, mapOption);
+					
 							}
 		      
-		if()
+			// 지도를 생성한다 
+			var map = new daum.maps.Map(mapContainer, mapOption);
 		
 		// 마커 이미지의 주소
 			var markerImageUrl = '../img/toy.png'
@@ -277,45 +278,7 @@ a {
 		}
 		
 		
-		if('${tour}'=='tour'){
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
-		    };  
-
-		// 지도를 생성합니다    
-		var map = new daum.maps.Map(mapContainer, mapOption); 
- 
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new daum.maps.services.Geocoder();
-
-		for(i=0; i.coord.length; i++){
-		// 주소로 좌표를 검색합니다
-		geocoder.addr2coord(coord[i], function(status, result) {
-
-		    // 정상적으로 검색이 완료됐으면 
-		     if (status === daum.maps.services.Status.OK) {
-
-		        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new daum.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-		     
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">title[i]</div>'
-		        });
-		        infowindow.open(map, marker);
-		     }
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-		});    
-		}
-		}
+		
 	</script>
 
 	</div>

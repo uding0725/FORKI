@@ -48,9 +48,7 @@ public class LibSearchAction implements CommandAction {
 			vToy = ldbb.getToyLib(gu_n, dongName, searchName);
 		} else if( select.equals( "tourism_list")){
 			vt = ldbb.getTour(gu_n,dongName,searchName);
-			if(vt.size()>0){
-				tour = "tour";
-			}
+			tour = "tour";
 		} else if( select.equals("pub_lib")){
 			vt = ldbb.getPubLib(gu_n,dongName,searchName);
 		} else if( select.equals( "toy_lib")){
@@ -59,10 +57,6 @@ public class LibSearchAction implements CommandAction {
 			System.out.println("select?::" + select);
 		}
 		
-		if(vTour.size()>0){
-			String aTour = "tour";
-			String aToy = "toy";
-		}
 		
 		System.out.println(tour);
 		
