@@ -12,7 +12,6 @@
 	var title =new Array();
 	var x = new Array();
 	var y = new Array();
-	
 </script>
 </head>
 	<div id="md-wrap">
@@ -24,7 +23,7 @@
 		</span>	
 	<div id="md-container">
 		<div id="md-header">
-				<form>
+				<form method="post" action="/FORKI/content/MedicalSystem/searchMedi.do">
 			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
 				<tr>
 			
@@ -65,14 +64,13 @@
 					</select>  
 					읍/면/동<input type="text" name="dong" autofocus placeholder="동을 입력하세요"><br>
 					또는 기관명<input type="text" name="h_nm" autofocus placeholder="기관명을 입력하세요"> 
-					<a href="#"><img src="../img/submit.jpg" width="30" height="30"></a></td>
-				
+					<input type="image" src="../img/submit.jpg" width="30" height="30">
 				</tr>
 			</table>
 			</form>
 		</div>
 		<p>총 검색 건수 : ${count} 건 </p>
-		<div id="md-content">
+		<div id="md-content"  style="overflow: auto; overflow-x: hidden">
 			<c:if test="${count==0}">
 				검색 결과가 없습니다. 
 			</c:if>
@@ -107,10 +105,18 @@
 		</div>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
 		<script>
-		var mapContainer =document.getElementById('map'),
-		mapOption={
-				center: new daum.maps.LatLng(37.541,126.986),
-				level:4
+		if(${count}==0){
+			var mapContainer =document.getElementById('map'),
+			mapOption={
+					center: new daum.maps.LatLng(37.541,126.986),
+					level:4
+			}
+		}else{
+			var mapContainer =document.getElementById('map'),
+			mapOption={
+					center: new daum.maps.LatLng(x[0],y[0]),
+					level:4
+			}
 		}
 		var map = new daum.maps.Map(mapContainer,mapOption);
 		for(var i=0;i<x.length;i++){
@@ -118,11 +124,10 @@
 		    var marker = new daum.maps.Marker({
 		        map: map, // 마커를 표시할 지도
 		        position:new daum.maps.LatLng(x[i],y[i]), // 마커를 표시할 위치
-		        title :title[i], // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		        title :title[i] // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 		      
 		    });
 		}
-		
 		</script>
 	</div>
 </div>
