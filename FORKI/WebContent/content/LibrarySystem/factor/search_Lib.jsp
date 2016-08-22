@@ -133,6 +133,50 @@ a {
 		검색 결과가 없습니다.
 	</c:if>
 	<c:if test="${count>0}">
+		<c:if test="${select=='all'}">
+			<c:if test="${!empty vTour}">
+			-산 / 공원
+		<c:forEach var="tour" items="${vTour}">
+		-명칭 : [${tour.park_se}] ${tour.park_nm} <br>
+		 주소 : ${tour.adres} <br>
+		 </c:forEach>
+		 </c:if>
+		
+		 <c:if test="${!empty vPub}">
+			-도서관
+		<c:forEach var="p" items="${vPub}">
+		-명칭 : [${p.libry_se}] ${p.libry_name}<br>
+		 주소 : ${p.adres} <br>
+		 전화번호 : ${p.tel} <br>
+				<a href="javascript:viewDetail('${p.adres}','${select}')">[상세정보 보기]</a>
+				<br>
+				<script>
+        			x.push('${p.x_loc}');
+        			y.push('${p.y_loc}')
+        	
+        		</script>
+		 </c:forEach>
+		 </c:if>
+		 
+		 <c:if test="${!empty vToy}">
+			-장난감 도서관
+		
+		<c:forEach var="toy" items="${vToy}">
+		-명칭 : ${toy.lib_nm} <br>
+		 주소 : ${toy.adres} <br>
+		 전화번호 : ${toy.tel}  <br>	
+				<a href="javascript:viewDetail('${toy.adres}','${select}')">[상세정보 보기]</a>
+				<br>	
+				<script>
+        			x.push('${toy.x}');
+        			y.push('${toy.y}')
+        	
+        		</script>	
+		 </c:forEach>
+		 </c:if>
+		 
+		</c:if>
+		
 		<c:forEach var="v" items="${vt}">
 			<c:if test="${select=='tourism_list'}">
 				-명칭 :[${v.park_se}] ${v.park_nm}			
