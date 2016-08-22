@@ -26,13 +26,13 @@
 		<div id="menubar">
 			<nav id="topmenu">
 				<ul>
-					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/findKinder/findkinder.do">어린이집/유치원 찾기</a>
+					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/findKinder/findkinder.do">유치원 찾기</a>
 						<ul class="submenu">
-							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">어린이집/유치원 찾기</a></li>
+							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">유치원 찾기</a></li>
 						</ul></li>
-					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/MedicalSystem/searchMedi.jsp?">주변시설 찾기</a>
+					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/MedicalSystem/searchMedi.do">주변시설 찾기</a>
 						<ul class="submenu">
-							<li class="pop-up"><a href="/FORKI/content/MedicalSystem/searchMedi.jsp" class="submenuLink longLink">의료시설조회</a></li>
+							<li class="pop-up"><a href="/FORKI/content/MedicalSystem/searchMedi.do" class="submenuLink longLink">의료시설조회</a></li>
 							<li class="pop-up"><a href="/FORKI/content/LibrarySystem/searchLib.do" class="submenuLink longLink">문화시설조회</a></li>
 						</ul></li>
 					<li class="topMenuLi"><a class="menuLink" href="/FORKI/content/board/notifyList.jsp">게시판</a>

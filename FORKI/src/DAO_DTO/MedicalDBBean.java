@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import jdbc.JdbcUtil;
@@ -23,7 +25,7 @@ public class MedicalDBBean {
 		return DriverManager.getConnection(jdbcDriver);
 	}
 
-	//ì‹œê°„ëŒ€ë³„ ë³‘ì›
+	
 	public Vector searchHosp(String h_code)throws Throwable{
 		Connection conn=null;
 		PreparedStatement pstmt= null;
@@ -60,7 +62,7 @@ public class MedicalDBBean {
 		}
 		return vecList;
 	}
-	//ì‹œê°„ëŒ€ë³„ ë³´ê±´ì†Œ
+
 		public Vector searchHeal()throws Throwable{
 			Connection conn=null;
 			PreparedStatement pstmt= null;
@@ -92,13 +94,13 @@ public class MedicalDBBean {
 			}
 			return vecList;
 		}
-	//ë°”ë””ì˜ì—­ -ë³‘ì›
+
 	public Vector selectHosp(int n,String dong,String h_nm)throws Throwable{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Vector vecList =new Vector();
-		String[] gunm={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ì‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ë‘êµ¬","ì¤‘êµ¬"};
+		String[] gunm={"ÀüÃ¼","°­³²±¸","°­µ¿±¸","°­ºÏ±¸","°­¼­±¸","°ü¾Ç±¸","±¤Áø±¸","±¸·Î±¸","±İÃµ±¸","³ë¿ø±¸","µµºÀ±¸","µ¿´ë¹®±¸","µ¿ÀÛ±¸","¸¶Æ÷±¸","¼­´ë¹®±¸","¼­ÃÊ±¸","¼ºµ¿±¸","¼ººÏ±¸","¼ÛÆÄ±¸","¾çÃµ±¸","¿µµîÆ÷±¸","¿ë»ê±¸","ÀºÆò±¸","Á¾·Î±¸","Áß¶û±¸","Áß±¸"};
 		try{
 			
 			conn=getConnection();
@@ -154,13 +156,13 @@ public class MedicalDBBean {
 		}
 		return vecList;
 	}
-	//ë°”ë””ì˜ì—­ -ë³´ê±´ì†Œ
+
 		public Vector selectHel(int n,String dong,String h_nm)throws Throwable{
 			Connection conn=null;
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			Vector vecList =new Vector();
-			String[] gunm={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ì‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ë‘êµ¬","ì¤‘êµ¬"};
+			String[] gunm={"ÀüÃ¼","°­³²±¸","°­µ¿±¸","°­ºÏ±¸","°­¼­±¸","°ü¾Ç±¸","±¤Áø±¸","±¸·Î±¸","±İÃµ±¸","³ë¿ø±¸","µµºÀ±¸","µ¿´ë¹®±¸","µ¿ÀÛ±¸","¸¶Æ÷±¸","¼­´ë¹®±¸","¼­ÃÊ±¸","¼ºµ¿±¸","¼ººÏ±¸","¼ÛÆÄ±¸","¾çÃµ±¸","¿µµîÆ÷±¸","¿ë»ê±¸","ÀºÆò±¸","Á¾·Î±¸","Áß¶û±¸","Áß±¸"};
 			try{
 				
 				conn=getConnection();
@@ -216,12 +218,12 @@ public class MedicalDBBean {
 			return vecList;
 		}
 		
-	//ë³´ê±´ì†Œ ë””í…Œì¼
-	public Vector detailHel(int num)throws Throwable{
+
+	public HealCenDataBean detailHel(int num)throws Throwable{
 		Connection conn= null;
 		PreparedStatement pstmt=null;
 		ResultSet rs= null;
-		Vector vecList=new Vector();
+		HealCenDataBean helcen=new HealCenDataBean();
 		try{
 			conn=getConnection();
 			pstmt=conn.prepareStatement("select*from health_center where num=?");
@@ -229,17 +231,18 @@ public class MedicalDBBean {
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				do{
-					HealCenDataBean helcen=new HealCenDataBean();
+				
 					helcen.setH_nm(rs.getString("h_nm"));
 					helcen.setHmpg_url(rs.getString("hmpg_url"));
 					helcen.setLocation(rs.getString("location"));
 					helcen.setTell(rs.getString("tell"));
 					helcen.setWeek_time(rs.getString("week_time"));
 					helcen.setWeekend_time(rs.getString("weekend_time"));
+					helcen.setBreak_time(rs.getString("break_time"));
 					helcen.setRm(rs.getString("rm"));
 					helcen.setX(rs.getDouble("x"));
 					helcen.setY(rs.getDouble("y"));
-					vecList.addElement(helcen);
+					
 				}while(rs.next());
 			}
 		}catch(SQLException e){
@@ -249,13 +252,13 @@ public class MedicalDBBean {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
-		return vecList;
+		return helcen;
 	}
-	public Vector detailHosp(int num)throws Throwable{
+	public HospitalDataBean detailHosp(int num)throws Throwable{
 		Connection conn= null;
 		PreparedStatement pstmt=null;
 		ResultSet rs= null;
-		Vector vecList=new Vector();
+		HospitalDataBean hdb=new HospitalDataBean();
 		try{
 			conn=getConnection();
 			pstmt=conn.prepareStatement("select*from hospital where num=?");
@@ -263,7 +266,7 @@ public class MedicalDBBean {
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				do{
-					HospitalDataBean hdb=new HospitalDataBean();
+					
 					hdb.setH_nm(rs.getString("h_nm"));
 					hdb.setGu_nm(rs.getString("gu_nm"));
 					hdb.setDong(rs.getString("dong"));
@@ -271,7 +274,7 @@ public class MedicalDBBean {
 					hdb.setRm(rs.getString("rm"));
 					hdb.setX(rs.getDouble("x"));
 					hdb.setY(rs.getDouble("y"));
-					vecList.addElement(hdb);
+					
 				}while(rs.next());
 			}
 		}catch(SQLException e){
@@ -281,6 +284,6 @@ public class MedicalDBBean {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
-		return vecList;
+		return hdb;
 	}
 }

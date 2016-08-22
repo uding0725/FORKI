@@ -97,7 +97,7 @@ public class SystemDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
 	        }
 	        return list;
 	    }
-	    
+	    //Usercheck.jsp
 	    public LogonDataBean getMemUserCheck(String id) throws Exception {
 	        Connection conn = null;
 	        PreparedStatement pstmt = null;
@@ -155,6 +155,37 @@ public class SystemDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
 	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	        }
 	        return member;
+	    }
+	    //blackUcheck.jsp
+	    public SystemDataBean getBlackUCheck(String id) throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        SystemDataBean BList = null;
+	        try {
+	            conn = getConnection();
+	           
+	            pstmt = conn.prepareStatement(
+	            "select * from BLACK_LIST where id = ?");
+	            pstmt.setString(1, id);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	            	BList = new SystemDataBean();
+	            	BList.setId(rs.getString("id"));
+	            	BList.setM_grade(rs.getInt("m_grade"));
+	            	BList.setR_date(rs.getTimestamp("r_date"));
+	            	BList.setContent(rs.getString("content"));
+	            	
+	            }
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+	        return BList;
 	    }
 	    
 	    public SystemDataBean getMemCheck(String id) throws Exception {
@@ -224,5 +255,49 @@ public class SystemDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
 	        }
 	        return check;
 	    }
+	    
+		//blackUCheckPro.jsp(P_ETC)
+		public int deleteblack(String id) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int x = -1;
+
+			try {
+				conn = getConnection();
+
+				pstmt = conn.prepareStatement("select pwd from MEMBER where id = ?");
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+						pstmt = conn.prepareStatement("delete from BLACK_LIST where id=?");
+						pstmt.setString(1, id);
+						pstmt.executeUpdate();
+						x = 1; // 제외 성공
+					} else{
+						x = 0; // 제외 실패
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (rs != null)
+					try {
+						rs.close();
+					} catch (SQLException ex) {
+					}
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					}
+				if (conn != null)
+					try {
+						conn.close();
+					} catch (SQLException ex) {
+					}
+			}
+			return x;
+		}
 
 }
