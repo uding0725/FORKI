@@ -10,7 +10,7 @@
 	<h2>빠른유치원 찾기</h2>
 	</div>
 	<div>
-		<form method="post" action="/FORKI/content/findKinder/findkinder.do">
+		<form method="post" action="/FORKI/content/findKinder/findkinder.do"> 
 		<input type="hidden" name="dong" value="">
 		<input type="hidden" name="gu" value="0">
 		<input type="text" name="schul_nm" autofocus placeholder="기관명을 입력하세요" /> 
