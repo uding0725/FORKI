@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Vector;
 
 import comAction.LogonDataBean;
@@ -154,6 +155,74 @@ public class SystemDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
 	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
 	        }
 	        return member;
+	    }
+	    
+	    public SystemDataBean getMemCheck(String id) throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        SystemDataBean member=null;
+	        try {
+	            conn = getConnection();
+	           
+	            pstmt = conn.prepareStatement(
+	            "select * from MEMBER where id = ?");
+	            pstmt.setString(1, id);
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	            	member = new SystemDataBean();
+	            	member.setId(rs.getString("id"));
+	            	member.setM_grade(rs.getInt("m_grade"));
+	            }
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+	        return member;
+	    }
+	    
+	    public int insertBlack(SystemDataBean black) throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+			int check = 0;
+	       
+	        try {
+	            conn = getConnection();
+	 //DriverManager.getConnection(jdbc:apache:commons:dbcp:/pool);
+	            pstmt = conn.prepareStatement(
+	            "insert into BLACK_LIST values (?,?,?,?,?)");
+	            pstmt.setString(1, black.getId());
+	            pstmt.setInt(2, black.getM_grade());
+	            pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+	            pstmt.setString(4, "관리자권한");
+	            pstmt.setString(5, "y");
+	            
+	            pstmt.executeUpdate();
+				
+	            pstmt = conn.prepareStatement("select * From BLACK_LIST where id = ?");
+				pstmt.setString(1, black.getId());
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					check = 1;
+				} else {
+					check = -1;
+				}
+	            
+	        
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+	        return check;
 	    }
 
 }

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import action.*;
+import comAction.LogonDataBean;
 
 public class LoginProAction implements CommandAction{
 	
@@ -20,11 +21,11 @@ public class LoginProAction implements CommandAction{
 
 		LogonDBBean manager = LogonDBBean.getInstance();
 		int check= manager.userCheck(id,passwd);
-		
 		if(check==1){
-			session.setAttribute("memId", id);
+			LogonDataBean DBdata = manager.getDBdata(id);
+			session.setAttribute("id", id);
+			session.setAttribute("grade", DBdata.getM_grade());
 		}
-		System.out.println("(((((((((((((((((" + check + ")))))))))))))))");
 		request.setAttribute("check", new Integer(check));
 		
 		return "/content/join/factor/company2/loginPro.jsp";//ÇØ´ç ºä
