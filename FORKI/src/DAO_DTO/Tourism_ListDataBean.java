@@ -6,6 +6,7 @@ public class Tourism_ListDataBean {
 	private String park_se;
 	private String adres;
 	private String gu_nm;
+	
 
 	private String tel;
 	public String getPark_nm() {
