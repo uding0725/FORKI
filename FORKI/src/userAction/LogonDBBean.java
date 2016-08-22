@@ -35,7 +35,7 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
             pstmt.setString(2, member.getName());
             pstmt.setString(3, member.getPasswd());
             pstmt.setString(4, member.getEmail());
-            pstmt.setInt(5, 0);
+            pstmt.setInt(5, 1);
             pstmt.setString(6, "n");
             pstmt.setString(7, member.getTell());
             pstmt.setString(8, member.getZipcode());
@@ -104,6 +104,7 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
  //DriverManager.getConnection(jdbc:apache:commons:dbcp:/pool);
             pstmt = conn.prepareStatement(
             "select * from KID_DATA where id = ?");
+           /* select  NVL(MAX(NUM),0)+1 as num  from KID_DATA where id='';*/
             pstmt.setString(1, kid_data.getId());
             rs = pstmt.executeQuery();
             int next_num = 0;
@@ -112,7 +113,7 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
             LogonDataBean tempNum = new LogonDataBean();
             tempNum.setId(rs.getString("id"));
             vecNum.addElement(tempNum);
-            
+            System.out.println("vecNum.size():   "+vecNum.size());
             next_num = vecNum.size() + 1;
             
             }
@@ -168,6 +169,36 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
         }
         return x;
     }
+    
+    // 로그인 계정 정보값 가져오기
+    public LogonDataBean getDBdata(String id) throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        LogonDataBean DBdata =null;
+        try {
+            conn = getConnection();
+           
+            pstmt = conn.prepareStatement(
+            "select * from MEMBER where id = ?");
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+            	DBdata =  new LogonDataBean();
+            	DBdata.setId(rs.getString("id"));
+            	DBdata.setM_grade(rs.getInt("m_grade"));
+            }
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+        return DBdata;
+    }
+    
     //confirmId.jsp
     public int confirmId(String id) throws Exception {
     	Connection conn = null;
@@ -527,6 +558,35 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
         }
         return vecList;
     }
+    //SchulCheck.jsp
+    public Vector SchulRead(String dong)  {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Vector<SchulBean> vecList = new Vector<SchulBean>();
+        
+        try {
+            con = getConnection();
+            String strQuery = "select * from KINDERGARTEN where dong like '"+dong+"%'";
+            pstmt = con.prepareStatement(strQuery);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+            	SchulBean tempSchul = new SchulBean();
+            	tempSchul.setSchul_nm(rs.getString("schul_nm"));
+            	tempSchul.setAdres(rs.getString("adres"));
+                vecList.addElement(tempSchul);
+            }
+
+        }catch(Exception ex) {
+            System.out.println("Exception" + ex);
+        }finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (con != null) try { con.close(); } catch(SQLException ex) {}
+        }
+        return vecList;
+    }
+    
     //findID.jsp
     public String findID(String name,String email){
    	 Connection conn = null;

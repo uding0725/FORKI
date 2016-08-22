@@ -12,7 +12,10 @@ $(document).ready(function(){
     $(".addItemBtn").click(function(){
         // item 의 최대번호 구하기
     num =  num + 1;
-    var insert_tr_td = "<tr class ='item"+num+"'>  <td><input type='text' name='child' size='6' maxlength='15'/></td><td><input type='text' name='child' size='10' readonly/></td><td><input type='button' value='어린이집/유치원 찾기' onClick='childCheck()''></td><td><button class='delBtn'>삭제</button></td></tr>";
+    var insert_tr_td = "<tr class ='item"+num+"'><td><input type='text' name='child_name' size='6' maxlength='15' value='${child_name}'/></td>";
+   	insert_tr_td +="<td><input type='text' name='schul_nm' size='10' readonly value='${schul_nm}'/></td>";
+	insert_tr_td +="<td><input type='button' value='어린이집/유치원 찾기' onClick='SchulCheck()'></td>";
+	insert_tr_td +="<td><button class='delBtn'>삭제</button></td></tr>";
     $('#example tr:last').after(insert_tr_td);
         
         
@@ -178,9 +181,9 @@ $(document).ready(function(){
     	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
     }
     
-	function childCheck(){
+	function SchulCheck(){
     	
-    	url="/FORKI/content/join/factor/user/ChildCheck.do?check=y";
+    	url="/FORKI/content/join/factor/user/SchulCheck.do?check=y";
     	
     	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
     }	
@@ -190,7 +193,7 @@ $(document).ready(function(){
 try{
 %>
 <body>
-<form method="post" action="/FORKI/content/join/factor/user/modifyPro.do" name="userinput"  onSubmit="return checkIt()">
+<form method="post" action="/FORKI/content/join/UserModifyPro.do" name="userinput"  onSubmit="return checkIt()">
   <table id="example" width="400" border="1" cellspacing="0" cellpadding="3" align="center" >
     <tr>
     <td height="39" align="center" colspan="4">
@@ -314,7 +317,7 @@ try{
     
     <tr> 
        <td colspan="4">
-        <input type="text" name="zipcode" size="10" readonly>
+        <input type="text" name="zipcode" size="10" readonly value="${zipcode}">
         <input type="button" value="우편번호찾기" onClick="zipCheck()">
 	</td>
 </tr>
@@ -333,9 +336,9 @@ try{
         </tr>
         <tr class="item1"> 
         
-            <td><input type="text" name="child_name" size="6" maxlength="15"/></td>
-            <td><input type="text" name="schul_nm" size="10" readonly/></td>
-            <td><input type="button" value="어린이집/유치원 찾기" onClick="childCheck()"></td>
+            <td><input type="text" name="child_name" size="6" maxlength="15" value="${child_name}"/></td>
+            <td><input type="text" name="schul_nm" size="10" readonly value="${schul_nm}"/></td>
+            <td><input type="button" value="어린이집/유치원 찾기" onClick="SchulCheck()"></td>
             <td><button class="delBtn">삭제</button></td>
            
 </tr>

@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <c:if test="${check == 1}">
 	<body>
 		<form method="post" action="/FORKI/content/join/UserMain.jsp" name="userinput">
