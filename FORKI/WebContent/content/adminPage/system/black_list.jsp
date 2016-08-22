@@ -20,7 +20,8 @@
 <td>회원구분</td>
 <td>제재일</td>
 <td>제재사유</td>
-<td>상태</td>
+<td>상  태</td>
+<td>비  고</td>
 </tr>
 
 <c:forEach var="i" items="${Blist}">
@@ -36,7 +37,7 @@
 <td>${temptR_date}</td>
 <td>${temptContent}</td>
 <td>${temptState}</td>
-<td><input type="bottun" value="자세히" onclick="">
+<td><input type="button" value="자세히" onclick="javascript:window.open('/FORKI/content/adminPage/system/blackUCheck.do?id=${temptId}','post','toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no')"></td>
 </tr>
 </c:forEach>
 </c:if>

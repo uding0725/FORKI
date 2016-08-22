@@ -12,8 +12,8 @@ $(document).ready(function(){
     $(".addItemBtn").click(function(){
         // item 의 최대번호 구하기a
     num =  num + 1;
-    var insert_tr_td = "<tr class ='item"+num+"'><td><input type='text' name='child_name' size='6' maxlength='15'/></td>";
-   	insert_tr_td +="<td><input type='text' name='schul_nm' size='10' readonly/></td>";
+    var insert_tr_td = "<tr class ='item"+num+"'><td><input type='text' name='child_name"+num+"' size='6' maxlength='15'/></td>";
+   	insert_tr_td +="<td><input type='text' name='schul_nm"+num+"' size='10' readonly/></td>";
 	insert_tr_td +="<td><input type='button' value='어린이집/유치원 찾기' onClick='SchulCheck()'></td>";
 	insert_tr_td +="<td><button class='delBtn'>삭제</button></td></tr>";
     $('#example tr:last').after(insert_tr_td);
@@ -336,8 +336,8 @@ $(document).ready(function(){
         </tr>
         <tr class="item1"> 
         
-            <td><input type="text" name="child_name" size="6" maxlength="15"/></td>
-            <td><input type="text" name="schul_nm" size="10" readonly/></td>
+            <td><input type="text" name="child_name1" size="6" maxlength="15"/></td>
+            <td><input type="text" name="schul_nm1" size="10" readonly/></td>
             <td><input type="button" value="어린이집/유치원 찾기" onClick="SchulCheck()"></td>
             <td><button class="delBtn">삭제</button></td>
            
