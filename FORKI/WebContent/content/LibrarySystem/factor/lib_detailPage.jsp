@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css">
 <title>문화시설 상세 페이지</title>
 <style>
-#md-container {
+#lb-container {
 	width: 950px;
 	height: 700px;
 	margin: 0px auto;
@@ -19,7 +19,7 @@
 	margin-bottom: 20px;
 }
 
-#md-detailview {
+#lb-detailview {
 	width: 440px;
 	height: 650px;
 	margin: 5px;
@@ -29,7 +29,7 @@
 	float: left;
 }
 
-#md-map {
+#lb-map {
 	width: 440px;
 	height: 500px;
 	margin: 5px;
@@ -89,21 +89,12 @@
 </style>
 </head>
 <body>
-	<div id="md-container">
+	<div id="lb-container">
 		<p style="text-align: left;" />
 		<font size="+1"><b>문화시설 세부정보</b></font>
-		<div id="md-detailview">
-			<p>세부정보</p>
-			<br>
-			<p>주소 :</p>
-			<br>
-			<p>전화번호 :</p>
-			<br>
-			<p>사이트 :</p>
-			<br>
-			<p>진료시간</p>
-			<br>
-			<div class="wrapper"> <!-- 별점  -->
+		<div id="lb-detailview">
+		
+			<!-- <div class="wrapper"> 별점 
 	            <span class="rating">
 	                <input id="rating5" type="radio" name="rating" value="5">
 	                <label for="rating5">5</label>
@@ -124,10 +115,89 @@
 	                <option value="4">4</option>
 	                <option vlaue="5">5</option>
 	                </select>
-		        </div>
-		</div>
-		<div id="md-map">지도 넣을 창</div>
+		        </div>  -->
+		 
+		  <c:if test="${select=='toy_lib'}">
+		  <h2> 세부정보 </h2>
+		  <br>
+			<p>명칭: ${article.lib_nm}
+			<br>
+			<p>주소 : ${article.adres}</p>
+			<br>
+			<p>전화번호 : ${article.tel}</p>
+			<br>
+			<p>사이트 :<a href="${article.website}">${article.website}</a></p>
+			<br>
+			 <script>
+			 var x = '${article.x}';
+			 var y = '${article.y}';
+			 </script>
+			
+		  </c:if>
+		  <c:if test="${select=='pub_lib'}">   
+		 
+		  <h2> 세부정보 </h2>
+		  <br>
+		  <p>구분 : ${article.libry_se}
+		  <br>
+			<p>명칭: ${article.libry_name}
+			<br>
+			<p>주소 : ${article.adres}</p>
+			<br>
+			<p>전화번호 :${article.tel}</p> 
+			<br>
+			<p>사이트 :<a href="${article.website}">${article.website}</a></p>
+			<br>
+			<p>휴관일 : ${article.libry_close_date}</p>
+			<br>
+			<script>
+			 var x = '${article.x_loc}';
+			 var y = '${article.y_loc}';
+			 </script>
+			</c:if>   
+		</div> 
+		
+		<div id="lb-map">지도 넣을 창
+		<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
+<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new daum.maps.LatLng(x, y), // 지도의 중심좌표
+		        level: 4, // 지도의 확대 레벨
+		        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new daum.maps.Map(mapContainer, mapOption); 
+		// 마커 이미지의 주소
+			var markerImageUrl = '../../img/toy.png'
+		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
+
+		// 마커 이미지를 생성한다
+		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+
+		// 지도에 마커를 생성하고 표시한다
+		
+		var marker = new daum.maps.Marker({
+		    position: new daum.maps.LatLng(x, y), // 마커의 좌표
+		    image : markerImage, // 마커의 이미지
+		    map: map // 마커를 표시할 지도 객체
+		});
+	
+	</script>
+
 	</div>
+	</div>
+	
 	<input type="button" value="닫기">
+<script>
+	function setid(){
+	self.close();}
+	</script>
 </body>
 </html>

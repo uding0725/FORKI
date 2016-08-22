@@ -17,11 +17,21 @@
 			<p>
 				시간별<br>이용가능한<br>시설조회
 			</p>
-			<input type="range" name="range" min="1" max="12" step="1" /> <br> <br> <select name="select">
-				<option value="">전체</option>
-				<option value="병원">병원</option>
-				<option value="보건소">보건소</option>
-			</select> <input type="button" name="검색" value="검색">
+			<form method="post" action="/FORKI/content/MedicalSystem/searchMedi.do">
+			<input type="range" name="start" min="0" max="24" step="2" value="0" onchange="updateValue(this.value)"/>
+			<span id="textInput">0시~24시</span>
+			<script>
+				function updateValue(val) {
+   				 document.getElementById('textInput').innerHTML=val+"시~ 24시"; 
+  				}
+			</script>
+				<input type="hidden" name="check" value="1">
+			 <br> <select name="search">
+				<option value="0">전체</option>
+				<option value="1">병원</option>
+				<option value="2">보건소</option>
+			</select> <input type="submit" name="검색" value="검색">
+			</form>		
 		</div>
 	</div>
 	<!-- 문화시설조회라면 -->
