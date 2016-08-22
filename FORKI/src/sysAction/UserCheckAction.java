@@ -12,7 +12,7 @@ public class UserCheckAction implements CommandAction{
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
 		
-			request.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding("UTF-8");
 			
 			System.out.println("나오니?:::::");
 			
@@ -35,7 +35,7 @@ public class UserCheckAction implements CommandAction{
 			
 			System.out.println("나오니?:::::");
 			
-			return "/content/join/factor/system/UserCheck.jsp";
+			return "/content/adminPage/system/UserCheck.jsp";
 			
 	}
 

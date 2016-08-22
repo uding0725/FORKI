@@ -6,7 +6,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <script>
 
-$(document).ready(function(){
+/* $(document).ready(function(){
     // 옵션추가 버튼 클릭시
     var num = 1;
     $(".addItemBtn").click(function(){
@@ -16,13 +16,13 @@ $(document).ready(function(){
     $('#example tr:last').after(insert_tr_td);
         
         
-        /* var lastItemNo = $("#example tr:last").attr("class").replace("item", "");
+        var lastItemNo = $("#example tr:last").attr("class").replace("item", "");
 		var newitem = $("#example tr:eq(1)").clone();
         newitem.removeClass();
         newitem.find("td:eq(0)").attr("rowspan", "1");
         newitem.addClass("item"+(parseInt(lastItemNo)+1));
 
-        $("#example").append(newitem); */
+        $("#example").append(newitem); 
     });
 
 
@@ -49,7 +49,7 @@ $(document).ready(function(){
         var rowspan = $("."+cls).length;
         $("."+cls+":first td:eq(0)").attr("rowspan", rowspan);
     }
-});
+}); */
 
 	/* function boxresetID() {
     	var userinput = eval("document.userinput");
@@ -178,9 +178,9 @@ $(document).ready(function(){
     	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
     }
     
-	function childCheck(){
+	function SchulCheck(){
     	
-    	url="/FORKI/content/join/factor/company2/ChildCheck.do?check=y";
+    	url="/FORKI/content/join/factor/company2/SchulCheck.do?check=y";
     	
     	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
     }	
@@ -314,7 +314,7 @@ try{
     
     <tr> 
        <td colspan="4">
-        <input type="text" name="zipcode" size="10" readonly>
+        <input type="text" name="zipcode" size="10" readonly value="${zipcode}">
         <input type="button" value="우편번호찾기" onClick="zipCheck()">
 	</td>
 </tr>
@@ -331,7 +331,8 @@ try{
 </td>
 <tr>
 <td colspan="4">
-<input type="text" name="schul_nm" size="50" onfocus="return boxresetSCHUL_NM()" value="${schul_nm}">
+<input type="text" name="schul_nm" size="40" onfocus="return boxresetSCHUL_NM()" value="${schul_nm}">
+<input type="button" value="어린이집/유치원 찾기" onClick="SchulCheck()">
 </td>
 
 

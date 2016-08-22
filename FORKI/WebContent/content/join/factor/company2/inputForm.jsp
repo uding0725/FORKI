@@ -194,12 +194,12 @@
     	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
     }
     
-	function childCheck(){
+	function SchulCheck(){
     	
-    	url="/FORKI/content/join/factor/company2/ChildCheck.do?check=y";
+    	url="/FORKI/content/join/factor/company2/SchulCheck.do?check=y";
     	
     	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
-    }	
+    }
 </script>
 
 
@@ -346,7 +346,8 @@
 </td>
 <tr>
 <td colspan="4">
-<input type="text" name="schul_nm" size="50" onfocus="return boxresetSCHUL_NM()" value="어린이집/유치원 명">
+<input type="text" name="schul_nm" size="40" onfocus="return boxresetSCHUL_NM()" value="어린이집/유치원 명">
+<input type="button" value="어린이집/유치원 찾기" onClick="SchulCheck()">
 </td>
 
 

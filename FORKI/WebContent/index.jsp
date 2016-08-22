@@ -4,8 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
-</head>
+</head> 
 <body>
 <% response.sendRedirect("/FORKI/content/main/main.do"); %>
-</body>
-</html>
+</body> 
+</html>  

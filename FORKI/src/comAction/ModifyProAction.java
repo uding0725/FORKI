@@ -10,10 +10,10 @@ public class ModifyProAction implements CommandAction{
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
 		
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("memId");
+		String id = (String)session.getAttribute("id");
 		LogonDataBean member = new LogonDataBean();
 
 		member.setId(id);

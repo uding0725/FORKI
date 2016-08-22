@@ -1,6 +1,7 @@
 package userAction;
 
 import java.sql.Timestamp;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,8 @@ public class InputProAction implements CommandAction {
 
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		//생년월일 8자리로 저장
 		String MM = null;
 		String dd = null;
@@ -33,8 +36,6 @@ public class InputProAction implements CommandAction {
 		SendEmail sendEmail = new SendEmail(); /*이메일을 보내는 클레스*/
 		CreateCode code = new CreateCode(); /*랜덤코드를 생성하는 클레스*/
 		HttpSession session = request.getSession();
-		
-		request.setCharacterEncoding("UTF-8");
 
 		LogonDBBean manager = LogonDBBean.getInstance();
 		//멤버 insert
@@ -64,10 +65,17 @@ public class InputProAction implements CommandAction {
 		manager.insertP_ETC(p_etc);
 		//KID_DATA insert
 		LogonDataBean kid_data = new LogonDataBean();
-
+		/*Vector veclist = new Vector();*/
+		
 		String child_name = request.getParameter("child_name");
 		String schul_nm = request.getParameter("schul_nm");
-
+/*		System.out.println("child_name:"+child_name + " / schul_nm:"+schul_nm);
+		//1,2,3,4,5,6
+		String [] child_names = request.getParameterValues("child_name");
+		String [] schul_nms = request.getParameterValues("schul_nm");
+		System.out.println("child_name:"+child_names[0].toString() + " / schul_nm:"+schul_nms[0].toString());*/
+		
+		
 		if (child_name != "" && schul_nm != "") {
 			kid_data.setId(request.getParameter("id"));
 			kid_data.setChild_name(request.getParameter("child_name"));

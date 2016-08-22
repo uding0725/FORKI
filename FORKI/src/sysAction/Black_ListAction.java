@@ -11,7 +11,7 @@ public class Black_ListAction implements CommandAction{
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
 		
-			request.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding("UTF-8");
 			
 			System.out.println("³ª¿À´Ï?:::::");
 			
@@ -22,7 +22,7 @@ public class Black_ListAction implements CommandAction{
 			
 			request.setAttribute("Blist", Blist);
 			
-			return "/content/join/factor/system/black_list.jsp";
+			return "/content/adminPage/SysBlack_list.jsp";
 			
 	}
 
