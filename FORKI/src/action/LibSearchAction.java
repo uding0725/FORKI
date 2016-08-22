@@ -19,6 +19,9 @@ public class LibSearchAction implements CommandAction {
 		String searchName = request.getParameter("searchName");
 		
 		Vector vt = new Vector();
+		Vector vTour = new Vector();
+		Vector vPub = new Vector();
+		Vector vToy = new Vector();
 		int count = 0;
 		int gu_n =0;
 		
@@ -37,7 +40,9 @@ public class LibSearchAction implements CommandAction {
 		if(select == null){
 			
 		}else if(select.equals("all")){
-			
+			vTour = ldbb.getTour(gu_n, dongName, searchName);
+			vPub = ldbb.getPubLib(gu_n, dongName, searchName);
+			vToy = ldbb.getToyLib(gu_n, dongName, searchName);
 		} else if( select.equals( "tourism_list")){
 			vt = ldbb.getTour(gu_n,dongName,searchName);
 		} else if( select.equals("pub_lib")){
@@ -51,11 +56,18 @@ public class LibSearchAction implements CommandAction {
 		if(vt == null){
 			count = 0;
 		}else{
+			if(select.equals("all")){
+				count = vTour.size()+vPub.size()+vToy.size();	
+			} else{
 			count = vt.size();
+			}
 		}
 		System.out.println( "count::"+count);
 		
 		request.setAttribute("select", select);
+		request.setAttribute("vTour", vTour);
+		request.setAttribute("vPub", vPub);
+		request.setAttribute("vToy", vToy);
 		request.setAttribute("vt",vt);
 		request.setAttribute("count", count);
 		

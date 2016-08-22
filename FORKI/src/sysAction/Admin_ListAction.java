@@ -13,8 +13,8 @@ public class Admin_ListAction implements CommandAction{
 		
 			
 		HttpSession session = request.getSession();
-		String sessionid = (String) session.getAttribute("memId");
-		request.setAttribute("memId", sessionid);
+		String sessionid = (String) session.getAttribute("id");
+		request.setAttribute("id", sessionid);
 		
 		return "/content/join/factor/system/admin_list.jsp";
 	}

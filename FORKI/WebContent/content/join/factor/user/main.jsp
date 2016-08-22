@@ -6,7 +6,7 @@
 <title>메인입니다.</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <!-- 로그인 되지 않았을 경우 -->
-<c:if test="${memId==null}">
+<c:if test="${id==null}">
 
 <script>
 function focusIt()
@@ -61,12 +61,12 @@ onclick="document.location.href='/FORKI/content/join/joinSelect.jsp'">
 </tr>
 </table>
 </c:if>
-<c:if test="${memId!=null}">
+<c:if test="${id!=null}">
 <table width=500 cellpadding="0" cellspacing="0"  align="center" border="1" >
 <tr>
 <td width="300" height="20">하하하</td>
 <td rowspan="3" align="center">
-<%=session.getAttribute("memId")%>님이 <br>
+<%=session.getAttribute("id")%>님이 <br>
 방문하셨습니다
 <form  method="post" action="/FORKI/content/join/factor/user/logout.do"> 
 <input type="submit"  value="로그아웃">

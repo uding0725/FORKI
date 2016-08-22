@@ -1,4 +1,4 @@
 <%
 session.invalidate();
-response.sendRedirect("/FORKI/content/join/UserMain.do");
+response.sendRedirect("/FORKI/content/join/ComMain.do");
 %>

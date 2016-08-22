@@ -7,7 +7,7 @@
 </head>
 
 <body>
-	<div style="">
+	<div style=""> 
 		<form method="post" action="#" name="kidList">
 			<input type="button" id="btn-add-row" value="아이추가"> <input type="button" id="btn-delete-row" value="아이삭제">
 			<hr>

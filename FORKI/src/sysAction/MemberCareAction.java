@@ -12,7 +12,7 @@ public class MemberCareAction implements CommandAction{
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
 		
-			request.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding("UTF-8");
 			
 			System.out.println("나오니?:::::");
 			
@@ -23,7 +23,7 @@ public class MemberCareAction implements CommandAction{
 			System.out.println("나오니?:::::"+Memlist);
 			
 			request.setAttribute("Memlist", Memlist);
-			return "/content/join/factor/semi/system/MemberCare.jsp";
+			return "/content/adminPage/SysMemberCare.jsp";
 			
 	}
 
