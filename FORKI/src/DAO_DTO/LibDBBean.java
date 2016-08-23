@@ -56,6 +56,8 @@ public class LibDBBean {
 				tldb.setAdres(rs.getString("adres"));
 				tldb.setTel(rs.getString("tel"));
 				tldb.setGu_nm(rs.getString("gu_nm"));
+				tldb.setX(rs.getString("x"));
+				tldb.setY(rs.getString("y"));
 				
 				
 				vt.add(tldb);
@@ -228,6 +230,8 @@ public Tourism_ListDataBean viewTour(String adres) throws Exception{
 				article.setAdres(rs.getString("adres"));
 				article.setTel(rs.getString("tel"));
 				article.setGu_nm(rs.getString("gu_nm"));
+				article.setX(rs.getString("x"));
+				article.setY(rs.getString("y"));
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
