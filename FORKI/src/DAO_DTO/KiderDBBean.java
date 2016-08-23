@@ -61,12 +61,14 @@ public class KiderDBBean {
 		return DBdata;
 	}
 
+
 	public void insertKid(KiderDataBean kidmember) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			con = getConnection();
+			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(
 					"insert into kindergarten(schul_nm,schul_num,ofcdc,matr_gu,fond,zip,adres,dong,telno,clas_co,stdnt_co_sm,grlstdn_co,frl_tcher_co_sm,frl_female_tcher_co,rm,state,reg_date) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, kidmember.getSchul_nm());
@@ -87,11 +89,23 @@ public class KiderDBBean {
 			pstmt.setString(16, kidmember.getState());
 			pstmt.setTimestamp(17, kidmember.getReg_date());
 			pstmt.executeUpdate();
-		} catch (SQLException e) {
+			pstmt=con.prepareStatement("insert into total_score(schul_num,t_score,count) values(?,0,0)");
+			pstmt.setInt(1, kidmember.getSchul_num());
+			pstmt.executeUpdate();
+			con.commit();
+		}catch(SQLException e){
+
 			e.printStackTrace();
-		} finally {
+
+			JdbcUtil.rollback(con);
+		}finally{
+
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(con);
+			if(con!=null){
+				con.setAutoCommit(false);
+			}
+			
 		}
 	}
 
