@@ -48,9 +48,9 @@ table{
   <div id="write-header">
   <font size="+2">공지사항</font> 
    <span style='position: absolute; right: 60px'> 
-    <a href="#"><img src="img/home.png" width="20" height="20"></a> 
-    <a href="#">>게시판</a>
-    <a href="#">>공지사항</a> 
+    <a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a> 
+    <a href="/FORKI/content/board/notifyList.do">>게시판</a>
+    <a href="">>공지사항</a> 
    </span>
    <br>
    <br>
@@ -58,16 +58,17 @@ table{
    <form align="right">
   
    <span style='position:relative;'>
-   <c:if test="${sessionScope.id=='admin'}">
-   <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/notifyWrite.do'">
-   </c:if>
+  
    <select name="searchn">
    <option value="0">전체
    <option value="1">제목
    <option value="2">내용
    </select>
    <input type="text" style="width:10%" name="search">
-   <input type="button" name="searching" value="검색">
+   <input type="submit" name="searching" value="검색">
+   <c:if test="${sessionScope.id=='admin'}">
+   <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/notifyWrite.do'">
+   </c:if>
    </span>
    </form>
   <div id="write-content">

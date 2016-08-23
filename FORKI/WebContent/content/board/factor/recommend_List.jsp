@@ -48,9 +48,9 @@ table{
   <div id="write-header">
   <font size="+2">건의사항</font> 
    <span style='position: absolute; right: 60px'> 
-    <a href="#"><img src="../img/home.png" width="20" height="20"></a> 
-    <a href="#">>게시판</a>
-    <a href="#">>건의사항</a> 
+    <a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a> 
+    <a href="/FORKI/content/board/notifyList.do">>게시판</a>
+    <a href="">>건의사항</a> 
    </span>
    <br>
    <br>
@@ -63,7 +63,7 @@ table{
    <option value="1">내용</option>
    </select>
    <input type="text" style="width:10%" name="search">
-   <input type="button" name="search" value="검색">
+   <input type="submit" name="search" value="검색">
    <c:if test="${sessionScope.id!=null}">
    <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/recommendWrite.do'">
 	</c:if>
