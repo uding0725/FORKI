@@ -17,7 +17,7 @@
 	
 function sendAddress(schul_nm,adres){
 var Schul_nm =schul_nm;
-opener.document.userinput.schul_nm.value=Schul_nm;
+opener.document.userinput.kinderName${param.num}.value=Schul_nm;
 self.close();
 	}
 </script>
@@ -26,7 +26,7 @@ self.close();
 <center>
 <b>유치원/어린이집 찾기</b>
 <table>
-<form name="SchulForm" method="post" action="/FORKI/content/join/factor/user/SchulCheck.do">
+<form name="SchulForm" method="post" action="/FORKI/content/join/factor/user/SchulCheck.do?num=${param.num}">
       <tr>
         <td><br>
           도로명 주소 입력 : <input name="dong" type="text">
