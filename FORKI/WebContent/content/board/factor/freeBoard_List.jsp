@@ -101,7 +101,7 @@
 </td>
     <td align="center"  width="50">${article.readcount}
 </td>
-    <td align="center"  width="120">${article.reg_date}</td>
+    <td align="center"  width="120">${date.format(article.reg_date)}</td>
   <!--   date.format() -->
    
   </tr>

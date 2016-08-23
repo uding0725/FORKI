@@ -209,7 +209,7 @@ public class FreeBoardDBBean {
 		            article.setSubject(rs.getString("subject"));
 		            article.setContent(rs.getString("content"));
 		            article.setReadcount(rs.getInt("readcount"));
-		         
+		            article.setReg_date(rs.getTimestamp("reg_date"));
 
 		            articleList.add(article);
 		            //레코드를 board.dataBean에 저장후 list에 저장
