@@ -53,8 +53,8 @@ a {
 </style>
 
 <script>
-	function viewDetail(adres,select) {
-		url = "/FORKI/content/LibrarySystem/factor/lib_detailPage.do?adres=" + adres+"&select="+select;
+	function viewDetail(adres,select,type) {
+		url = "/FORKI/content/LibrarySystem/factor/lib_detailPage.do?adres=" + adres+"&select="+select+"&type="+type;
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	var x =new Array();
@@ -65,21 +65,18 @@ a {
 </head>
 <div id="lib-wrap">
 	<font size="+2">문화시설</font> <span
-		style='position: absolute; right: -20px'> <a href="#"><img
-			src="../img/home.png" width="20" height="20"></a> <a href="#">>주변시설</a>
-		<a href="#">>문화시설 조회</a>
+		style='position: absolute; right: -20px'> <a href="/FORKI/content/main/main.do"><img
+			src="../img/home.png" width="20" height="20"></a> <a href="/FORKI/content/MedicalSystem/searchMedi.do">>주변시설</a>
+		<a href="">>문화시설 조회</a>
 	</span>
 	<div id="lib-container">
 		<form name=search_libForm aciton="/FORKI/content/LibrarySystem/searchLib.do">
 		<div id="lib-header">
 			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
 				<tr>
-					<td width="50" align="center">
-					<strong>
-							<h5>조회</h5>
-					</strong>
+					<td width="80" align="center">
+					<strong> <h3>조회</h3> </strong>
 					</td>
-
 					<td colspan="1" align="center">
 					<input type="radio" name="select" value="all">전체 &nbsp; &nbsp; 
 					<input type="radio" name="select" value="tourism_list">산/공원&nbsp; 
@@ -135,20 +132,26 @@ a {
 	<c:if test="${count>0}">
 		<c:if test="${select=='all'}">
 			<c:if test="${!empty vTour}">
-			-산 / 공원
+			-산 / 공원 <br>
 		<c:forEach var="tour" items="${vTour}">
 		-명칭 : [${tour.park_se}] ${tour.park_nm} <br>
 		 주소 : ${tour.adres} <br>
+		 	 <script>
+        			x.push('${tour.x}');
+        			y.push('${tour.y}')
+        	
+        		</script>
 		 </c:forEach>
 		 </c:if>
 		
 		 <c:if test="${!empty vPub}">
-			-도서관
+			-도서관 <br>
 		<c:forEach var="p" items="${vPub}">
 		-명칭 : [${p.libry_se}] ${p.libry_name}<br>
 		 주소 : ${p.adres} <br>
 		 전화번호 : ${p.tel} <br>
-				<a href="javascript:viewDetail('${p.adres}','${select}')">[상세정보 보기]</a>
+		
+				<a href="javascript:viewDetail('${p.adres}','${select}','p')">[상세정보 보기]</a>
 				<br>
 				<script>
         			x.push('${p.x_loc}');
@@ -159,13 +162,13 @@ a {
 		 </c:if>
 		 
 		 <c:if test="${!empty vToy}">
-			-장난감 도서관
+			-장난감 도서관 <br>
 		
 		<c:forEach var="toy" items="${vToy}">
 		-명칭 : ${toy.lib_nm} <br>
 		 주소 : ${toy.adres} <br>
 		 전화번호 : ${toy.tel}  <br>	
-				<a href="javascript:viewDetail('${toy.adres}','${select}')">[상세정보 보기]</a>
+				<a href="javascript:viewDetail('${toy.adres}','${select}','toy')">[상세정보 보기]</a>
 				<br>	
 				<script>
         			x.push('${toy.x}');
@@ -185,8 +188,9 @@ a {
 				 주소 : ${v.adres} <br>
 				
 				 <script>
-        			title.push('${v.park_nm}');
-        			coord.push('${v.adres}')
+        			x.push('${v.x}');
+        			y.push('${v.y}')
+        	
         		</script>
 			</c:if>
 			 <c:if test="${select=='pub_lib'}">
@@ -195,7 +199,7 @@ a {
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
 				주소 : ${v.adres} <br>
 				전화번호 : ${v.tel} <br>
-				<a href="javascript:viewDetail('${v.adres}','${select}')">[상세정보 보기]</a>
+				<a href="javascript:viewDetail('${v.adres}','${select}','p')">[상세정보 보기]</a>
 				<br>
 				<script>
         			x.push('${v.x_loc}');
@@ -210,7 +214,7 @@ a {
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
 				주소 : ${v.adres} <br>
 				전화번호 : ${v.tel}  <br>	
-				<a href="javascript:viewDetail('${v.adres}','${select}')">[상세정보 보기]</a>
+				<a href="javascript:viewDetail('${v.adres}','${select}','toy')">[상세정보 보기]</a>
 				<br>	
 				<script>
         			x.push('${v.x}');
@@ -228,15 +232,29 @@ a {
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
 <script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new daum.maps.LatLng(37.541,126.986), // 지도의 중심좌표
-		        level: 4, // 지도의 확대 레벨
-		        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
-		    }; 
-
-		// 지도를 생성한다 
-		var map = new daum.maps.Map(mapContainer, mapOption); 
+		
+			if(${count}==0){
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = {	
+		    		    center: new daum.maps.LatLng(37.541,126.986), 
+		        		level: 4, // 지도의 확대 레벨
+		        		mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+		    					}; // 지도의 중심좌표
+						
+							}
+			if(${count} != 0){
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = {
+						 center: new daum.maps.LatLng(x[0],y[0]),
+						 level: 4, // 지도의 확대 레벨
+				         mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
+				    			}; 
+					
+							}
+		      
+			// 지도를 생성한다 
+			var map = new daum.maps.Map(mapContainer, mapOption);
+		
 		// 마커 이미지의 주소
 			var markerImageUrl = '../img/toy.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
@@ -255,6 +273,9 @@ a {
 		    map: map // 마커를 표시할 지도 객체
 		});
 		}
+		
+		
+		
 	</script>
 
 	</div>

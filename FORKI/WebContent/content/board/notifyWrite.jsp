@@ -3,5 +3,5 @@
 
 <tiles:insertDefinition name="layout3" >
 	<tiles:putAttribute name="menu" value="/content/template/menu3.jsp" />
-	<tiles:putAttribute name="body" value="/content/board/factor/freeBoard_Update.jsp" />
-</tiles:insertDefinition>  
+	<tiles:putAttribute name="body" value="/content/board/factor/notify_Write.jsp" />
+</tiles:insertDefinition>

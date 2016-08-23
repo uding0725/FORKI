@@ -8,8 +8,14 @@ public class NotifyDataBean {
 	private String subject;
 	private String content;
 	private int readcount;
-	private Timestamp date;
+	private Timestamp reg_date;
 	
+	public Timestamp getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -46,10 +52,5 @@ public class NotifyDataBean {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
-	public Timestamp getDate() {
-		return date;
-	}
-	public void setDate(Timestamp date) {
-		this.date = date;
-	}
+
 }

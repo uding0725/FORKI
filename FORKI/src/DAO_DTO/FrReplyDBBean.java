@@ -221,6 +221,33 @@ public class FrReplyDBBean {
 		}
 		return x;
 	}
+	
+	//글삭제시 댓글삭제
+		public int deleteReply(int num, String id) throws Exception{
+			Connection conn=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			int x=-1;
+			
+			try{
+				if(id != null){
+				conn=getConnection();
+				pstmt=conn.prepareStatement("delete from free_reply where num=?");
+				pstmt.setInt(1, num);
+				pstmt.executeUpdate();
+						x=1;
+					}else{
+						x=0;
+				}
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}finally{
+				JdbcUtil.close(pstmt);
+				JdbcUtil.close(conn);
+			}
+			return x;
+		}
 
 
 }

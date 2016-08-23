@@ -5,9 +5,24 @@ public class Tourism_ListDataBean {
 	private String park_nm;
 	private String park_se;
 	private String adres;
-	private String gu_nm;
-
 	private String tel;
+	private String gu_nm;
+	private String x;
+	private String y;
+	
+	
+	public String getX() {
+		return x;
+	}
+	public void setX(String x) {
+		this.x = x;
+	}
+	public String getY() {
+		return y;
+	}
+	public void setY(String y) {
+		this.y = y;
+	}
 	public String getPark_nm() {
 		return park_nm;
 	}
