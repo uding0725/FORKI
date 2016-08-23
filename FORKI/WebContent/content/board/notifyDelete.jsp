@@ -4,5 +4,5 @@
 
 <c:if test="${check>0}">
 <meta http-equiv="Refresh"
-		content="0;url=/FORKI/content/board/recommendList.do?${pageNum}">
+		content="0;url=/FORKI/content/board/notifyList.do?${pageNum}">
 </c:if>

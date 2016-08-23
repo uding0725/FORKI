@@ -1,12 +1,12 @@
 package DAO_DTO;
-//°øÁö»çÇ×DAO
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DAO
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import jdbc.JdbcUtil;
 
@@ -23,7 +23,7 @@ public class NotifyDBBean {
 		String jdbcDriver="jdbc:apache:commons:dbcp:/pool";
 		return DriverManager.getConnection(jdbcDriver);
 	}
-	//°øÁö»çÇ×¾²±â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ï¿½ï¿½
 	public void insertArticle(NotifyDataBean article)throws Exception{
 		
 		Connection conn = null;
@@ -65,7 +65,7 @@ public class NotifyDBBean {
 		    }
 		   
 	
-	//°øÁö»çÇ×°³¼ö °¡Áö°í¿È
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int getArticleCount()throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -90,7 +90,7 @@ public class NotifyDBBean {
 		}
 		return x;
 	}
-	//°øÁö»çÇ× °Ë»ö °³¼ö °¡Áö°í¿È
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int getArticleCount(int n,String search)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -121,7 +121,7 @@ public class NotifyDBBean {
 		return x;
 	}
 	
-	//°øÁö»çÇ×ÆäÀÌÂ¡À» ¼³Á¤
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public List getArticles(int start,int end)throws Exception{
 		Connection conn = null;
         PreparedStatement pstmt = null;
@@ -162,7 +162,7 @@ public class NotifyDBBean {
 	            }
 	    	return articleList;
 	        }
-	//°øÁö»çÇ×ÆäÀÌÂ¡À» ¼³Á¤
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public List getArticles(int start,int end,int n,String search)throws Exception{
 			Connection conn = null;
 	        PreparedStatement pstmt = null;
@@ -212,7 +212,7 @@ public class NotifyDBBean {
 		    	return articleList;
 		        }
 	
-	//db·Î ÇÑÁÙ¾¿ °øÁö»çÇ×À» °¡Áö°í¿È
+	//dbï¿½ï¿½ ï¿½ï¿½ï¿½Ù¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public NotifyDataBean getArticle(int num)throws Exception{
 		Connection conn = null;
         PreparedStatement pstmt = null;
@@ -251,7 +251,7 @@ public class NotifyDBBean {
         }
 	return article;
     }
-	//°øÁö»çÇ×¸¦ ÇÏ³ª¸¦ °¡Áö°í ¿Ã¶§
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¸ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¶ï¿½
 	public NotifyDataBean updateGetArticle(int num)throws Exception{
 		Connection conn = null;
         PreparedStatement pstmt = null;
@@ -282,7 +282,7 @@ public class NotifyDBBean {
         }
 	return article;
     }
-	//½ÇÁ¦ µ¥ÀÌÅÍ¸¦ update½ÃÅ°´Â ºÎºÐ
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ updateï¿½ï¿½Å°ï¿½ï¿½ ï¿½Îºï¿½
 	public int updateArticle(NotifyDataBean article)throws Exception{
 		Connection conn = null;
         PreparedStatement pstmt = null;
@@ -308,38 +308,61 @@ public class NotifyDBBean {
              }
      	 return x;
          }
-	//°øÁö»çÇ× »èÁ¦ 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	public int deleteArticle(int num)throws Exception{	
 		Connection conn = null;
         PreparedStatement pstmt = null;
-        ResultSet rs= null;
-        String id="";
+
         int x=-1;
         try {
 	    conn = getConnection();
+			    pstmt = conn.prepareStatement("delete from notify where num=?");
+	                    pstmt.setInt(1, num);
+            x= pstmt.executeUpdate();
 
-            pstmt = conn.prepareStatement(
-            "select id from board where num = ?");
-            pstmt.setInt(1, num);
-            rs = pstmt.executeQuery();
-           
-            if(rs.next()){
-		id= rs.getString("id");
-		if(id.equals(id)){
-		    pstmt = conn.prepareStatement("delete from board where num=?");
-                    pstmt.setInt(1, num);
-                    pstmt.executeUpdate();
-		    x= 1; //±Û»èÁ¦ ¼º°ø
-		}else
-		    x= 0; //ºñ¹Ð¹øÈ£ Æ²¸²
-	    }
         } catch(Exception ex) {
             ex.printStackTrace();
         } finally {
-        	JdbcUtil.close(rs);
+  
         	JdbcUtil.close(pstmt);
         	JdbcUtil.close(conn);
         }
 	return x;
     }
+	
+	public Vector getMain() throws Exception{
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector v = new Vector();
+		
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from notify where num>=((select max(num) from notify)-1) order by num desc");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				do{
+				NotifyDataBean article = new NotifyDataBean();
+           	 	article.setNum(rs.getInt("num"));
+           	 	article.setWriter(rs.getString("writer"));
+           	 	article.setSubject(rs.getString("subject"));
+           	 	article.setContent(rs.getString("content"));
+           	 	article.setReg_date(rs.getTimestamp("reg_date"));
+				
+           	 	v.add(article);
+				}while(rs.next());
+           	 	
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		} finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		
+		return v;
+	}
 }
