@@ -39,14 +39,38 @@ a:hover {
 .fluid_container {
 	margin: 0 auto;
 	position: relative;
-	bottom: 80px;
+	top: 30px;
 	max-width: 440px;
 	width: 100%;
+}
+
+#score {
+	clear: both;
+	padding-right: 0px;
+	padding-left: 0px;
+	background: url(../../img/icon_star2.gif) 0px 0px;
+	float: left;
+	padding-bottom: 0px;
+	margin: 0px;
+	width: 90px;
+	padding-top: 0px;
+	height: 18px;
+}
+
+#score_over {
+/* 	width:  10%; */
+	padding-right: 0px;
+	padding-left: 0px;
+	background: url(../../img/icon_star.gif) 0px 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	padding-top: 0px;
+	height: 18px;
 }
 </style>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=키들어갈곳&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
 <script type="text/javascript" src="../../js/script.js"></script>
 <script type='text/javascript' src='../../js/jquery.min.js'></script>
 <script type='text/javascript' src='../../js/jquery.mobile.customized.min.js'></script>
@@ -91,6 +115,12 @@ a:hover {
 		    } 
 		});
 	}
+	
+	$(document).ready(function() {
+		$(function() {
+			$("#score_over").css("width", "46%");
+		});
+	});
 </script>
 <title>어린이집 상세 정보</title>
 </head>
@@ -106,7 +136,6 @@ a:hover {
 			<p>학생수(남/여) : 총 ${studentNo}(${studentNo -girlNo}/${girlNo})</p>
 			<p>전체선생님/여선생님 : ${tcherNo}/${famTcherNo}</p>
 			<p>비교 : ${param.rm}</p>
-			<div id="chart" style="position: relative; bottom: 130px; left: 240px; width: 180px; height: 100px;"></div>
 			<!-- 이미지 슬라이드 시작 -->
 			<div class="fluid_container">
 				<div class="camera_wrap camera_azure_skin" id="camera_wrap">
@@ -130,15 +159,7 @@ a:hover {
 					</c:forEach> --%>
 				</div>
 			</div>
-			<div style="clear: both; display: block; height: 100px"></div>
 			<!-- 이미지 슬라이드 종료 -->
-			<!-- 별점 시작 -->
-			<div class="wrapper2">
-				<p class="star_rating">
-					<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
-				</p>
-			</div>
-			<!-- 별점 종료   -->
 		</div>
 		<div id="mdK-inmap">
 			<!-- 지도 시작 -->
@@ -146,8 +167,10 @@ a:hover {
 			<!-- 지도 종료 -->
 		</div>
 		<div>
-			<input type="button" value="수정">
-			<input type="button" value="닫기">
+			<!-- 별점 시작 -->
+			<div id="score"><p id="score_over"> </p></div>
+			<!-- 별점 종료   -->
+			<input type="button" value="수정"> <input type="button" value="닫기">
 		</div>
 	</div>
 

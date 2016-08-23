@@ -295,53 +295,7 @@
 	float: right;
 }
 
-.wrapper {
-	padding: 10px;
-	margin: 0px auto;
-	width: 400px;
-	min-height: 50px;
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-	position: absolute;
-	bottom: 0px;
-}
 
-.rating {
-	z-index: 70;
-	overflow: hidden;
-	vertical-align: bottom;
-	display: inline-block;
-	width: auto;
-	height: 20px;
-}
-
-.rating>input {
-	opacity: 0;
-	margin-right: -100%;
-}
-
-.rating>label {
-	position: relative;
-	display: block;
-	float: right;
-	background: url('../img/star-off-big.png');
-	background-size: 20px 20px;
-}
-
-.rating>label:before {
-	display: block;
-	opacity: 0;
-	content: '';
-	width: 20px;
-	height: 20px;
-	background: url('../img/star-on-big.png');
-	background-size: 20px 20px;
-	transition: opacity 0.2s linear;
-}
-
-.rating>label:hover:before, .rating>label:hover ~ label:before, .rating:not (:hover ) >:checked ~ label:before {
-	opacity: 1;
-}
 
 /*------------------------------------------------------------*/
 /* 어린이집 검색 설정 */
@@ -366,16 +320,16 @@
 }
 
 #mdK-header {
-	width: 870px;
+	width: 950px;
 	margin-bottom: 20px;
 	border: 0px solid;
 }
 
 #mdK-content {
-	width: 400px;
-	height: 400px;
-	padding: 5px;
-	margin-bottom: 10px;
+	width: 445px;
+	height: 550px;
+	padding: 10px;
+	margin: 5px;
 	float: left;
 	border: 1px solid;
 }
@@ -407,23 +361,12 @@
 
 #mdK-detailview {
 	width: 440px;
-	height: 650px;
+	height: 550px;
 	margin: 5px;
 	padding: 10px;
 	border: 1px solid;
 	margin-bottom: 10px;
 	float: left;
-}
-
-.wrapper2 {
-	padding: 10px;
-	margin: 0px auto;
-	width: 400px;
-	min-height: 50px;
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-	position: absolute;
-	bottom: 100px;
 }
 
 #mdK-detailview>p {
@@ -432,7 +375,7 @@
 
 #mdK-inmap {
 	width: 440px;
-	height: 650px;
+	height: 550px;
 	margin: 5px;
 	padding: 10px;
 	border: 1px solid;
