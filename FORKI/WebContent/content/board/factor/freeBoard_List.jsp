@@ -52,7 +52,7 @@
   	<input type="text" name=searchn size="30">
   	<input type="submit" value="검색">
   	</form> 
-  	</td>
+  	</td>  
     <td>
        <input type="button" value="글쓰기" onclick="document.location.href='/FORKI/content/board/freeBoardWrite.do">
    </td>
