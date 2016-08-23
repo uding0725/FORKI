@@ -116,7 +116,22 @@
 	                <option vlaue="5">5</option>
 	                </select>
 		        </div>  -->
-		 
+		 <c:if test="${type=='tour'}">
+		  <h2> 세부정보 </h2>
+		  <br>
+		  	<p>구분 : ${article.park_se}</p>
+		  	<br>
+			<p>명칭: ${article.park_nm}</p>
+			<br>
+			<p>주소 : ${article.adres}</p>
+			<br>
+			
+			 <script>
+			 var x = '${article.x}';
+			 var y = '${article.y}';
+			 </script>
+			
+		  </c:if>
 		 
 		 
 		 
@@ -162,8 +177,8 @@
 			</c:if>   
 		</div> 
 		
-		<div id="lb-map">지도 넣을 창
-		<div id="map" style="width:100%;height:350px;"></div>
+		<div id="lb-map">
+		<div id="map" style="width:100%;height:100%;"></div>
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
 <script>

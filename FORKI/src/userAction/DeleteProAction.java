@@ -21,7 +21,7 @@ public class DeleteProAction implements CommandAction{
 	
 	LogonDBBean manager = LogonDBBean.getInstance();
 	
-	delete = manager.deleteK_ETC(id,passwd);
+	delete = manager.deleteKID_DATA(id,passwd);
 	System.out.println("delete::"+delete);
 	
 	if(manager.deleteP_ETC(id,passwd)==1){

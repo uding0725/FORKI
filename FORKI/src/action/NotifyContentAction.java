@@ -12,6 +12,9 @@ public class NotifyContentAction implements CommandAction {
 		request.setCharacterEncoding("utf-8");
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
+		if(pageNum==null){
+			pageNum="1";		
+		}		
 		NotifyDataBean article =new NotifyDataBean();
 		NotifyDBBean ndb=NotifyDBBean.getInstance();
 		article=ndb.getArticle(num);

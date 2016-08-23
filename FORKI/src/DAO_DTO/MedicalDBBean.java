@@ -100,7 +100,7 @@ public class MedicalDBBean {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Vector vecList =new Vector();
-		String[] gunm={"ÀüÃ¼","°­³²±¸","°­µ¿±¸","°­ºÏ±¸","°­¼­±¸","°ü¾Ç±¸","±¤Áø±¸","±¸·Î±¸","±ÝÃµ±¸","³ë¿ø±¸","µµºÀ±¸","µ¿´ë¹®±¸","µ¿ÀÛ±¸","¸¶Æ÷±¸","¼­´ë¹®±¸","¼­ÃÊ±¸","¼ºµ¿±¸","¼ººÏ±¸","¼ÛÆÄ±¸","¾çÃµ±¸","¿µµîÆ÷±¸","¿ë»ê±¸","ÀºÆò±¸","Á¾·Î±¸","Áß¶û±¸","Áß±¸"};
+		String[] gunm={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ìž‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ëž‘êµ¬","ì¤‘êµ¬"};
 		try{
 			
 			conn=getConnection();
@@ -162,7 +162,7 @@ public class MedicalDBBean {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			Vector vecList =new Vector();
-			String[] gunm={"ÀüÃ¼","°­³²±¸","°­µ¿±¸","°­ºÏ±¸","°­¼­±¸","°ü¾Ç±¸","±¤Áø±¸","±¸·Î±¸","±ÝÃµ±¸","³ë¿ø±¸","µµºÀ±¸","µ¿´ë¹®±¸","µ¿ÀÛ±¸","¸¶Æ÷±¸","¼­´ë¹®±¸","¼­ÃÊ±¸","¼ºµ¿±¸","¼ººÏ±¸","¼ÛÆÄ±¸","¾çÃµ±¸","¿µµîÆ÷±¸","¿ë»ê±¸","ÀºÆò±¸","Á¾·Î±¸","Áß¶û±¸","Áß±¸"};
+			String[] gunm={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ìž‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ëž‘êµ¬","ì¤‘êµ¬"};
 			try{
 				
 				conn=getConnection();

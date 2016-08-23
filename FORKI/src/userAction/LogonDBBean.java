@@ -116,13 +116,16 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 		try {
 			conn = getConnection();
 			// DriverManager.getConnection(jdbc:apache:commons:dbcp:/pool);
-			pstmt = conn.prepareStatement("select * from KID_DATA where id = ?");
+			pstmt = conn.prepareStatement("select NVL(MAX(NUM),0)+1 as num from KID_DATA where id=?");
+			/*"select * from KID_DATA where id = ?"*/
 			/* select NVL(MAX(NUM),0)+1 as num from KID_DATA where id=''; */
 			pstmt.setString(1, kid_data.getId());
 			rs = pstmt.executeQuery();
-			int next_num = 1;
-
-			while (rs.next()) {
+			int next_num = 0;
+			
+			if(rs.next()){
+				next_num = rs.getInt("num");
+				
 				pstmt = conn.prepareStatement("insert into KID_DATA values (?,?,?,?)");
 				pstmt.setString(1, kid_data.getId());
 				pstmt.setInt(2, next_num);
@@ -131,11 +134,15 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 				
 				pstmt.executeUpdate();
 				
+			}
+
+			/*while (rs.next()) {*/
+				
 				/*if (next_num >= kidList.size()) {
 					break;
 				}
 				next_num++;*/
-			}
+			/*}*/
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -407,7 +414,8 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 	}
 
 	// modifyForm.jsp(KID_DATA)
-	public LogonDataBean getKID_DATA(String id) throws Exception {
+	public Vector getKID_DATA(String id) throws Exception {
+		Vector list = new Vector();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -420,11 +428,14 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				do{
 				kid_data = new LogonDataBean();
 				kid_data.setId(rs.getString("id"));
 				kid_data.setChild_num(rs.getInt("num"));
 				kid_data.setChild_name(rs.getString("name"));
 				kid_data.setSchul_nm(rs.getString("schul_nm"));
+				list.add(kid_data);
+			}while(rs.next());
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -445,7 +456,7 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 				} catch (SQLException ex) {
 				}
 		}
-		return kid_data;
+		return list;
 	}
 
 	// modifyPro.jsp(MEMBER)
@@ -636,53 +647,42 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 		}
 		return x;
 	}
+	
+	//deletePro.jsp(KID_DATA)
+    public int deleteKID_DATA(String id, String passwd) throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs= null;
+        String dbpasswd="";
+        int x=-1;
+        
+        try {
+        	conn = getConnection();
 
-	// deletePro.jsp(K_ETC)
-	public int deleteK_ETC(String id, String passwd) throws Exception {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String dbpasswd = "";
-		int x = -1;
-
-		try {
-			conn = getConnection();
-
-			pstmt = conn.prepareStatement("select pwd from MEMBER where id = ?");
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				dbpasswd = rs.getString("pwd");
-				if (dbpasswd.equals(passwd)) {
-					pstmt = conn.prepareStatement("delete from K_ETC where id=?");
-					pstmt.setString(1, id);
-					pstmt.executeUpdate();
-					x = 1; // 회원탈퇴 성공
-				} else
-					x = 0; // 비밀번호 틀림
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-				}
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
-		}
-		return x;
-	}
+            pstmt = conn.prepareStatement(
+            "select pwd from MEMBER where id = ?");
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+           
+            if(rs.next()){
+            dbpasswd= rs.getString("pwd");
+            if(dbpasswd.equals(passwd)){
+            pstmt = conn.prepareStatement("delete from KID_DATA where id=?");
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+            x= 1; //회원탈퇴 성공
+            }else
+            x= 0; //비밀번호 틀림
+            }
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+        return x;
+    }
 
 	public Vector zipcodeRead(String area4) {
 		Connection con = null;

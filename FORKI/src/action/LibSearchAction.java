@@ -22,6 +22,7 @@ public class LibSearchAction implements CommandAction {
 		Vector vTour = new Vector();
 		Vector vPub = new Vector();
 		Vector vToy = new Vector();
+		
 		int count = 0;
 		int gu_n =0;
 		
@@ -70,7 +71,7 @@ public class LibSearchAction implements CommandAction {
 		
 		System.out.println( "count::"+count);
 		
-		request.setAttribute("tour", tour);
+		
 		request.setAttribute("select", select);
 		request.setAttribute("vTour", vTour);
 		request.setAttribute("vPub", vPub);
