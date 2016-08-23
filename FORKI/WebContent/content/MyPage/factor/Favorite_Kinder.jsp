@@ -3,8 +3,8 @@
 
 <div style="width: 750px;">
 	<div style="height: 30px;"></div>
-	<c:if test="${articleList == null}">
-		<div style="width: 720px; height: 500px; margin: auto;">
+	<c:if test="${articleList =='[]'}">
+		<div style="width: 720px; height: 400px; margin: auto;">
 			<table style="width: 720px; height: 300px; margin: auto; border: 1px solid;">
 		
 				<tr>
@@ -13,7 +13,6 @@
 	
 			</table>
 		</div>
-		<div style="width: 720px; margin: auto;"><hr></div>
 	</c:if>	
 	<c:forEach var="favorList" items="${articleList}">
 		<div style="width: 720px; margin: auto;">
