@@ -65,22 +65,30 @@ public class InputProAction implements CommandAction {
 		manager.insertP_ETC(p_etc);
 		//KID_DATA insert
 		LogonDataBean kid_data = new LogonDataBean();
-		/*Vector veclist = new Vector();*/
 		
-		String child_name = request.getParameter("child_name");
-		String schul_nm = request.getParameter("schul_nm");
-/*		System.out.println("child_name:"+child_name + " / schul_nm:"+schul_nm);
-		//1,2,3,4,5,6
-		String [] child_names = request.getParameterValues("child_name");
-		String [] schul_nms = request.getParameterValues("schul_nm");
-		System.out.println("child_name:"+child_names[0].toString() + " / schul_nm:"+schul_nms[0].toString());*/
+		String child_name1 = request.getParameter("kidName1");
+		String schul_nm1 = request.getParameter("kinderName1");
+		String child_name2 = request.getParameter("kidName2");
+		String schul_nm2 = request.getParameter("kinderName2");
+		String child_name3 = request.getParameter("kidName3");
+		String schul_nm3 = request.getParameter("kinderName3");
 		
-		
-		if (child_name != "" && schul_nm != "") {
+		if (child_name1 != null && child_name1 != "" && schul_nm1 != "") {
 			kid_data.setId(request.getParameter("id"));
-			kid_data.setChild_name(request.getParameter("child_name"));
-			kid_data.setSchul_nm(request.getParameter("schul_nm"));
-
+			kid_data.setChild_name(request.getParameter("kidName1"));
+			kid_data.setSchul_nm(request.getParameter("kinderName1"));
+			manager.insertKID_DATA(kid_data);
+		}
+		if (child_name2 != null && child_name2 != "" && schul_nm2 != "") {
+			kid_data.setId(request.getParameter("id"));
+			kid_data.setChild_name(request.getParameter("kidName2"));
+			kid_data.setSchul_nm(request.getParameter("kinderName2"));
+			manager.insertKID_DATA(kid_data);
+		}
+		if (child_name3 != null && child_name3 != "" && schul_nm3 != "") {
+			kid_data.setId(request.getParameter("id"));
+			kid_data.setChild_name(request.getParameter("kidName3"));
+			kid_data.setSchul_nm(request.getParameter("kinderName3"));
 			manager.insertKID_DATA(kid_data);
 		}
 		System.out.println(check);

@@ -10,23 +10,28 @@ import javax.servlet.http.HttpSession;
 import DAO_DTO.HealthDataBean;
 import DAO_DTO.HealthDBBean;
 
-public class HealthCheckAction implements CommandAction{
+public class HealthCheckAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		HttpSession session = request.getSession();
-		request.setCharacterEncoding("UTF-8");		
+		request.setCharacterEncoding("UTF-8");
 		String id = (String) session.getAttribute("id");
-		
+		int listSize = 0;
+
 		List chartList = null;
+		List kidList = null;
 		HealthDBBean DBpro = HealthDBBean.getInstance();
 
 		chartList = DBpro.getChart(id);
-		int listSize = chartList.size();
-			
+		kidList = DBpro.getKid(id);
+		if (chartList != null)
+			listSize = chartList.size();
+
 		request.setAttribute("chartList", chartList);
+		request.setAttribute("kidList", kidList);
 		request.setAttribute("listSize", new Integer(listSize));
-		
+
 		return "HealthCheck.jsp";
 	}
 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>유치원/어린이집 검색</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <script>
 	function dongCheck() {
 		if (document.SchulForm.dong.value == "") {
@@ -14,30 +14,19 @@
 		}
 		document.SchulForm.submit();
 	}
-	function sendAddress(schul_nm,adres){
-	var Schul_nm =schul_nm;
-	opener.document.userinput.kinderName${param.num}.value=Schul_nm;
-	self.close();
+
+	function sendAddress(schul_nm) {
+		var Schul_nm = schul_nm;
+		opener.document.userinput.kinderName${param.num}.value = Schul_nm;		
+		self.close(); 	
 	}
 </script>
 </head>
 <body>
-<center>
-<b>유치원/어린이집 찾기</b>
-<table>
-<form name="SchulForm" method="post" action="/FORKI/content/join/factor/user/SchulCheck.do?num=${param.num}">
-      <tr>
-        <td><br>
-          도로명 주소 입력 : <input name="dong" type="text">
-          <input type="button" value="검색" onclick= "dongCheck();">
-        </td>
-      </tr>
-     <input type="hidden" name="check" value="n">
-    </form>
 	<center>
 		<b>유치원/어린이집 찾기</b>
 		<table>
-			<form name="SchulForm" method="post" action="/FORKI/content/join/factor/user/SchulCheck.do">
+			<form name="SchulForm" method="post" action="/FORKI/content/MyPage/factor/SchulCheck2.do?num=${patam.num}">
 				<tr>
 					<td><br> 도로명 주소 입력 : <input name="dong" type="text"> <input type="button" value="검색" onclick="dongCheck();"></td>
 				</tr>
@@ -63,16 +52,14 @@
 						<c:set var="temptAdres" value="${i.adres}" />
 
 						<tr>
-							<td><a href="javascript:sendAddress(
-'${tempSchul_nm}','${temptAdres}')"> ${tempSchul_nm}&nbsp;${temptAdres}</a><br>
+							<td><a href="javascript:sendAddress('${tempSchul_nm}')"> ${tempSchul_nm}&nbsp;${temptAdres}</a><br>
 					</c:forEach>
 				</c:if>
 			</c:if>
 			</td>
 			</tr>
 			<tr>
-				<td align="center"><br>
-				<a href="javascript:this.close();">닫기</a>
+				<td align="center"><br> <a href="javascript:this.close();">닫기</a>
 			<tr>
 				</td>
 		</table>

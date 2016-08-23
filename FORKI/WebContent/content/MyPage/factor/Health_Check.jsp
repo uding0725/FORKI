@@ -4,20 +4,18 @@
 <link href="../CSS/chart.css?ver=1.1" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="../js/chart.js"></script>
+<script type="text/javascript" src="../js/var2.js?var=2.5"></script>
 <style>
 table {
 	font-size: 12.5;
 }
 </style>
 <div id="container">
-	<c:if test="${listSize == 0}">
-		등록된 아이가 없습니다.${listSize}
-	</c:if>
 	<ul class="tabs">
 		<c:forEach var="article" items="${chartList}">
 			<li class <c:if test="${article.num == 1}">="active"</c:if> rel="tab${article.num}">${article.name}</li>
 		</c:forEach>
-		<li class rel="tabIO">추가하기</li>
+		<li class rel="tabIO">추가/삭제</li>
 	</ul>
 	<c:forEach var="article" items="${chartList}">
 		<div class="tab_container">
@@ -396,12 +394,41 @@ table {
 		<!-- .tab_container -->
 	</c:forEach>
 	<div class="tab_container">
-			<div id="tabIO" class="tab_content">
-				<form method="post" action="#" name="kidIO">
-					
-					
+		<div id="tabIO" class="tab_content" sytle="width: 750px;">
+			<c:if test="${listSize == 0}">
+				등록된 아이가 없습니다. 등록해 주세요.
+				<hr>
+			</c:if>
+			<div style="width: 375px; height: 500px;  margin: auto;">
+				<form method="post" action="/FORKI/content/MyPage/factor/KidModify.do" onSubmit="return sendVal()" name="userinput">
+					<input type="hidden" name="size" value="0">
+					<input type="button" id="btn-add-row" value="아이추가"> <input type="button" id="btn-delete-row" value="아이삭제">
+					<hr>
+					<table id="mytable" border="1" cellspacing="0">
+						<tr>
+							<th width="145">아이이름</th>
+							<th width="145">유치원이름</th>
+							<th width="85" style="text-align: center;">유치원검색</th>
+						<tbody></tbody>
+						</tr>
+						<c:forEach var="article2" items="${kidList}">
+							<tr>
+								<input type="hidden" name="count">
+								<td><input type="text" name="kidName${article2.num}" value="${article2.name}"></td>
+								<td><input type="text" name="kinderName${article2.num}" value="${article2.schul_nm}"></td>
+								<td><input type="button" onClick="SchulCheck(${article2.num})" value="유치원검색"></td>
+								<script>
+									listSize = ${article2.num};
+								</script>
+							</tr>
+						</c:forEach>
+					</table>
+					<div style="text-align: right;">
+						<input type="submit" value="저장">
+					</div>
 				</form>
 			</div>
 		</div>
+	</div>
 </div>
 <!-- #container -->

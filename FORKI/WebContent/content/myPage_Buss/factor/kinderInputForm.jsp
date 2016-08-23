@@ -6,7 +6,7 @@
 <head>
 <c:if test="${check==1}">
 <script>
-alert("등록된 유치원 입니다.");
+alert("유치원 등록되어있습니다.");
 history.go(-1);
 </script>
 </c:if>
@@ -36,38 +36,38 @@ function zipCheck(){
 	<tr>
 		<td>유치원명</td> 
 		<td>
-			<input type="text" name="schul_nm" size="10" maxlength="10" value="${ketc.schul_nm}" readonly>
+			<input type="text" name="schul_nm" size="20" maxlength="20" value="${ketc.schul_nm}" readonly>
 			<input type="hidden" name="schul_num" value="${ketc.schul_num}">
 		</td>
 	</tr>
 	<tr>
 		<td>해당교육청</td> 
 		<td>
-			<input type="text" name="ofcdc" size="15" maxlength="15">
+			<input type="text" name="ofcdc" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>소재구</td>
 		<td>
-			<input type="text" name="matr_gu" size="10" maxlength="10" >
+			<input type="text" name="matr_gu" size="20" maxlength="20" >
 		</td>
 	</tr>
 	<tr>
 		<td>소재동 </td>
 		<td>
-			<input type="text" name="dong" size="10" maxlength="10">
+			<input type="text" name="dong" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>설립</td>
 		<td>
-			<input type="text" name="fond" size="10" maxlength="10">
+			<input type="text" name="fond" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>전화번호</td>
 		<td>
-			<input type="text" name="telno" size="10" maxlength="10">
+			<input type="text" name="telno" size="20" maxlength="11">
 		</td>
 	</tr>
 	<tr>
@@ -85,30 +85,30 @@ function zipCheck(){
 	<tr>
 		<td>학생수</td>
 		<td>
-			<input type="text" name="stdnt_co_sm"size="10" maxlength="10">
+			<input type="text" name="stdnt_co_sm"size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>여학생수</td> 
 		<td>
-			<input type="text" name="grlstdn_co"size="10" maxlength="10">
+			<input type="text" name="grlstdn_co"size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>학급수</td>
 		<td> 
-			<input type="text" name="clas_co" size="10" maxlength="10">
+			<input type="text" name="clas_co" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>교직원수</td>
 		<td>
-			<input type="text" name="frl_tcher_co_sm"size="10" maxlength="10">
+			<input type="text" name="frl_tcher_co_sm" size="20" maxlength="20">
 		</td>
 	<tr>
 		<td>여교직원수</td> 
 		<td>
-			<input type="text" name="frl_female_tcher_co"size="10" maxlength="10">
+			<input type="text" name="frl_female_tcher_co" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
