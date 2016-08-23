@@ -53,7 +53,7 @@
 							<option value="23">종로구</option>
 							<option value="24">중랑구</option>
 							<option value="25">중구</option>
-					</select> 
+					</select>
 					읍/면/동<input type="text" name="dong" autofocus placeholder="동을 입력하세요"> 
 						<br>
 						또는 기관명<input type="text" name="schul_nm" autofocus placeholder="기관명을 입력하세요"> 
