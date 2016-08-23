@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 
 public class HealthDataBean {
 
+	private int x;
 	private String id;
 	private int num;
 	private String name;
@@ -29,6 +30,15 @@ public class HealthDataBean {
 	private int rv5;
 	private int hpv_g;
 	private int hpv_c;
+
+	
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
 
 	public String getId() {
 		return id;

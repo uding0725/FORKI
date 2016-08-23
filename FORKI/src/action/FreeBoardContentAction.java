@@ -22,6 +22,10 @@ public class FreeBoardContentAction implements CommandAction {
 		String pageNum = request.getParameter("pageNum");
 		int num = Integer.parseInt(request.getParameter("num"));
 		
+		if(request.getParameter("pageNum")==null){
+			pageNum="1";
+		}
+		
 		System.out.println(num); 
 		
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();

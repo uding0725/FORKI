@@ -20,13 +20,16 @@ public class HealthCheckAction implements CommandAction {
 		int listSize = 0;
 
 		List chartList = null;
+		List kidList = null;
 		HealthDBBean DBpro = HealthDBBean.getInstance();
 
 		chartList = DBpro.getChart(id);
-		
-		listSize = chartList.size();
+		kidList = DBpro.getKid(id);
+		if (chartList != null)
+			listSize = chartList.size();
 
 		request.setAttribute("chartList", chartList);
+		request.setAttribute("kidList", kidList);
 		request.setAttribute("listSize", new Integer(listSize));
 
 		return "HealthCheck.jsp";

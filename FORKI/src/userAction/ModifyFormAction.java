@@ -1,5 +1,7 @@
 package userAction;
 
+import java.util.Vector;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,8 +34,9 @@ public class ModifyFormAction implements CommandAction{
 			request.setAttribute("b_day",p.getB_day());
 			request.setAttribute("sex",p.getSex());
 			
-			LogonDataBean k = manager.getKID_DATA(id);
-			if(k!=null){
+			Vector klist = manager.getKID_DATA(id);
+			request.setAttribute("klist", klist);
+			/*if(k!=null){
 			String child_name = k.getChild_name();
 			String schul_nm = k.getSchul_nm();
 			System.out.println("child_name:  "+child_name+"schul_nm:   "+schul_nm);
@@ -42,7 +45,7 @@ public class ModifyFormAction implements CommandAction{
 			request.setAttribute("schul_nm",k.getSchul_nm());
 			System.out.println("°¨2?");
 			}
-			}
+			}*/
 		return "/content/join/UserModifyForm.jsp";
 	}
 
