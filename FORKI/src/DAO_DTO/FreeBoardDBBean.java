@@ -305,7 +305,13 @@ public class FreeBoardDBBean {
 				article.setNum(rs.getInt("num"));
 				article.setId(rs.getString("id"));
 				article.setWriter(rs.getString("writer"));
-				article.setTitle(rs.getString("title"));
+				 if((rs.getString("title")).equals("0")){
+		               article.setTitle("[소곤소곤]");
+		            } else if((rs.getString("title")).equals("1")){
+		               article.setTitle("[유익한 경로]");
+		            } else{
+		               article.setTitle("[기타]");
+		            }
 				article.setSubject(rs.getString("subject"));
 				article.setReg_date(rs.getTimestamp("reg_date"));
 				article.setReadcount(rs.getInt("readcount"));
@@ -340,7 +346,13 @@ public class FreeBoardDBBean {
 			article.setNum(rs.getInt("num"));
 			article.setId(rs.getString("id"));
 			article.setWriter(rs.getString("writer"));
-			article.setTitle(rs.getString("title"));
+			 if((rs.getString("title")).equals("0")){
+	               article.setTitle("[소곤소곤]");
+	            } else if((rs.getString("title")).equals("1")){
+	               article.setTitle("[유익한 경로]");
+	            } else{
+	               article.setTitle("[기타]");
+	            }
 			article.setSubject(rs.getString("subject"));
 			article.setReg_date(rs.getTimestamp("reg_date"));
 			article.setReadcount(rs.getInt("readcount"));
@@ -424,6 +436,52 @@ public class FreeBoardDBBean {
 		return x;
 	}
 
+	//main 화면으로 가져오기
+	public Vector getMain() throws Exception{
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector v = new Vector();
+		
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from board where num>=((select max(num) from board)-2) order by num desc");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				do{
+				FreeBoardDataBean article = new FreeBoardDataBean();
+				article.setNum(rs.getInt("num"));
+				article.setId(rs.getString("id"));
+				article.setWriter(rs.getString("writer"));
+				if((rs.getString("title")).equals("0")){
+		               article.setTitle("[소곤소곤]");
+		            } else if((rs.getString("title")).equals("1")){
+		               article.setTitle("[유익한 경로]");
+		            } else{
+		               article.setTitle("[기타]");
+		            }
+				article.setSubject(rs.getString("subject"));
+				article.setReg_date(rs.getTimestamp("reg_date"));
+				article.setReadcount(rs.getInt("readcount"));
+				article.setContent(rs.getString("content"));
+				
+           	 	v.add(article);
+           	 	
+				}while(rs.next());
+           	 	
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		} finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		
+		return v;
+	}
 
 	
 }

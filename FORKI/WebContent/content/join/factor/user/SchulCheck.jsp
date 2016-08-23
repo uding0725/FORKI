@@ -14,15 +14,26 @@
 		}
 		document.SchulForm.submit();
 	}
-
-	function sendAddress(schul_nm, adres) {
-		var Schul_nm = schul_nm;
-		opener.document.userinput.schul_nm.value = Schul_nm;
-		self.close();
+	function sendAddress(schul_nm,adres){
+	var Schul_nm =schul_nm;
+	opener.document.userinput.kinderName${param.num}.value=Schul_nm;
+	self.close();
 	}
 </script>
 </head>
 <body>
+<center>
+<b>유치원/어린이집 찾기</b>
+<table>
+<form name="SchulForm" method="post" action="/FORKI/content/join/factor/user/SchulCheck.do?num=${param.num}">
+      <tr>
+        <td><br>
+          도로명 주소 입력 : <input name="dong" type="text">
+          <input type="button" value="검색" onclick= "dongCheck();">
+        </td>
+      </tr>
+     <input type="hidden" name="check" value="n">
+    </form>
 	<center>
 		<b>유치원/어린이집 찾기</b>
 		<table>
