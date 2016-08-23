@@ -100,7 +100,7 @@ public class NotifyDBBean {
 		try {
 			conn = getConnection();
 			if(n==0){
-				pstmt = conn.prepareStatement("select count(*) from NOTIFY where subject like '%"+search+"%' and content like '%"+search+"%'");
+				pstmt = conn.prepareStatement("select count(*) from NOTIFY where subject like '%"+search+"%' or content like '%"+search+"%'");
 			}else
 			{
 				pstmt = conn.prepareStatement("select count(*) from NOTIFY where "+col_nm[n] +" like '%"+search+"%'");
@@ -176,7 +176,7 @@ public class NotifyDBBean {
 		                "select num,id,writer,subject,content,readcount,reg_date,r " +
 			            "from(select num,id,writer,subject,content,readcount,reg_date,rownum r " +
 		                "from(select num,id,writer,subject,content,readcount,reg_date " +
-			            "from notify order by num desc) where subject like '%"+search+"%' and content like '%"+search+"%' order by num desc) where r>= ? and r <= ? ");
+			            "from notify order by num desc) where subject like '%"+search+"%' or content like '%"+search+"%' order by num desc) where r>= ? and r <= ? ");
 		            }else{
 		                pstmt = conn.prepareStatement(
 		    	                "select num,id,writer,subject,content,readcount,reg_date,r " +

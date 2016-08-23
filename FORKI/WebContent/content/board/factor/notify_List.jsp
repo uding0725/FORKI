@@ -34,10 +34,7 @@ a {
 }
 table{ 
        width : 700px;
-       border-left: 1px solid; 
-       border-right: 1px solid; 
-       border-top: 1px solid; 
-       border-bottom: 1px solid; 
+
        text-align:center"
 }
 
@@ -94,6 +91,7 @@ table{
 				  	<td width="300" align="center" bgcolor="">
 				  	<a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}">
           			${article.subject}</a>
+          			
 				  	</td>
 				  	<td width="100" align="center" bgcolor="">${article.writer}</td>
 				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
@@ -102,6 +100,7 @@ table{
 				</c:forEach>
 				</c:if>
 			</table>
+			<p align="center">
 			<c:if test="${count>0}"	>
 		<c:set var="pageCount" value="${count/pageSize+(count%pageSize==0?0:1)}"/>
 		<c:set var="pageBlock" value="${10}"/>
@@ -121,6 +120,7 @@ table{
         <a href="/FORKI/content/board/notifyList.do?pageNum=${startPage + 10}">[다음]</a>
   		 </c:if>
 		</c:if>
+		</p>
    </div>
    </div>
 </div>   
