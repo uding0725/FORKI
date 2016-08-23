@@ -19,7 +19,7 @@
 	<div id="mdK-container">
 		<div id="mdK-header">
 		
-			<table border="1" cellpadding=0 cellspacing=0 width="890" height="100">
+			<table border="1" cellpadding=0 cellspacing=0 width="945" height="100">
 				<tr>
 					<td width="80" align="center">
 					<strong> <h3>조회</h3> </strong>
@@ -64,7 +64,7 @@
 			</table>
 			
 		</div>
-		<p>총 검색 건수 : ${count} 건 </p>
+		<p> 총 검색 건수 : ${count} 건 </p>
 		<div id="mdK-content" style="overflow: auto; overflow-x: hidden">
         	<!-- 추후 검색된 리스트를 링크로 나열하기 위한 코드 -->
         	<c:if test="${count==0}">
