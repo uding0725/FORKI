@@ -209,7 +209,7 @@ public class FreeBoardDBBean {
 		            article.setSubject(rs.getString("subject"));
 		            article.setContent(rs.getString("content"));
 		            article.setReadcount(rs.getInt("readcount"));
-		         
+		            article.setReg_date(rs.getTimestamp("reg_date"));
 
 		            articleList.add(article);
 		            //레코드를 board.dataBean에 저장후 list에 저장
@@ -346,7 +346,13 @@ public class FreeBoardDBBean {
 			article.setNum(rs.getInt("num"));
 			article.setId(rs.getString("id"));
 			article.setWriter(rs.getString("writer"));
-			article.setTitle(rs.getString("title"));
+			 if((rs.getString("title")).equals("0")){
+	               article.setTitle("[소곤소곤]");
+	            } else if((rs.getString("title")).equals("1")){
+	               article.setTitle("[유익한 경로]");
+	            } else{
+	               article.setTitle("[기타]");
+	            }
 			article.setSubject(rs.getString("subject"));
 			article.setReg_date(rs.getTimestamp("reg_date"));
 			article.setReadcount(rs.getInt("readcount"));
