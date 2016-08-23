@@ -27,10 +27,6 @@ public class HealthDBBean {
 		return DriverManager.getConnection(jdbcDriver);
 	}
 
-	// 문진표입력
-	public void insertHealth(HealthDataBean member) throws Exception {
-	}
-
 	// 문진표출력
 	public List getChart(String id) throws Exception {
 
@@ -59,6 +55,7 @@ public class HealthDBBean {
 				chartList = new ArrayList(x);
 				do {
 					HealthDataBean article = new HealthDataBean();
+					article.setX(x);
 					article.setNum(rs.getInt(2));
 					article.setName(rs.getString(3));
 					article.setBcg(rs.getInt(4));
@@ -148,6 +145,59 @@ public class HealthDBBean {
 				}
 		}
 	}
+	
+	// 아이정보출력
+		public List getKid(String id) throws Exception {
+
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			int x = 0;
+			List kidList = null;
+			try {
+				conn = getConnection();
+				pstmt = conn.prepareStatement("select count(*) from KID_DATA where id = ?");
+				pstmt.setString(1, id);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					x = rs.getInt(1);
+				}
+
+				pstmt = conn.prepareStatement("select * from KID_DATA where id = ? order by num");
+				pstmt.setString(1, id);
+
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					kidList = new ArrayList(x);
+					do {
+						KidDataBean article = new KidDataBean();
+						article.setNum(rs.getInt("num"));
+						article.setName(rs.getString("name"));
+						article.setSchul_nm(rs.getString("schul_nm"));
+						kidList.add(article);
+					} while (rs.next());
+				}
+
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					}
+				if (conn != null)
+					try {
+						conn.close();
+					} catch (SQLException ex) {
+					}
+			}
+			return kidList;
+		}
+
 
 	// 아이정보 수정
 	public void updateKid(String id, int size, List DBdata) throws Exception {
@@ -156,10 +206,14 @@ public class HealthDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("delete from KID_DATA where id = ?");
+			pstmt = conn.prepareStatement("delete from HEALTH_CHECK where id = ?");
 			pstmt.setString(1, id);
 			pstmt.executeQuery();
 			
+			pstmt = conn.prepareStatement("delete from KID_DATA where id = ?");
+			pstmt.setString(1, id);
+			pstmt.executeQuery();
+
 			for (Object obj : DBdata) {
 				KidDataBean p = (KidDataBean) obj;
 				pstmt = conn.prepareStatement("insert into KID_DATA values (?, ?, ?, ?)");
@@ -167,9 +221,18 @@ public class HealthDBBean {
 				pstmt.setInt(2, p.getNum());
 				pstmt.setString(3, p.getName());
 				pstmt.setString(4, p.getSchul_nm());
+				pstmt.executeQuery();
+
+				pstmt = conn.prepareStatement(
+						"insert into HEALTH_CHECK" + " (ID, NUM, NAME, BCG, HEPB, DTAP, TDAP, IPV, PRP_T, PCV, PPSV, MMR, VAR, HEPA, JEV, JE, BDG_M, RV1, RV5, HPV_G, HPV_C)"
+								+ " values(?, ?, ?, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)");
+				pstmt.setString(1, id);
+				pstmt.setInt(2, p.getNum());
+				pstmt.setString(3, p.getName());
 
 				pstmt.executeQuery();
 			}
+	
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
