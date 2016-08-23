@@ -26,8 +26,8 @@
 <div id="free-wrap">
 
 		<span style='position:absolute; right:-20px'>
-		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
-		<a href="#">>게시판</a>
+		<a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a>
+		<a href="/FORKI/content/board/notifyList.do">>게시판</a>
 		<a href="/FORKI/content/board/freeBoardList.do">>맘을 전해요</a>		
 		</span>
 		<br>

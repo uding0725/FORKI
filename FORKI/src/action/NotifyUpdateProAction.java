@@ -12,7 +12,6 @@ public class NotifyUpdateProAction implements CommandAction{
 		request.setCharacterEncoding("utf-8");
 		int num =Integer.parseInt(request.getParameter("num"));
 		String pageNum= request.getParameter("pageNum");
-		
 		NotifyDataBean article=new NotifyDataBean();
 		article.setNum(num);
 		article.setSubject(request.getParameter("subject"));
