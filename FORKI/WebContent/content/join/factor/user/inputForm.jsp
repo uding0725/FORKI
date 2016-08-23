@@ -4,9 +4,10 @@
 <title>회원가입</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/var.js?var=1.8"></script>
 <script>
 
-$(document).ready(function(){
+/* $(document).ready(function(){
     // 옵션추가 버튼 클릭시
     var num = 1;
     $(".addItemBtn").click(function(){
@@ -19,13 +20,13 @@ $(document).ready(function(){
     $('#example tr:last').after(insert_tr_td);
         
         
-        /* var lastItemNo = $("#example tr:last").attr("class").replace("item", "");
+        var lastItemNo = $("#example tr:last").attr("class").replace("item", "");
 		var newitem = $("#example tr:eq(1)").clone();
         newitem.removeClass();
         newitem.find("td:eq(0)").attr("rowspan", "1");
         newitem.addClass("item"+(parseInt(lastItemNo)+1));
 
-        $("#example").append(newitem); */
+        $("#example").append(newitem);
     });
 
 
@@ -52,7 +53,7 @@ $(document).ready(function(){
         var rowspan = $("."+cls).length;
         $("."+cls+":first td:eq(0)").attr("rowspan", rowspan);
     }
-});
+}); */
 
 	function boxresetID() {
     	var userinput = eval("document.userinput");
@@ -181,19 +182,15 @@ $(document).ready(function(){
     	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
     }
     
-	function SchulCheck(){
-    	
-    	url="/FORKI/content/join/factor/user/SchulCheck.do?check=y";
-    	
-    	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
-    }	
+
 </script>
 
 
 <body>
 
 <form method="post" action="/FORKI/content/join/UserInputPro.do" name="userinput"  onSubmit="return checkIt()">
-  <table id="example" width="400" border="1" cellspacing="0" cellpadding="3" align="center" >
+<!--   <table id="example" width="400" border="1" cellspacing="0" cellpadding="3" align="center" > -->
+  <table id="mytable" width="400" border="1" cellspacing="0" cellpadding="3" align="center" >
     <tr>
     <td height="39" align="center" colspan="4">
        <font size="+1" ><b>회원가입</b></font></td>
@@ -327,7 +324,7 @@ $(document).ready(function(){
 <input type="text" name="address" size="50" onfocus="return boxresetADDRESS()" value="상세주소">
 </td>
 </tr>
-<tr><td colspan="4"><input type = "button" class = "addItemBtn" value= "자녀추가"  /></td></tr>
+<!-- <tr><td colspan="4"><input type = "button" class = "addItemBtn" value= "자녀추가"  /></td></tr>
 <tr>
             <td><font size="1">자녀이름</font></td>
             <td><font size="1">유치원 / 어린이집</font></td>
@@ -341,9 +338,18 @@ $(document).ready(function(){
             <td><input type="button" value="어린이집/유치원 찾기" onClick="SchulCheck()"></td>
             <td><button class="delBtn">삭제</button></td>
            
+</tr> -->
+<tr><td colspan="4">
+<input type="button" id="btn-add-row" value="아이추가"> <input type="button" id="btn-delete-row" value="아이삭제">
+<hr>
+</td></tr>
+<!-- <table id="mytable" border="1" cellspacing="0"> -->
+<tr>
+		<th>아이이름</th>
+		<th>유치원이름</th>
+		<th>유치원검색</th>
+<tbody></tbody>
 </tr>
-
-
 
 </table> 
 <div align="center">
