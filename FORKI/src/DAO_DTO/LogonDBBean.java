@@ -94,13 +94,13 @@ public class LogonDBBean {
 		KetcDataBean ketc= null;
 		try{
 			conn=getConnection();
-			pstmt=conn.prepareStatement("select schul_num,schul_nm from k_etc where id=?");
+			pstmt=conn.prepareStatement("select schul_nm,schul_num from k_etc where id=?");
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				ketc=new KetcDataBean();  
-				ketc.setSchul_nm(rs.getString("schul_nm"));
 				ketc.setSchul_num(rs.getInt("schul_num"));
+				ketc.setSchul_nm(rs.getString("schul_nm"));
 				}
 			}catch(SQLException e){
 				e.printStackTrace();
