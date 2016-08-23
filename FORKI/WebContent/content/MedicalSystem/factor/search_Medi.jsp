@@ -17,9 +17,9 @@
 	<div id="md-wrap">
 		<font size="+2">의료시설</font>
 		<span style='position:absolute; right:-20px'>
-		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
-		<a href="#">>주변시설</a>
-		<a href="#">>의료시설 조회</a>		
+		<a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a>
+		<a href="/FORKI/content/MedicalSystem/searchMedi.do">>주변시설</a>
+		<a href="">>의료시설 조회</a>		
 		</span>	
 	<div id="md-container">
 		<div id="md-header">
@@ -27,8 +27,9 @@
 			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
 				<tr>
 			
-					<td width="50" align="center">
-					<strong> <h5>조회</h5> </strong></td>
+					<td width="80" align="center">
+					<strong> <h3>조회</h3> </strong>
+					</td>
 					<td colspan="1" align="center">
 					<input type="hidden" name="check" value="0">
 					<input type="radio" name="select" value="all">전체 

@@ -34,10 +34,10 @@ a {
 }
 table{ 
        width : 700px;
-       border-left: 1px solid; 
+  /*      border-left: 1px solid; 
        border-right: 1px solid; 
        border-top: 1px solid; 
-       border-bottom: 1px solid; 
+       border-bottom: 1px solid;  */
        text-align:center"
 }
 
@@ -48,9 +48,9 @@ table{
   <div id="write-header">
   <font size="+2">공지사항</font> 
    <span style='position: absolute; right: 60px'> 
-    <a href="#"><img src="img/home.png" width="20" height="20"></a> 
-    <a href="#">>게시판</a>
-    <a href="#">>공지사항</a> 
+    <a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a> 
+    <a href="/FORKI/content/board/notifyList.do">>게시판</a>
+    <a href="">>공지사항</a> 
    </span>
    <br>
    <br>
@@ -58,16 +58,17 @@ table{
    <form align="right">
   
    <span style='position:relative;'>
-   <c:if test="${sessionScope.id=='admin'}">
-   <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/notifyWrite.do'">
-   </c:if>
+  
    <select name="searchn">
    <option value="0">전체
    <option value="1">제목
    <option value="2">내용
    </select>
    <input type="text" style="width:10%" name="search">
-   <input type="button" name="searching" value="검색">
+   <input type="submit" name="searching" value="검색">
+   <c:if test="${sessionScope.id=='admin'}">
+   <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/notifyWrite.do'">
+   </c:if>
    </span>
    </form>
   <div id="write-content">
@@ -102,6 +103,7 @@ table{
 				</c:forEach>
 				</c:if>
 			</table>
+			<p align="center">
 			<c:if test="${count>0}"	>
 		<c:set var="pageCount" value="${count/pageSize+(count%pageSize==0?0:1)}"/>
 		<c:set var="pageBlock" value="${10}"/>
@@ -121,6 +123,7 @@ table{
         <a href="/FORKI/content/board/notifyList.do?pageNum=${startPage + 10}">[다음]</a>
   		 </c:if>
 		</c:if>
+		</p>
    </div>
    </div>
 </div>   
