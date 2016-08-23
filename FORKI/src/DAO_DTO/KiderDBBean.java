@@ -65,6 +65,7 @@ public class KiderDBBean {
 		
 		try{
 			con=getConnection();
+			con.setAutoCommit(false);
 			pstmt=con.prepareStatement("insert into kindergarten(schul_nm,schul_num,ofcdc,matr_gu,fond,zip,adres,dong,telno,clas_co,stdnt_co_sm,grlstdn_co,frl_tcher_co_sm,frl_female_tcher_co,rm,state,reg_date) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1,kidmember.getSchul_nm());
 			pstmt.setInt(2, kidmember.getSchul_num());
@@ -84,11 +85,20 @@ public class KiderDBBean {
 			pstmt.setString(16, kidmember.getState());
 			pstmt.setTimestamp(17, kidmember.getReg_date());
 			pstmt.executeUpdate();
+			pstmt=con.prepareStatement("insert into total_score(schul_num,t_score,count) values(?,0,0)");
+			pstmt.setInt(1, kidmember.getSchul_num());
+			pstmt.executeUpdate();
+			con.commit();
 		}catch(SQLException e){
 			e.printStackTrace();
+			JdbcUtil.rollback(con);
 		}finally{
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(con);
+			if(con!=null){
+				con.setAutoCommit(false);
+			}
+			
 		}
 	}
 	
