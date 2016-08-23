@@ -32,7 +32,7 @@
 		</span>
 		<br>
 <table width="700">
-	<br>
+	<br>  
 	 <tr align="right">
 	<td>
 		<form name="search" action="/FORKI/content/board/freeBoardList.do">
