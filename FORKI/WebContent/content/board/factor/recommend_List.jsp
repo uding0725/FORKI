@@ -36,9 +36,8 @@ a {
 }
 table{ 
        width : 750px;
-       
-      	border:1px solid;
        text-align:center;
+
 }
 
 </style>
@@ -108,6 +107,7 @@ table{
 				  </c:forEach>
 				 </c:if>
 			</table>
+			<p align="center">
 		<c:if test="${count>0}"	>
 		<c:set var="pageCount" value="${count/pageSize+(count%pageSize==0?0:1)}"/>
 		<c:set var="pageBlock" value="${10}"/>
@@ -127,6 +127,7 @@ table{
         <a href="/FORKI/content/board/recommendList.do?pageNum=${startPage + 10}">[다음]</a>
   		 </c:if>
 		</c:if>
+		</p>
    </div>
    </div>
    </div>
