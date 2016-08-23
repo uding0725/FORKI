@@ -34,7 +34,6 @@ a {
 }
 table{ 
        width : 700px;
-       height:700px; 
        border-left: 1px solid; 
        border-right: 1px solid; 
        border-top: 1px solid; 
@@ -56,9 +55,10 @@ table{
    <br>
    <br>
      총  ${count} 건이 검색되었습니다.
-   <form>
-   <span style='position:relative; left:50px'>
-   <c:if test="${sessionScope.id!='admin'}">
+   <form align="right">
+  
+   <span style='position:relative;'>
+   <c:if test="${sessionScope.id=='admin'}">
    <input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/notifyWrite.do'">
    </c:if>
    <select name="searchn">

@@ -312,31 +312,18 @@ public class NotifyDBBean {
 	public int deleteArticle(int num)throws Exception{	
 		Connection conn = null;
         PreparedStatement pstmt = null;
-        ResultSet rs= null;
-        String id="";
+
         int x=-1;
         try {
 	    conn = getConnection();
+			    pstmt = conn.prepareStatement("delete from notify where num=?");
+	                    pstmt.setInt(1, num);
+            x= pstmt.executeUpdate();
 
-            pstmt = conn.prepareStatement(
-            "select id from board where num = ?");
-            pstmt.setInt(1, num);
-            rs = pstmt.executeQuery();
-           
-            if(rs.next()){
-		id= rs.getString("id");
-		if(id.equals(id)){
-		    pstmt = conn.prepareStatement("delete from board where num=?");
-                    pstmt.setInt(1, num);
-                    pstmt.executeUpdate();
-		    x= 1; //글삭제 성공
-		}else
-		    x= 0; //비밀번호 틀림
-	    }
         } catch(Exception ex) {
             ex.printStackTrace();
         } finally {
-        	JdbcUtil.close(rs);
+  
         	JdbcUtil.close(pstmt);
         	JdbcUtil.close(conn);
         }
