@@ -27,14 +27,15 @@ public class KidModifyAction implements CommandAction {
 
 		if (size != 0) {
 			kidData = new ArrayList(size);
+			System.out.println("ss " + size);
 			do {
 				i++;
 				String kidName = request.getParameter("kidName" + i);
 				String kinderName = request.getParameter("kinderName" + i);
 				Data = new KidDataBean();
-				if (kidName.equals(""))
+				if (kidName != null && kidName.equals(""))
 					break;
-				if (kinderName.equals(""))
+				if (kinderName != null && kinderName.equals(""))
 					break;
 				Data.setId(id);
 				Data.setNum(i);
