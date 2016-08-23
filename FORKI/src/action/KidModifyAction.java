@@ -32,8 +32,6 @@ public class KidModifyAction implements CommandAction {
 				i++;
 				String kidName = request.getParameter("kidName" + i);
 				String kinderName = request.getParameter("kinderName" + i);
-				System.out.println("i " + i);
-				System.out.println("kinderName " + kinderName);
 				Data = new KidDataBean();
 				if (kidName != null && kidName.equals(""))
 					break;
