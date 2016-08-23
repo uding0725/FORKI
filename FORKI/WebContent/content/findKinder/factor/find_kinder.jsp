@@ -71,7 +71,8 @@
         		검색 결과가 없습니다.
         	</c:if>
         	<c:forEach var="kinder" items="${vecList}">
-        	<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a> ${kinder.telno}<br>	
+        	<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>&nbsp;총점:${kinder.tsdata.t_score}&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
+        	${kinder.telno}<br>
         	${kinder.adres}<br>
         	<script>
         	title.push('${kinder.schul_nm}');

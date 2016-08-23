@@ -280,31 +280,31 @@ public class KiderDBBean {
 			conn = getConnection();
 			if (gunum == 0) {
 				if (Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score");
 				} else if (!Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where dong=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where dong=?");
 					pstmt.setString(1, Dong);
 				} else if (Dong.equals("") && !Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where schul_nm=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where schul_nm=?");
 					pstmt.setString(1, schul_nm);
 				} else {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where schul_nm=? and dong=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where schul_nm=? and dong=?");
 					pstmt.setString(1, Schul_nm);
 					pstmt.setString(2, Dong);
 				}
 			} else {
 				if (Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu=" + "'" + gunm[gunum] + "'");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'");
 
 				} else if (!Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu=" + "'" + gunm[gunum] + "'" + " and dong=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and dong=?");
 					pstmt.setString(1, Dong);
 				} else if (Dong.equals("") && !Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=?");
 					pstmt.setString(1, schul_nm);
 				} else {
 					pstmt = conn
-							.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=? and dong=?");
+							.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=? and dong=?");
 					pstmt.setString(1, Schul_nm);
 					pstmt.setString(2, Dong);
 				}
@@ -313,6 +313,10 @@ public class KiderDBBean {
 			if (rs.next()) {
 				do {
 					KiderDataBean kdb = new KiderDataBean();
+					TSDataBean tsdata=new TSDataBean();
+					tsdata.setT_score(rs.getString("t_score"));
+					tsdata.setCount(rs.getString("count"));
+					kdb.setTsdata(tsdata);
 					kdb.setSchul_num(rs.getInt("schul_num"));
 					kdb.setSchul_nm(rs.getString("schul_nm"));
 					kdb.setAdres(rs.getString("adres"));
