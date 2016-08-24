@@ -36,6 +36,7 @@ a {
 }
 table{ 
        width : 750px;
+
        text-align:center;
 
 }

@@ -60,8 +60,10 @@ a {
 	}
 	var x =new Array();
 	var y = new Array();
-	var title = new Array();
-	var coord = new Array();
+	var tour = new Array();
+	var pub = new Array();
+	var toy = new Array();
+	
 </script>	
 </head>
 <div id="lib-wrap">
@@ -130,6 +132,7 @@ a {
 	<c:if test="${count==0 }">
 		검색 결과가 없습니다.
 	</c:if>
+	
 	<c:if test="${count>0}">
 		<c:if test="${select=='all'}">
 			<c:if test="${!empty vTour}">
@@ -139,10 +142,11 @@ a {
 		 주소 : ${tour.adres} <br>
 		 <a href="javascript:viewDetail('${tour.adres}','${select}','tour')">[상세정보 보기]</a>
 				<br>
+			
 		 	 <script>
         			x.push('${tour.x}');
-        			y.push('${tour.y}')
-        	
+        			y.push('${tour.y}');
+        			tour.push('${tour.park_nm}')
         		</script>
 		 </c:forEach>
 		 </c:if>
@@ -158,8 +162,8 @@ a {
 				<br>
 				<script>
         			x.push('${p.x_loc}');
-        			y.push('${p.y_loc}')
-        	
+        			y.push('${p.y_loc}');
+        			pub.push('${p.libry_name}');
         		</script>
 		 </c:forEach>
 		 </c:if>
@@ -175,7 +179,8 @@ a {
 				<br>	
 				<script>
         			x.push('${toy.x}');
-        			y.push('${toy.y}')
+        			y.push('${toy.y}');
+        			toy.push('${toy.lib_nm}')
         	
         		</script>	
 		 </c:forEach>
@@ -183,8 +188,9 @@ a {
 		 
 		</c:if>
 		
-		<c:forEach var="v" items="${vt}">
+		
 			<c:if test="${select=='tourism_list'}">
+			<c:forEach var="v" items="${vTour}">
 				-명칭 :[${v.park_se}] ${v.park_nm}			
 				<a target="_blank" href="#"
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
@@ -193,11 +199,15 @@ a {
 				<br>
 				 <script>
         			x.push('${v.x}');
-        			y.push('${v.y}')
+        			y.push('${v.y}');
+        			tour.push('${v.park_nm}')
         	
         		</script>
+        	</c:forEach>	
 			</c:if>
+			
 			 <c:if test="${select=='pub_lib'}">
+				<c:forEach var="v" items="${vPub}">
 				-명칭 : [${v.libry_se}] ${v.libry_name}			
 				<a target="_blank" href="#"
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
@@ -207,12 +217,15 @@ a {
 				<br>
 				<script>
         			x.push('${v.x_loc}');
-        			y.push('${v.y_loc}')
+        			y.push('${v.y_loc}');
+        			pub.push('${v.libry_name}');
         	
         		</script>
+        		</c:forEach>
 			</c:if>
 			
 			<c:if test="${select=='toy_lib'}">
+				<c:forEach var="v" items="${vToy}">
 				-명칭 : ${v.lib_nm}			
 				 <a target="_blank" href="#"
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
@@ -222,12 +235,12 @@ a {
 				<br>	
 				<script>
         			x.push('${v.x}');
-        			y.push('${v.y}')
+        			y.push('${v.y}');
+        			toy.push('${v.lib_nm}');
         	
         		</script>		
+        		</c:forEach>
 			</c:if> 
-			
-		</c:forEach>
 	</c:if>	
 	
 		</div>
@@ -258,7 +271,117 @@ a {
 		      
 			// 지도를 생성한다 
 			var map = new daum.maps.Map(mapContainer, mapOption);
+			
 		
+</script>
+<script>	
+
+	if(tour.length>0){
+			
+		// 마커 이미지의 주소
+			var markerImageUrl = '../img/tree.png'
+		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
+
+		// 마커 이미지를 생성한다
+		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+
+		
+		// 지도에 마커를 생성하고 표시한다
+		for(i=0; i<tour.length; i++ ){
+			
+			var	mposition = new daum.maps.LatLng(x[i], y[i]);
+			
+			var marker = new daum.maps.Marker({
+		  	 	position: mposition, // 마커의 좌표
+		   		 image : markerImage, // 마커의 이미지
+		   		 map: map, // 마커를 표시할 지도 객체
+				});
+		
+			 var iwContent = tour[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		
+			// 인포윈도우를 생성합니다
+			var infowindow = new daum.maps.InfoWindow({
+		    	content : iwContent,
+		    	position : mposition
+					}); 
+		
+		daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		
+	  	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	    function makeOverListener(map, marker, infowindow) {
+	        return function() {
+	            infowindow.open(map, marker);
+	        };
+	    }
+
+	    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	    function makeOutListener(infowindow) {
+	        return function() {
+	            infowindow.close();
+	        };
+	    }
+	    
+		}
+		
+		
+		
+	}
+</script>
+<script>			
+	if(pub.length>0){
+		// 마커 이미지의 주소
+			var markerImageUrl = '../img/book.jpg'
+		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
+
+		// 마커 이미지를 생성한다
+		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+
+		// 지도에 마커를 생성하고 표시한다
+		for(i=tour.length; i<tour.length+pub.length; i++ ){
+		var	mposition = new daum.maps.LatLng(x[i], y[i]);
+			
+			var marker = new daum.maps.Marker({
+		  	 	position: mposition, // 마커의 좌표
+		   		 image : markerImage, // 마커의 이미지
+		   		 map: map, // 마커를 표시할 지도 객체
+				});
+		
+			 var iwContent = pub[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		
+			// 인포윈도우를 생성합니다
+			var infowindow = new daum.maps.InfoWindow({
+		    	content : iwContent,
+		    	position : mposition
+					}); 
+		
+		daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		
+	  	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	    function makeOverListener(map, marker, infowindow) {
+	        return function() {
+	            infowindow.open(map, marker);
+	        };
+	    }
+
+	    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	    function makeOutListener(infowindow) {
+	        return function() {
+	            infowindow.close();
+	        };
+	    }
+			}
+	}
+</script>
+<script>			
+	if(toy.length>0){
 		// 마커 이미지의 주소
 			var markerImageUrl = '../img/toy.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
@@ -270,17 +393,44 @@ a {
 		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
 
 		// 지도에 마커를 생성하고 표시한다
-		for(i=0; i<x.length; i++ ){
-		var marker = new daum.maps.Marker({
-		    position: new daum.maps.LatLng(x[i], y[i]), // 마커의 좌표
-		    image : markerImage, // 마커의 이미지
-		    map: map // 마커를 표시할 지도 객체
-		});
+		for(i=(tour.length+pub.length); i<(tour.length+pub.length+toy.length); i++ ){
+var	mposition = new daum.maps.LatLng(x[i], y[i]);
+			
+			var marker = new daum.maps.Marker({
+		  	 	position: mposition, // 마커의 좌표
+		   		 image : markerImage, // 마커의 이미지
+		   		 map: map, // 마커를 표시할 지도 객체
+				});
+		
+			 var iwContent = toy[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		
+			// 인포윈도우를 생성합니다
+			var infowindow = new daum.maps.InfoWindow({
+		    	content : iwContent,
+		    	position : mposition
+					}); 
+		
+		daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		
+	  	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	    function makeOverListener(map, marker, infowindow) {
+	        return function() {
+	            infowindow.open(map, marker);
+	        };
+	    }
+
+	    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	    function makeOutListener(infowindow) {
+	        return function() {
+	            infowindow.close();
+	        };
+	    }
+			
 		}
-		
-		
-		
-	</script>
+	}
+</script>
+
 
 	</div>
 	</div>

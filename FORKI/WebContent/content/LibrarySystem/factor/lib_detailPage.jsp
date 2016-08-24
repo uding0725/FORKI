@@ -129,6 +129,7 @@
 			 <script>
 			 var x = '${article.x}';
 			 var y = '${article.y}';
+			 var title = '${article.park_nm}'
 			 </script>
 			
 		  </c:if>
@@ -151,6 +152,7 @@
 			 <script>
 			 var x = '${article.x}';
 			 var y = '${article.y}';
+			 var title = '${article.lib_nm}'
 			 </script>
 			
 		  </c:if>
@@ -173,6 +175,7 @@
 			<script>
 			 var x = '${article.x_loc}';
 			 var y = '${article.y_loc}';
+			 var title = '${article.libry_name}'
 			 </script>
 			</c:if>   
 		</div> 
@@ -183,8 +186,9 @@
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
 <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-		        center: new daum.maps.LatLng(x, y), // 지도의 중심좌표
+		    mapCenter = new daum.maps.LatLng(x, y),
+			mapOption = {
+		        center: mapCenter, // 지도의 중심좌표
 		        level: 4, // 지도의 확대 레벨
 		        mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 		    }; 
@@ -204,10 +208,16 @@
 		// 지도에 마커를 생성하고 표시한다
 		
 		var marker = new daum.maps.Marker({
-		    position: new daum.maps.LatLng(x, y), // 마커의 좌표
+		    position: mapCenter, // 마커의 좌표
 		    image : markerImage, // 마커의 이미지
 		    map: map // 마커를 표시할 지도 객체
 		});
+		
+		var mLabel = new daum.maps.InfoWindow({
+		    position: mapCenter, // 지도의 중심좌표에 올립니다.
+		    content: title // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
+		});
+		mLabel.open(map, marker); 
 	
 	</script>
 

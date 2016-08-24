@@ -34,10 +34,7 @@ a {
 }
 table{ 
        width : 700px;
-  /*      border-left: 1px solid; 
-       border-right: 1px solid; 
-       border-top: 1px solid; 
-       border-bottom: 1px solid;  */
+
        text-align:center"
 }
 
@@ -95,6 +92,7 @@ table{
 				  	<td width="300" align="center" bgcolor="">
 				  	<a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}">
           			${article.subject}</a>
+          			
 				  	</td>
 				  	<td width="100" align="center" bgcolor="">${article.writer}</td>
 				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
