@@ -12,6 +12,7 @@
 	var title =new Array();
 	var x = new Array();
 	var y = new Array();
+
 </script>
 </head>
 	<div id="md-wrap">
@@ -23,7 +24,7 @@
 		</span>	
 	<div id="md-container">
 		<div id="md-header">
-				<form method="post" action="/FORKI/content/MedicalSystem/searchMedi.do">
+				<form method="post" name="searchmediform"action="/FORKI/content/MedicalSystem/searchMedi.do">
 			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
 				<tr>
 			
@@ -32,7 +33,7 @@
 					</td>
 					<td colspan="1" align="center">
 					<input type="hidden" name="check" value="0">
-					<input type="radio" name="select" value="all">전체 
+					<input type="radio" name="select" value="all" checked="checked">전체 
 					<input type="radio" name="select" value="hospital">병원 
 					<input type="radio" name="select" value="hcenter">보건소 <br> 
 					서울 특별시 시/읍/구 <select name="gu_nm">

@@ -90,7 +90,7 @@
 				level : 3
 			};
 			var map = new daum.maps.Map(mapContainer, mapOption);
-			alert("x는 "+ x +"   y는   "+y);
+
 			var markerPosition = new daum.maps.LatLng(x, y);
 			var marker = new daum.maps.Marker({
 				position : markerPosition

@@ -60,45 +60,6 @@ public class KiderDBBean {
 		}
 		return DBdata;
 	}
-	
-	public KiderDataBean selectKid(int schul_num) throws Exception {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		KiderDataBean DBdata = null;
-		try {
-			conn = getConnection();
-			pstmt = conn.prepareStatement("select * From KINDERGARTEN where SCHUL_NUM = ?");
-			pstmt.setInt(1, schul_num);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-
-				DBdata = new KiderDataBean();
-				DBdata.setSchul_nm(rs.getString("schul_nm"));
-				DBdata.setOfcdc(rs.getString("ofcdc"));
-				DBdata.setMatr_gu(rs.getString("matr_gu"));
-				DBdata.setDong(rs.getString("dong"));
-				DBdata.setFond(rs.getString("fond"));
-				DBdata.setZip(rs.getString("zip"));
-				DBdata.setAdres(rs.getString("adres"));
-				DBdata.setTelno(rs.getString("telno"));
-				DBdata.setClas_co(rs.getInt("clas_co"));
-				DBdata.setStdnt_co_sm(rs.getInt("stdnt_co_sm"));
-				DBdata.setGrlstdn_co(rs.getInt("grlstdn_co"));
-				DBdata.setFrl_tcher_co_sm(rs.getInt("frl_tcher_co_sm"));
-				DBdata.setFrl_female_tcher_co(rs.getInt("frl_female_tcher_co"));
-				DBdata.setRm(rs.getString("rm"));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(rs);
-			JdbcUtil.close(pstmt);
-			JdbcUtil.close(conn);
-		}
-		return DBdata;
-	}
 
 
 	public void insertKid(KiderDataBean kidmember) throws Exception {
@@ -319,31 +280,31 @@ public class KiderDBBean {
 			conn = getConnection();
 			if (gunum == 0) {
 				if (Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten");
 				} else if (!Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where dong=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where dong=?");
 					pstmt.setString(1, Dong);
 				} else if (Dong.equals("") && !Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where schul_nm=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where schul_nm=?");
 					pstmt.setString(1, schul_nm);
 				} else {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where schul_nm=? and dong=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where schul_nm=? and dong=?");
 					pstmt.setString(1, Schul_nm);
 					pstmt.setString(2, Dong);
 				}
 			} else {
 				if (Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu=" + "'" + gunm[gunum] + "'");
 
 				} else if (!Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and dong=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu=" + "'" + gunm[gunum] + "'" + " and dong=?");
 					pstmt.setString(1, Dong);
 				} else if (Dong.equals("") && !Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=?");
 					pstmt.setString(1, schul_nm);
 				} else {
 					pstmt = conn
-							.prepareStatement("select schul_num,schul_nm,adres,telno,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=? and dong=?");
+							.prepareStatement("select schul_num,schul_nm,adres,telno from kindergarten where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=? and dong=?");
 					pstmt.setString(1, Schul_nm);
 					pstmt.setString(2, Dong);
 				}
@@ -352,10 +313,6 @@ public class KiderDBBean {
 			if (rs.next()) {
 				do {
 					KiderDataBean kdb = new KiderDataBean();
-					TSDataBean tsdata=new TSDataBean();
-					tsdata.setT_score(rs.getString("t_score"));
-					tsdata.setCount(rs.getString("count"));
-					kdb.setTsdata(tsdata);
 					kdb.setSchul_num(rs.getInt("schul_num"));
 					kdb.setSchul_nm(rs.getString("schul_nm"));
 					kdb.setAdres(rs.getString("adres"));
@@ -376,22 +333,23 @@ public class KiderDBBean {
 		return vecList;
 	}
 
-	public int checkKinder(int schul_num) throws Throwable {
+	public int checkKinder(String schul_nm, int schul_num) throws Throwable {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int x = -1;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select*from kindergarten where schul_num=? and state='y'");
-			pstmt.setInt(1, schul_num);
+			pstmt = conn.prepareStatement("select*from kindergarten where schul_nm=? and schul_num=? and state='y'");
+			pstmt.setString(1, schul_nm);
+			pstmt.setInt(2, schul_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x = 1;
 			}
-			pstmt = conn.prepareStatement("select*from kindergarten where schul_num=? and state='n'");
-		
-			pstmt.setInt(1, schul_num);
+			pstmt = conn.prepareStatement("select*from kindergarten where schul_nm=? and schul_num=? and state='n'");
+			pstmt.setString(1, schul_nm);
+			pstmt.setInt(2, schul_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x = 0;
@@ -485,6 +443,46 @@ public class KiderDBBean {
 
 		return favorList;
 	}
+	
+	/*총점을 가져오기*/
+	public String getTotal(String SCHUL_NUM) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		KiderDataBean DBdata = null;
+		String totalPer = "0%";
+		double total = 0;
+		int check = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) From TOTAL_SCORE where SCHUL_NUM = ?");			
+			pstmt.setString(1, SCHUL_NUM);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				check = rs.getInt(1);
+			}
+			if (check > 0) {
+				pstmt = conn.prepareStatement("select T_SCORE From TOTAL_SCORE where SCHUL_NUM = ?");
+				pstmt.setString(1, SCHUL_NUM);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					total = Double.parseDouble(rs.getString("T_SCORE")) * 20;
+					totalPer = total + "%";
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return totalPer;
+	}
+	
 	public int updateKinder(KiderDataBean kdata)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;

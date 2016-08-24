@@ -1,4 +1,6 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 /*------------------------------------------------------------*/
 /* 메뉴바 효과 설정 */
@@ -30,9 +32,9 @@
 	text-decoration: none; /* a 태그의 꾸밈 효과 제거 */
 	display: block; /* a 태그의 클릭 범위를 넓힘 */
 	width: 180px; /* 기본 넓이 설정 */
-	font-size: 15px; /* 폰트 사이즈 설정 */
-	font-weight: bold; /* 폰트를 굵게 설정 */
-	font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+	font-size: 18px; /* 폰트 사이즈 설정 */
+	/* font-weight: bold; 폰트를 굵게 설정 */
+	font-family: 'Jeju Gothic', serif; /* 기본 폰트를 영어/한글 순서대로 설정 */
 }
 
 .menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
@@ -53,7 +55,7 @@
 }
 
 .longLink { /* 좀 더 긴 메뉴 스타일 설정 */
-	width: 168px; /* 넓이 설정 */
+	width: 178px; /* 넓이 설정 */
 }
 
 .submenu { /* 하위 메뉴 스타일 설정 */
@@ -295,8 +297,6 @@
 	float: right;
 }
 
-
-
 /*------------------------------------------------------------*/
 /* 어린이집 검색 설정 */
 /*------------------------------------------------------------*/
@@ -312,24 +312,24 @@
 }
 
 #mdK-container {
-	width: 890px;
-	height: 700px;
+	width: 940px;
+	height: 703px;
 	margin: 0px auto;
-	padding: 20px;
+	padding: 5px;
 	border: 1px solid;
 }
 
 #mdK-header {
-	width: 950px;
+	width: 940px;
 	margin-bottom: 20px;
 	border: 0px solid;
 }
 
 #mdK-content {
-	width: 445px;
+	width: 465px;
 	height: 550px;
-	padding: 10px;
-	margin: 5px;
+	padding: 0px;
+	margin: 0px;
 	float: left;
 	border: 1px solid;
 }
@@ -344,24 +344,34 @@
 	border: 1px solid;
 }
 
+#mdK-inmap {
+	width: 465px;
+	height: 550px;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid;
+	magin-bottom: 10px;
+	float: right;
+}
+
 #mdK-wrap>a {
 	text-decoration: none;
 }
 
 /* 상세화면 설정 */
-#mdK-container {
+#mdKd-container {
 	width: 950px;
-	height: 800px;
+	height: 685px;
 	margin: 0px auto;
-	padding: 20px;
+	padding: 0px;
 	border: 0px solid;
 	position: relative;
 	margin-bottom: 20px;
 }
 
-#mdK-detailview {
+#mdKd-detailview {
 	width: 440px;
-	height: 550px;
+	height: 580px;
 	margin: 5px;
 	padding: 10px;
 	border: 1px solid;
@@ -369,13 +379,14 @@
 	float: left;
 }
 
-#mdK-detailview>p {
+#mdKd-detailview>p {
 	font-size: 15px;
+	margin: 0px;
 }
 
-#mdK-inmap {
+#mdKd-inmap {
 	width: 440px;
-	height: 550px;
+	height: 580px;
 	margin: 5px;
 	padding: 10px;
 	border: 1px solid;
@@ -383,63 +394,28 @@
 	float: right;
 }
 
-.rating {
-	z-index: 70;
-	overflow: hidden;
-	vertical-align: bottom;
-	display: inline-block;
-	width: auto;
-	height: 20px;
+#mdKd-menu {
+	font-size: 10px;
+	width: 940px;
+	height: 35px;
+	float: left;
+	margin: auto;
+}
+/*------------------------------------------------------------*/
+/* 이미지 슬라이더 */
+/*------------------------------------------------------------*/
+#back_to_camera {
+	clear: both;
+	display: block;
+	height: 80px;
+	line-height: 40px;
+	padding: 20px;
 }
 
-.rating>input {
-	opacity: 0;
-	margin-right: -100%;
-}
-
-.rating>label {
+.fluid_container {
+	margin: 0 auto;
 	position: relative;
-	display: block;
-	float: right;
-	background: url('../img/star-off-big.png');
-	background-size: 20px 20px;
-}
-
-.rating>label:before {
-	display: block;
-	opacity: 0;
-	content: '';
-	width: 20px;
-	height: 20px;
-	background: url('../img/star-on-big.png');
-	background-size: 20px 20px;
-	transition: opacity 0.2s linear;
-}
-
-.rating>label:hover:before, .rating>label:hover ~ label:before, .rating:not (:hover ) >:checked ~ label:before {
-	opacity: 1;
-}
-/*------------------------------------------------------------*/
-/* 별점 */
-/*------------------------------------------------------------*/
-.star_rating {
-	font-size: 0;
-	letter-spacing: -4px;
-}
-
-.star_rating a {
-	font-size: 22px;
-	letter-spacing: 0;
-	display: inline-block;
-	margin-left: 5px;
-	color: #ccc;
-	text-decoration: none;
-}
-
-.star_rating a:first-child {
-	margin-left: 0;
-}
-
-.star_rating a.on {
-	color: #ffff00;
+	top: 30px;
+	max-width: 440px;
+	width: 100%;
 }

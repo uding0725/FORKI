@@ -2,36 +2,110 @@ package DAO_DTO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import jdbc.JdbcUtil;
 
 public class ScoreDBBean {
 
-	private static ScoreDBBean instance=new ScoreDBBean();
-	
-	public static ScoreDBBean getInstance(){
+	private static ScoreDBBean instance = new ScoreDBBean();
+
+	public static ScoreDBBean getInstance() {
 		return instance;
 	}
-	private ScoreDBBean(){}
-	
-	private Connection getConnection()throws Exception{
-		String jdbcDriver="jdbc:apache:commons:dbcp:/pool";
+
+	private ScoreDBBean() {
+	}
+
+	private Connection getConnection() throws Exception {
+		String jdbcDriver = "jdbc:apache:commons:dbcp:/pool";
 		return DriverManager.getConnection(jdbcDriver);
 	}
-	//총점업데이트
-	public void updateTS(int schul_num,String score)throws Exception{
-		
+
+	// 참여여부 확인
+	public int checkScore(String id) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 1;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from USER_SCORE where id = ?");
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				check = 0;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+			JdbcUtil.close(rs);
+		}
+		return check;
 	}
-	
-	//평점주기
-	public void insertUS(USDataBean usdata)throws Exception{
-		
+
+	// 평점주기
+	public void setScore(double total, int score, String kinderNum, int count, String id) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("insert into USER_SCORE values (?,?,?)");
+			pstmt.setString(1, kinderNum);
+			pstmt.setString(2, id);
+			pstmt.setInt(3, score);
+
+			pstmt.executeQuery();
+
+			pstmt = conn.prepareStatement("update TOTAL_SCORE set T_SCORE = ?, COUNT = ? where SCHUL_NUM = ?");
+			pstmt.setDouble(1, total);
+			pstmt.setInt(2, count);
+			pstmt.setString(3, kinderNum);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return;
 	}
-	
-	//평점을 줫는지 안줫는지 체크
-	public int checkUS(String id, int schul_num){
-		
-	}
-	//총점보여주기
-	public Vector selectTS(int schul_num,String score){
-		
+
+	// 총점가져오기
+	public ScoreDataBean getTotal(String kinderNum) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ScoreDataBean DBdata = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from TOTAL_SCORE where SCHUL_NUM = ?");
+			pstmt.setString(1, kinderNum);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				DBdata = new ScoreDataBean();
+				DBdata.setT_score(rs.getString("T_SCORE"));
+				DBdata.setCount(rs.getString("COUNT"));
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+			JdbcUtil.close(rs);
+		}
+		return DBdata;
 	}
 }
