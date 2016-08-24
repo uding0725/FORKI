@@ -5,6 +5,15 @@
 <html>
 <head>
 <title>건의사항</title>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
+<script>
+function writeMessage(ids){
+	url='/FORKI/content/MyPage/WriteMessage.do?id='+ids
+	window.open(url,'popup','scrollbars=no, resizable=no, width=530,height=450');
+	alert(ids);
+}
+</script>
 <style>
 #write-wrap {
 	width: 750px;
@@ -101,7 +110,24 @@ table{
 				  	<a href="/FORKI/content/board/recommendContent.do?num=${article.num}&pageNum=${currentPage}">
           			${article.subject}</a>
 				  	</td>
-				  	<td width="100" align="center" bgcolor="">${article.writer}</td>
+				  	<td width="100" align="center" bgcolor="">
+				  		<c:if test="${sessionScope.id==article.id}">
+				  		${article.writer}
+				  	</c:if>
+				  	<c:if test="${sessionScope.id!=article.id}">
+				  	<div id="menubar" style="width=100px;">
+					<nav id="topmenu" style="width=100px;">
+						<ul>
+						<li class="topMenuLi"><a class="menuLink">${article.writer}</a>
+							<ul class="submenu">
+							<li class="pop-up"><a onclick="writeMessage('${article.id}')" class="submenuLink longLink">쪽지보내기</a></li>
+							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">신고하기</a></li>
+						</ul></li>
+				  	</ul>
+				  	</nav>
+				  	</div>
+				  	</c:if>
+				  	</td>
 				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
 				  	<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>
 				  	</tr>
