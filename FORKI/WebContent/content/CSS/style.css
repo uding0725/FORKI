@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 /*------------------------------------------------------------*/
@@ -216,11 +218,11 @@
 }
 
 /*------------------------------------------------------------*/
-/* 의료시설 검색 설정 */
+/* 의료시설/문화시설 검색 설정 */
 /*------------------------------------------------------------*/
 /* 검색화면 설정 */
 #md-wrap {
-	width: 700px;
+	width: 750px;
 	height: 790px;
 	margin: 0px auto;
 	padding: 0px;
@@ -229,35 +231,47 @@
 	position: relative;
 }
 
+#md-title {
+	height: 50px;
+	width: 740px;
+	margin-left: 5px;
+	float: left;
+	position: relative;
+	top: 10px;
+}
+
 #md-container {
-	width: 680px;
-	height: 700px;
+	width: 750px;
+	height: 760px;
 	margin: 0px auto;
-	padding: 20px;
+	padding: 0px;
 	border: 1px solid;
+	float: left;
 }
 
 #md-header {
-	width: 550px;
+	width: 740px;
 	margin-bottom: 20px;
 	border: 0px solid;
+	margin: auto;
+	margin-top: 5px;
 }
 
 #md-content {
-	width: 250px;
-	height: 540px;
+	width: 340px;
+	height: 590px;
 	padding: 5px;
-	margin-bottom: 10px;
+	margin-left: 5px;
 	float: left;
 	border: 1px solid;
 }
 
 #md-map {
 	width: 380px;
-	height: 530px;
-	padding: 10px;
+	height: 600px;
+	padding: 0px;
 	margin: auto;
-	margin-bottom: 10px;
+	margin-right: 5px;
 	float: right;
 	border: 1px solid;
 }
@@ -326,9 +340,9 @@
 }
 
 #mdK-content {
-	width: 465px;
-	height: 550px;
-	padding: 0px;
+	width: 455px;
+	height: 540px;
+	padding: 5px;
 	margin: 0px;
 	float: left;
 	border: 1px solid;
@@ -418,6 +432,38 @@
 	top: 30px;
 	max-width: 440px;
 	width: 100%;
+}
+
+/*------------------------------------------------------------*/
+/* 회원가입화면 버튼 */
+/*------------------------------------------------------------*/
+.button1 {
+	border: 1x solid #ff0080; /*---테두리 정의---*/
+	background-Color: #ffe6f2; /*--백그라운드 정의---*/
+	font: 50px 굴림; /*--폰트 정의---*/
+	font-weight: bold; /*--폰트 굵기---*/
+	color: #ff0080; /*--폰트 색깔---*/
+	width: 400;
+	height: 500; /*--버튼 크기---*/
+}
+
+.button2 {
+	border: 1x solid #02778B; /*---테두리 정의---*/
+	background-Color: #B6FFFF; /*--백그라운드 정의---*/
+	font: 50px 굴림; /*--폰트 정의---*/
+	font-weight: bold; /*--폰트 굵기---*/
+	color: #02778B; /*--폰트 색깔---*/
+	width: 400;
+	height: 500; /*--버튼 크기---*/
+}
+
+#buttonBox {
+	height: 500px;
+	widows: 400px;
+	padding: 35px;
+	position: relative;
+	bottom:20px;
+	margin: auto;
 }
 
 /*------------------------------------------------------------*/
