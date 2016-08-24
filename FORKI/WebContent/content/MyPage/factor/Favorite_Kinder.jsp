@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<img src="../img/chick/icon6.png" width="30" height="30"  style="position:relative; top:5px;"><font size="+2">관심 등록유치원</font>
 <div style="width: 750px;">
 	<div style="height: 30px;"></div>
 	<c:if test="${articleList =='[]'}">

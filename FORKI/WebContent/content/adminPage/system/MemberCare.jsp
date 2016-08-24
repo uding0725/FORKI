@@ -8,6 +8,7 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<img src="../img/chick/icon6.png" width="30" height="30"  style="position:relative; top:5px;"><font size="+2">회원관리</font>
 	<table width="800" border="1" cellspacing="0" cellpadding="3" align="center">
 	<form name="memForm" method="post" action="/FORKI/content/adminPage/SysMemberCare.do">
 

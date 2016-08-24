@@ -22,15 +22,20 @@
 </head>
 
 <body>
-<center><b>글목록(전체 글:${count})</b>
-<div id="free-wrap">
 
-		<span style='position:absolute; right:-20px'>
+<img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:5px;"><font size="+2">맘을 전해요</font>
+<span style='position:absolute; right:-20px'>
 		<a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a>
 		<a href="/FORKI/content/board/notifyList.do">>게시판</a>
 		<a href="/FORKI/content/board/freeBoardList.do">>맘을 전해요</a>		
 		</span>
 		<br>
+				
+
+<center><b>글목록(전체 글:${count})</b>
+<div id="free-wrap">
+
+		
 <table width="700">
 	<br>  
 	 <tr align="right">
