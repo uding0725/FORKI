@@ -4,11 +4,18 @@
 
 	<object class="org.apache.commons.dbcp.DriverManagerConnectionFactory">
 
-		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
 
+<<<<<<< HEAD
+		<string value="jdbc:oracle:thin:@192.168.20.19:1521:XE"/>
+		
 		<string value="uding"/>	
 		<string value="1234"/>
 
+=======
+		<string value="uding"/>	
+		<string value="1234"/>
+
+>>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
 	</object>
 	
 	<object class="org.apache.commons.pool.impl.GenericObjectPool">
