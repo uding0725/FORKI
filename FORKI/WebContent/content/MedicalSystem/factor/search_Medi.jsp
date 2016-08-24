@@ -66,7 +66,7 @@
 					</select>  
 					읍/면/동<input type="text" name="dong" autofocus placeholder="동을 입력하세요"><br>
 					또는 기관명<input type="text" name="h_nm" autofocus placeholder="기관명을 입력하세요"> 
-					<input type="image" src="../img/submit.jpg" width="30" height="30">
+					<input type="image" src="../img/submit.jpg" width="30" height="40">
 				</tr>
 			</table>
 			</form>
