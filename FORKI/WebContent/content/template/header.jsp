@@ -113,6 +113,7 @@
 		<div class="pop-container3">
 			<div class="pop-conts3">
 				<!--content //-->
+				<div style="height:50px; position: relative; top:10px;"><b>아이디/비밀번호 찾기</b></div>
 				<div id="findInfo" style="margin: auto; width: 300px; height: 270px;"></div>
 				<div class="btn-r3">
 					<a href="#" class="cbtn3">뒤로가기</a>

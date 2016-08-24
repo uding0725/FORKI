@@ -65,6 +65,7 @@ a.cbtn {
 	font-size: 13px;
 	color: #fff;
 	line-height: 25px;
+	text-decoration:none;
 }
 
 a.btn {
@@ -83,6 +84,13 @@ a.cbtn:hover {
 	background-color: #f3a016;
 	color: #fff;
 }
+
+a.btn:hover {
+	border: 1px solid #d67407;
+	background-color: #f3a016;
+	color: #fff;
+}
+
 
 /* 두번째 팝업 */
 .layer3 {
@@ -149,6 +157,7 @@ a.cbtn3 {
 	font-size: 13px;
 	color: #fff;
 	line-height: 25px;
+	text-decoration:none;
 }
 
 a.cbtn3:hover {
