@@ -2,6 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
+<link href="../../CSS/popup.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
 
 <div id="write-wrap">
 	<div id="write-header">
@@ -52,13 +55,30 @@
 			<c:if test="${count>0}">
 				<c:forEach var="article" items="${articleList}">
 					<tr>
-						<td width="100" align="center" bgcolor=""><c:out value="${number}" /> <c:set var="number" value="${number-1}" /></td>
-						<td width="300" align="center" bgcolor=""><a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}">
-								${article.subject}</a></td>
-						<td width="100" align="center" bgcolor="">${article.writer}</td>
-						<td width="100" align="center" bgcolor="">${article.readcount}</td>
-						<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>
-					</tr>
+						  	<td width="100" align="center" bgcolor="">
+				  	<c:out value="${number}"/>
+				  	<c:set var="number" value="${number-1}"/></td>
+				  	<td width="300" align="center" bgcolor="">
+				  	<a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}">
+          			${article.subject}</a>
+          			
+				  	</td>
+				  	<td width="100">
+				  	<div id="menubar">
+					<nav id="topmenu">
+						<ul>
+						<li class="topMenuLi"><a class="menuLink">${article.writer}</a>
+							<ul class="submenu">
+							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">쪽지보내기</a></li>
+							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">신고하기</a></li>
+						</ul></li>
+				  	</ul>
+				  	</nav>
+				  	</div>
+				  	</td>
+				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
+				  	<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>
+				  	</tr>
 				</c:forEach>
 			</c:if>
 		</table>
