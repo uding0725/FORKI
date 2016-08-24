@@ -8,7 +8,7 @@
 	}
 	var title =new Array();
 	var coord = new Array();
-	
+	var x =new Array();
 </script>
 <div id="mdK-wrap">
 <font size="+2">유치원찾기</font>
@@ -73,7 +73,7 @@
         	<c:forEach var="kinder" items="${vecList}">
         	<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>&nbsp;총점:${kinder.tsdata.t_score}&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
         	${kinder.telno}<br>
-        	${kinder.adres}<input type="button" value="찾기" onclick="searchkid('${kinder.adres}')"><br>
+        	${kinder.adres}<%-- <input type="button" value="찾기" onclick="searchkid('${kinder.adres}','${kinder.schul_nm}')"> --%><br>
         	<script>
         	title.push('${kinder.schul_nm}');
         	coord.push('${kinder.adres}')
@@ -109,7 +109,7 @@
 			// 주소-좌표 변환 객체를 생성합니다
 			var geocoder = new daum.maps.services.Geocoder();
 
-			for(var i=0; i<coord.length;i++){
+			for(var i=0; i<(coord.length+1);i++){
 
 
 	// 주소로 좌표를 검색합니다
@@ -120,8 +120,8 @@
 	     	if (status === daum.maps.services.Status.OK) {
 			
 	        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-
 	        // 결과값으로 받은 위치를 마커로 표시합니다
+	              console.log(result.addr[0].lat +","+result.addr[0].lng);    
 	        var marker = new daum.maps.Marker({
 	            map: map,
 	            position: coords
@@ -133,27 +133,25 @@
 			geocoder.addr2coord(coord[0], function(status, result) {
 				
 			    // 정상적으로 검색이 완료됐으면 
-			     if (status === daum.maps.services.Status.OK) {
-					
+			     if (status === daum.maps.services.Status.OK) {  
 			        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-			        
+			     
 			        map.setCenter(coords);
 			     }
 			});
-			
-function searchkid(coord){
+/* 			
+function searchkid(coord,title){
 	geocoder.addr2coord(coord, function(status, result) {
 			
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === daum.maps.services.Status.OK) {
-			
+	
 	        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-	        
+	      
 	        map.setCenter(coords);
 	     }
 	});
-}
-
+} */
 
 		</script>
 	</div>
