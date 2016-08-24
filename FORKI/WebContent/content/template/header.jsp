@@ -11,14 +11,14 @@
 					<c:if test="${sessionScope.id == null}">
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/main/main.do">HOME</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/UserMain.jsp">로그인</a></li>
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/joinSelect.jsp"">회원가입</a></li>
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/joinSelect.jsp">회원가입</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/siteMap/siteMap.do">사이트맵</a></li>
 					</c:if>
 					<c:if test="${sessionScope.id != null}">
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/main/main.do">HOME</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/factor/user/logout.do">로그아웃</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/MyPage/InfoModify.jsp">MyPage</a></li>
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="#">사이트맵</a></li>
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/siteMap/siteMap.do">사이트맵</a></li>
 					</c:if>
 				</ul>
 			</nav>
