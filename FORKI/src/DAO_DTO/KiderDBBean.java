@@ -360,6 +360,8 @@ public class KiderDBBean {
 					kdb.setSchul_nm(rs.getString("schul_nm"));
 					kdb.setAdres(rs.getString("adres"));
 					kdb.setTelno(rs.getString("telno"));
+					kdb.setX(rs.getDouble("x"));
+					kdb.setY(rs.getDouble("y"));
 					vecList.addElement(kdb);
 				} while (rs.next());
 			}

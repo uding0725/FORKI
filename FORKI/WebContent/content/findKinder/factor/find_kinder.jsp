@@ -7,8 +7,8 @@
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	var title =new Array();
-	var coord = new Array();
-	
+	var x = new Array();
+	var y = new Array();
 </script>
 <div id="mdK-wrap">
 <font size="+2">유치원찾기</font>
@@ -76,8 +76,8 @@
         	${kinder.adres}<input type="button" value="찾기" onclick="searchkid('${kinder.adres}')"><br>
         	<script>
         	title.push('${kinder.schul_nm}');
-        	coord.push('${kinder.adres}')
-        	
+        	x.push('${kinder.x}');
+        	y.push('${kinder.y}');
         	</script>
         	</c:forEach>
 			<%-- <c:forEach var="kinderGarten" items="${searchList}">
@@ -91,70 +91,29 @@
 			<!-- 지도 종료 -->
 		</div>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
-
 		<script>
-
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	   		mapOption = {
-
-	       // center: new daum.maps.LatLng(37.450701, 126.570667), // 지도의 중심좌표
-
-	        center: new daum.maps.LatLng(37.541, 126.986), // 지도의 중심좌표
-
-	        level: 3 // 지도의 확대 레벨
-					    };  
-			// 지도를 생성합니다    
-
-			var map = new daum.maps.Map(mapContainer, mapOption); 
-			// 주소-좌표 변환 객체를 생성합니다
-			var geocoder = new daum.maps.services.Geocoder();
-
-			for(var i=0; i<coord.length;i++){
-
-
-	// 주소로 좌표를 검색합니다
-	geocoder.addr2coord(coord[i], function(status, result) {
-
-		
-	    	// 정상적으로 검색이 완료됐으면 
-	     	if (status === daum.maps.services.Status.OK) {
-			
-	        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker = new daum.maps.Marker({
-	            map: map,
-	            position: coords
-	        });      
-	        marker.setMap(map);    
-	        }
-	});
-	}
-			geocoder.addr2coord(coord[0], function(status, result) {
-				
-			    // 정상적으로 검색이 완료됐으면 
-			     if (status === daum.maps.services.Status.OK) {
-					
-			        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-			        
-			        map.setCenter(coords);
-			     }
-			});
-			
-function searchkid(coord){
-	geocoder.addr2coord(coord, function(status, result) {
-			
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === daum.maps.services.Status.OK) {
-			
-	        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-	        
-	        map.setCenter(coords);
-	     }
-	});
-}
-
-
+		if(${count}==0){
+			var mapContainer =document.getElementById('map'),
+			mapOption={
+					center: new daum.maps.LatLng(37.541,126.986),
+					level:4
+			}
+		}else{
+			var mapContainer =document.getElementById('map'),
+			mapOption={
+					center: new daum.maps.LatLng(x[0],y[0]),
+					level:4
+			}
+		}
+		var map = new daum.maps.Map(mapContainer,mapOption);
+		for(var i=0;i<x.length;i++){
+			// 마커를 생성합니다
+		    var marker = new daum.maps.Marker({
+		        map: map, // 마커를 표시할 지도
+		        position:new daum.maps.LatLng(x[i],y[i]), // 마커를 표시할 위치
+		        title :title[i] // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		    });
+		}
 		</script>
 	</div>
 </div>
