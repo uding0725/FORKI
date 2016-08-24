@@ -21,19 +21,26 @@ public class LibDBBean {
 		return DriverManager.getConnection(jdbcDriver);
 	}
 	
-	//ì „ì²´ ì£¼ë³€ì‹œì„¤ ê²€ìƒ‰
-	//Public Vector getAll(int gu_nm,String dong)
+
 	
-	//ì‚°,ê³µì› ê°€ì ¸ì˜¤ê¸°
+
 	public Vector getTour(int gu_nm,String dong, String searchN) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Vector vt = null;
-		
-		String[] gu={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ì‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ë‘êµ¬","ì¤‘êµ¬"};
+		 
+		String[] gu={"ÀüÃ¼","°­³²±¸","°­µ¿±¸","°­ºÏ±¸","°­¼­±¸","°ü¾Ç±¸","±¤Áø±¸","±¸·Î±¸","±İÃµ±¸","³ë¿ø±¸","µµºÀ±¸","µ¿´ë¹®±¸","µ¿ÀÛ±¸","¸¶Æ÷±¸","¼­´ë¹®±¸","¼­ÃÊ±¸","¼ºµ¿±¸","¼ººÏ±¸","¼ÛÆÄ±¸","¾çÃµ±¸","¿µµîÆ÷±¸","¿ë»ê±¸","ÀºÆò±¸","Á¾·Î±¸","Áß¶û±¸","Áß±¸"};
 		try{
 			conn = getConnection();
+			if(gu_nm == 0){
+				if(searchN==null){
+				pstmt = conn.prepareStatement("select * from tourism_list");
+				}else{
+				pstmt = conn.prepareStatement("select * from tourism_list where park_nm like '%"+searchN+"%'");	
+				}
+			}
+			else{
 			if(dong==null && searchN==null){
 			pstmt = conn.prepareStatement("select * from tourism_list where gu_nm='"+gu[gu_nm]+"'");
 			}
@@ -45,6 +52,7 @@ public class LibDBBean {
 			}
 			else if(dong != null && searchN != null){
 			pstmt = conn.prepareStatement("select * from tourism_list where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+ "%' and park_nm like '%"+searchN+"%'")	;
+			}
 			}
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -76,30 +84,37 @@ public class LibDBBean {
 	}
 	
 	
-	// ê³µê³µë„ì„œê´€  ëª©ë¡ê°€ì ¸ì˜¤ê¸°
+
 	public Vector getPubLib(int gu_nm,String dong, String searchN) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Vector vt = null;
-		
-		String[] gu={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ì‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ë‘êµ¬","ì¤‘êµ¬"};
-		try{
+	
+		String[] gu={"ÀüÃ¼","°­³²±¸","°­µ¿±¸","°­ºÏ±¸","°­¼­±¸","°ü¾Ç±¸","±¤Áø±¸","±¸·Î±¸","±İÃµ±¸","³ë¿ø±¸","µµºÀ±¸","µ¿´ë¹®±¸","µ¿ÀÛ±¸","¸¶Æ÷±¸","¼­´ë¹®±¸","¼­ÃÊ±¸","¼ºµ¿±¸","¼ººÏ±¸","¼ÛÆÄ±¸","¾çÃµ±¸","¿µµîÆ÷±¸","¿ë»ê±¸","ÀºÆò±¸","Á¾·Î±¸","Áß¶û±¸","Áß±¸"};
+			try{
 			conn = getConnection();
-			
-			if(dong==null && searchN==null){
-			pstmt = conn.prepareStatement("select * from  pub_lib where gu_nm='"+gu[gu_nm]+"'");
+			if(gu_nm == 0){
+				if(searchN==null){
+				pstmt = conn.prepareStatement("select * from pub_lib");
+				}else{
+				pstmt = conn.prepareStatement("select * from pub_lib where libry_name like '%"+searchN+"%'");	
+				}
 			}
-			else if(dong == null && searchN != null){
-			pstmt = conn.prepareStatement("select * from pub_lib where gu_nm='"+gu[gu_nm]+"' and libry_name like '%"+searchN+"%'");	
+			else{
+				if(dong==null && searchN==null){
+					pstmt = conn.prepareStatement("select * from  pub_lib where gu_nm='"+gu[gu_nm]+"'");
+				}
+				else if(dong == null && searchN != null){
+					pstmt = conn.prepareStatement("select * from pub_lib where gu_nm='"+gu[gu_nm]+"' and libry_name like '%"+searchN+"%'");	
+					}
+				else if(dong != null && searchN ==null){
+					pstmt = conn.prepareStatement("select * from pub_lib where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+"%'");	
+				}
+				else if(dong != null && searchN != null){
+					pstmt = conn.prepareStatement("select * from pub_lib where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+ "%' and libry_name like '%"+searchN+"%'")	;
+				}
 			}
-			else if(dong != null && searchN ==null){
-			pstmt = conn.prepareStatement("select * from pub_lib where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+"%'");	
-			}
-			else if(dong != null && searchN != null){
-			pstmt = conn.prepareStatement("select * from pub_lib where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+ "%' and libry_name like '%"+searchN+"%'")	;
-			}
-			
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				vt = new Vector();
@@ -131,27 +146,36 @@ public class LibDBBean {
 	}
 	
 	
-	//ì¥ë‚œê° ë„ì„œê´€ ê²€ìƒ‰
+
 	public Vector getToyLib(int gu_nm,String dong, String searchN) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Vector vt = null;
 		
-		String[] gu={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ì‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ë‘êµ¬","ì¤‘êµ¬"};
+		String[] gu={"ÀüÃ¼","°­³²±¸","°­µ¿±¸","°­ºÏ±¸","°­¼­±¸","°ü¾Ç±¸","±¤Áø±¸","±¸·Î±¸","±İÃµ±¸","³ë¿ø±¸","µµºÀ±¸","µ¿´ë¹®±¸","µ¿ÀÛ±¸","¸¶Æ÷±¸","¼­´ë¹®±¸","¼­ÃÊ±¸","¼ºµ¿±¸","¼ººÏ±¸","¼ÛÆÄ±¸","¾çÃµ±¸","¿µµîÆ÷±¸","¿ë»ê±¸","ÀºÆò±¸","Á¾·Î±¸","Áß¶û±¸","Áß±¸"};
 		try{
 			conn = getConnection();
-			if(dong==null && searchN==null){
-			pstmt = conn.prepareStatement("select * from toy_lib where gu_nm='"+gu[gu_nm]+"'");
+			if(gu_nm == 0){
+				if(searchN==null){
+				pstmt = conn.prepareStatement("select * from toy_lib");
+				}else{
+				pstmt = conn.prepareStatement("select * from toy_lib where park_nm like '%"+searchN+"%'");	
+				}
 			}
-			else if(dong == null && searchN != null){
-			pstmt = conn.prepareStatement("select * from toy_lib where gu_nm='"+gu[gu_nm]+"' and lib_nm like '%"+searchN+"%'");	
-			}
-			else if(dong != null && searchN ==null){
-			pstmt = conn.prepareStatement("select * from toy_lib where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+"%'");	
-			}
-			else if(dong != null && searchN != null){
-			pstmt = conn.prepareStatement("select * from toy_lib where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+ "%' and lib_nm like '%"+searchN+"%'")	;
+			else{
+				if(dong==null && searchN==null){
+					pstmt = conn.prepareStatement("select * from toy_lib where gu_nm='"+gu[gu_nm]+"'");
+				}
+				else if(dong == null && searchN != null){
+					pstmt = conn.prepareStatement("select * from toy_lib where gu_nm='"+gu[gu_nm]+"' and lib_nm like '%"+searchN+"%'");	
+				}
+				else if(dong != null && searchN ==null){
+					pstmt = conn.prepareStatement("select * from toy_lib where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+"%'");	
+				}
+				else if(dong != null && searchN != null){
+					pstmt = conn.prepareStatement("select * from toy_lib where gu_nm='"+gu[gu_nm]+"' and adres like'%"+dong+ "%' and lib_nm like '%"+searchN+"%'")	;
+				}
 			}
 			rs = pstmt.executeQuery();
 			if(rs.next()){

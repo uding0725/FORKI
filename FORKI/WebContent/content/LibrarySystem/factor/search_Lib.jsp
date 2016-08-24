@@ -52,6 +52,7 @@ a {
 }
 </style>
 
+
 <script>
 	function viewDetail(adres,select,type) {
 		url = "/FORKI/content/LibrarySystem/factor/lib_detailPage.do?adres=" + adres+"&select="+select+"&type="+type;
@@ -70,7 +71,7 @@ a {
 		<a href="">>문화시설 조회</a>
 	</span>
 	<div id="lib-container">
-		<form name=search_libForm aciton="/FORKI/content/LibrarySystem/searchLib.do">
+		<form name=search_libForm aciton="/FORKI/content/LibrarySystem/searchLib.do" onSubmit="return checkGu">
 		<div id="lib-header">
 			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
 				<tr>
@@ -79,13 +80,13 @@ a {
 					</td>
 					<td colspan="1" align="center">
 					<input type="radio" name="select" value="all">전체 &nbsp; &nbsp; 
-					<input type="radio" name="select" value="tourism_list">산/공원&nbsp; 
+					<input type="radio" name="select" value="tourism_list" checked="checked">산/공원&nbsp; 
 					<input type="radio" name="select" value="pub_lib">도서관 &nbsp; 
 					<input type="radio" name="select" value="toy_lib">장난감 도서관 
 						<br>
 						 서울 특별시 구 &nbsp;&nbsp;
 						<select name="gu_nm">
-							<option value="0">선택하세요</option>
+							<option value="0" selected>전체</option>
 							<option value="1">강남구</option>
 							<option value="2">강동구</option>
 							<option value="3">강북구</option>
@@ -136,6 +137,8 @@ a {
 		<c:forEach var="tour" items="${vTour}">
 		-명칭 : [${tour.park_se}] ${tour.park_nm} <br>
 		 주소 : ${tour.adres} <br>
+		 <a href="javascript:viewDetail('${tour.adres}','${select}','tour')">[상세정보 보기]</a>
+				<br>
 		 	 <script>
         			x.push('${tour.x}');
         			y.push('${tour.y}')
@@ -186,7 +189,8 @@ a {
 				<a target="_blank" href="#"
 				onclick="window.open(this.href,'_blank','width=1000,height=780, scrollbars=yes');return false;"></a> <br>
 				 주소 : ${v.adres} <br>
-				
+				<a href="javascript:viewDetail('${v.adres}','${select}','tour')">[상세정보 보기]</a>
+				<br>
 				 <script>
         			x.push('${v.x}');
         			y.push('${v.y}')
@@ -203,7 +207,8 @@ a {
 				<br>
 				<script>
         			x.push('${v.x_loc}');
-        			y.push('${v.y_loc}')
+        			y.push('${v.y_loc}');
+        			title.push('${v.libry_name}')
         	
         		</script>
 			</c:if>
@@ -218,7 +223,8 @@ a {
 				<br>	
 				<script>
         			x.push('${v.x}');
-        			y.push('${v.y}')
+        			y.push('${v.y}');
+        			
         	
         		</script>		
 			</c:if> 
@@ -228,7 +234,7 @@ a {
 	
 		</div>
 	<div id="lib-map">
-	<div id="map" style="width:100%;height:350px;"></div>
+	<div id="map" style="width:100%;height:100%;"></div>
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
 <script>
@@ -269,6 +275,7 @@ a {
 		for(i=0; i<x.length; i++ ){
 		var marker = new daum.maps.Marker({
 		    position: new daum.maps.LatLng(x[i], y[i]), // 마커의 좌표
+		    text: title[i],
 		    image : markerImage, // 마커의 이미지
 		    map: map // 마커를 표시할 지도 객체
 		});

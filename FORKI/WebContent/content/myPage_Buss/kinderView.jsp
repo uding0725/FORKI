@@ -3,5 +3,5 @@
 
 <tiles:insertDefinition name="layout3" >
 	<tiles:putAttribute name="menu" value="/content/template/menu4.jsp" />
-	<tiles:putAttribute name="body" value="/content/adminPage/system/black_list.jsp" />
+	<tiles:putAttribute name="body" value="/content/myPage_Buss/factor/kinder_View.jsp" />
 </tiles:insertDefinition>

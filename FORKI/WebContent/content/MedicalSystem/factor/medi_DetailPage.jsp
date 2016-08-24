@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<!-- 한글 테스트 -->
+
 <!DOCTYPE html>
 <html>
 <head>
