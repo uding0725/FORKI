@@ -58,11 +58,16 @@ a {
 		url = "/FORKI/content/LibrarySystem/factor/lib_detailPage.do?adres=" + adres+"&select="+select+"&type="+type;
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
-	var x =new Array();
-	var y = new Array();
+	
 	var tour = new Array();
 	var pub = new Array();
 	var toy = new Array();
+	
+	var x = new Array();
+	var y = new Array();
+	var title = new Array();
+	
+	
 	
 </script>	
 </head>
@@ -146,7 +151,8 @@ a {
 		 	 <script>
         			x.push('${tour.x}');
         			y.push('${tour.y}');
-        			tour.push('${tour.park_nm}')
+        			tour.push('${tour.park_nm}');
+        			title.push('${tour.park_nm}')
         		</script>
 		 </c:forEach>
 		 </c:if>
@@ -164,6 +170,7 @@ a {
         			x.push('${p.x_loc}');
         			y.push('${p.y_loc}');
         			pub.push('${p.libry_name}');
+        			title.push('${p.libry_name}')
         		</script>
 		 </c:forEach>
 		 </c:if>
@@ -180,13 +187,14 @@ a {
 				<script>
         			x.push('${toy.x}');
         			y.push('${toy.y}');
-        			toy.push('${toy.lib_nm}')
-        	
+        			toy.push('${toy.lib_nm}');
+        			title.push('${toy.lib_nm}')
         		</script>	
 		 </c:forEach>
 		 </c:if>
 		 
 		</c:if>
+		<!-- all일경우 끝 -->
 		
 		
 			<c:if test="${select=='tourism_list'}">
@@ -198,9 +206,10 @@ a {
 				<a href="javascript:viewDetail('${v.adres}','${select}','tour')">[상세정보 보기]</a>
 				<br>
 				 <script>
-        			x.push('${v.x}');
-        			y.push('${v.y}');
-        			tour.push('${v.park_nm}')
+						x.push('${v.x}');
+     					y.push('${v.y}');
+     					tour.push('${v.park_nm}');
+     					title.push('${v.park_nm}')
         	
         		</script>
         	</c:forEach>	
@@ -216,9 +225,10 @@ a {
 				<a href="javascript:viewDetail('${v.adres}','${select}','p')">[상세정보 보기]</a>
 				<br>
 				<script>
-        			x.push('${v.x_loc}');
-        			y.push('${v.y_loc}');
-					pub.push('${v.libry_name}');
+					x.push('${v.x_loc}');
+	    			y.push('${v.y_loc}');
+	    			pub.push('${v.libry_name}');
+	    			title.push('${v.libry_name}')
         	
         		</script>
         		</c:forEach>
@@ -234,9 +244,10 @@ a {
 				<a href="javascript:viewDetail('${v.adres}','${select}','toy')">[상세정보 보기]</a>
 				<br>	
 				<script>
-        			x.push('${v.x}');
-        			y.push('${v.y}');
-        			toy.push('${v.lib_nm}');
+					x.push('${v.x}');
+    				y.push('${v.y}');
+    				toy.push('${v.lib_nm}');
+    				title.push('${v.lib_nm}')
         		</script>		
         		</c:forEach>
 			</c:if> 
@@ -258,6 +269,7 @@ a {
 		    					}; // 지도의 중심좌표
 						
 							}
+			
 			if(${count} != 0){
 					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 				    mapOption = {
@@ -265,7 +277,6 @@ a {
 						 level: 4, // 지도의 확대 레벨
 				         mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 				    			}; 
-					
 							}
 		      
 			// 지도를 생성한다 
@@ -299,7 +310,7 @@ a {
 		   		 map: map, // 마커를 표시할 지도 객체
 				});
 		
-			 var iwContent = tour[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			 var iwContent = title[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		
 			// 인포윈도우를 생성합니다
 			var infowindow = new daum.maps.InfoWindow({
@@ -352,7 +363,7 @@ a {
 		   		 map: map, // 마커를 표시할 지도 객체
 				});
 		
-			 var iwContent = pub[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			 var iwContent = title[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		
 			// 인포윈도우를 생성합니다
 			var infowindow = new daum.maps.InfoWindow({
@@ -392,9 +403,9 @@ a {
 		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
 
 		// 지도에 마커를 생성하고 표시한다
-<<<<<<< HEAD
+
 		for(i=(tour.length+pub.length); i<(tour.length+pub.length+toy.length); i++ ){
-var	mposition = new daum.maps.LatLng(x[i], y[i]);
+			var	mposition = new daum.maps.LatLng(x[i], y[i]);
 			
 			var marker = new daum.maps.Marker({
 		  	 	position: mposition, // 마커의 좌표
@@ -402,7 +413,7 @@ var	mposition = new daum.maps.LatLng(x[i], y[i]);
 		   		 map: map, // 마커를 표시할 지도 객체
 				});
 		
-			 var iwContent = toy[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			 var iwContent = title[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		
 			// 인포윈도우를 생성합니다
 			var infowindow = new daum.maps.InfoWindow({
@@ -413,29 +424,19 @@ var	mposition = new daum.maps.LatLng(x[i], y[i]);
 		daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 		
-	  	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-	    function makeOverListener(map, marker, infowindow) {
-	        return function() {
+	  		//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	 	   function makeOverListener(map, marker, infowindow) {
+	       		 return function() {
 	            infowindow.open(map, marker);
-	        };
-	    }
+	      							  };
+	   		 }
 
-	    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-	    function makeOutListener(infowindow) {
-	        return function() {
-	            infowindow.close();
-	        };
-	    }
-			
-=======
-		for(i=0; i<x.length; i++ ){
-		var marker = new daum.maps.Marker({
-		    position: new daum.maps.LatLng(x[i], y[i]), // 마커의 좌표
-		    text: title[i],
-		    image : markerImage, // 마커의 이미지
-		    map: map // 마커를 표시할 지도 객체
-		});
->>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
+	   		 // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	    	function makeOutListener(infowindow) {
+	     		   return function() {
+	        	    infowindow.close();
+	       			 };
+	  		  }	
 		}
 	}
 </script>
