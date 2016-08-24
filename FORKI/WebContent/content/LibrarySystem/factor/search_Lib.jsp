@@ -218,7 +218,7 @@ a {
 				<script>
         			x.push('${v.x_loc}');
         			y.push('${v.y_loc}');
-        			pub.push('${v.libry_name}');
+					pub.push('${v.libry_name}');
         	
         		</script>
         		</c:forEach>
@@ -237,7 +237,6 @@ a {
         			x.push('${v.x}');
         			y.push('${v.y}');
         			toy.push('${v.lib_nm}');
-        	
         		</script>		
         		</c:forEach>
 			</c:if> 
@@ -393,6 +392,7 @@ a {
 		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
 
 		// 지도에 마커를 생성하고 표시한다
+<<<<<<< HEAD
 		for(i=(tour.length+pub.length); i<(tour.length+pub.length+toy.length); i++ ){
 var	mposition = new daum.maps.LatLng(x[i], y[i]);
 			
@@ -427,6 +427,15 @@ var	mposition = new daum.maps.LatLng(x[i], y[i]);
 	        };
 	    }
 			
+=======
+		for(i=0; i<x.length; i++ ){
+		var marker = new daum.maps.Marker({
+		    position: new daum.maps.LatLng(x[i], y[i]), // 마커의 좌표
+		    text: title[i],
+		    image : markerImage, // 마커의 이미지
+		    map: map // 마커를 표시할 지도 객체
+		});
+>>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
 		}
 	}
 </script>

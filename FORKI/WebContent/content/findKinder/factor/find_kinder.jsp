@@ -73,7 +73,7 @@
         	<c:forEach var="kinder" items="${vecList}">
         	<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>&nbsp;총점:${kinder.tsdata.t_score}&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
         	${kinder.telno}<br>
-        	${kinder.adres}<br>
+        	${kinder.adres}<input type="button" value="찾기" onclick="searchkid('${kinder.adres}')"><br>
         	<script>
         	title.push('${kinder.schul_nm}');
         	coord.push('${kinder.adres}')
@@ -108,8 +108,6 @@
 			var map = new daum.maps.Map(mapContainer, mapOption); 
 			// 주소-좌표 변환 객체를 생성합니다
 			var geocoder = new daum.maps.services.Geocoder();
-			var addx =new Array();
-
 
 			for(var i=0; i<coord.length;i++){
 
@@ -126,14 +124,25 @@
 	        // 결과값으로 받은 위치를 마커로 표시합니다
 	        var marker = new daum.maps.Marker({
 	            map: map,
-	            position: coords,
-	            title:title[i]
+	            position: coords
 	        });      
 	        marker.setMap(map);    
 	        }
 	});
 	}
-	geocoder.addr2coord(coord[0], function(status, result) {
+			geocoder.addr2coord(coord[0], function(status, result) {
+				
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === daum.maps.services.Status.OK) {
+					
+			        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+			        
+			        map.setCenter(coords);
+			     }
+			});
+			
+function searchkid(coord){
+	geocoder.addr2coord(coord, function(status, result) {
 			
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === daum.maps.services.Status.OK) {
@@ -143,6 +152,8 @@
 	        map.setCenter(coords);
 	     }
 	});
+}
+
 
 		</script>
 	</div>
