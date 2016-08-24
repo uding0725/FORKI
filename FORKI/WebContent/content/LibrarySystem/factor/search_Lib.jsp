@@ -298,7 +298,9 @@ a {
 		// 마커 이미지를 생성한다
 		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
 
-		
+	
+	
+	
 		// 지도에 마커를 생성하고 표시한다
 		for(i=0; i<tour.length; i++ ){
 			
@@ -336,13 +338,11 @@ a {
 	    }
 	    
 		}
-		
-		
-		
+
 	}
 </script>
 <script>			
-	if(pub.length>0){
+if(pub.length>0){
 		// 마커 이미지의 주소
 			var markerImageUrl = '../img/book.jpg'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
@@ -352,7 +352,7 @@ a {
 
 		// 마커 이미지를 생성한다
 		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
-
+	 
 		// 지도에 마커를 생성하고 표시한다
 		for(i=tour.length; i<tour.length+pub.length; i++ ){
 		var	mposition = new daum.maps.LatLng(x[i], y[i]);
@@ -401,7 +401,7 @@ a {
 
 		// 마커 이미지를 생성한다
 		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
-
+	 
 		// 지도에 마커를 생성하고 표시한다
 
 		for(i=(tour.length+pub.length); i<(tour.length+pub.length+toy.length); i++ ){
@@ -439,8 +439,7 @@ a {
 	  		  }	
 		}
 	}
-</script>
-
+</script> 
 
 	</div>
 	</div>

@@ -66,7 +66,7 @@
 					</select>  
 					읍/면/동<input type="text" name="dong" autofocus placeholder="동을 입력하세요"><br>
 					또는 기관명<input type="text" name="h_nm" autofocus placeholder="기관명을 입력하세요"> 
-					<input type="image" src="../img/submit.jpg" width="30" height="30">
+					<input type="image" src="../img/submit.jpg" width="30" height="40">
 				</tr>
 			</table>
 			</form>
@@ -107,6 +107,7 @@
 		</div>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
 		<script>
+
 		if(${count}==0){
 			var mapContainer =document.getElementById('map'),
 			mapOption={
@@ -121,14 +122,41 @@
 			}
 		}
 		var map = new daum.maps.Map(mapContainer,mapOption);
-		for(var i=0;i<x.length;i++){
-			// 마커를 생성합니다
-		    var marker = new daum.maps.Marker({
-		        map: map, // 마커를 표시할 지도
-		        position:new daum.maps.LatLng(x[i],y[i]), // 마커를 표시할 위치
-		        title :title[i] // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-		      
-		    });
+		// 지도에 마커를 생성하고 표시한다
+		for(i=0; i<title.length; i++ ){
+			
+			var	mposition = new daum.maps.LatLng(x[i], y[i]);
+			
+			var marker = new daum.maps.Marker({
+		  	 	position: mposition, // 마커의 좌표
+		   		 map: map // 마커를 표시할 지도 객체
+				});
+		
+			 var iwContent = title[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		
+			// 인포윈도우를 생성합니다
+			var infowindow = new daum.maps.InfoWindow({
+		    	content : iwContent,
+		    	position : mposition
+					}); 
+		
+		daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		
+	  	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	    function makeOverListener(map, marker, infowindow) {
+	        return function() {
+	            infowindow.open(map, marker);
+	        };
+	    }
+
+	    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	    function makeOutListener(infowindow) {
+	        return function() {
+	            infowindow.close();
+	        };
+	    }
+	    
 		}
 		</script>
 	</div>

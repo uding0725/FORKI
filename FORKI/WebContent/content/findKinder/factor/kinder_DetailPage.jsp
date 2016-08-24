@@ -147,7 +147,7 @@ a:hover {
 			$("input").attr("onclick","document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=5'");
 		});
 	});
-
+ 
 </script>
 <title>어린이집 상세 정보</title>
 </head>
