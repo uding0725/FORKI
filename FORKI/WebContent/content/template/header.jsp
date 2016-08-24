@@ -57,7 +57,7 @@
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/siteMap/siteMap.do">사이트맵</a></li>
 					</c:if>
 				</ul>
-			</nav>
+			</nav> 
 		</div>
 		<div id="menubar">
 			<nav id="topmenu">
