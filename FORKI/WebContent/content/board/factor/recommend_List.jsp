@@ -1,10 +1,31 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>건의사항</title>
 
-<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
-
-
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
+<script>
+function writeMessage(ids){
+	url='/FORKI/content/MyPage/WriteMessage.do?id='+ids
+	window.open(url,'popup','scrollbars=no, resizable=no, width=530,height=450');
+	alert(ids);
+}
+</script>
+<style>
+#write-wrap {
+	width: 750px;
+	height: 750px;
+	margin: 0px auto;
+	padding: 5px;
+	border: 0px solid;
+	position: relative;
+}
+</style>
+</head>
 <div id="write-wrap">
 	<div id="write-header">
 		<div id="header">
@@ -49,45 +70,67 @@
 				<c:if test="${count==0}">
 					<td align="center" colspan="5">게시판에 저장된 글이 없습니다.</td>
 				</c:if>
-			</tr>
-			<c:if test="${count>0}">
-				<c:forEach var="article" items="${articleList}">
-					<tr>
-						<td width="100" align="center" bgcolor=""><c:out value="${number}" /> <c:set var="number" value="${number-1}" /></td>
-						<td width="300" align="center" bgcolor=""><c:if test="${article.re_level>0}">
-								<img src="../images/level.gif" width="${5 * article.re_level}" height="16">
-							<img src="../images/re.gif">
-							</c:if> <c:if test="${article.re_level==0}">
-								<img src="../images/level.gif" width="${5 * article.re_level}" height="16">
-							</c:if> <a href="/FORKI/content/board/recommendContent.do?num=${article.num}&pageNum=${currentPage}"> ${article.subject}</a></td>
-						<td width="100" align="center" bgcolor="">${article.writer}</td>
-						<td width="100" align="center" bgcolor="">${article.readcount}</td>
-						<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>
-					</tr>
-				</c:forEach>
-			</c:if>
-		</table>
-		<p align="center">
-			<c:if test="${count>0}">
-				<c:set var="pageCount" value="${count/pageSize+(count%pageSize==0?0:1)}" />
-				<c:set var="pageBlock" value="${10}" />
-				<fmt:parseNumber var="result" value="${currentPage/10}" integerOnly="true" />
-				<c:set var="startPage" value="${result*10+1}" />
-				<c:set var="endPage" value="${startPage+pageBlock-1}" />
-				<c:if test="${endPage>pageCount}">
-					<c:set var="endPage" value="${pageCount}" />
-				</c:if>
-				<c:if test="${startPage > 10}">
-					<a href="/FORKI/content/board/recommendList.do?pageNum=${startPage - 10 }">[이전]</a>
-				</c:if>
-				<c:forEach var="i" begin="${startPage}" end="${endPage}">
-					<a href="/FORKI/content/board/recommendList.do?pageNum=${i}">[${i}]</a>
-				</c:forEach>
-				<c:if test="${endPage < pageCount}">
-					<a href="/FORKI/content/board/recommendList.do?pageNum=${startPage + 10}">[다음]</a>
-				</c:if>
-			</c:if>
-		</p>
-	</div>
-</div>
+				</tr>
+				<c:if test="${count>0}">
+				  <c:forEach var="article" items="${articleList}">
+				  	<tr>
+				  	<td width="100" align="center" bgcolor="">
+				  	<c:out value="${number}"/>
+				  	<c:set var="number" value="${number-1}"/></td>
+				  	<td width="300" align="center" bgcolor="">
+				  	<c:if test="${article.re_level>0}">
+				  		<img src="../images/level.gif" width="${5 * article.re_level}" height="16">
+				  		<img src="../images/re.gif">
+				  	</c:if>
+				  	<c:if test="${article.re_level==0}">
+				  		  <img src="../images/level.gif" width="${5 * article.re_level}" height="16">
+				  	</c:if>
+				  	<a href="/FORKI/content/board/recommendContent.do?num=${article.num}&pageNum=${currentPage}">
+          			${article.subject}</a>
+				  	</td>
+				  	<td width="100" align="center" bgcolor="">
+				  		<c:if test="${sessionScope.id==article.id}">
+				  		${article.writer}
+				  	</c:if>
+				  	<c:if test="${sessionScope.id!=article.id}">
+				  	<div id="menubar" style="width=100px;">
+					<nav id="topmenu" style="width=100px;">
+						<ul>
+						<li class="topMenuLi"><a class="menuLink">${article.writer}</a>
+							<ul class="submenu">
+							<li class="pop-up"><a onclick="writeMessage('${article.id}')" class="submenuLink longLink">쪽지보내기</a></li>
+							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">신고하기</a></li>
+						</ul></li>
+				  	</ul>
+				  	</nav>
+				  	</div>
+				  	</c:if>
+				  	</td>
+				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
+				  	<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>
+				  	</tr>
+				  </c:forEach>
+				 </c:if>
+			</table>
+			<p align="center">
+		<c:if test="${count>0}"	>
+		<c:set var="pageCount" value="${count/pageSize+(count%pageSize==0?0:1)}"/>
+		<c:set var="pageBlock" value="${10}"/>
+		<fmt:parseNumber var="result" value="${currentPage/10}" integerOnly="true"/>
+		<c:set var="startPage" value="${result*10+1}"/>
+		<c:set var="endPage" value="${startPage+pageBlock-1}"/>
+		<c:if test="${endPage>pageCount}">
+			<c:set var="endPage" value="${pageCount}"/>
+		</c:if>
+		 <c:if test="${startPage > 10}">
+        <a href="/FORKI/content/board/recommendList.do?pageNum=${startPage - 10 }">[이전]</a>
+  	 	</c:if>
+		<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			<a href="/FORKI/content/board/recommendList.do?pageNum=${i}">[${i}]</a>
+		</c:forEach>
+		<c:if test="${endPage < pageCount}">
+        <a href="/FORKI/content/board/recommendList.do?pageNum=${startPage + 10}">[다음]</a>
+  		 </c:if>
+		</c:if>
 
+</html>

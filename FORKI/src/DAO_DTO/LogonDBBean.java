@@ -112,5 +112,26 @@ public class LogonDBBean {
 		return ketc;	
 	}
 		
-
+	public String findReceiveId(String writer)throws Throwable{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String recevieId="";
+		try{
+			conn=getConnection();
+			pstmt=conn.prepareStatement("select id from member where name=?");
+			pstmt.setString(1, writer);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				recevieId=rs.getString("id");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return recevieId;
+	}
 }
