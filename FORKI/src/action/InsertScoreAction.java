@@ -16,29 +16,34 @@ public class InsertScoreAction implements CommandAction {
 		int score = Integer.parseInt(request.getParameter("score"));
 		String kinderNum = request.getParameter("num");
 		String id = (String) session.getAttribute("id");
-		int check = 0;
 
-		ScoreDBBean DBpro = ScoreDBBean.getInstance();
-		ScoreDataBean DBdata = DBpro.getTotal(kinderNum);
-		if (id.equals("admin")) {
-			check = 1;
-		} else {
-			check = DBpro.checkScore(id);
-			System.out.println(check);
-		}
+		int check = 0;
 		
-		if (check == 1) {
-			double t_score = Double.parseDouble(DBdata.getT_score());
-			double count = Integer.parseInt(DBdata.getCount());
-			double total = 0;
-			if (count != 0) {
-				total = ((t_score * count) + score) / (count + 1);
-				count++;
+		if (id != null) {
+			ScoreDBBean DBpro = ScoreDBBean.getInstance();
+			ScoreDataBean DBdata = DBpro.getTotal(kinderNum);
+			if (id.equals("admin")) {
+				check = 1;
 			} else {
-				total = score;
-				count++;
+				check = DBpro.checkScore(id);
+				System.out.println(check);
 			}
-			DBpro.setScore(total, (int) score, kinderNum, (int) count, id);
+
+			if (check == 1) {
+				double t_score = Double.parseDouble(DBdata.getT_score());
+				double count = Integer.parseInt(DBdata.getCount());
+				double total = 0;
+				if (count != 0) {
+					total = ((t_score * count) + score) / (count + 1);
+					count++;
+				} else {
+					total = score;
+					count++;
+				}
+				DBpro.setScore(total, (int) score, kinderNum, (int) count, id);
+			}
+		} else {
+			check = -1;
 		}
 		request.setAttribute("num", kinderNum);
 		request.setAttribute("check", check);

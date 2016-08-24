@@ -295,8 +295,6 @@
 	float: right;
 }
 
-
-
 /*------------------------------------------------------------*/
 /* 어린이집 검색 설정 */
 /*------------------------------------------------------------*/
@@ -312,24 +310,24 @@
 }
 
 #mdK-container {
-	width: 890px;
-	height: 700px;
+	width: 940px;
+	height: 703px;
 	margin: 0px auto;
-	padding: 20px;
+	padding: 5px;
 	border: 1px solid;
 }
 
 #mdK-header {
-	width: 950px;
+	width: 940px;
 	margin-bottom: 20px;
 	border: 0px solid;
 }
 
 #mdK-content {
-	width: 445px;
+	width: 465px;
 	height: 550px;
-	padding: 10px;
-	margin: 5px;
+	padding: 0px;
+	margin: 0px;
 	float: left;
 	border: 1px solid;
 }
@@ -345,10 +343,10 @@
 }
 
 #mdK-inmap {
-	width: 440px;
+	width: 465px;
 	height: 550px;
-	margin: 5px;
-	padding: 10px;
+	margin: 0px;
+	padding: 0px;
 	border: 1px solid;
 	magin-bottom: 10px;
 	float: right;
@@ -395,13 +393,27 @@
 }
 
 #mdKd-menu {
+	font-size: 10px;
 	width: 940px;
 	height: 35px;
 	float: left;
-	margin: auto; 
+	margin: auto;
 }
 /*------------------------------------------------------------*/
-/* 별점 */
+/* 이미지 슬라이더 */
 /*------------------------------------------------------------*/
+#back_to_camera {
+	clear: both;
+	display: block;
+	height: 80px;
+	line-height: 40px;
+	padding: 20px;
+}
 
+.fluid_container {
+	margin: 0 auto;
+	position: relative;
+	top: 30px;
+	max-width: 440px;
+	width: 100%;
 }
