@@ -441,4 +441,42 @@ public class KiderDBBean {
 
 		return favorList;
 	}
+	/*총점을 가져오기*/
+	public String getTotal(String SCHUL_NUM) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		KiderDataBean DBdata = null;
+		String totalPer = "0%";
+		double total = 0;
+		int check = 0;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) From TOTAL_SCORE where SCHUL_NUM = ?");			
+			pstmt.setString(1, SCHUL_NUM);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				check = rs.getInt(1);
+			}
+			if (check > 0) {
+				pstmt = conn.prepareStatement("select T_SCORE From TOTAL_SCORE where SCHUL_NUM = ?");
+				pstmt.setString(1, SCHUL_NUM);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					total = Double.parseDouble(rs.getString("T_SCORE")) * 20;
+					totalPer = total + "%";
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return totalPer;
+	}
 }
