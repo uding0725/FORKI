@@ -77,7 +77,7 @@
         	${kinder.telno}<br>
 
         	${kinder.adres}<%-- <input type="button" value="찾기" onclick="searchkid('${kinder.adres}','${kinder.schul_nm}')"> --%><br>
-
+			<script>
         	title.push('${kinder.schul_nm}');
         	x.push('${kinder.x}');
         	y.push('${kinder.y}');
@@ -111,13 +111,41 @@
 			}
 		}
 		var map = new daum.maps.Map(mapContainer,mapOption);
-		for(var i=0;i<x.length;i++){
-			// 마커를 생성합니다
-		    var marker = new daum.maps.Marker({
-		        map: map, // 마커를 표시할 지도
-		        position:new daum.maps.LatLng(x[i],y[i]), // 마커를 표시할 위치
-		        title :title[i] // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-		    });
+		// 지도에 마커를 생성하고 표시한다
+		for(i=0; i<title.length; i++ ){
+			
+			var	mposition = new daum.maps.LatLng(x[i], y[i]);
+			
+			var marker = new daum.maps.Marker({
+		  	 	position: mposition, // 마커의 좌표
+		   		 map: map // 마커를 표시할 지도 객체
+				});
+		
+			 var iwContent = title[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		
+			// 인포윈도우를 생성합니다
+			var infowindow = new daum.maps.InfoWindow({
+		    	content : iwContent,
+		    	position : mposition
+					}); 
+		
+		daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		
+	  	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+	    function makeOverListener(map, marker, infowindow) {
+	        return function() {
+	            infowindow.open(map, marker);
+	        };
+	    }
+
+	    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+	    function makeOutListener(infowindow) {
+	        return function() {
+	            infowindow.close();
+	        };
+	    }
+	    
 		}
 		</script>
 	</div>
