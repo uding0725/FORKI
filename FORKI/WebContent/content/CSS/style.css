@@ -419,3 +419,75 @@
 	max-width: 440px;
 	width: 100%;
 }
+
+/*------------------------------------------------------------*/
+/* 사이트맵 설정 */
+/*------------------------------------------------------------*/
+/* 사이트맵화면 설정 */
+#mdS-wrap {
+	width: 960px;
+	height: 790px;
+	margin: 0px auto;
+	padding: 0px;
+	border: 0px solid;
+	padding: 0px;
+	position: relative;
+}
+#mdS-container {
+	width: 958px;
+	height: 685px;
+	margin: 0px auto;
+	padding: 0px;
+	border: 0px solid;
+	position: relative;
+	margin-bottom: 20px;
+}
+#mdSTL-content {
+	width: 350px;
+	height: 270px;
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	border: 1px solid;
+	margin-left: 100px;
+	margin-top: 60px;
+}
+#mdSTR-content {
+	width: 350px;
+	height: 270px;
+	padding: 0px;
+	margin: 0px;
+	float: right;
+	overflow:hidden;
+	border: 1px solid;
+	margin-left: 20px;
+	margin-top: 60px;
+	margin-right:100px;
+}
+#mdSBL-content {
+	width: 350px;
+	height: 270px;
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	border: 1px solid;
+	margin-left: 100px;
+	margin-top: 30px;
+	
+}
+#mdSBR-content {
+	width: 350px;
+	height: 270px;
+	padding: 0px;
+	margin: 0px;
+	float: right;
+	overflow:hidden;
+	border: 1px solid;
+	margin-left: 20px;
+	margin-top: 30px;
+	margin-right:100px;
+}
+.siteMap{
+	text-decoration:none;
+	 color:#000000;
+}
