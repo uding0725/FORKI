@@ -154,6 +154,7 @@ function searchkid(coord){
 	});
 }
 
+
 		</script>
 	</div>
 </div>
