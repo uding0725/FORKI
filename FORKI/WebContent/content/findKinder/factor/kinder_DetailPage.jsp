@@ -13,7 +13,7 @@
 <link rel='stylesheet' id='camera-css' href='../../CSS/camera.css' type='text/css' media='all'>
 <link href="../../CSS/reset.css" rel="stylesheet" type="text/css">
 <link href="../../CSS/global.css?var=1.1" rel="stylesheet" type="text/css">
-<link href="../../CSS/style.css?var=1.6" rel="stylesheet" type="text/css">
+<link href="../../CSS/style.css?var=1.7" rel="stylesheet" type="text/css">
 <style>
 body {
 	margin: 0;
@@ -26,22 +26,6 @@ a {
 
 a:hover {
 	text-decoration: none;
-}
-
-#back_to_camera {
-	clear: both;
-	display: block;
-	height: 80px;
-	line-height: 40px;
-	padding: 20px;
-}
-
-.fluid_container {
-	margin: 0 auto;
-	position: relative;
-	top: 30px;
-	max-width: 440px;
-	width: 100%;
 }
 
 #score {
@@ -212,10 +196,10 @@ a:hover {
 		</div>
 		<div id="mdKd-menu">
 			<div style="float: left; width: 5%;"><br></div>
-			<div style="float: left; width: 10%;"> 유치원별점 </div>
+			<div style="float: left; width: 6%;"> <b>유치원별점</b> </div>
 			<div style="float: left; width: 15%;"><div id="score"><p id="score_over"></p></div></div>
-			<div style="float: left; width: 10%;"> 별점주기 </div>
-			<div style="float: left; width: 10%;">
+			<div style="float: left; width: 6%;"> <b>별점주기</b> </div>
+			<div style="float: left; width: 12%;">
 				   <img id="1" src="../../img/icon_star.gif"><!--  
 				--><img id="2" src="../../img/icon_star.gif"><!-- 
 				--><img id="3" src="../../img/icon_star.gif"><!-- 
@@ -223,7 +207,12 @@ a:hover {
 				--><img id="5" src="../../img/icon_star2.gif">
 			</div>
 			<div style="float: left; width: 10%;"><input id="input" type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=1'" value="입력"></div>
-			<div style="float: left; width: 40%; text-align: right;"><input type="button" value="수정"> <input type="button" onclick="self.close()" value="닫기"></div>
+			<div style="float: left; width: 46%; text-align: right;">
+				<c:if test="${param.schul_num == sessionScope.schul_num}">
+					<input type="button" value="수정">
+				</c:if>
+				<input type="button" onclick="self.close()" value="닫기">
+			</div>
 			
 		</div>
 	</div>
