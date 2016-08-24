@@ -1,4 +1,6 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 /*------------------------------------------------------------*/
 /* 메뉴바 효과 설정 */
@@ -30,9 +32,9 @@
 	text-decoration: none; /* a 태그의 꾸밈 효과 제거 */
 	display: block; /* a 태그의 클릭 범위를 넓힘 */
 	width: 180px; /* 기본 넓이 설정 */
-	font-size: 15px; /* 폰트 사이즈 설정 */
-	font-weight: bold; /* 폰트를 굵게 설정 */
-	font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
+	font-size: 18px; /* 폰트 사이즈 설정 */
+	/* font-weight: bold; 폰트를 굵게 설정 */
+	font-family: 'Jeju Gothic', serif; /* 기본 폰트를 영어/한글 순서대로 설정 */
 }
 
 .menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
@@ -53,7 +55,7 @@
 }
 
 .longLink { /* 좀 더 긴 메뉴 스타일 설정 */
-	width: 168px; /* 넓이 설정 */
+	width: 178px; /* 넓이 설정 */
 }
 
 .submenu { /* 하위 메뉴 스타일 설정 */

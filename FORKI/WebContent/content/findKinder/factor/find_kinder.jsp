@@ -11,7 +11,7 @@
 	
 </script>
 <div id="mdK-wrap">
-	<div style="width: 940px; margin:auto;">
+	<div style="width: 940px; height: 40px; margin:auto; position:relative; top:10px; font-family: 'Jeju Gothic', serif;">
 		<font size="+2">유치원찾기</font> <span style='position: absolute; right: 0px'> <a href="/FORKI/content/main/main.do"><img
 				src="../img/home.png" width="20" height="20"></a> <a href="">>유치원찾기</a>
 		</span>
