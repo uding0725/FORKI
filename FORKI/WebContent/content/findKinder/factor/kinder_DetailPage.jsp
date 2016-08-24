@@ -209,7 +209,7 @@ a:hover {
 			<div style="float: left; width: 10%;"><input id="input" type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=1'" value="입력"></div>
 			<div style="float: left; width: 46%; text-align: right;">
 				<c:if test="${param.schul_num == sessionScope.schul_num}">
-					<input type="button" value="수정">
+					<input type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/UpdateImg.do?num=${param.num}'" value="수정">
 				</c:if>
 				<input type="button" onclick="self.close()" value="닫기">
 			</div>

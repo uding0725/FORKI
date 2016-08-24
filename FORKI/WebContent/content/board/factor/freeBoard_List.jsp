@@ -17,11 +17,11 @@
 		</div>
 		<hr>
 		<div>
-			<div style="width: 220px; position: relative; float: left;">
+			<div style="width: 210px; position: relative; float: left;">
 			총 ${count}건이 검색되었습니다.
 			</div>	
 			<form name="search" action="/FORKI/content/board/freeBoardList.do" 
-				style="width: 480px; position: relative; float: right; margin-right: 5px; text-align: right;">
+				style="width: 520px; position: relative; float: right; margin-right: 5px; text-align: right;">
 				<span style='position: relative;'> 
 					<select name="type">
 						<option value="0">전체</option>
@@ -33,7 +33,7 @@
 						<option value="1">유익한 경로</option>
 						<option value="2">기타</option>
 					</select> 
-					<input type="text" name=searchn size="30">'
+					<input type="text" name=searchn size="30">
 					<input type="submit" value="검색">
 					<c:if test="${sessionScope.id=='admin'}">
 						<input type="button" value="글쓰기" onclick="document.location.href='/FORKI/content/board/freeBoardWrite.do">
