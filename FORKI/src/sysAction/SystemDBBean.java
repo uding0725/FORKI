@@ -266,7 +266,7 @@ public class SystemDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
 			try {
 				conn = getConnection();
 
-				pstmt = conn.prepareStatement("select pwd from MEMBER where id = ?");
+				pstmt = conn.prepareStatement("select m_grade from MEMBER where id = ?");
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
 
@@ -278,6 +278,142 @@ public class SystemDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
 					} else{
 						x = 0; // 제외 실패
 				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (rs != null)
+					try {
+						rs.close();
+					} catch (SQLException ex) {
+					}
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					}
+				if (conn != null)
+					try {
+						conn.close();
+					} catch (SQLException ex) {
+					}
+			}
+			return x;
+		}
+		
+		// deletePro.jsp(MEMBER)
+		public int deleteMEMBER(String id) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int x = -1;
+
+			try {
+				conn = getConnection();
+				
+					pstmt = conn.prepareStatement("delete from MEMBER where id=?");
+					pstmt.setString(1, id);
+					
+					x = pstmt.executeUpdate(); // 회원탈퇴 성공
+			
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (rs != null)
+					try {
+						rs.close();
+					} catch (SQLException ex) {
+					}
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					}
+				if (conn != null)
+					try {
+						conn.close();
+					} catch (SQLException ex) {
+					}
+			}
+			return x;
+		}
+
+		// deletePro.jsp(P_ETC)
+		public int deleteP_ETC(String id) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int x = -1;
+
+			try {
+				conn = getConnection();
+				
+					pstmt = conn.prepareStatement("delete from P_ETC where id=?");
+					pstmt.setString(1, id);
+					
+					x = pstmt.executeUpdate(); // 회원탈퇴 성공
+			
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				if (rs != null)
+					try {
+						rs.close();
+					} catch (SQLException ex) {
+					}
+				if (pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException ex) {
+					}
+				if (conn != null)
+					try {
+						conn.close();
+					} catch (SQLException ex) {
+					}
+			}
+			return x;
+		}
+		
+		//deletePro.jsp(KID_DATA)
+	    public int deleteKID_DATA(String id) throws Exception {
+	        Connection conn = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs= null;
+	        int x=-1;
+	        
+			try {
+				conn = getConnection();
+				
+					pstmt = conn.prepareStatement("delete from KID_DATA where id=?");
+					pstmt.setString(1, id);
+					
+					x = pstmt.executeUpdate(); // 회원탈퇴 성공
+			
+	        } catch(Exception ex) {
+	            ex.printStackTrace();
+	        } finally {
+	            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+	            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+	            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+	        }
+	        return x;
+	    }
+		// deletePro.jsp(K_ETC)
+		public int deleteK_ETC(String id) throws Exception {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			int dbm_grade = 0;
+			int x = -1;
+
+			try {
+				conn = getConnection();
+				
+					pstmt = conn.prepareStatement("delete from K_ETC where id=?");
+					pstmt.setString(1, id);
+					
+					x = pstmt.executeUpdate(); // 회원탈퇴 성공
+			
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			} finally {

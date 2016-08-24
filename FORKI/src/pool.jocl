@@ -5,10 +5,11 @@
 
 		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
 
+
 		<string value="forte"/>
 		<string value="0725"/>
 
-		
+
 	</object>
 	
 	<object class="org.apache.commons.pool.impl.GenericObjectPool">
@@ -20,6 +21,6 @@
 	<string null="true"/>
 	
 	<boolean value="false"/>
-	
+	  
 	<boolean value="true"/>
 </object>

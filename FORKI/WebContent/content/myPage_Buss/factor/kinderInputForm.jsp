@@ -4,100 +4,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <script>
+<c:if test="${check==1}">
+<script>
+alert("유치원 등록되어있습니다.");
+history.go(-1);
+</script>
+</c:if>
+<c:if test="${check==0}">
+<script>
+alert("승인대기중 입니다.");
+history.go(-1);
+</script>
+</c:if>
+<script>
 
 function zipCheck(){
-	url="";//유치원주소
-	window.open(url,"post","toolbar=no,width=500,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
+	
+	url="/FORKI/content/join/factor/user/ZipCheck.do?check=y";
+	
+	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
 }
-</script> -->
+</script> 
 <!-- <link href="../style.css" rel="stylesheet" type="text/css"> -->
 </head>
+<c:if test="${check==-1}">
 <div style="width:750;">
 <h2>유치원등록하기</h2>
-<form  method="post" action="/FORKI/content/myPage_Buss/kinderInputPro.do" name="kiderinput">
+<form  method="post" action="/FORKI/content/myPage_Buss/kinderInputPro.do" name="userinput">
 <table style="width:740; height:600; border: 1px solid black;">
-<c:forEach var="i" items="${vecList}">
-<c:set var="Tschul_nm" value="${i.schul_nm}"/>
-<c:set var="Tschul_num" value="${i.schul_num}"/>
-</c:forEach>
-<script>alert("${Tschul_nm}"+ "  ${Tschul_num}")</script>
+
 	<tr>
 		<td>유치원명</td> 
 		<td>
-			<input type="text" name="schul_nm" size="10" maxlength="10" value="${Tschul_nm}" readonly>
-			<input type="hidden" name="schul_num" value="${Tschul_num}">
+			<input type="text" name="schul_nm" size="20" maxlength="20" value="${ketc.schul_nm}" readonly>
+			<input type="hidden" name="schul_num" value="${ketc.schul_num}">
 		</td>
 	</tr>
 	<tr>
 		<td>해당교육청</td> 
 		<td>
-			<input type="text" name="ofcdc" size="15" maxlength="15">
+			<input type="text" name="ofcdc" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>소재구</td>
 		<td>
-			<input type="text" name="matr_gu" size="10" maxlength="10" >
+			<input type="text" name="matr_gu" size="20" maxlength="20" >
 		</td>
 	</tr>
 	<tr>
 		<td>소재동 </td>
 		<td>
-			<input type="text" name="dong" size="10" maxlength="10">
+			<input type="text" name="dong" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>설립</td>
 		<td>
-			<input type="text" name="fond" size="10" maxlength="10">
+			<input type="text" name="fond" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>전화번호</td>
 		<td>
-			<input type="text" name="telno" size="10" maxlength="10">
+			<input type="text" name="telno" size="20" maxlength="11">
 		</td>
 	</tr>
 	<tr>
 		<td>우편번호</td>
 		<td>
-			<input type="text" name="zip"  size="10" maxlength="10"> <input type="button" value="우편번호찾기" onClick="zipCheck()">
+			<input type="text" name="zipcode"  size="10" maxlength="10" readonly> <input type="button" value="우편번호찾기" onClick="zipCheck()">
 		</td>
 	</tr>
 	<tr>
 		<td>주소</td>
 		<td>
-			<input type="text" name="adres">
+			<input type="text" name="address">
 		</td>
 	</tr>
 	<tr>
 		<td>학생수</td>
 		<td>
-			<input type="text" name="stdnt_co_sm"size="10" maxlength="10">
+			<input type="text" name="stdnt_co_sm"size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>여학생수</td> 
 		<td>
-			<input type="text" name="grlstdn_co"size="10" maxlength="10">
+			<input type="text" name="grlstdn_co"size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>학급수</td>
 		<td> 
-			<input type="text" name="clas_co" size="10" maxlength="10">
+			<input type="text" name="clas_co" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
 		<td>교직원수</td>
 		<td>
-			<input type="text" name="frl_tcher_co_sm"size="10" maxlength="10">
+			<input type="text" name="frl_tcher_co_sm" size="20" maxlength="20">
 		</td>
 	<tr>
 		<td>여교직원수</td> 
 		<td>
-			<input type="text" name="frl_female_tcher_co"size="10" maxlength="10">
+			<input type="text" name="frl_female_tcher_co" size="20" maxlength="20">
 		</td>
 	</tr>
 	<tr>
@@ -116,4 +127,5 @@ function zipCheck(){
 
 </form>
 </div>
+</c:if>
 </html>

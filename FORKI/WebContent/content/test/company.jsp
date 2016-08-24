@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%
 session.removeAttribute("compNum");
-session.setAttribute("id", "comp");
+session.setAttribute("id", "comp2");
 session.setAttribute("grade", "2");
-session.setAttribute("compNum", "13800297");
+session.setAttribute("compNum", "13800885");
 %>
 <script>
 	alert('세션: 유치원 로그인 정보 생성');

@@ -13,7 +13,7 @@
 <div id="mdK-wrap">
 <font size="+2">유치원찾기</font>
 		<span style='position:absolute; right:0px'>
-		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
+		<a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a>
 		<a href="">>유치원찾기</a>	
 		</span>
 	<div id="mdK-container">
@@ -21,8 +21,8 @@
 		
 			<table border="1" cellpadding=0 cellspacing=0 width="890" height="100">
 				<tr>
-					<td width="50" align="center">
-					<strong> <h5>조회</h5> </strong>
+					<td width="80" align="center">
+					<strong> <h3>조회</h3> </strong>
 					</td>
 				<form>	
 					<td colspan="1" align="center"> 
@@ -126,21 +126,12 @@
 	        var marker = new daum.maps.Marker({
 	            map: map,
 	            position: coords,
+	            title:title[i]
 	        });      
-
-	        marker.setMap(map);
-	        
+	        marker.setMap(map);    
 	        }
-
-	    	
-
-	        }	    
-
-	);
-
-	    	   
-	
-
+	});
+	}
 	geocoder.addr2coord(coord[0], function(status, result) {
 			
 	    // 정상적으로 검색이 완료됐으면 
