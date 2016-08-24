@@ -15,6 +15,7 @@ public class Kinder_DetailPageAction implements CommandAction {
 		KiderDBBean DBpro = KiderDBBean.getInstance();
 		String kinderNum = request.getParameter("num");
 		KiderDataBean  DBData= DBpro.selectDetKid(kinderNum);
+		String totalPer = DBpro.getTotal(kinderNum);
 		
 		request.setAttribute("name", DBData.getSchul_nm());
 		request.setAttribute("addres", DBData.getAdres());
@@ -25,6 +26,8 @@ public class Kinder_DetailPageAction implements CommandAction {
 		request.setAttribute("tcherNo", DBData.getFrl_tcher_co_sm());
 		request.setAttribute("famTcherNo", DBData.getFrl_female_tcher_co());
 		request.setAttribute("rm", DBData.getRm());
+		request.setAttribute("totalPer", totalPer);
+		
 			
 		return "kinder_DetailPage.jsp";
 	}

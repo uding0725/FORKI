@@ -32,10 +32,11 @@
 		</span>
 		<br>
 <table width="700">
-	<br>
+	<br>  
+	 <tr align="right">
+	<td>
 		<form name="search" action="/FORKI/content/board/freeBoardList.do">
-  <tr align="right">
-  	<td>
+
   	<select name="type">
 			<option value="0">전체</option>
 			<option value="1">제목</option>
@@ -46,14 +47,15 @@
 			<option value="1">유익한 경로</option>
 			<option value="2">기타</option>
 		</select>	
-  	</td>
-  	<td> 
+  	
+  
   	<input type="text" name=searchn size="30">
   	<input type="submit" value="검색">
   	</form> 
+  	</td>  
     <td>
-       <a href="/FORKI/content/board/freeBoardWrite.do">글쓰기</a>
-    </td>
+       <input type="button" value="글쓰기" onclick="document.location.href='/FORKI/content/board/freeBoardWrite.do">
+   </td>
   </tr>
 </table>
 <br>

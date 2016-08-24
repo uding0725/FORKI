@@ -13,7 +13,7 @@
 <link rel='stylesheet' id='camera-css' href='../../CSS/camera.css' type='text/css' media='all'>
 <link href="../../CSS/reset.css" rel="stylesheet" type="text/css">
 <link href="../../CSS/global.css?var=1.1" rel="stylesheet" type="text/css">
-<link href="../../CSS/style.css?var=1.6" rel="stylesheet" type="text/css">
+<link href="../../CSS/style.css?var=1.7" rel="stylesheet" type="text/css">
 <style>
 body {
 	margin: 0;
@@ -28,37 +28,20 @@ a:hover {
 	text-decoration: none;
 }
 
-#back_to_camera {
-	clear: both;
-	display: block;
-	height: 80px;
-	line-height: 40px;
-	padding: 20px;
-}
-
-.fluid_container {
-	margin: 0 auto;
-	position: relative;
-	top: 30px;
-	max-width: 440px;
-	width: 100%;
-}
-
 #score {
 	clear: both;
+	padding-top: 0px;
+	padding-bottom: 0px;
 	padding-right: 0px;
 	padding-left: 0px;
 	background: url(../../img/icon_star2.gif) 0px 0px;
 	float: left;
-	padding-bottom: 0px;
 	margin: 0px;
 	width: 90px;
-	padding-top: 0px;
 	height: 18px;
 }
 
 #score_over {
-/* 	width:  10%; */
 	padding-right: 0px;
 	padding-left: 0px;
 	background: url(../../img/icon_star.gif) 0px 0px;
@@ -118,24 +101,69 @@ a:hover {
 	
 	$(document).ready(function() {
 		$(function() {
-			$("#score_over").css("width", "46%");
+			$("#score_over").css("width", "${totalPer}");
 		});
 	});
+	
+	$(function() {
+		$("#1").bind("click", function() {
+			$("#1").attr("src", "../../img/icon_star.gif");
+			$("#2").attr("src", "../../img/icon_star2.gif");
+			$("#3").attr("src", "../../img/icon_star2.gif");
+			$("#4").attr("src", "../../img/icon_star2.gif");
+			$("#5").attr("src", "../../img/icon_star2.gif");
+			$("input").attr("onclick","document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=1'");
+		});
+		$("#2").bind("click", function() {
+			$("#1").attr("src", "../../img/icon_star.gif");
+			$("#2").attr("src", "../../img/icon_star.gif");
+			$("#3").attr("src", "../../img/icon_star2.gif");
+			$("#4").attr("src", "../../img/icon_star2.gif");
+			$("#5").attr("src", "../../img/icon_star2.gif");
+			$("input").attr("onclick","document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=2'");
+		});
+		$("#3").bind("click", function() {
+			$("#1").attr("src", "../../img/icon_star.gif");
+			$("#2").attr("src", "../../img/icon_star.gif");
+			$("#3").attr("src", "../../img/icon_star.gif");
+			$("#4").attr("src", "../../img/icon_star2.gif");
+			$("#5").attr("src", "../../img/icon_star2.gif");
+			$("input").attr("onclick","document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=3'");
+		});
+		$("#4").bind("click", function() {
+			$("#1").attr("src", "../../img/icon_star.gif");
+			$("#2").attr("src", "../../img/icon_star.gif");
+			$("#3").attr("src", "../../img/icon_star.gif");
+			$("#4").attr("src", "../../img/icon_star.gif");
+			$("#5").attr("src", "../../img/icon_star2.gif");
+			$("input").attr("onclick","document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=4'");
+		});
+		$("#5").bind("click", function() {
+			$("#1").attr("src", "../../img/icon_star.gif");
+			$("#2").attr("src", "../../img/icon_star.gif");
+			$("#3").attr("src", "../../img/icon_star.gif");
+			$("#4").attr("src", "../../img/icon_star.gif");
+			$("#5").attr("src", "../../img/icon_star.gif");
+			$("input").attr("onclick","document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=5'");
+		});
+	});
+
 </script>
 <title>어린이집 상세 정보</title>
 </head>
 <body>
-	<div id="mdK-container">
-		<p style="text-align: left;" />
-		<font size="+1"><b>${name}</b></font>
-		<div id="mdK-detailview">
+	<div id="mdKd-container">
+		<div style="text-align: left; height: 30px;">
+		<font size="+1" style="position: relative; top: 6px; left: 10px;"><b>${name}</b></font>
+		</div>
+		<div id="mdKd-detailview">
 			<font size="+1"><b>세부정보</b></font>
-			<p>주소 : ${addres}</p>
-			<p>전화번호 : ${tel}</p>
-			<p>학급수: ${classNo}</p>
-			<p>학생수(남/여) : 총 ${studentNo}(${studentNo -girlNo}/${girlNo})</p>
-			<p>전체선생님/여선생님 : ${tcherNo}/${famTcherNo}</p>
-			<p>비교 : ${param.rm}</p>
+			<br><br><p>주소 : ${addres}</p>
+			<br><p>전화번호 : ${tel}</p>
+			<br><p>학급수: ${classNo}</p>
+			<br><p>학생수(남/여) : 총 ${studentNo}(${studentNo -girlNo}/${girlNo})</p>
+			<br><p>전체선생님/여선생님 : ${tcherNo}/${famTcherNo}</p>
+			<br><p>비교 : ${param.rm}</p>
 			<!-- 이미지 슬라이드 시작 -->
 			<div class="fluid_container">
 				<div class="camera_wrap camera_azure_skin" id="camera_wrap">
@@ -161,16 +189,31 @@ a:hover {
 			</div>
 			<!-- 이미지 슬라이드 종료 -->
 		</div>
-		<div id="mdK-inmap">
+		<div id="mdKd-inmap">
 			<!-- 지도 시작 -->
 			<div id="map" style="width:100%;height:100%;"></div>
 			<!-- 지도 종료 -->
 		</div>
-		<div>
-			<!-- 별점 시작 -->
-			<div id="score"><p id="score_over"> </p></div>
-			<!-- 별점 종료   -->
-			<input type="button" value="수정"> <input type="button" value="닫기">
+		<div id="mdKd-menu">
+			<div style="float: left; width: 5%;"><br></div>
+			<div style="float: left; width: 6%;"> <b>유치원별점</b> </div>
+			<div style="float: left; width: 15%;"><div id="score"><p id="score_over"></p></div></div>
+			<div style="float: left; width: 6%;"> <b>별점주기</b> </div>
+			<div style="float: left; width: 12%;">
+				   <img id="1" src="../../img/icon_star.gif"><!--  
+				--><img id="2" src="../../img/icon_star.gif"><!-- 
+				--><img id="3" src="../../img/icon_star.gif"><!-- 
+				--><img id="4" src="../../img/icon_star2.gif"><!-- 
+				--><img id="5" src="../../img/icon_star2.gif">
+			</div>
+			<div style="float: left; width: 10%;"><input id="input" type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=1'" value="입력"></div>
+			<div style="float: left; width: 46%; text-align: right;">
+				<c:if test="${param.schul_num == sessionScope.schul_num}">
+					<input type="button" value="수정">
+				</c:if>
+				<input type="button" onclick="self.close()" value="닫기">
+			</div>
+			
 		</div>
 	</div>
 
