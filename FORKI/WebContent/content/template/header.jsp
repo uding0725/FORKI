@@ -38,7 +38,7 @@
 </head>
 <div id="header-box">
 	<div id="logo">
-		<a href="/FORKI/content/main/main.do"><img src="../img/logoo.png" width="415" height="110"></a>
+		<a href="/FORKI/content/main/main.do"><img style="position: relative; top:30px;" src="../img/logoo.png" width="415" height="110"></a>
 	</div>
 	<div>
 		<div id="submenu">
