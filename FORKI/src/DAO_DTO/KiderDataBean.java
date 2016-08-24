@@ -21,8 +21,15 @@ public class KiderDataBean {
 	private String state;
 	private Timestamp reg_date;
 	private KetcDataBean kdb= new KetcDataBean();
+	private TSDataBean tsdata=new TSDataBean();
 	
 	
+	public TSDataBean getTsdata() {
+		return tsdata;
+	}
+	public void setTsdata(TSDataBean tsdata) {
+		this.tsdata = tsdata;
+	}
 	public KetcDataBean getKdb() {
 		return kdb;
 	}

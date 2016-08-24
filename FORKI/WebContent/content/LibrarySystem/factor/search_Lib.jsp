@@ -207,7 +207,8 @@ a {
 				<br>
 				<script>
         			x.push('${v.x_loc}');
-        			y.push('${v.y_loc}')
+        			y.push('${v.y_loc}');
+        			title.push('${v.libry_name}')
         	
         		</script>
 			</c:if>
@@ -222,7 +223,8 @@ a {
 				<br>	
 				<script>
         			x.push('${v.x}');
-        			y.push('${v.y}')
+        			y.push('${v.y}');
+        			
         	
         		</script>		
 			</c:if> 
@@ -273,6 +275,7 @@ a {
 		for(i=0; i<x.length; i++ ){
 		var marker = new daum.maps.Marker({
 		    position: new daum.maps.LatLng(x[i], y[i]), // 마커의 좌표
+		    text: title[i],
 		    image : markerImage, // 마커의 이미지
 		    map: map // 마커를 표시할 지도 객체
 		});

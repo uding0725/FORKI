@@ -441,6 +441,7 @@ public class KiderDBBean {
 
 		return favorList;
 	}
+	
 	/*총점을 가져오기*/
 	public String getTotal(String SCHUL_NUM) throws Exception {
 		Connection conn = null;
@@ -478,5 +479,40 @@ public class KiderDBBean {
 			JdbcUtil.close(conn);
 		}
 		return totalPer;
+	}
+	
+	public int updateKinder(KiderDataBean kdata)throws Exception{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		int x=0;
+		String sql="";
+		try{
+			conn=getConnection();
+			sql="update kindergarten set schul_nm=?,ofcdc=?,matr_gu=?,dong=?,fond=?,telno=?,zip=?,adres=?,";
+			sql+="stdnt_co_sm=?,grlstdn_co=?,clas_co=?,frl_tcher_co_sm=?,frl_female_tcher_co=?,rm=? where schul_num=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, kdata.getSchul_nm());
+			pstmt.setString(2, kdata.getOfcdc());
+			pstmt.setString(3, kdata.getMatr_gu());
+			pstmt.setString(4, kdata.getDong());
+			pstmt.setString(5, kdata.getFond());
+			pstmt.setString(6, kdata.getTelno());
+			pstmt.setString(7, kdata.getZip());
+			pstmt.setString(8, kdata.getAdres());
+			pstmt.setInt(9, kdata.getStdnt_co_sm());
+			pstmt.setInt(10, kdata.getGrlstdn_co());
+			pstmt.setInt(11, kdata.getClas_co());
+			pstmt.setInt(12, kdata.getFrl_tcher_co_sm());
+			pstmt.setInt(13, kdata.getFrl_female_tcher_co());
+			pstmt.setString(14, kdata.getRm());
+			pstmt.setInt(15, kdata.getSchul_num());
+			x=pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return x;
 	}
 }
