@@ -1,11 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<title>건의사항</title>
 
+<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
 <script>
@@ -15,17 +12,7 @@ function writeMessage(ids){
 	alert(ids);
 }
 </script>
-<style>
-#write-wrap {
-	width: 750px;
-	height: 750px;
-	margin: 0px auto;
-	padding: 5px;
-	border: 0px solid;
-	position: relative;
-}
-</style>
-</head>
+
 <div id="write-wrap">
 	<div id="write-header">
 		<div id="header">
@@ -48,7 +35,7 @@ function writeMessage(ids){
 						<option value="0">제목</option>
 						<option value="1">내용</option>
 					</select>
-					<input type="text" style="width: 10%;" name="search">
+					<input type="text" style="width: 50%;" name="search">
 					<input type="submit" name="search" value="검색">
 					<c:if test="${sessionScope.id!=null}">
 						<input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/recommendWrite.do'">

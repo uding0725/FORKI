@@ -1,10 +1,7 @@
 
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<title>공지사항</title>
+
 <link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 <link href="../../CSS/popup.css" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -16,43 +13,6 @@ function writeMessage(ids){
 	alert(ids);
 }
 </script>
-<style>
-#write-wrap {
-	width: 750px;
-	height: 750px;
-	margin: 0px auto;
-	padding: 0px;
-	border: 0px solid;
-	padding: 20px; 
-	position: relative;
-}
-#write-header {
-
-    width : 700px;
-    height : 150px;
-	margin-bottom: 50px;
-	border: 0px solid;
-}
-
-#write-content {
-	width: 700px;
-	height : 400px;
-	margin-top:10px;
-	margin-bottom: 10px;
-	border: 0px;
-}
-a {
-	text-decoration: none;
-}
-table{ 
-       width : 700px;
-
-       text-align:center"
-}
-
-</style>
-</head>
-<body>
 
 <div id="write-wrap">
 	<div id="write-header">
@@ -77,7 +37,7 @@ table{
 						<option value="1">제목
 						<option value="2">내용
 					</select> 
-					<input type="text" style="width: 10%" name="search">
+					<input type="text" style="width: 50%" name="search">
 					<input type="submit" name="searching" value="검색">
 					<c:if test="${sessionScope.id=='admin'}">
 						<input type="button" name="write" value="글쓰기" onClick="document.location.href='/FORKI/content/board/notifyWrite.do'">

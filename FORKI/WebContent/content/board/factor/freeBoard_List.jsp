@@ -46,7 +46,7 @@
 		<table>
 			<tr>
 				<td width="100" height="30" align="center" bgcolor="">번호</td>
-				<td width="300" height="30" bgcolor="" align="center">공지사항</td>
+				<td width="300" height="30" bgcolor="" align="center">제 목</td>
 				<td width="100" height="30" bgcolor="" align="center">닉네임</td>
 				<td width="100" height="30" bgcolor="" align="center">조회수</td>
 				<td width="150" height="30" bgcolor="" align="center">등록일</td>
