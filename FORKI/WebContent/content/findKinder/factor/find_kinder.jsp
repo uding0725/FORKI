@@ -29,7 +29,7 @@
 							<h3>조회</h3>
 					</strong></td>
 					<form>
-						<td colspan="1" align="center">서울 특별시 시/읍/구 <select name="gu">
+						<td colspan="1" align="center">서울 특별시 구 <select name="gu">
 								<option value="0">전체</option>
 								<option value="1">강남구</option>
 								<option value="2">강동구</option>
@@ -56,7 +56,7 @@
 								<option value="23">종로구</option>
 								<option value="24">중랑구</option>
 								<option value="25">중구</option>
-						</select> 읍/면/동<input type="text" name="dong" autofocus placeholder="동을 입력하세요"> <br> 또는 기관명<input type="text" name="schul_nm" autofocus
+						</select> 동 <input type="text" name="dong" autofocus placeholder="동을 입력하세요"> <br> 또는 기관명<input type="text" name="schul_nm" autofocus
 							placeholder="기관명을 입력하세요"> <input type="submit" value="찾기">
 						</td>
 					</form>
