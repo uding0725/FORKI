@@ -4,6 +4,7 @@ table {
 	font-size: 11;
 }
 </style>
+<img src="../img/chick/icon6.png" width="30" height="30"  style="position:relative; top:5px;"><font size="+2">예방접종 문진표</font>
 <table border="1" cellpadding="0" cellspacing="0">
 	<tr>
 		<td rowspan="17">국<br>가<br>필<br>수<br>예<br>방<br>접<br>종

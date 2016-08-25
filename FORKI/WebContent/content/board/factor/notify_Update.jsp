@@ -45,6 +45,7 @@ a {
 	text-decoration: none;
 }
 </style>
+<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="secret-header">

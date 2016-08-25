@@ -18,10 +18,11 @@ public class LibSearchAction implements CommandAction {
 		String dongName = request.getParameter("dongName");
 		String searchName = request.getParameter("searchName");
 		
-		Vector vt = new Vector();
+		
 		Vector vTour = new Vector();
 		Vector vPub = new Vector();
 		Vector vToy = new Vector();
+		
 		int count = 0;
 		int gu_n =0;
 		
@@ -36,7 +37,7 @@ public class LibSearchAction implements CommandAction {
 		System.out.println("gu_n::"+gu_n);
 		
 		String tour="";
-		System.out.println(tour);
+		System.out.println("tour::"+tour);
 				
 		LibDBBean ldbb = LibDBBean.getInstance();
 		
@@ -47,15 +48,18 @@ public class LibSearchAction implements CommandAction {
 			vPub = ldbb.getPubLib(gu_n, dongName, searchName);
 			vToy = ldbb.getToyLib(gu_n, dongName, searchName);
 		} else if( select.equals( "tourism_list")){
-			vt = ldbb.getTour(gu_n,dongName,searchName);
-			tour = "tour";
+			
+			vTour = ldbb.getTour(gu_n,dongName,searchName);
+			
 		} else if( select.equals("pub_lib")){
-			vt = ldbb.getPubLib(gu_n,dongName,searchName);
+			vPub = ldbb.getPubLib(gu_n,dongName,searchName);
+			
 		} else if( select.equals( "toy_lib")){
-			vt = ldbb.getToyLib(gu_n,dongName,searchName);
+			vToy = ldbb.getToyLib(gu_n,dongName,searchName);
 		} else{
 			System.out.println("select?::" + select);
 		}
+		
 		
 		
 		System.out.println(tour);
@@ -64,18 +68,22 @@ public class LibSearchAction implements CommandAction {
 			}
 			else if(select.equals("all")){
 				count = vTour.size()+vPub.size()+vToy.size();	
-			} else{
-			count = vt.size();
+			} else if( select.equals( "tourism_list")){
+				count = vTour.size();
+			} else if( select.equals("pub_lib")){
+				count = vPub.size();
+			} else if( select.equals( "toy_lib")){
+				count = vToy.size();
 			}
+				
 		
 		System.out.println( "count::"+count);
 		
-		request.setAttribute("tour", tour);
+		
 		request.setAttribute("select", select);
 		request.setAttribute("vTour", vTour);
 		request.setAttribute("vPub", vPub);
 		request.setAttribute("vToy", vToy);
-		request.setAttribute("vt",vt);
 		request.setAttribute("count", new Integer(count));
 		
 		return "searchLib.jsp";

@@ -18,11 +18,32 @@ public class KiderDataBean {
 	private int frl_tcher_co_sm;
 	private int frl_female_tcher_co;
 	private String rm;
+	private Double x;
+	private Double y;
+	public Double getX() {
+		return x;
+	}
+	public void setX(Double x) {
+		this.x = x;
+	}
+	public Double getY() {
+		return y;
+	}
+	public void setY(Double y) {
+		this.y = y;
+	}
 	private String state;
 	private Timestamp reg_date;
 	private KetcDataBean kdb= new KetcDataBean();
+	private TSDataBean tsdata=new TSDataBean();
 	
 	
+	public TSDataBean getTsdata() {
+		return tsdata;
+	}
+	public void setTsdata(TSDataBean tsdata) {
+		this.tsdata = tsdata;
+	}
 	public KetcDataBean getKdb() {
 		return kdb;
 	}

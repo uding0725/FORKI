@@ -25,6 +25,10 @@ public class LibDetailAction implements CommandAction {
 		
 		if(type==null){
 			
+		}else if(type.equals("tour")){
+			Tourism_ListDataBean article = new Tourism_ListDataBean();
+			article = ldbb.viewTour(adres);
+			request.setAttribute("article", article);
 		}else if(type.equals("p")){
 			Pub_LibDataBean article = new Pub_LibDataBean();
 			article = ldbb.viewPublic(adres);

@@ -1,0 +1,42 @@
+@CHARSET "utf-8";
+
+#write-wrap {
+	width: 740px;
+	height: 550px;
+	margin: 0px auto;
+	padding: 0px;
+	border: 0px solid;
+	padding: 5px;
+	position: relative;
+}
+
+#write-header {
+	font-family: 'Jeju Gothic', serif;
+	width: 740px;
+	height: 80px;
+	border: 0px solid;
+	float: left;
+}
+
+#header {
+	height: 32px;
+
+}
+#write-content {
+	width: 740px;
+	height: 420px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 0px;
+	float: left;
+}
+
+a {
+	text-decoration: none;
+	color:black;
+}
+
+table {
+	width: 700px;
+	text-align: center"
+}

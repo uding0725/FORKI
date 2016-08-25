@@ -12,20 +12,20 @@ history.go(-1);
 </c:if>
 <c:if test="${check==0}">
 <script>
-alert("승인대기중 입니다.");
+alert("유치원 등록 승인대기중 입니다.");
 history.go(-1);
 </script>
 </c:if>
+<!-- <link href="../style.css" rel="stylesheet" type="text/css"> -->
 <script>
-
 function zipCheck(){
 	
 	url="/FORKI/content/join/factor/user/ZipCheck.do?check=y";
 	
 	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
 }
-</script> 
-<!-- <link href="../style.css" rel="stylesheet" type="text/css"> -->
+
+</script>
 </head>
 <c:if test="${check==-1}">
 <div style="width:750;">
@@ -79,7 +79,7 @@ function zipCheck(){
 	<tr>
 		<td>주소</td>
 		<td>
-			<input type="text" name="address">
+			<input type="text" name="address" size="50" maxlength="50">
 		</td>
 	</tr>
 	<tr>
