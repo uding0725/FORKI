@@ -1,6 +1,18 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 
-<div id="body">
-<div style="height:500;" id="content"><a href="/FORKI/content/join/ComInputForm.jsp">기업</a></div>
-<div style="height:500;" id="content"><a href="/FORKI/content/join/UserInputForm.jsp">개인</a></div>
-</div>
+<body>
+	<div id="body">
+		<div id="">
+			<div id="select">
+				<div id="buttonBox">
+					<input type="button" value="기업" class="button1" onClick="document.location.href='/FORKI/content/join/ComInputForm.jsp'">
+				</div>
+			</div>
+			<div id="select">
+				<div id="buttonBox">
+					<input type="button" value="개인" class="button2" onClick="document.location.href='/FORKI/content/join/UserInputForm.jsp'">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

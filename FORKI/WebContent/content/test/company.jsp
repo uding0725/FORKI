@@ -4,6 +4,7 @@ session.removeAttribute("compNum");
 session.setAttribute("id", "comp2");
 session.setAttribute("grade", "2");
 session.setAttribute("compNum", "13800885");
+session.setAttribute("name", "com");
 %>
 <script>
 	alert('세션: 유치원 로그인 정보 생성');

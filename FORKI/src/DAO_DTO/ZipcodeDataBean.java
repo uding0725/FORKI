@@ -1,5 +1,6 @@
 package DAO_DTO;
 
+
 public class ZipcodeDataBean {
 
 	private String zipcode;

@@ -24,10 +24,10 @@ textarea {
 </head>
 <body>
 	<div style="margin: auto; width: 500px; height: 410px; overflow: hidden;">
-		<form name="insertMessage" action="SendMessage.do?id=${param.id}" method="post"
+		<form name="insertMessage" action="/FORKI/MyPage/factor/SendMessage.do?id=${param.id}" method="post"
 		onSubmit="return checkIt()">
-			<div style="height: 100px;">로고가 들어갈 자리</div>
-			<div style="height: 50px; text-align: left;">받는사람 : ${param.id}</div>
+			<div style="height: 100px;"><img src="../img/logoo.png" width="200px" height="100%"></div>
+			<div style="height: 50px; text-align: right;">받는사람 : ${param.id}</div>
 			<div style="width: 400; height: 200px; text-align: left; flow: left; overflow: auto; overflow-x: hidden; border: 1px solid;">
 			<textarea name="message" cols="70" rows="13"></textarea></div>
 			<div style="height: 60px; text-align: center;">

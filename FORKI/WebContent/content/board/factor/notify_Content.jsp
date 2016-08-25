@@ -58,8 +58,8 @@ a {
 <div id="secret-header">
   <font size="+2" >공지사항 글</font>
    <span style='position: absolute; right: 60px'> 
-    <a href="#"><img src="img/home.png" width="20" height="20"></a> 
-    <a href="#">>게시판</a>
+    <a href="/FORKI/content/main/main.do"><img src="img/home.png" width="20" height="20"></a> 
+    <a href="/FORKI/content/board/notifyList.do">>게시판</a>
     <a href="/FORKI/content/board/notifyList.do?pageNum=${pageNum}">>공지사항</a>
     <a href="#">>공지사항 글</a> 
     </span>

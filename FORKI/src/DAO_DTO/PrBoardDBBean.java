@@ -102,9 +102,9 @@ public class PrBoardDBBean {
 		try{
 			conn=getConnection();
 			pstmt= conn.prepareStatement(
-			"select num,writer,subject,ref,re_step,re_level,readcount,reg_date,r "
-			+"from (select num,writer,subject,ref,re_step,re_level,readcount,reg_date,rownum r "
-		    +"from (select num,writer,subject,ref,re_step,re_level,readcount,reg_date "
+			"select id,num,writer,subject,ref,re_step,re_level,readcount,reg_date,r "
+			+"from (select id,num,writer,subject,ref,re_step,re_level,readcount,reg_date,rownum r "
+		    +"from (select id,num,writer,subject,ref,re_step,re_level,readcount,reg_date "
 			+"from prop_board order by ref desc, re_step asc) order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 			pstmt.setInt(1,start);
 			pstmt.setInt(2, end);
@@ -113,6 +113,7 @@ public class PrBoardDBBean {
 				  articleList = new ArrayList(end);
 				do{
 					PrBoardDataBean article= new PrBoardDataBean();
+					article.setId(rs.getString("id"));
 					article.setNum(rs.getInt("num"));
 					article.setWriter(rs.getString("writer"));
 					article.setSubject(rs.getString("subject"));
@@ -145,9 +146,9 @@ public class PrBoardDBBean {
 		try{
 			conn=getConnection();
 			pstmt= conn.prepareStatement(
-			"select num,writer,subject,ref,re_step,re_level,readcount,reg_date,r "
-			+"from (select num,writer,subject,ref,re_step,re_level,readcount,reg_date,rownum r "
-		    +"from (select num,writer,subject,ref,re_step,re_level,readcount,reg_date "
+			"select id,num,writer,subject,ref,re_step,re_level,readcount,reg_date,r "
+			+"from (select id,num,writer,subject,ref,re_step,re_level,readcount,reg_date,rownum r "
+		    +"from (select id,num,writer,subject,ref,re_step,re_level,readcount,reg_date "
 			+"from prop_board order by ref desc, re_step asc) where "+col_name[n]+" like '%"+search+"%'"+"  order by ref desc, re_step asc ) where r >= ? and r <= ? ");
 			pstmt.setInt(1,start);
 			pstmt.setInt(2, end);
@@ -156,6 +157,7 @@ public class PrBoardDBBean {
 				  articleList = new ArrayList(end);
 				do{
 					PrBoardDataBean article= new PrBoardDataBean();
+					article.setId(rs.getString("id"));
 					article.setNum(rs.getInt("num"));
 					article.setWriter(rs.getString("writer"));
 					article.setSubject(rs.getString("subject"));

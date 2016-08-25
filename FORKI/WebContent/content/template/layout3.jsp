@@ -3,8 +3,8 @@
 <html>
 <head>
 <link href="../CSS/reset.css" rel="stylesheet" type="text/css">
-<link href="../CSS/global.css?ver=1.2" rel="stylesheet" type="text/css">
-<link href="../CSS/style.css?ver=1.4" rel="stylesheet" type="text/css">
+<link href="../CSS/global.css?ver=1.3" rel="stylesheet" type="text/css">
+<link href="../CSS/style.css?ver=1.5" rel="stylesheet" type="text/css">
 <title><tiles:getAsString name="title" /></title>
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
