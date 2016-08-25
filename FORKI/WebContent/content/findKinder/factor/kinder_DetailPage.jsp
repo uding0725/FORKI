@@ -167,24 +167,32 @@ a:hover {
 			<!-- 이미지 슬라이드 시작 -->
 			<div class="fluid_container">
 				<div class="camera_wrap camera_azure_skin" id="camera_wrap">
-					<!-- 테스트용 코드(완성시 삭제) -->
-					<div data-thumb="../../images/slides/thumbs/test1.jpeg" data-src="../../images/slides/test1.jpeg">
-						<div class="camera_caption fadeFromBottom">입시설명회</div>
-					</div>
-					<div data-thumb="../../images/slides/thumbs/test2.jpg" data-src="../../images/slides/test2.jpg">
-						<div class="camera_caption fadeFromBottom">아이들 작품</div>
-					</div>
-					<div data-thumb="../../images/slides/thumbs/test3.jpg" data-src="../../images/slides/test3.jpg">
-						<div class="camera_caption fadeFromBottom">놀이시간</div>
-					</div>
-					<!-- 테스트용 코드 끝 -->
-					
-					<!-- 실재 구동시 파일 목록을 불러와 이미지 슬라이드 생성 -->
-					<%-- <c:forEach var="imageList" items="${imageList}">
-						<div data-thumb="../../images/slides/thumbs/${imageList.name}" data-src="../../images/slides/${imageList.name}">
-							<div class="camera_caption fadeFromBottom">${imageList.comment}</div>
+					<!-- 데모 이미지 -->
+					<c:if test="${check == 0}">
+						<div data-src="../../images/slides/demo1.png">
+							<div class="camera_caption fadeFromBottom">이미지를 등록해주세요</div>
 						</div>
-					</c:forEach> --%>
+						<div data-src="../../images/slides/demo2.png">
+							<div class="camera_caption fadeFromBottom">이미지를 등록해주세요</div>
+						</div>
+						<div data-src="../../images/slides/demo3.png">
+							<div class="camera_caption fadeFromBottom">이미지를 등록해주세요</div>
+						</div>
+						<div data-src="../../images/slides/demo4.png">
+							<div class="camera_caption fadeFromBottom">이미지를 등록해주세요</div>
+						</div>
+					</c:if>
+					<!-- 데모 이미지 끝 -->
+					
+					<!-- 목록을 불러와 이미지 슬라이드 생성 -->
+					<c:if test="${check >= 1}">
+						<c:forEach var="article" items="${imgList}">
+							<div data-src="../../images/slides/${article.file_name}">
+								<div class="camera_caption fadeFromBottom">${article.message}</div>
+							</div>
+						</c:forEach>
+					</c:if>
+					<!-- 이미지 로딩 종료 -->
 				</div>
 			</div>
 			<!-- 이미지 슬라이드 종료 -->
@@ -208,8 +216,8 @@ a:hover {
 			</div>
 			<div style="float: left; width: 10%;"><input id="input" type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=1'" value="입력"></div>
 			<div style="float: left; width: 46%; text-align: right;">
-				<c:if test="${param.schul_num == sessionScope.schul_num}">
-					<input type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/UpdateImg.do?num=${param.num}'" value="수정">
+				<c:if test="${param.num == sessionScope.schul_num}">		
+					<input type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/ModifyImg.do?num=${param.num}'" value="수정">
 				</c:if>
 				<input type="button" onclick="self.close()" value="닫기">
 			</div>

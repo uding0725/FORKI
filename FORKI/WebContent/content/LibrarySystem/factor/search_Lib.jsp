@@ -19,7 +19,7 @@
 
 <div id="md-wrap">
 	<div id="md-title">
-		<font size="+2">문화시설</font> 
+		<img src="../img/chick1.png"style="position:relative; top:10px;" width="35" height="35"> <font size="+2">문화시설</font> 
 		<span style="position: absolute; right: 5px; top: 5px;"> 
 			<a href="/FORKI/content/main/main.do">
 			<img style="position: relative; top: 2px;" src="../img/home.png" width="20" height="20"></a>

@@ -8,7 +8,12 @@
 				<c:if test="${sessionScope.grade == 0}">
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/adminPage/SysMemberCare.do">회원관리</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/adminPage/SysBlack_list.do">블랙리스트</a></li>
+<<<<<<< HEAD
+					<li class="topMenuLi-side"><a class="menuLink-side" href="#">기업가입신청</a></li>
+					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerList.do">쪽지함</a></li>
+=======
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/adminPage/SysApprobation.do">기업가입신청</a></li>
+>>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/adminPage/signUp.do">유치원등록신청</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/ReportList.do">신고함</a></li>
 				</c:if>

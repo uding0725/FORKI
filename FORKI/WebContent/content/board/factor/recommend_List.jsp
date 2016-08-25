@@ -6,19 +6,24 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
 <script>
-	function writeMessage(ids) {
-		url = '/FORKI/content/MyPage/WriteMessage.do?id=' + ids
+	function writeMessage(ids,writer) {
+		url = '/FORKI/content/MyPage/WriteMessage.do?id=' + ids+"&writer="+writer
 		window.open(url, 'popup',
 				'scrollbars=no, resizable=no, width=530,height=450');
 		alert(ids);
 	}
+	function writeReport(ids,sub,subid,loc){
+		url='/FORKI/content/MyPage/WriteReport.do?id='+ids+'&sub='+sub+'&subid='+subid+'&loc='+loc
+		window.open(url,'popup','scrollbars=no, resizable=no, width=530,height=450');
+	}
+
 </script>
 
 <div id="write-wrap">
 
 	<div id="write-header">
 		<div id="header">
-			<font size="+2" style="position: relative; top: 5px; left: 5px;">건의사항</font>
+			<img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:10px;"> <font size="+2" style="position: relative; top: 5px; left: 5px;">건의사항</font>
 			<span style='position: absolute; right: 10px; top: 20px;'> <a
 				href="/FORKI/content/main/main.do"> <img
 					style="position: relative; top: 3px;" src="../img/home.png"
@@ -46,7 +51,7 @@
 		</div>
 	</div>
 	<div id="write-content">
-		<table>
+		<<table id="board_table">>
 			<tr>
 				<td width="100" height="30" align="center" bgcolor="">번호</td>
 				<td width="300" height="30" bgcolor="" align="center">건의사항</td>
@@ -75,24 +80,22 @@
 							</c:if> <a
 							href="/FORKI/content/board/recommendContent.do?num=${article.num}&pageNum=${currentPage}"
 							style="text-decoration: none;"> ${article.subject}</a></td>
-						<td width="100" align="center" bgcolor=""><c:if
-								test="${sessionScope.id==null }">
+						<td width="100" align="center" bgcolor="">
+						<c:if test="${sessionScope.id==null }">
+				  		${article.writer}</c:if>
+				  		 <c:if test="${sessionScope.id==article.id}">
 				  		${article.writer}
-				  	</c:if> <c:if test="${sessionScope.id==article.id}">
-				  		${article.writer}
-				  	</c:if> <c:if test="${sessionScope.id!=null }">
-								<c:if test="${sessionScope.id!=article.id}">
-									<div id="menubar">
-										<nav id="contentMenu">
-											<ul>
-												<li class="contentMenuLi"><a class="conmenuLink">${article.writer}</a>
-													<ul class="contentMenusub">
-														<li class="pop-up"><a
-															onclick="writeMessage('${article.id}')"
+				  		</c:if> 
+					  	<c:if test="${sessionScope.id!=null }">
+						<c:if test="${sessionScope.id!=article.id}">
+						<div id="menubar">
+						<nav id="contentMenu">
+							<ul>
+								<li class="contentMenuLi"><a class="conmenuLink">${article.writer}</a>
+									<ul class="contentMenusub">
+										<li class="pop-up"><a onclick="writeMessage('${article.id}','${article.writer}')"
 															class="consubmenuLink longLink">쪽지보내기</a></li>
-														<li class="pop-up"><a
-															href="/FORKI/content/findKinder/findkinder.do"
-															class="consubmenuLink longLink">신고하기</a></li>
+														<li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','건의사항 글')" class="consubmenuLink longLink">신고하기</a></li>
 													</ul></li>
 											</ul>
 										</nav>
