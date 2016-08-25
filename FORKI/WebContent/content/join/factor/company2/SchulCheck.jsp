@@ -8,7 +8,7 @@
 <script>
 	function schulCheck(){
 		if (document.SchulForm.schul_nm.value == ""){
-			alert("동이름을 입력하세요");
+			alert("유치원 명을 입력하세요");
 			document.SchulForm.schul_nm.focus();
 			return;
 		}

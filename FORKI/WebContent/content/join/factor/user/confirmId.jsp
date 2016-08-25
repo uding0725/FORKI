@@ -32,16 +32,12 @@
     </td>
   </tr>
 </table>
-<a href="javascript:history.go(-1)">[돌아가기]</a>
-
 </body>
 </html>
 </c:if>
 <script>
-
 function setid(){
 opener.document.userinput.id.value="${id}";//opener:새로운 창을 연다.
 self.close();
 }
-
 </script>

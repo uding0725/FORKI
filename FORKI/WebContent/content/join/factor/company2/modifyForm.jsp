@@ -5,157 +5,91 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <script>
-
-/* $(document).ready(function(){
-    // 옵션추가 버튼 클릭시
-    var num = 1;
-    $(".addItemBtn").click(function(){
-        // item 의 최대번호 구하기
-    num =  num + 1;
-    var insert_tr_td = "<tr class ='item"+num+"'>  <td><input type='text' name='child' size='6' maxlength='15'/></td><td><input type='text' name='child' size='10' readonly/></td><td><input type='button' value='어린이집/유치원 찾기' onClick='childCheck()''></td><td><button class='delBtn'>삭제</button></td></tr>";
-    $('#example tr:last').after(insert_tr_td);
-        
-        
-        var lastItemNo = $("#example tr:last").attr("class").replace("item", "");
-		var newitem = $("#example tr:eq(1)").clone();
-        newitem.removeClass();
-        newitem.find("td:eq(0)").attr("rowspan", "1");
-        newitem.addClass("item"+(parseInt(lastItemNo)+1));
-
-        $("#example").append(newitem); 
-    });
-
-
-    // 삭제버튼 클릭시
-    $(".delBtn").live("click", function(){
-        var clickedRow = $(this).parent().parent();
-        var cls = clickedRow.attr("class");
-         
-        // 각 항목의 첫번째 row를 삭제한 경우 다음 row에 td 하나를 추가해 준다.
-        if( clickedRow.find("td:eq(0)").attr("rowspan") ){
-            if( clickedRow.next().hasClass(cls) ){
-                clickedRow.next().prepend(clickedRow.find("td:eq(0)"));
-            }
-        }
-
-        clickedRow.remove();
-
-        // rowspan 조정
-        resizeRowspan(cls);
-    });
-
-    // cls : rowspan 을 조정할 class ex) item1, item2, ...
-    function resizeRowspan(cls){
-        var rowspan = $("."+cls).length;
-        $("."+cls+":first td:eq(0)").attr("rowspan", rowspan);
-    }
-}); */
-
-	/* function boxresetID() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.id.value=="아이디"){
-    		userinput.id.value="";
-    	}
-	}
-	function boxresetPWD() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.passwd.value=="1111"){
-    		userinput.passwd.value="";
-    	}
-	}
-	function boxresetPWD2() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.passwd2.value=="1111"){
-    		userinput.passwd2.value="";
-    	}
-	}
-	function boxresetNAME() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.name.value=="이름"){
-    		userinput.name.value="";
-    	}
-	}
-	function boxresetNICKNAME() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.nickname.value=="닉네임"){
-    		userinput.nickname.value="";
-    	}
-	}
-	function boxresetEMAIL() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.email.value=="이메일"){
-    		userinput.email.value="";
-    	}
-	}
-	function boxresetB_DAY() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.b_day.value=="생년(4자리)"){
-    		userinput.b_day.value="";
-    	}
-	}
-	function boxresetTELL() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.tell.value=="핸드폰번호"){
-    		userinput.tell.value="";
-    	}
-	}
-	function boxresetADDRESS() {
-    	var userinput = eval("document.userinput");
-    	if(userinput.address.value=="상세주소"){
-    		userinput.address.value="";
-    	}
-    	
-	}
-
-    function checkIt() {
-        var userinput = eval("document.userinput");
-        
-        if(!userinput.id.value) {
-            alert("ID를 입력하세요");
+function checkIt() {
+    var userinput = eval("document.userinput");
+    
+    /* if(!userinput.id.value) {
+        alert("ID를 입력하세요");
+        return false;
+    }else if(userinput.id.value){
+    	if ((new RegExp(/[^a-z|^0-9]/gi)).test(userinput.id.value)){
+    	    alert("ID는 영숫자 조합만 사용하세요");
             return false;
-        }
-       
-        if(!userinput.passwd.value ) {
-            alert("비밀번호를 입력하세요");
-            return false;
-        }
-        if(userinput.passwd.value != userinput.passwd2.value)
-        {
-            alert("비밀번호를 동일하게 입력하세요");
-            return false;
-        }
-      
-        if(!userinput.name.value) {
-            alert("사용자 이름을 입력하세요");
-            return false;
-        }
-        
-        if(!userinput.nickname.value) {
-            alert("사용자 닉네임을 입력하세요");
-            return false;
-        }
-        
-        if(!userinput.sex.value)
-        {
-            alert("성별을 선택하세요");
-            return false;
-        }
-        return true;
-    }
-
-    // 아이디 중복 여부를 판단
-    function openConfirmid(userinput) {
-        // 아이디를 입력했는지 검사
-        if (userinput.id.value == "") {
-            alert("아이디를 입력하세요");
-            return;
-        }
-        // url과 사용자 입력 id를 조합합니다.
-        url = "confirmId.do?id=" + userinput.id.value ;
-       
-        // 새로운 윈도우를 엽니다.
-        open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
+    	}
     } */
+   
+    if(!userinput.passwd.value ) {
+        alert("비밀번호를 입력하세요");
+        return false;
+    }
+    if(userinput.passwd.value != userinput.passwd2.value)
+    {
+        alert("비밀번호를 동일하게 입력하세요");
+        return false;
+    }
+  
+    if(!userinput.name.value) {
+        alert("사용자 이름을 입력하세요");
+        return false;
+    }else if(userinput.name.value){
+    	if ((new RegExp(/[^a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/gi)).test(userinput.name.value)){
+    	    alert("이름 형식이 틀립니다.");
+    	    userinput.name.focus();
+            return false;
+    	}
+    }
+    
+    if(!userinput.nickname.value) {
+        alert("사용자 닉네임을 입력하세요");
+        return false;
+    }else if(userinput.nickname.value){
+    	if ((new RegExp(/[^\w\Wㄱ-ㅎㅏ-ㅣ가-힣]/gi)).test(userinput.nickname.value)){
+    	    alert("닉네임 형식이 틀립니다.");
+    	    userinput.nickname.focus();
+            return false;
+    	}
+    }
+    
+    if(!userinput.sex.value){
+        alert("성별을 선택하세요");
+        return false;
+    }
+    
+    if(!userinput.email.value) {
+        alert("이메일을 입력하세요");
+        return false;
+    }else if(userinput.email.value){
+    	if (userinput.email.value.length < 6 || !(new RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i)).test(userinput.email.value)){
+    	    alert("EMAIL 형식이 틀립니다.");
+    	    userinput.email.focus();
+            return false;
+    	}
+    }
+    
+/*     if(!userinput.b_day.value) {
+        alert("생일을 입력하세요");
+        return false;
+    }else if(userinput.b_day.value){
+    	if ((new RegExp( /[^0-9_]$/)).test(userinput.b_day.value)){
+    	    alert("생일 형식이 틀립니다.");
+    	    userinput.b_day.focus();
+            return false;
+    	}
+    } */
+    
+    if(!userinput.tell.value) {
+        alert("핸드폰번호를 입력하세요");
+        return false;
+    }else if(userinput.tell.value){
+    	if ((new RegExp( /[^0-9_]$/)).test(userinput.tell.value)){
+    	    alert("핸드폰번호 형식이 틀립니다.");
+    	    userinput.tell.focus();
+            return false;
+    	}
+    }
+    
+    return true;
+}
     
     //닉네임 중복 여부를 판단
     function openConfirmnick(userinput) {
@@ -306,16 +240,6 @@ try{
     <tr>
       <td colspan="4">
         <input type="text" name="b_day" size="10" maxlength="8" readonly value="${b_day}">
-        <%-- <select name="MM" id="month">
-        <%for(int i=1; i<13; i++){  %>
-		<option value="<%=i%>"><%=i %>월</option>
-		<%} %>
-        </select>
-        <select name="dd" id="date">
-        <%for(int i=1; i<31; i++){ %>
-		<option value="<%=i%>"><%=i %>일</option>
-		<%} %>
-        </select> --%>
       </td>
     </tr>
     
