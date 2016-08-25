@@ -10,6 +10,7 @@ function deleteConfirm(){
 	}
 }
 </script>
+<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 <head>
 <title>공지사항</title>
 <style>

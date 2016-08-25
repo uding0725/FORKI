@@ -3,7 +3,6 @@
 <html>
 <head><title>로그인</title>
 <link href="style.css" rel="stylesheet" type="text/css">
-
    <script>
 
        function begin(){
@@ -43,9 +42,7 @@
   <TR height="30">
     <TD colspan="2" align="middle">
       <INPUT type=submit value="로그인">
-      <INPUT type=reset value="다시입력">
-      <input type="button" value="회원가입" 
-      onclick="document.location.href='/FORKI/content/join/factor/user/inputForm.do'"></TD></TR>
+      <INPUT type=reset value="다시입력"></TD></TR>
 </TABLE>
 </form>
 </BODY>

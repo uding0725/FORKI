@@ -26,7 +26,7 @@
 		<tr>
 			<td><input type="button" name="member_care" value="기업가입신청"
 				onclick="
-				document.location.href='/FORKI/content/adminPage/MemberCare.do'">
+				document.location.href='/FORKI/content/adminPage/SysApprobation.do'">
 			</td>
 		</tr><br>
 

@@ -208,11 +208,11 @@ function writeReport(ids,sub,subid,loc){
 				<c:forEach var="article" items="${articleList}">
 					<tr>
 						<td width="100" align="center" bgcolor=""><c:out value="${number}" /> <c:set var="number" value="${number-1}" /></td>
-						<td width="300" align="center" bgcolor=""><a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}">
+						<td width="300" align="center" bgcolor=""><a href="/FORKI/content/board/freeBoardContent.do?num=${article.num}&pageNum=${currentPage}">
 								${article.subject} </a></td>
 						<td width="100" align="center" bgcolor="">${article.writer}</td>
 						<td width="100" align="center" bgcolor="">${article.readcount}</td>
-						<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>
+						<td width="150" align="center" bgcolor="">${date.format(article.reg_date)}</td>
 					</tr>
 				</c:forEach>
 			</c:if>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>건의사항 글 화면</title>
+<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 <style>
 #secret-wrap{
  width : 750px;

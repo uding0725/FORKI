@@ -25,7 +25,7 @@ public class LogonDataBean {
 	//K_ETC(id는 공통)
 	private String schul_num;//사업자번호
 	private String schul_nm;//유치원명
-	private String reg_check;//유치원명
+	private String reg_check;//등록여부
 	
 	
 	public String getId() {

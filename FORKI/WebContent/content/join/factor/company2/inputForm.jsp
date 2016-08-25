@@ -129,6 +129,11 @@
         if(!userinput.id.value) {
             alert("ID를 입력하세요");
             return false;
+        }else if(userinput.id.value){
+        	if ((new RegExp(/[^a-z|^0-9]/gi)).test(userinput.id.value)){
+        	    alert("ID는 영숫자 조합만 사용하세요");
+                return false;
+        	}
         }
        
         if(!userinput.passwd.value ) {
@@ -144,18 +149,74 @@
         if(!userinput.name.value) {
             alert("사용자 이름을 입력하세요");
             return false;
+        }else if(userinput.name.value){
+        	if ((new RegExp(/[^a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/gi)).test(userinput.name.value)){
+        	    alert("이름 형식이 틀립니다.");
+        	    userinput.name.focus();
+                return false;
+        	}
         }
         
         if(!userinput.nickname.value) {
             alert("사용자 닉네임을 입력하세요");
             return false;
+        }else if(userinput.nickname.value){
+        	if ((new RegExp(/[^\w\Wㄱ-ㅎㅏ-ㅣ가-힣]/gi)).test(userinput.nickname.value)){
+        	    alert("닉네임 형식이 틀립니다.");
+        	    userinput.nickname.focus();
+                return false;
+        	}
         }
         
-        if(!userinput.sex.value)
-        {
+        if(!userinput.sex.value){
             alert("성별을 선택하세요");
             return false;
         }
+        
+        if(!userinput.email.value) {
+            alert("이메일을 입력하세요");
+            return false;
+        }else if(userinput.email.value){
+        	if (userinput.email.value.length < 6 || !(new RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i)).test(userinput.email.value)){
+        	    alert("EMAIL 형식이 틀립니다.");
+        	    userinput.email.focus();
+                return false;
+        	}
+        }
+        
+        if(!userinput.b_day.value) {
+            alert("생일을 입력하세요");
+            return false;
+        }else if(userinput.b_day.value){
+        	if ((new RegExp( /[^0-9_]$/)).test(userinput.b_day.value)){
+        	    alert("생일 형식이 틀립니다.");
+        	    userinput.b_day.focus();
+                return false;
+        	}
+        }
+        
+        if(!userinput.tell.value) {
+            alert("핸드폰번호를 입력하세요");
+            return false;
+        }else if(userinput.tell.value){
+        	if ((new RegExp( /[^0-9_]$/)).test(userinput.tell.value)){
+        	    alert("핸드폰번호 형식이 틀립니다.");
+        	    userinput.tell.focus();
+                return false;
+        	}
+        }
+        
+        if(!userinput.schul_num.value) {
+            alert("사업자번호를 입력하세요");
+            return false;
+        }else if(userinput.schul_num.value){
+        	if ((new RegExp( /[^0-9_]$/)).test(userinput.schul_num.value)){
+        	    alert("사업자번호 형식이 틀립니다.");
+        	    userinput.schul_num.focus();
+                return false;
+        	}
+        }
+        
         return true;
     }
 
@@ -187,6 +248,19 @@
         open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
     }
     
+/*     function openConfirmSchulNUM(userinput) {
+        // 닉네임을 입력했는지 검사
+        if (userinput.schul_num.value == "") {
+            alert("사업자번호를 입력하세요");
+            return;
+        }
+        // url과 사용자 입력 schul_num를 조합합니다.
+        url = "/FORKI/content/join/factor/company2/confirmSchulNUM.do?schul_num=" + userinput.schul_num.value ;
+       
+        // 새로운 윈도우를 엽니다.
+        open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
+    } */
+    
     function zipCheck(){
     	
     	url="/FORKI/content/join/factor/company2/ZipCheck.do?check=y";
@@ -198,8 +272,9 @@
     	
     	url="/FORKI/content/join/factor/company2/SchulCheck.do?check=y";
     	
-    	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
+    	window.open(url,"post","toolbar=no ,width=600 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
     }
+
 </script>
 
 
@@ -342,11 +417,12 @@
 </tr>
 <tr>
 <td colspan="4">
-<input type="text" name="schul_num" size="50" onfocus="return boxresetSCHUL_NUM()" value="사업자번호">
+<input type="text" name="schul_num" size="25" onfocus="return boxresetSCHUL_NUM()" value="사업자번호">
+<!-- <input type="button" value="사업자번호 중복확인" onClick="openConfirmSchulNUM(this.form)"> -->
 </td>
 <tr>
 <td colspan="4">
-<input type="text" name="schul_nm" size="40" onfocus="return boxresetSCHUL_NM()" value="어린이집/유치원 명">
+<input type="text" name="schul_nm" size="25" onfocus="return boxresetSCHUL_NM()" value="어린이집/유치원 명">
 <input type="button" value="어린이집/유치원 찾기" onClick="SchulCheck()">
 </td>
 
@@ -356,7 +432,7 @@
 <div align="center">
 <input type="submit" name="confirm" value="등   록" >
 <input type="reset" name="reset" value="다시입력">
-<input type="button" value="가입안함" onclick="javascript:window.location='/FORKI/content/join/ComMain.do'">
+<input type="button" value="가입안함" onclick="javascript:window.location='/FORKI/content/join/UserMain.do'">
 </div>
 </form>
 </body>

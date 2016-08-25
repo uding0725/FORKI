@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 
 <tr>
 <td>가입일</td>
-<td colspan="3">${join_date}</td>
+<td colspan="3"><fmt:formatDate value="${join_date}" pattern="yyyy-MM-dd"/></td>
 </tr>
 
 <tr>

@@ -7,14 +7,16 @@
 </head>
 <body>
 <c:if test="${check != 1}">
-입력하신 정보가 맞지 않습니다.
-
-<input type="button" onclick="history.go(-1)" value="뒤로가기">
-
+<script>
+	alert("입력하신 정보가 맞지 않습니다.");
+	history.go(-1);
+</script>
 </c:if>
 <c:if test="${check == 1}">
-이메일 전송완료.<br>
-이메일을 확인하세요.
+<script>
+	alert("이메일 전송완료. 이메일을 확인하세요.");
+	history.go(-1);
+</script>
 </c:if>
 </body>
 </html>

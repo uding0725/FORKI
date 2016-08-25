@@ -17,8 +17,6 @@ public class SchulCheckAction implements CommandAction{
 		   String dong = request.getParameter("dong");//µø¿Ã∏ß
 		   LogonDBBean manager = LogonDBBean.getInstance();  
 		   Vector SchulList = manager.SchulRead(dong);
-		   System.out.println(SchulList.size());
-		   System.out.println(check);
 		   request.setAttribute("check", check);
 		   request.setAttribute("SchulList", SchulList);
 		   

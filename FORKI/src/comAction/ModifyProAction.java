@@ -15,7 +15,7 @@ public class ModifyProAction implements CommandAction{
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		LogonDataBean member = new LogonDataBean();
-
+		
 		member.setId(id);
 		member.setPasswd(request.getParameter("passwd"));
 		member.setName(request.getParameter("name"));

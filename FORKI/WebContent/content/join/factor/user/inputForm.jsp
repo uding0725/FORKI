@@ -117,6 +117,11 @@
         if(!userinput.id.value) {
             alert("ID를 입력하세요");
             return false;
+        }else if(userinput.id.value){
+        	if ((new RegExp(/[^a-z|^0-9]/gi)).test(userinput.id.value)){
+        	    alert("ID는 영숫자 조합만 사용하세요");
+                return false;
+        	}
         }
        
         if(!userinput.passwd.value ) {
@@ -132,18 +137,63 @@
         if(!userinput.name.value) {
             alert("사용자 이름을 입력하세요");
             return false;
+        }else if(userinput.name.value){
+        	if ((new RegExp(/[^a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/gi)).test(userinput.name.value)){
+        	    alert("이름 형식이 틀립니다.");
+        	    userinput.name.focus();
+                return false;
+        	}
         }
         
         if(!userinput.nickname.value) {
             alert("사용자 닉네임을 입력하세요");
             return false;
+        }else if(userinput.nickname.value){
+        	if ((new RegExp(/[^\w\Wㄱ-ㅎㅏ-ㅣ가-힣]/gi)).test(userinput.nickname.value)){
+        	    alert("닉네임 형식이 틀립니다.");
+        	    userinput.nickname.focus();
+                return false;
+        	}
         }
         
-        if(!userinput.sex.value)
-        {
+        if(!userinput.sex.value){
             alert("성별을 선택하세요");
             return false;
         }
+        
+        if(!userinput.email.value) {
+            alert("이메일을 입력하세요");
+            return false;
+        }else if(userinput.email.value){
+        	if (userinput.email.value.length < 6 || !(new RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i)).test(userinput.email.value)){
+        	    alert("EMAIL 형식이 틀립니다.");
+        	    userinput.email.focus();
+                return false;
+        	}
+        }
+        
+        if(!userinput.b_day.value) {
+            alert("생일을 입력하세요");
+            return false;
+        }else if(userinput.b_day.value){
+        	if ((new RegExp( /[^0-9_]$/)).test(userinput.b_day.value)){
+        	    alert("생일 형식이 틀립니다.");
+        	    userinput.b_day.focus();
+                return false;
+        	}
+        }
+        
+        if(!userinput.tell.value) {
+            alert("핸드폰번호를 입력하세요");
+            return false;
+        }else if(userinput.tell.value){
+        	if ((new RegExp( /[^0-9_]$/)).test(userinput.tell.value)){
+        	    alert("핸드폰번호 형식이 틀립니다.");
+        	    userinput.tell.focus();
+                return false;
+        	}
+        }
+        
         return true;
     }
 
