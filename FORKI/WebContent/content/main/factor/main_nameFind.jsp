@@ -13,7 +13,7 @@
 		<form method="post" action="/FORKI/content/findKinder/findkinder.do"> 
 		<input type="hidden" name="dong" value="">
 		<input type="hidden" name="gu" value="0">
-		<input type="text" name="schul_nm" autofocus placeholder="기관명을 입력하세요" /> 
+		<input type="text" name="schul_nm" autofocus placeholder="기관명을 입력하세요" size="45" /> 
 		<input type="submit" value="찾기" />
 	<%-- 	onclick="document.location.href='/FORKI/content/findKinder/findkinder.do?schul_nm=${schul_nm}'" --%>
 		</form>
