@@ -265,7 +265,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 				DBdata.setId(rs.getString("id"));
 				DBdata.setM_grade(rs.getInt("m_grade"));
 					if(rs.getInt("m_grade")==1 || rs.getInt("m_grade")==0){
-						pstmt = conn.prepareStatement("select NICKNAME from P_ETC where id = ?");
+						pstmt = conn.prepareStatement("select nickname from P_ETC where id = ?");
 						pstmt.setString(1, id);
 						rs = pstmt.executeQuery();
 						if (rs.next()) {
