@@ -56,6 +56,7 @@ function writeMessage(ids){
 				<td width="150" height="30" bgcolor="" align="center">등록일</td>
 			</tr>
 			<tr>
+
 				<c:if test="${count==0}">
 					<td align="center" colspan="5">게시판에 저장된 글이 없습니다.</td>
 				</c:if>
@@ -82,7 +83,6 @@ function writeMessage(ids){
 						<li class="topMenuLi"><a class="menuLink">${article.writer}</a>
 							<ul class="submenu">
 							<li class="pop-up"><a onclick="writeMessage('${article.id}')" class="submenuLink longLink">쪽지보내기</a></li>
-							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">신고하기</a></li>
 						</ul></li>
 				  	</ul>
 				  	</nav>

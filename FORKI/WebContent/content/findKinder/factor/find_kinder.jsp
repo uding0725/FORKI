@@ -78,7 +78,7 @@
 				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>&nbsp;총점:${kinder.tsdata.t_score}&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
         	${kinder.telno}<br>
 
-        	${kinder.adres}<%-- <input type="button" value="찾기" onclick="searchkid('${kinder.adres}','${kinder.schul_nm}')"> --%><br>
+        	${kinder.adres}
 			<script>
         	title.push('${kinder.schul_nm}');
         	x.push('${kinder.x}');
