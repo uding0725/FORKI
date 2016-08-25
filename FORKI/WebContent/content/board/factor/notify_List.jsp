@@ -45,7 +45,7 @@ function writeMessage(ids){
 		</div>	
 	</div>
 	<div id="write-content">
-		<table>
+		<table id="board_table">
 			<tr>
 				<td width="100" height="30" align="center" bgcolor="">번호</td>
 				<td width="300" height="30" bgcolor="" align="center">공지사항</td>

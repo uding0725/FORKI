@@ -87,7 +87,7 @@ function writeReport(ids,sub,subid,loc){
 
 <c:if test="${count > 0}"> 
    <div id="write-content">
-		<table>
+		<table id="board_table">
 			<tr>
 				<td width="100" height="30" align="center" bgcolor="">번호</td>
 				<td width="300" height="30" bgcolor="" align="center">제 목</td>
