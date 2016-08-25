@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RecommendWriteAction implements CommandAction{
 
 	public String requestPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
+		request.setCharacterEncoding("utf-8");
 		int num=0,ref=1,re_level=0,re_step=0;
 		if(request.getParameter("num")!=null){
 			num=Integer.parseInt(request.getParameter("num"));

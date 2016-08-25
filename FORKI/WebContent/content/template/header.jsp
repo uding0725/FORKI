@@ -53,7 +53,16 @@
 					<c:if test="${sessionScope.id != null}">
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/main/main.do">HOME</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/factor/user/logout.do">로그아웃</a></li>
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/MyPage/InfoModify.jsp">MyPage</a></li>
+				<c:if test="${sessionScope.grade == 0}">	
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/adminPage/SysMemberCare.do">MyPage</a></li>
+					</c:if>
+						<c:if test="${sessionScope.grade == 1}">	
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/UserModify.jsp">MyPage</a></li>
+					</c:if>
+						<c:if test="${sessionScope.grade == 2}">	
+						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/ComModify.jsp">MyPage</a></li>
+					</c:if>
+					
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/siteMap/siteMap.do">사이트맵</a></li>
 					</c:if>
 				</ul>

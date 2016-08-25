@@ -206,6 +206,9 @@
 	</c:if>		
 		</div>
 	<div id="md-map">
+	<img src="../img/marker3.png"style="position:relative; top:10px;" width="25" height="25">: 산과 공원
+	<img src="../img/marker2.png"style="position:relative; top:10px;" width="25" height="25">: 도서관
+	<img src="../img/marker4.png"style="position:relative; top:10px;" width="25" height="25">: 장난감 도서관
 		<div id="map" style="width:100%;height:100%;"></div>
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
@@ -240,7 +243,7 @@
 	if(tour.length>0){
 			
 		// 마커 이미지의 주소
-			var markerImageUrl = '../img/tree.png'
+			var markerImageUrl = '../img/marker3.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
@@ -295,7 +298,7 @@
 <script>			
 if(pub.length>0){
 		// 마커 이미지의 주소
-			var markerImageUrl = '../img/book.jpg'
+			var markerImageUrl = '../img/marker2.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
@@ -344,7 +347,7 @@ if(pub.length>0){
 <script>			
 	if(toy.length>0){
 		// 마커 이미지의 주소
-			var markerImageUrl = '../img/toy.png'
+			var markerImageUrl = '../img/marker4.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표

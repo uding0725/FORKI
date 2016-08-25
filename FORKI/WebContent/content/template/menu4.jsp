@@ -7,6 +7,7 @@
 			<ul>
 				<c:if test="${sessionScope.grade == 0}">
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/adminPage/SysMemberCare.do">회원관리</a></li>
+
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/adminPage/SysBlack_list.do">블랙리스트</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/adminPage/SysApprobation.do">기업가입신청</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerList.do">쪽지함</a></li>
@@ -21,7 +22,6 @@
 				</c:if>
 				<c:if test="${sessionScope.grade == 2}">
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/join/ComModify.jsp">개인정보수정</a></li>
-					<li class="topMenuLi-side"><a class="menuLink-side" href="#">유치원수정</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/myPage_Buss/kinderView.do">유치원보기</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/MyPage/MessengerList.do">쪽지함</a></li>
 					<li class="topMenuLi-side"><a class="menuLink-side" href="/FORKI/content/myPage_Buss/kinderInput.do">유치원등록하기</a></li>

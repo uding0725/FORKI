@@ -89,8 +89,8 @@
 				</c:if>
 				<c:if test="${!empty vecList}">
 					<c:forEach var="hosp" items="${vecList}">
-						<a href="javascript:viewDetail('${hosp.num}',2)">${hosp.h_nm}</a><br>
-						 	${hosp.gu_nm} ${hosp.dong}<br>
+						명칭 : <a href="javascript:viewDetail('${hosp.num}',2)">${hosp.h_nm}</a><br>
+						주소 : 서울특별시	${hosp.gu_nm} ${hosp.dong}<br>
 					<script>
 					title.push('${hosp.h_nm}')
 					x.push('${hosp.x}');

@@ -173,12 +173,32 @@
 
 		// 지도를 생성한다 
 		var map = new daum.maps.Map(mapContainer, mapOption); 
+		</script>
+		<script>
+		if(${type=='tour'}){
 		// 마커 이미지의 주소
-			var markerImageUrl = '../../img/toy.png'
+			var markerImageUrl = '../../img/marker3.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
 		    };
+		}
+		if(${type=='p'}){
+			var markerImageUrl = '../../img/marker2.png'
+			    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+			    markerImageOptions = { 
+			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+			    };
+		}
+		if(${type=='toy'}){
+			var markerImageUrl = '../../img/marker4.png'
+			    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+			    markerImageOptions = { 
+			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+			    };
+		}
+		</script>
+		<script>
 
 		// 마커 이미지를 생성한다
 		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
