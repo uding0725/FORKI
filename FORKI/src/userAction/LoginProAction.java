@@ -24,10 +24,20 @@ public class LoginProAction implements CommandAction{
 			LogonDataBean DBdata = manager.getDBdata(id);
 			session.setAttribute("id", id);
 			session.setAttribute("grade", DBdata.getM_grade());
-		}
+			
+			//관리자나 일반회원은 글쓰기할때 닉네임출력
+			if(DBdata.getM_grade()==0||DBdata.getM_grade()==1){
+			session.setAttribute("writer", DBdata.getNickname());
+			}
+			
+			//기업은 글쓰기할때 닉네임 출력
+			if(DBdata.getM_grade()==2){
+			session.setAttribute("writer", DBdata.getSchul_nm());
+			}
+			}
 		request.setAttribute("check", new Integer(check));
 		
-		return "/content/join/factor/user/loginPro.jsp";//�ش� ��
+		return "/content/join/factor/user/loginPro.jsp";//�ش� ��
 		
 	}
 }
