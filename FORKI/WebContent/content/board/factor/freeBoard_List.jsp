@@ -5,7 +5,7 @@
 <link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 
  
- <html>
+ <html>  
 <head>
 <style>
 #free-wrap{
