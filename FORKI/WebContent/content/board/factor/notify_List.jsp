@@ -17,7 +17,7 @@ function writeMessage(ids){
 <div id="write-wrap">
 	<div id="write-header">
 		<div id="header">
-			<font size="+2" style="position: relative; top:5px; left:5px;">공지사항</font> 
+			<img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:10px;"> <font size="+2" style="position: relative; top:5px; left:5px;">공지사항</font> 
 			<span style='position: absolute; right: 10px; top: 20px;'>
 				<a href="/FORKI/content/main/main.do">
 				<img style="position: relative; top:3px;" src="../img/home.png" width="20" height="20"></a>

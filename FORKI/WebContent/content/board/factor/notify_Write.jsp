@@ -49,7 +49,7 @@ a {
 </head>
 <body>
 <div id="secret-header">
-  <font size="+2" >글쓰기</font>
+   <img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:5px;"> <font size="+2" >글쓰기</font>
    <span style='position: absolute; right: 60px'> 
     <a href="#"><img src="img/home.png" width="20" height="20"></a> 
     <a href="#">>게시판</a>

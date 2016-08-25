@@ -152,7 +152,7 @@
 
 </center> 
 </body>
-</html>
+</html><%-- 
 =======
 <div id="write-wrap">
 	<div id="write-header">
@@ -242,4 +242,4 @@
 		</p>
 	</div>
 </div>
->>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git
+>>>>>>> branch 'master' of https://github.com/uding0725/FORKI.git --%>

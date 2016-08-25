@@ -12,12 +12,12 @@
 </script>
 <div id="md-wrap">
 	<div id="md-title">
-		<font size="+2">의료시설</font>
+		<img src="../img/chick1.png"style="position:relative; top:10px;" width="35" height="35"> <font size="+2">의료시설</font>
 		<span style="position:absolute; right: 5px; top: 5px;">
 			<a href="/FORKI/content/main/main.do">
 			<img style="position: relative; top: 2px;" src="../img/home.png" width="20" height="20"></a>
-			<a href="/FORKI/content/MedicalSystem/searchMedi.do">>주변시설</a>
-			<a href="">>의료시설 조회</a>		
+			<a style="text-decoration: none;color:black;" href="/FORKI/content/MedicalSystem/searchMedi.do">>주변시설</a>
+			<a style="text-decoration: none;color:black;" href="">>의료시설 조회</a>		
 		</span>	
 	</div>
 	<div id="md-container">
