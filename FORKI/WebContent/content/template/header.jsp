@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
 <script>
-	function checkIt2() {
+	function checkIt2() { 
 		inputForm = eval("document.inform");
 		if (!inputForm.id.value) {
 			alert("아이디를 입력하세요.");
