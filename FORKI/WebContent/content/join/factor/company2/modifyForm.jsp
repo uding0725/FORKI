@@ -104,9 +104,9 @@ function checkIt() {
         // 새로운 윈도우를 엽니다.
         open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
     }
-    
-    function openConfirmSchulNUM(userinput) {
-        // 닉네임을 입력했는지 검사
+    //
+/*     function openConfirmSchulNUM(userinput) {
+        // 사업자번호를 입력했는지 검사
         if (userinput.schul_num.value == "") {
             alert("사업자번호를 입력하세요");
             return;
@@ -116,7 +116,7 @@ function checkIt() {
        
         // 새로운 윈도우를 엽니다.
         open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
-    }
+    } */
     
     function zipCheck(){
     	
@@ -161,7 +161,7 @@ try{
     
     <tr>
       <td colspan="4">
-        <input type="password" name="passwd" size="20" maxlength="12" onfocus="return boxresetPWD()" value="${passwd}">
+        <input type="password" name="passwd" size="20" maxlength="12" placeholder="비밀번호" value="${passwd}">
       </td>
     </tr>
     
@@ -175,7 +175,7 @@ try{
     
     <tr> 
        <td colspan="4">
-        <input type="password" name="passwd2" size="20" maxlength="12" onfocus="return boxresetPWD2()" value="${passwd}">
+        <input type="password" name="passwd2" size="20" maxlength="12" placeholder="비밀번호 확인" value="${passwd}">
       </td>
     </tr>
    
@@ -189,13 +189,13 @@ try{
    
     <tr>
         <td colspan="4">
-        <input type="text" name="name" size="19" maxlength="10" onfocus="return boxresetNAME()" value="${name}">
+        <input type="text" name="name" size="19" maxlength="10" placeholder="이름" value="${name}">
       </td>
     </tr>
     
     <tr>
         <td colspan="4">
-        <input type="text" name="nickname" size="19" maxlength="10" onfocus="return boxresetNICKNAME()" value="${nickname}">
+        <input type="text" name="nickname" size="19" maxlength="10" placeholder="닉네임" value="${nickname}">
         <input type="button" name="confirm_nickname" value="닉네임 중복확인" OnClick="openConfirmnick(this.form)">
       </td>
     </tr>
@@ -219,7 +219,7 @@ try{
     
     <tr>
         <td colspan="4">
-        <input type="text" name="email" size="30" maxlength="30" onfocus="return boxresetEMAIL()" value="${email}">
+        <input type="text" name="email" size="30" maxlength="30" placeholder="이메일" value="${email}">
       </td>
     </tr>
    
@@ -245,31 +245,31 @@ try{
     
     <tr>
         <td colspan="4">  
-        <input type="text" name="tell" size="50" maxlength="50" onfocus="return boxresetTELL()" value="${tell}">
+        <input type="text" name="tell" size="50" maxlength="50" placeholder="핸드폰번호는 -없이 입력하세요" value="${tell}">
       </td>
     </tr>
     
     <tr> 
        <td colspan="4">
-        <input type="text" name="zipcode" size="10" readonly value="${zipcode}">
+        <input type="text" name="zipcode" size="10" readonly value="${zipcode}" placeholder="우편번호">
         <input type="button" value="우편번호찾기" onClick="zipCheck()">
 	</td>
 </tr>
 
 <tr>
 <td colspan="4">
-<input type="text" name="address" size="50" onfocus="return boxresetADDRESS()" value="${address}">
+<input type="text" name="address" size="50" placeholder="상세주소" value="${address}">
 </td>
 </tr>
 
 <tr>
 <td colspan="4">
-<input type="text" name="schul_num" size="25" onfocus="return boxresetSCHUL_NUM()" value="${schul_num}">
-<input type="button" value="사업자번호 중복확인" onClick="openConfirmSchulNUM(this.form)">
+<input type="text" name="schul_num" size="25" placeholder="사업자번호" value="${schul_num}">
+<!-- <input type="button" value="사업자번호 중복확인" onClick="openConfirmSchulNUM(this.form)"> -->
 </td>
 <tr>
 <td colspan="4">
-<input type="text" name="schul_nm" size="25" onfocus="return boxresetSCHUL_NM()" value="${schul_nm}">
+<input type="text" name="schul_nm" size="25" placeholder="유치원명" value="${schul_nm}">
 <input type="button" value="어린이집/유치원 찾기" onClick="SchulCheck()">
 </td>
 
@@ -277,7 +277,7 @@ try{
 <div align="center">
 <input type="submit" name="confirm" value="수	정" >
 <input type="reset" name="reset" value="다시입력">
-<input type="button" value="취	소" onclick="javascript:window.location='/FORKI/content/join/UserMain.do'">
+<input type="button" value="취	소" onclick="javascript:window.location='/FORKI/content/main/main.do'">
 </div>
 </form>
 </body>

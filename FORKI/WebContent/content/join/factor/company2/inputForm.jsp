@@ -268,7 +268,7 @@
     
     <tr>
         <td colspan="4">  
-        <input type="text" name="tell" size="20" maxlength="20" placeholder="핸드폰번호">
+        <input type="text" name="tell" size="20" maxlength="20" placeholder="핸드폰번호는 -없이 입력하세요">
       </td>
     </tr>
     
@@ -301,7 +301,7 @@
 <div align="center">
 <input type="submit" name="confirm" value="등   록" >
 <input type="reset" name="reset" value="다시입력">
-<input type="button" value="가입안함" onclick="javascript:window.location='/FORKI/content/join/UserMain.do'">
+<input type="button" value="가입안함" onclick="javascript:window.location='/FORKI/content/main/main.do'">
 </div>
 </form>
 </body>

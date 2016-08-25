@@ -161,7 +161,7 @@ function checkIt() {
 
 			<tr>
 				<td colspan="4"><input type="password" name="passwd" size="20"
-					maxlength="12" onfocus="return boxresetPWD()" value="${passwd}">
+					maxlength="12" placeholder="비밀번호" value="${passwd}">
 				</td>
 			</tr>
 
@@ -175,7 +175,7 @@ function checkIt() {
 
 			<tr>
 				<td colspan="4"><input type="password" name="passwd2" size="20"
-					maxlength="12" onfocus="return boxresetPWD2()" value="${passwd}">
+					maxlength="12" placeholder="비밀번호 확인" value="${passwd}">
 				</td>
 			</tr>
 
@@ -189,13 +189,13 @@ function checkIt() {
 
 			<tr>
 				<td colspan="4"><input type="text" name="name" size="19"
-					maxlength="10" onfocus="return boxresetNAME()" value="${name}">
+					maxlength="10" placeholder="이름" value="${name}">
 				</td>
 			</tr>
 
 			<tr>
 				<td colspan="4"><input type="text" name="nickname" size="19"
-					maxlength="10" onfocus="return boxresetNICKNAME()"
+					maxlength="10" placeholder="닉네임"
 					value="${nickname}"> <input type="button"
 					name="confirm_nickname" value="닉네임 중복확인"
 					OnClick="openConfirmnick(this.form)"></td>
@@ -216,7 +216,7 @@ function checkIt() {
 
 			<tr>
 				<td colspan="4"><input type="text" name="email" size="30"
-					maxlength="30" onfocus="return boxresetEMAIL()" value="${email}">
+					maxlength="30" placeholder="이메일" value="${email}">
 				</td>
 			</tr>
 
@@ -237,19 +237,19 @@ function checkIt() {
 
 			<tr>
 				<td colspan="4"><input type="text" name="tell" size="50"
-					maxlength="50" onfocus="return boxresetTELL()" value="${tell}">
+					maxlength="50" placeholder="핸드폰번호는 -없이 입력하세요" value="${tell}">
 				</td>
 			</tr>
 
 			<tr>
 				<td colspan="4"><input type="text" name="zipcode" size="10"
 					readonly value="${zipcode}"> <input type="button"
-					value="우편번호찾기" onClick="zipCheck()"></td>
+					value="우편번호찾기" onClick="zipCheck()" placeholder="우편번호"></td>
 			</tr>
 
 			<tr>
 				<td colspan="4"><input type="text" name="address" size="50"
-					onfocus="return boxresetADDRESS()" value="${address}"></td>
+					placeholder="상세주소" value="${address}"></td>
 			</tr>
 
 			<tr>
@@ -283,7 +283,7 @@ function checkIt() {
 			<input type="submit" name="confirm" value="수	정"> <input
 				type="reset" name="reset" value="다시입력"> <input type="button"
 				value="취	소"
-				onclick="javascript:window.location='/FORKI/content/join/UserMain.do'">
+				onclick="javascript:window.location='/FORKI/content/main/main.do'">
 		</div>
 	</form>
 </body>
