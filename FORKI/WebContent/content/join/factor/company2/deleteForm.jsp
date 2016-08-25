@@ -39,7 +39,7 @@ method="post" onSubmit="return checkIt()">
     <TD colspan="2" align="middle">
       <INPUT type=submit value="회원탈퇴">
       <input type="button" value="취  소" 
-      onclick="document.location.href='/FORKI/content/join/ComMain.do'">
+      onclick="document.location.href='/FORKI/content/join/UserMain.do'">
       </TD></TR>
 </TABLE>
 </form>

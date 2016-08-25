@@ -36,26 +36,28 @@ public class ModifyProAction implements CommandAction{
 		String schul_nm2 = request.getParameter("kinderName2");
 		String child_name3 = request.getParameter("kidName3");
 		String schul_nm3 = request.getParameter("kinderName3");
-		System.out.println("child_name1::"+child_name1);
-		System.out.println("child_name2::"+child_name2);
-		System.out.println("child_name3::"+child_name3);
+		
 		
 		if (child_name1 != null && child_name1 != "" && schul_nm1 != "") {
-			member.setId(request.getParameter("id"));
+			member.setId(id);
 			member.setChild_name(request.getParameter("kidName1"));
 			member.setSchul_nm(request.getParameter("kinderName1"));
+			member.setChild_num(1);
 			manager.updateKID_DATA(member);
+			System.out.println("¼³¸¶:::");
 		}
 		if (child_name2 != null && child_name2 != "" && schul_nm2 != "") {
-			member.setId(request.getParameter("id"));
+			member.setId(id);
 			member.setChild_name(request.getParameter("kidName2"));
 			member.setSchul_nm(request.getParameter("kinderName2"));
+			member.setChild_num(2);
 			manager.updateKID_DATA(member);
 		}
 		if (child_name3 != null && child_name3 != "" && schul_nm3 != "") {
-			member.setId(request.getParameter("id"));
+			member.setId(id);
 			member.setChild_name(request.getParameter("kidName3"));
 			member.setSchul_nm(request.getParameter("kinderName3"));
+			member.setChild_num(3);
 			manager.updateKID_DATA(member);
 		}
 		

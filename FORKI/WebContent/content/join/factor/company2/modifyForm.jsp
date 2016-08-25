@@ -171,6 +171,19 @@
         open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
     }
     
+    function openConfirmSchulNUM(userinput) {
+        // 닉네임을 입력했는지 검사
+        if (userinput.schul_num.value == "") {
+            alert("사업자번호를 입력하세요");
+            return;
+        }
+        // url과 사용자 입력 schul_num를 조합합니다.
+        url = "/FORKI/content/join/factor/company2/confirmSchulNUM.do?schul_num=" + userinput.schul_num.value ;
+       
+        // 새로운 윈도우를 엽니다.
+        open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
+    }
+    
     function zipCheck(){
     	
     	url="/FORKI/content/join/factor/company2/ZipCheck.do?check=y";
@@ -190,7 +203,7 @@
 try{
 %>
 <body>
-<form method="post" action="/FORKI/content/join/factor/company2/modifyPro.do" name="userinput"  onSubmit="return checkIt()">
+<form method="post" action="/FORKI/content/join/ComModifyPro.do" name="userinput"  onSubmit="return checkIt()">
   <table id="example" width="400" border="1" cellspacing="0" cellpadding="3" align="center" >
     <tr>
     <td height="39" align="center" colspan="4">
@@ -327,21 +340,20 @@ try{
 
 <tr>
 <td colspan="4">
-<input type="text" name="schul_num" size="50" onfocus="return boxresetSCHUL_NUM()" value="${schul_num}">
+<input type="text" name="schul_num" size="25" onfocus="return boxresetSCHUL_NUM()" value="${schul_num}">
+<input type="button" value="사업자번호 중복확인" onClick="openConfirmSchulNUM(this.form)">
 </td>
 <tr>
 <td colspan="4">
-<input type="text" name="schul_nm" size="40" onfocus="return boxresetSCHUL_NM()" value="${schul_nm}">
+<input type="text" name="schul_nm" size="25" onfocus="return boxresetSCHUL_NM()" value="${schul_nm}">
 <input type="button" value="어린이집/유치원 찾기" onClick="SchulCheck()">
 </td>
-
-
 
 </table> 
 <div align="center">
 <input type="submit" name="confirm" value="수	정" >
 <input type="reset" name="reset" value="다시입력">
-<input type="button" value="취	소" onclick="javascript:window.location='/FORKI/content/join/ComMain.do'">
+<input type="button" value="취	소" onclick="javascript:window.location='/FORKI/content/join/UserMain.do'">
 </div>
 </form>
 </body>

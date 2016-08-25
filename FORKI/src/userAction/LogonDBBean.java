@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import jdbc.JdbcUtil;
+
 public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 
 	private static LogonDBBean instance = new LogonDBBean();
@@ -136,14 +138,6 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 				
 			}
 
-			/*while (rs.next()) {*/
-				
-				/*if (next_num >= kidList.size()) {
-					break;
-				}
-				next_num++;*/
-			/*}*/
-
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -206,6 +200,53 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 		return x;
 	}
 
+	// certify확인
+	public int certifyCheck(String id, String passwd) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String certify = "";
+		int x = -1;
+		try {
+			conn = getConnection();
+
+			pstmt = conn.prepareStatement("select CERTIFY from MEMBER where ID=? AND PWD=?");
+			pstmt.setString(1, id);
+			pstmt.setString(2, passwd);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				System.out.println("eD??????");
+				certify = rs.getString("certify");
+				if ("y".equals(certify)){
+					x = 1;// 인증됨
+				}else {
+					x = 0;// 인증 안됨
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return x;
+	}
+	
 	// 로그인 계정 정보값 가져오기
 	public LogonDataBean getDBdata(String id) throws Exception {
 		Connection conn = null;
@@ -528,29 +569,41 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 	public void updateKID_DATA(LogonDataBean member) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
 		try {
 			conn = getConnection();
-
-			pstmt = conn.prepareStatement("update KID_DATA set name=?,schul_nm=?" + " where id=?");
-			pstmt.setString(1, member.getChild_name());
-			pstmt.setString(2, member.getSchul_nm());
-			pstmt.setString(3, member.getId());
-
-			pstmt.executeUpdate();
+			
+            pstmt = conn.prepareStatement("select * from KID_DATA where id = ?");
+            pstmt.setString(1, member.getId());
+            rs = pstmt.executeQuery();
+            System.out.println("K_ETC 검색 실행");
+            if (rs.next()) {
+            	pstmt = conn.prepareStatement("update KID_DATA set name=?, schul_nm=? " + " where id=? and num=?");
+            	pstmt.setString(1, member.getChild_name());
+            	pstmt.setString(2, member.getSchul_nm());
+            	pstmt.setString(3, member.getId());
+            	pstmt.setInt(4, member.getChild_num());
+    			
+    			pstmt.executeUpdate();
+    			System.out.println("K_ETC NEXT확인 후 있을때 업데이트 실행");
+            }else{
+            	pstmt = conn.prepareStatement("insert into KID_DATA values (?,?,?,?)");
+            	pstmt.setString(1, member.getId());
+            	pstmt.setInt(2, member.getChild_num());
+    			pstmt.setString(3, member.getChild_name());
+    			pstmt.setString(4, member.getSchul_nm());
+    			
+            	
+            	pstmt.executeUpdate();
+    			System.out.println("K_ETC NEXT확인 후 없을때 업데이트 실행");
+            }
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			if (pstmt != null)
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+			
 		}
 	}
 
@@ -683,6 +736,38 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
         }
         return x;
     }
+    //health_check 삭제
+    public int deleteHealth(String id) throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs= null;
+        int x=-1;
+        
+        try {
+        	conn = getConnection();
+
+            pstmt = conn.prepareStatement(
+            "select * from HEALTH_CHECK where id = ?");
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+           
+            if(rs.next()){
+            pstmt = conn.prepareStatement("delete from HEALTH_CHECK where id=?");
+            pstmt.setString(1, id);
+            pstmt.executeUpdate();
+            x= 1; //회원탈퇴 성공
+            }else
+            x= 0; //비밀번호 틀림
+            
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+        return x;
+    }
 
 	public Vector zipcodeRead(String area4) {
 		Connection con = null;
@@ -805,7 +890,6 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 				} catch (SQLException ex) {
 				}
 		}
-		System.out.println("id:::" + id);
 		return id;
 	}
 
@@ -859,7 +943,6 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 			pstmt = conn.prepareStatement("update MEMBER set PWD=? where ID=?");
 			pstmt.setString(1, passwd);
 			pstmt.setString(2, id);
-			System.out.println("id" + id + ", pwd  " + passwd);
 			x = pstmt.executeUpdate();
 
 		} catch (Exception ex) {

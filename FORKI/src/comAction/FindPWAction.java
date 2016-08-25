@@ -17,7 +17,6 @@ public class FindPWAction implements CommandAction {
 		String sessionKey = (String) session.getAttribute("findKey"); /*세션에 저장되 있던 키값*/
 		String id = (String) session.getAttribute("findId");
 		int check = 0 ; //인증성공여부를 전달하기 위한 변수
-		System.out.println("key: " + key +  " sessionKey : " + sessionKey  );
 		System.out.println(id);
 		if (key.equals(sessionKey)) 
 			check = 1;

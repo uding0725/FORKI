@@ -14,9 +14,6 @@ public class UserCheckAction implements CommandAction{
 		
 			request.setCharacterEncoding("UTF-8");
 			
-			System.out.println("나오니?:::::");
-			
-			
 			String id = request.getParameter("id");
 			SystemDBBean manager = SystemDBBean.getInstance();
 
@@ -32,8 +29,6 @@ public class UserCheckAction implements CommandAction{
 			request.setAttribute("nickname",p.getNickname());
 			request.setAttribute("sex",p.getSex());
 
-			
-			System.out.println("나오니?:::::");
 			
 			return "/content/adminPage/system/UserCheck.jsp";
 			

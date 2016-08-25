@@ -14,9 +14,6 @@ public class BlackUCheckAction implements CommandAction{
 		
 			request.setCharacterEncoding("UTF-8");
 			
-			System.out.println("나오니?:::::1");
-			
-			
 			String id = request.getParameter("id");
 			SystemDBBean manager = SystemDBBean.getInstance();
 
@@ -26,7 +23,6 @@ public class BlackUCheckAction implements CommandAction{
 			request.setAttribute("m_grade",bl.getM_grade());
 			request.setAttribute("r_date",bl.getR_date());
 			request.setAttribute("content",bl.getContent());
-			System.out.println("나오니?:::::2");
 			
 			return "/content/adminPage/system/blackUCheck.jsp";
 			

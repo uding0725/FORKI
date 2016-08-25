@@ -17,8 +17,6 @@ public class ZipCheckAction implements CommandAction{
 		   String area4 = request.getParameter("area4");//µø¿Ã∏ß
 		   LogonDBBean manager = LogonDBBean.getInstance();  
 		   Vector zipcodeList = manager.zipcodeRead(area4);
-		   System.out.println(zipcodeList.size());
-		   System.out.println(check);
 		   request.setAttribute("check", check);
 		   request.setAttribute("zipcodeList", zipcodeList);
 		   

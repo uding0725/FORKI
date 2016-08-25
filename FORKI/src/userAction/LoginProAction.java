@@ -18,14 +18,29 @@ public class LoginProAction implements CommandAction{
 		HttpSession session = request.getSession();
 		
 
-		LogonDBBean manager = LogonDBBean.getInstance();
-		int check= manager.userCheck(id,passwd);
+				  LogonDBBean manager1 = LogonDBBean.getInstance();
+		comAction.LogonDBBean manager2 = comAction.LogonDBBean.getInstance();
+		int check = manager1.userCheck(id,passwd);
+		int certi = manager1.certifyCheck(id,passwd);
+		int reg_check = manager2.getDBK_ETCdata(id);
+		int grade = 0;
+		String schul_num = "";
 		if(check==1){
-			LogonDataBean DBdata = manager.getDBdata(id);
+			LogonDataBean DBdata1 = manager1.getDBdata(id);
+			grade = DBdata1.getM_grade();
 			session.setAttribute("id", id);
-			session.setAttribute("grade", DBdata.getM_grade());
+			session.setAttribute("grade", grade);
+			
+			if(grade==2){
+			comAction.LogonDataBean DBdata2 = manager2.getDBSchul(id);
+			schul_num = DBdata2.getSchul_num();
+			session.setAttribute("schul_num", schul_num);
+			}
 		}
 		request.setAttribute("check", new Integer(check));
+		request.setAttribute("certi", new Integer(certi));
+		request.setAttribute("grade", new Integer(grade));
+		request.setAttribute("reg_check", new Integer(reg_check));
 		
 		return "/content/join/factor/user/loginPro.jsp";//ÇØ´ç ºä
 		

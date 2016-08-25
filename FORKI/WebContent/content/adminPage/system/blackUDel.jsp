@@ -10,7 +10,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="center"><input type="button" onclick="self.close()" value="확인"></td>
+					<td align="center"><input type="button" onclick="document.location.href='/FORKI/content/adminPage/SysBlack_list.do" value="확인"></td>
 				</tr>
 			</table>
 	</body>

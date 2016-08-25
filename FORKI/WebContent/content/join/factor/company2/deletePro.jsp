@@ -25,7 +25,7 @@
   <tr>
     <td align="center">
       <p>흑흑.... 서운합니다. 안녕히 가세요.</p>
-      <meta http-equiv="Refresh" content="5;url=/FORKI/content/join/ComMain.do" >
+      <meta http-equiv="Refresh" content="5;url=/FORKI/content/join/UserMain.do" >
     </td>
   </tr>
   <tr>

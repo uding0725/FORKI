@@ -185,6 +185,67 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
         return DBdata;
     }
     
+    // 로그인 계정 정보값 가져오기
+    public LogonDataBean getDBSchul(String id) throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        LogonDataBean DBdata =null;
+        try {
+            conn = getConnection();
+           
+            pstmt = conn.prepareStatement(
+            "select * from K_ETC where id = ?");
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+            	DBdata = new LogonDataBean();
+            	DBdata.setId(rs.getString("id"));
+            	DBdata.setSchul_num(rs.getString("schul_num"));
+            }
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+        return DBdata;
+    }
+    
+    //기업 등록 승인여부
+    public int getDBK_ETCdata(String id) throws Exception {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String reg_check = "";
+        int x = -1;
+        try {
+            conn = getConnection();
+           
+            pstmt = conn.prepareStatement("select * from K_ETC where id = ?");
+            pstmt.setString(1, id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+            	reg_check = rs.getString("reg_check");
+            	if("y".equals(reg_check)){
+            		x = 1;// 인증됨
+				}else {
+					x = 0;// 인증 안됨
+				}
+            }
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+        return x;
+    }
+    
     //confirmId.jsp
     public int confirmId(String id) throws Exception {
     	Connection conn = null;
@@ -233,6 +294,35 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
             	x= 1; //해당 닉네임 있음
             else
             	x= -1;//해당 닉네임 없음
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        	if (rs != null) try { rs.close(); } catch(SQLException ex) {}
+            if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
+            if (conn != null) try { conn.close(); } catch(SQLException ex) {}
+        }
+        return x;
+    }
+    
+    //confirmSchulNUM.jsp
+    public int confirmSchulNUM(String schul_num) throws Exception {
+    	Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs= null;
+        int x=-1;//경우의 수
+       
+        try {
+            conn = getConnection();
+           
+            pstmt = conn.prepareStatement(
+            "select schul_num from KINDERGARTEN where schul_num = ?");
+            pstmt.setString(1, schul_num);
+            rs= pstmt.executeQuery();
+
+            if(rs.next())
+            	x= 1; //해당 사업자번호 있음
+            else
+            	x= -1;//해당 없음
         } catch(Exception ex) {
             ex.printStackTrace();
         } finally {
@@ -556,7 +646,7 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
     }
     
     //SchulCheck.jsp
-    public Vector SchulRead(String dong)  {
+    public Vector SchulRead(String schul_nm)  {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -564,12 +654,13 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
         
         try {
             con = getConnection();
-            String strQuery = "select * from KINDERGARTEN where dong like '"+dong+"%'";
+            String strQuery = "select * from KINDERGARTEN where schul_nm like '"+schul_nm+"%'";
             pstmt = con.prepareStatement(strQuery);
             rs = pstmt.executeQuery();
             while(rs.next()){
             	SchulBean tempSchul = new SchulBean();
             	tempSchul.setSchul_nm(rs.getString("schul_nm"));
+            	tempSchul.setSchul_num(rs.getString("schul_num"));
             	tempSchul.setAdres(rs.getString("adres"));
                 vecList.addElement(tempSchul);
             }
@@ -610,7 +701,6 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
             if (pstmt != null) try { pstmt.close(); } catch(SQLException ex) {}
             if (conn != null) try { conn.close(); } catch(SQLException ex) {}
         }
-        System.out.println("id:::"+id);
    	return id;
    }
     //findPWD.jsp
@@ -652,7 +742,6 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
          		   "update MEMBER set PWD=? where ID=?");
             pstmt.setString(1, passwd);
             pstmt.setString(2, id);
-            System.out.println("id" + id  + ", pwd  " + passwd);
             x = pstmt.executeUpdate();
             
         } catch(Exception ex) {

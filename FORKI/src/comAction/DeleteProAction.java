@@ -25,8 +25,6 @@ public class DeleteProAction implements CommandAction{
 	if(manager.deleteP_ETC(id,passwd)==1){
 		check = manager.deleteMEMBER(id,passwd);
 	}
-	
-	System.out.println("[[[["+check+"]]]]");
 	request.setAttribute("check", new Integer(check));
 	
 	return "/content/join/ComDeletePro.jsp";//ÇØ´ç ºä

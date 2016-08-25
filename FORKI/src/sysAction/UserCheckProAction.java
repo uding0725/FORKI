@@ -17,12 +17,10 @@ public class UserCheckProAction implements CommandAction{
 			request.setCharacterEncoding("UTF-8");
 			
 			String id = request.getParameter("id");
-			System.out.println("id:::"+id);
 			SystemDBBean manager = SystemDBBean.getInstance();
 			
 			SystemDataBean GetM = manager.getMemCheck(id);
 			int check = manager.insertBlack(GetM);
-			System.out.println("check::"+check);
 			request.setAttribute("check", check);
 			
 			return "/content/adminPage/system/UserCheckPro.jsp";
