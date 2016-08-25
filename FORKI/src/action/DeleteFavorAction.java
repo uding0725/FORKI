@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO_DTO.KiderDBBean;
 
-public class InsertFavorAction implements CommandAction {
+public class DeleteFavorAction implements CommandAction{
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
@@ -17,11 +17,11 @@ public class InsertFavorAction implements CommandAction {
 		String kinderNum = request.getParameter("num");
 		
 		KiderDBBean DBpro = KiderDBBean.getInstance();
-		int check = DBpro.setFavor(id, kinderNum);
-		
-		request.setAttribute("check", new Integer(check));
+		int check = DBpro.deleteFavor(id, kinderNum);
+				
+		request.setAttribute("check", check);
 		request.setAttribute("num", kinderNum);
-		return "InsertFavor.jsp";
+		return "DeleteFavor.jsp";
 	}
 
 }

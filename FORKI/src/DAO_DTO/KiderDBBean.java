@@ -460,7 +460,7 @@ public class KiderDBBean {
 					if (rs.next()) {
 						do {
 							KiderDataBean article = new KiderDataBean();
-
+							article.setSchul_num(Integer.parseInt(rs.getString("schul_num")));
 							article.setSchul_nm(rs.getString("schul_nm"));
 							article.setAdres(rs.getString("adres"));
 							article.setTelno(rs.getString("telno"));
@@ -710,7 +710,6 @@ public class KiderDBBean {
 		int check = 0;
 		String favor = null;
 
-		List imgList = null;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select * from P_ETC where id = ?");
@@ -727,6 +726,96 @@ public class KiderDBBean {
 					favor = favor + "@" + kinderNum;
 				} else {
 					favor = kinderNum;
+				}
+				pstmt = conn.prepareStatement("update P_ETC set FAVORITE = ? where id = ?");
+				pstmt.setString(1, favor);
+				pstmt.setString(2, id);
+				pstmt.executeQuery();
+				check = 1;
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return check;
+	}
+	
+	/* 관심유치원 등록여부 확인 */
+	public int checkFavor(String id, String kinderNum) throws Exception {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+		String favor = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from P_ETC where id = ?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				favor = rs.getString(5);
+				if (favor.contains(kinderNum)) 
+					check = 1;
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return check;
+	}
+	
+	/* 관심유치원 삭제 */
+	public int deleteFavor(String id, String kinderNum) throws Exception {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+		String favor = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from P_ETC where id = ?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				favor = rs.getString(5);
+				if (favor.contains("@" + kinderNum)) {
+					kinderNum = "@" + kinderNum;
+					favor = favor.replace(kinderNum, "");
+				} else if (favor.contains(kinderNum + "@")) {
+					kinderNum = kinderNum +  "@";
+					favor = favor.replace(kinderNum, "");
+				} else {
+					favor = favor.replace(kinderNum, "");
 				}
 				pstmt = conn.prepareStatement("update P_ETC set FAVORITE = ? where id = ?");
 				pstmt.setString(1, favor);
