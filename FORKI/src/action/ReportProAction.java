@@ -12,13 +12,20 @@ public class ReportProAction implements CommandAction {
 	
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		ReportDataBean rdb = new ReportDataBean();
-		rdb.setReporter((String)request.getSession().getAttribute("id"));
-		rdb.setSub_report(request.getParameter("sub"));
-		rdb.setLocation(request.getParameter("ip"));
+		rdb.setReporter(request.getParameter("id"));
+		rdb.setSub_report(request.getParameter("subid"));
+		rdb.setLocation(request.getParameter("loc"));
 		rdb.setContent(request.getParameter("content"));
 		rdb.setR_date(new Timestamp(System.currentTimeMillis()));
 		
+		System.out.println("id::"+request.getParameter("id"));
+		System.out.println("subid::"+request.getParameter("subid"));
+		System.out.println("loc::"+request.getParameter("loc"));
+		System.out.println("cont::"+request.getParameter("content"));
+		System.out.println("time::"+new Timestamp(System.currentTimeMillis()));
 		ReportDBBean rdbb = ReportDBBean.getInstance();
 		rdbb.insertReport(rdb);
 		

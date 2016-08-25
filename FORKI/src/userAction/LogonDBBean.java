@@ -3,10 +3,11 @@ package userAction;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import jdbc.JdbcUtil;
 
-public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
+
+public class LogonDBBean {// DBï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½: DBBean, DAO
+
 
 	private static LogonDBBean instance = new LogonDBBean();
 
@@ -172,11 +173,11 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 			if (rs.next()) {
 				dbpasswd = rs.getString("PWD");
 				if (dbpasswd.equals(passwd))
-					x = 1; // ÀÎÁõ ¼º°ø
+					x = 1; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				else
-					x = 0; // ºñ¹Ð¹øÈ£ Æ²¸²
+					x = 0; // ï¿½ï¿½Ð¹ï¿½È£ Æ²ï¿½ï¿½
 			} else
-				x = -1;// ÇØ´ç ¾ÆÀÌµð ¾øÀ½
+				x = -1;// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -200,7 +201,8 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 		return x;
 	}
 
-	// certifyÈ®ÀÎ
+
+	// certifyÈ®ï¿½ï¿½
 	public int certifyCheck(String id, String passwd) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -220,9 +222,9 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 				System.out.println("eD??????");
 				certify = rs.getString("certify");
 				if ("y".equals(certify)){
-					x = 1;// ÀÎÁõµÊ
+					x = 1;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				}else {
-					x = 0;// ÀÎÁõ ¾ÈµÊ
+					x = 0;// ï¿½ï¿½ï¿½ï¿½ ï¿½Èµï¿½
 				}
 			}
 		} catch (Exception ex) {
@@ -247,12 +249,12 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 		return x;
 	}
 	
-	// ·Î±×ÀÎ °èÁ¤ Á¤º¸°ª °¡Á®¿À±â
+
 	public LogonDataBean getDBdata(String id) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		LogonDataBean DBdata = null;
+		LogonDataBean DBdata = new LogonDataBean();
 		try {
 			conn = getConnection();
 
@@ -261,10 +263,26 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				DBdata = new LogonDataBean();
 				DBdata.setId(rs.getString("id"));
 				DBdata.setM_grade(rs.getInt("m_grade"));
-			}
+					if(rs.getInt("m_grade")==1 || rs.getInt("m_grade")==0){
+						pstmt = conn.prepareStatement("select NICKNAME from P_ETC where id = ?");
+						pstmt.setString(1, id);
+						rs = pstmt.executeQuery();
+						if (rs.next()) {
+						DBdata.setNickname(rs.getString("nickname"));
+						}
+						
+					}
+				if(rs.getInt("m_grade")==2){
+					pstmt = conn.prepareStatement("select SCHUL_NM from K_ETC where id = ?");
+					pstmt.setString(1, id);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {		
+						DBdata.setSchul_nm(rs.getString("SCHUL_NM"));
+					}
+				}
+			}	
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -292,7 +310,7 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int x = -1;// °æ¿ìÀÇ ¼ö
+		int x = -1;// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
 		try {
 			conn = getConnection();
@@ -302,9 +320,9 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 			rs = pstmt.executeQuery();
 
 			if (rs.next())
-				x = 1; // ÇØ´ç ¾ÆÀÌµð ÀÖÀ½
+				x = 1; // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 			else
-				x = -1;// ÇØ´ç ¾ÆÀÌµð ¾øÀ½
+				x = -1;// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -332,7 +350,7 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int x = -1;// °æ¿ìÀÇ ¼ö
+		int x = -1;// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
 		try {
 			conn = getConnection();
@@ -342,9 +360,9 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 			rs = pstmt.executeQuery();
 
 			if (rs.next())
-				x = 1; // ÇØ´ç ´Ð³×ÀÓ ÀÖÀ½
+				x = 1; // ï¿½Ø´ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			else
-				x = -1;// ÇØ´ç ´Ð³×ÀÓ ¾øÀ½
+				x = -1;// ï¿½Ø´ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -577,7 +595,7 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
             pstmt = conn.prepareStatement("select * from KID_DATA where id = ?");
             pstmt.setString(1, member.getId());
             rs = pstmt.executeQuery();
-            System.out.println("K_ETC °Ë»ö ½ÇÇà");
+            System.out.println("K_ETC ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½");
             if (rs.next()) {
             	pstmt = conn.prepareStatement("update KID_DATA set name=?, schul_nm=? " + " where id=? and num=?");
             	pstmt.setString(1, member.getChild_name());
@@ -586,7 +604,7 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
             	pstmt.setInt(4, member.getChild_num());
     			
     			pstmt.executeUpdate();
-    			System.out.println("K_ETC NEXTÈ®ÀÎ ÈÄ ÀÖÀ»¶§ ¾÷µ¥ÀÌÆ® ½ÇÇà");
+    			System.out.println("K_ETC NEXTÈ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½");
             }else{
             	pstmt = conn.prepareStatement("insert into KID_DATA values (?,?,?,?)");
             	pstmt.setString(1, member.getId());
@@ -596,7 +614,7 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
     			
             	
             	pstmt.executeUpdate();
-    			System.out.println("K_ETC NEXTÈ®ÀÎ ÈÄ ¾øÀ»¶§ ¾÷µ¥ÀÌÆ® ½ÇÇà");
+    			System.out.println("K_ETC NEXTÈ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½");
             }
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -628,9 +646,9 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 					pstmt = conn.prepareStatement("delete from MEMBER where id=?");
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
-					x = 1; // È¸¿øÅ»Åð ¼º°ø
+					x = 1; // È¸ï¿½ï¿½Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				} else
-					x = 0; // ºñ¹Ð¹øÈ£ Æ²¸²
+					x = 0; // ï¿½ï¿½Ð¹ï¿½È£ Æ²ï¿½ï¿½
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -675,9 +693,9 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 					pstmt = conn.prepareStatement("delete from P_ETC where id=?");
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
-					x = 1; // È¸¿øÅ»Åð ¼º°ø
+					x = 1; // È¸ï¿½ï¿½Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				} else
-					x = 0; // ºñ¹Ð¹øÈ£ Æ²¸²
+					x = 0; // ï¿½ï¿½Ð¹ï¿½È£ Æ²ï¿½ï¿½
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -723,9 +741,9 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
             pstmt = conn.prepareStatement("delete from KID_DATA where id=?");
             pstmt.setString(1, id);
             pstmt.executeUpdate();
-            x= 1; //È¸¿øÅ»Åð ¼º°ø
+            x= 1; //È¸ï¿½ï¿½Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }else
-            x= 0; //ºñ¹Ð¹øÈ£ Æ²¸²
+            x= 0; //ï¿½ï¿½Ð¹ï¿½È£ Æ²ï¿½ï¿½
             }
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -736,7 +754,7 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
         }
         return x;
     }
-    //health_check »èÁ¦
+    //health_check ï¿½ï¿½ï¿½ï¿½
     public int deleteHealth(String id) throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -755,9 +773,9 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
             pstmt = conn.prepareStatement("delete from HEALTH_CHECK where id=?");
             pstmt.setString(1, id);
             pstmt.executeUpdate();
-            x= 1; //È¸¿øÅ»Åð ¼º°ø
+            x= 1; //È¸ï¿½ï¿½Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }else
-            x= 0; //ºñ¹Ð¹øÈ£ Æ²¸²
+            x= 0; //ï¿½ï¿½Ð¹ï¿½È£ Æ²ï¿½ï¿½
             
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -963,7 +981,7 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 		return x;
 	}
 
-	// certify.jsp(EMAILÀÎÁõ)
+	// certify.jsp(EMAILï¿½ï¿½ï¿½ï¿½)
 	public int Certify(String id) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -973,7 +991,7 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 			conn = getConnection();
 
 			pstmt = conn.prepareStatement("update MEMBER set CERTIFY = ? where ID = ?");
-			pstmt.setString(1, "y"); /* ÀÎÁõ¿©ºÎ°ªÀ» y·Î º¯°æ */
+			pstmt.setString(1, "y"); /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ yï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 			pstmt.setString(2, id);
 
 			x = pstmt.executeUpdate();
@@ -994,4 +1012,6 @@ public class LogonDBBean {// DB¿Í °ü·ÃµÈ ÀÏÀ» ÇÏ´Â Å¬·¡½º: DBBean, DAO
 		}
 		return x;
 	}
+	
+	
 }
