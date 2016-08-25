@@ -24,7 +24,6 @@ public class ModifyProAction implements CommandAction{
 		member.setZipcode(request.getParameter("zipcode"));
 		member.setAddress(request.getParameter("address"));
 		member.setNickname(request.getParameter("nickname"));
-		member.setSex(request.getParameter("sex"));
 		
 		LogonDBBean manager = LogonDBBean.getInstance();
 		manager.updateMEMBER(member);

@@ -54,10 +54,10 @@ function checkIt() {
     	}
     }
     
-    if(!userinput.sex.value){
+/*     if(!userinput.sex.value){
         alert("성별을 선택하세요");
         return false;
-    }
+    } */
     
     if(!userinput.email.value) {
         alert("이메일을 입력하세요");
@@ -207,12 +207,12 @@ function checkIt() {
 				</font></td>
 			</tr>
 
-			<tr>
+<!-- 			<tr>
 				<td colspan="4"><input type="radio" value="man" name="sex"
 					id="man" class="validate required"> <lable for="man">남자</lable>
 					<input type="radio" value="woman" name="sex" id="woman"> <lable
 						for="woman">여자</lable></td>
-			</tr>
+			</tr> -->
 
 			<tr>
 				<td colspan="4"><input type="text" name="email" size="30"

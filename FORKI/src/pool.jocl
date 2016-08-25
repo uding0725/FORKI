@@ -6,9 +6,11 @@
 
 		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
 		
+
 		
 		<string value="uding"/>	
 		<string value="1234"/>
+
 
 
 	</object>
