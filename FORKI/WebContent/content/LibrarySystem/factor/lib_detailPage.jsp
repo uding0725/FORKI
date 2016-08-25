@@ -21,7 +21,7 @@
 
 #lb-detailview {
 	width: 440px;
-	height: 650px;
+	height: 500px;
 	margin: 5px;
 	padding: 10px;
 	border: 1px solid;
@@ -94,28 +94,6 @@
 		<font size="+1"><b>문화시설 세부정보</b></font>
 		<div id="lb-detailview">
 		
-			<!-- <div class="wrapper"> 별점 
-	            <span class="rating">
-	                <input id="rating5" type="radio" name="rating" value="5">
-	                <label for="rating5">5</label>
-	                <input id="rating4" type="radio" name="rating" value="4">
-	                <label for="rating4">4</label>
-	                <input id="rating3" type="radio" name="rating" value="3">
-	                <label for="rating3">3</label>
-	                <input id="rating2" type="radio" name="rating" value="2" checked>
-	                <label for="rating2">2</label>
-	                <input id="rating1" type="radio" name="rating" value="1">
-	                <label for="rating1">1</label>
-	            </span>
-	                <select name="average">
-	                <option value="">평점주기</option>
-	                <option value="1">1</option>
-	                <option value="2">2</option>
-	                <option value="3">3</option>
-	                <option value="4">4</option>
-	                <option vlaue="5">5</option>
-	                </select>
-		        </div>  -->
 		 <c:if test="${type=='tour'}">
 		  <h2> 세부정보 </h2>
 		  <br>
