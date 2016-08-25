@@ -10,7 +10,7 @@
 <form action="/FORKI/content/join/factor/user/findID.do" method="post">
 <table border="1" width="300">
 <tr>
-<td colspan="2">이름과 이메일을 입력해주세요</td>
+<td colspan="2" algin="center">이름과 이메일을 입력해주세요</td>
 </tr>
 <tr>
 <td>이름</td>
