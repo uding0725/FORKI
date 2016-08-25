@@ -16,13 +16,15 @@
 </script>
 <div id="mdK-wrap">
 	<div style="width: 940px; height: 40px; margin:auto; position:relative; top:10px; font-family: 'Jeju Gothic', serif;">
-		<font size="+2">유치원찾기</font> <span style='position: absolute; right: 0px'> <a href="/FORKI/content/main/main.do"><img
-				src="../img/home.png" width="20" height="20"></a> <a href="">>유치원찾기</a>
+		<font size="+2">유치원찾기</font>
+		<span style='position: absolute; right: 0px'>
+		<a href="/FORKI/content/main/main.do">
+		<img src="../img/home.png" width="20" height="20"></a>
+		<a href="">>유치원찾기</a>
 		</span>
 	</div>
 	<div id="mdK-container">
 		<div id="mdK-header">
-
 			<table border="1" cellpadding=0 cellspacing=0 width="940" height="100">
 				<tr>
 					<td width="80" align="center"><strong>
@@ -76,7 +78,7 @@
 				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>&nbsp;총점:${kinder.tsdata.t_score}&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
         	${kinder.telno}<br>
 
-        	${kinder.adres}<%-- <input type="button" value="찾기" onclick="searchkid('${kinder.adres}','${kinder.schul_nm}')"> --%><br>
+        	${kinder.adres}
 			<script>
         	title.push('${kinder.schul_nm}');
         	x.push('${kinder.x}');

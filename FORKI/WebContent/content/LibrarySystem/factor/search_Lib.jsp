@@ -1,58 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html>
-<head>
-<style>
-#lib-wrap {
-	width: 700px;
-	height: 790px;
-	margin: 0px auto;
-	padding: 0px;
-	border: 0px solid;
-	padding: 0px;
-	position: relative;
-}
-
-#lib-container {
-	width: 680px;
-	height: 700px;
-	margin: 0px auto;
-	padding: 20px;
-	border: 1px solid;
-}
-
-#lib-header {
-	width: 550px;
-	margin-bottom: 20px;
-	border: 0px solid;
-}
-
-#lib-content {
-	width: 250px;
-	height: 400px;
-	padding: 5px;
-	margin-bottom: 10px;
-	float: left;
-	border: 1px solid;
-}
-
-#lib-map {
-	width: 380px;
-	height: 300px;
-	padding: 10px;
-	margin: auto;
-	margin-bottom: 10px;
-	float: right;
-	border: 1px solid;
-}
-
-a {
-	text-decoration: none;
-}
-</style>
-
-
 <script>
 	function viewDetail(adres,select,type) {
 		url = "/FORKI/content/LibrarySystem/factor/lib_detailPage.do?adres=" + adres+"&select="+select+"&type="+type;
@@ -66,21 +14,23 @@ a {
 	var x = new Array();
 	var y = new Array();
 	var title = new Array();
-	
-	
-	
+
 </script>	
-</head>
-<div id="lib-wrap">
-	<font size="+2">문화시설</font> <span
-		style='position: absolute; right: -20px'> <a href="/FORKI/content/main/main.do"><img
-			src="../img/home.png" width="20" height="20"></a> <a href="/FORKI/content/MedicalSystem/searchMedi.do">>주변시설</a>
-		<a href="">>문화시설 조회</a>
-	</span>
-	<div id="lib-container">
+
+<div id="md-wrap">
+	<div id="md-title">
+		<font size="+2">문화시설</font> 
+		<span style="position: absolute; right: 5px; top: 5px;"> 
+			<a href="/FORKI/content/main/main.do">
+			<img style="position: relative; top: 2px;" src="../img/home.png" width="20" height="20"></a>
+			<a href="/FORKI/content/MedicalSystem/searchMedi.do">>주변시설</a>
+			<a href="">>문화시설 조회</a>
+		</span>
+	</div>
+	<div id="md-container">
 		<form name=search_libForm aciton="/FORKI/content/LibrarySystem/searchLib.do" onSubmit="return checkGu">
-		<div id="lib-header">
-			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
+		<div id="md-header">
+			<table border="1" cellpadding=0 cellspacing=0 width="740" height="100">
 				<tr>
 					<td width="80" align="center">
 					<strong> <h3>조회</h3> </strong>
@@ -125,14 +75,16 @@ a {
 					<!--  <a href="#"><img src="../img/submit.jpg" width="30" height="30"></a></td> -->
 				<!-- <a href="javascript:document.search_libForm.onsubmit()"><img src="../img/submit.jpg" width="30" height="30"></a>
 				<input  TYPE="IMAGE" src="/img/bt_over.gif" name="Submit" value="Submit"  align="absmiddle"> -->
-				<input type="image" src="../img/submit.jpg" name="submit" width="30" height="30" >
+				<input style="position: relative; top: 9px;" type="image" src="../img/submit.jpg" name="submit" width="30" height="30" >
 				</td>
 				</tr>
 			</table>
 		</div>
 		</form>
-		<p>총 검색 건수 : ${count} 건</p>
-		<div id="lib-content" style="overflow:auto">
+		<div style="height: 30px; width:740px; margin: auto; bottom: 10px;">
+			<p>총 검색 건수 : ${count} 건</p>
+		</div>
+		<div id="md-content" style="overflow:auto">
 	
 	<c:if test="${count==0 }">
 		검색 결과가 없습니다.
@@ -251,11 +203,10 @@ a {
         		</script>		
         		</c:forEach>
 			</c:if> 
-	</c:if>	
-	
+	</c:if>		
 		</div>
-	<div id="lib-map">
-	<div id="map" style="width:100%;height:100%;"></div>
+	<div id="md-map">
+		<div id="map" style="width:100%;height:100%;"></div>
 
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
 <script>
@@ -440,9 +391,7 @@ if(pub.length>0){
 		}
 	}
 </script> 
-
+		</div>
 	</div>
-	</div>
-	</div>
-	</html>
+</div>
 	

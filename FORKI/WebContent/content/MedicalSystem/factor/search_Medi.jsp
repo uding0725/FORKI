@@ -1,9 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<head>
-<link href="../CSS/reset.css" rel="stylesheet" type="text/css">
-<link href="../CSS/global.css" rel="stylesheet" type="text/css">
-<link href="../CSS/style.css?var=1.1" rel="stylesheet" type="text/css">
 <script>
 	function viewDetail(num,i) {
 		url = "/FORKI/content/MedicalSystem/factor/searchdetailPage.do?num=" + num+"&check="+i;
@@ -14,20 +10,21 @@
 	var y = new Array();
 
 </script>
-</head>
-	<div id="md-wrap">
+<div id="md-wrap">
+	<div id="md-title">
 		<font size="+2">의료시설</font>
-		<span style='position:absolute; right:-20px'>
-		<a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a>
-		<a href="/FORKI/content/MedicalSystem/searchMedi.do">>주변시설</a>
-		<a href="">>의료시설 조회</a>		
+		<span style="position:absolute; right: 5px; top: 5px;">
+			<a href="/FORKI/content/main/main.do">
+			<img style="position: relative; top: 2px;" src="../img/home.png" width="20" height="20"></a>
+			<a href="/FORKI/content/MedicalSystem/searchMedi.do">>주변시설</a>
+			<a href="">>의료시설 조회</a>		
 		</span>	
+	</div>
 	<div id="md-container">
 		<div id="md-header">
 				<form method="post" name="searchmediform"action="/FORKI/content/MedicalSystem/searchMedi.do">
-			<table border="1" cellpadding=0 cellspacing=0 width="685" height="100">
+			<table border="1" cellpadding=0 cellspacing=0 width="740" height="100">
 				<tr>
-			
 					<td width="80" align="center">
 					<strong> <h3>조회</h3> </strong>
 					</td>
@@ -66,12 +63,14 @@
 					</select>  
 					읍/면/동<input type="text" name="dong" autofocus placeholder="동을 입력하세요"><br>
 					또는 기관명<input type="text" name="h_nm" autofocus placeholder="기관명을 입력하세요"> 
-					<input type="image" src="../img/submit.jpg" width="30" height="40">
+					<input style="position: relative; top: 9px;" type="image" src="../img/submit.jpg" width="30" height="30">
 				</tr>
 			</table>
 			</form>
 		</div>
-		<p>총 검색 건수 : ${count} 건 </p>
+		<div style="height: 30px; width:740px; margin: auto; bottom: 10px;">
+			<p>총 검색 건수 : ${count} 건 </p>
+		</div>
 		<div id="md-content"  style="overflow: auto; overflow-x: hidden">
 			<c:if test="${count==0}">
 				검색 결과가 없습니다. 
