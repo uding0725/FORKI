@@ -38,13 +38,15 @@ function reDeleteConfirm(re_num,num,writer,pageNum){
 			<td colspan="2">${article.content}</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="right"><input type="button" value="수정하기"
-				onclick="document.location.href='/FORKI/content/board/freeBoardUpdate.do?num=${num}&pageNum=${pageNum}'">
+			<td colspan="2" align="right">
+			<c:if test="${sessionScope.id==article.id}">
+				<input type="button" value="수정하기" onclick="document.location.href='/FORKI/content/board/freeBoardUpdate.do?num=${num}&pageNum=${pageNum}'">
 				<input type="button" value="삭제하기" onclick="deleteConfirm();">
+			</c:if>
 				<input type="button" value="목록으로"
 				onclick="document.location.href='/FORKI/content/board/freeBoardList.do?pageNum=${pageNum}'">
 			</td>
-		</tr>
+		</tr> 
 	</table>
 
 
@@ -57,34 +59,38 @@ function reDeleteConfirm(re_num,num,writer,pageNum){
 			<form name="replyForm">
 
 				<c:forEach var="reply" items="${replyList}">
-
+  
 					<tr>
 						<td>${reply.content} ${reply.num} ${reply.re_num}</td>
-						<td><input type=hidden name=re_num value="${reply.re_num}">
-							<input type=hidden name=writer value="${reply.writer}" /> <input
-							type="button" value="신고"> <input type="button"
-							value="삭제"
-							onClick="reDeleteConfirm(${reply.re_num},${reply.num},'${reply.writer}',${pageNum});">
-
+						<td>
+						<c:if test="${sessionScope.id == reply.id}">
+						<input type=hidden name=re_num value="${reply.re_num}">
+							<input type=hidden name=writer value="${reply.writer}" />
+							<input type="button" value="신고"> 
+							<input type="button"value="삭제" onClick="reDeleteConfirm(${reply.re_num},${reply.num},'${reply.writer}',${pageNum});">
+						</c:if>
 
 						</td>
 					</tr>
-				</c:forEach>
+				</c:forEach> 
 			</form>
 		</c:if>
 		<form name=reply action="/FORKI/content/board/frReplyPro.do">
 
-			<input type=hidden name=num value="${num}" /> <input type=hidden
-				name=pageNum value="${pageNum}" /> <input type=hidden name=re_num
-				value="${re_max = re_max+1}"> <input type=hidden
-				name=re_page value="${currentRePage}"> <input type=hidden
-				name=id value="${sessionScope.id}">
+			<input type=hidden name=num value="${num}" /> 
+			<input type=hidden name=pageNum value="${pageNum}" /> 
+			<input type=hidden name=re_num	value="${re_max = re_max+1}"> 
+			<input type=hiddeN name=re_page value="${currentRePage}"> 
+			<input type=hidden name=id value="${sessionScope.id}">
+			<c:if test=${sessionScope.id !=null }>
 			<tr>
 				<td><textarea cols=70 rows=5 name="re_content"></textarea></td>
 				<td><input type="submit" style="height: 80;" value="댓글달기" /></td>
 			</tr>
-	</table>
+			</c:if>
+	
 	</form>
+	</table>
 
 
 
