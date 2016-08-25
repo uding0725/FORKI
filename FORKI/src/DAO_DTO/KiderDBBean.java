@@ -311,7 +311,8 @@ public class KiderDBBean {
 		Vector vecList = new Vector();
 		String Dong = dong;
 		String Schul_nm = schul_nm;
-
+		String schul_num="";
+		String t_score="";
 		String[] gunm = { "전체", "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구",
 				"용산구", "은평구", "종로구", "중랑구", "중구" };
 		try {
@@ -356,7 +357,10 @@ public class KiderDBBean {
 				do {
 					KiderDataBean kdb = new KiderDataBean();
 					TSDataBean tdata = new TSDataBean();
-					tdata.setT_score(rs.getString("t_score"));
+					schul_num= rs.getString("schul_num");
+					t_score=getTotal(schul_num);
+					
+					tdata.setT_score(t_score);
 					tdata.setCount(rs.getString("count"));
 					kdb.setTsdata(tdata);
 					kdb.setSchul_num(rs.getInt("schul_num"));

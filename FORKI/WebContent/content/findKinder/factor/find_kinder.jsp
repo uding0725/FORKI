@@ -1,6 +1,29 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+#score {
+	clear: both;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	background: url(../../img/icon_star2.gif) 0px 0px;
+	float: left;
+	margin: 0px;
+	width: 90px;
+	height: 18px;
+}
 
+#score_over {
+	padding-right: 0px;
+	padding-left: 0px;
+	background: url(../../img/icon_star.gif) 0px 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	padding-top: 0px;
+	height: 18px;
+}
+</style>
 <script>
 	function viewDetail(num) {
 		url = "/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=" + num;
@@ -12,7 +35,10 @@
 	var y = new Array();
 
 	var coord = new Array();
-
+	
+	$(function score(over,total) {
+		$(over).css("width", total);
+	});
 </script>
 <div id="mdK-wrap">
 	<div style="width: 940px; height: 40px; margin:auto; position:relative; font-family: 'Jeju Gothic', serif;">
@@ -75,12 +101,14 @@
         		 검색 결과가 없습니다.
         	</c:if>
 			<c:forEach var="kinder" items="${vecList}">
+			<c:set var="number" value="${number=number+1}"/>
 				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>
-				&nbsp;총점:${kinder.tsdata.t_score}&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
+				평점:<div id="score" ><p id="score_over" class="score_over${number}"></p></div>&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
         	${kinder.telno}<br>
 
         	${kinder.adres}<br>
 			<script>
+			score('.score_over${number}','${kinder.tsdata.t_score}');
         	title.push('${kinder.schul_nm}');
         	x.push('${kinder.x}');
         	y.push('${kinder.y}');
