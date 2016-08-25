@@ -19,8 +19,8 @@ public class Kinder_DetailPageAction implements CommandAction {
 		HttpSession session = request.getSession();
 		String schul_num = request.getParameter("num");
 		String id = (String) session.getAttribute("id");
-		int grade = (int) session.getAttribute("grade");
-		
+		String seGrade = (String) session.getAttribute("grade");
+		int grade = Integer.parseInt(seGrade);
 		
 		KiderDBBean DBpro = KiderDBBean.getInstance();
 		KiderDataBean  DBData= DBpro.selectDetKid(schul_num);

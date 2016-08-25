@@ -86,7 +86,9 @@
 /* 헤더 서브메뉴바 */
 #topMenu-sub {
 	height: 50px; /* 메뉴의 높이 */
-	width: 545px; /* 메뉴의 넓이 */
+	width: 220px; /* 메뉴의 넓이 */
+	position: relative;
+	float: right;
 }
 
 #topMenu-sub ul { /* 메뉴 안의 ul을 설정 */

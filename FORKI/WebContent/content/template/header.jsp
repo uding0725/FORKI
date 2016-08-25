@@ -53,20 +53,28 @@
 					<c:if test="${sessionScope.id != null}">
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/main/main.do">HOME</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/factor/user/logout.do">로그아웃</a></li>
-				<c:if test="${sessionScope.grade == 0}">	
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/adminPage/SysMemberCare.do">MyPage</a></li>
-					</c:if>
-						<c:if test="${sessionScope.grade == 1}">	
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/UserModify.jsp">MyPage</a></li>
-					</c:if>
-						<c:if test="${sessionScope.grade == 2}">	
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/ComModify.jsp">MyPage</a></li>
-					</c:if>
-					
+						<c:if test="${sessionScope.grade == 0}">
+							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/adminPage/SysMemberCare.do">MyPage</a></li>
+						</c:if>
+						<c:if test="${sessionScope.grade == 1}">
+							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/UserModify.jsp">MyPage</a></li>
+						</c:if>
+						<c:if test="${sessionScope.grade == 2}">
+							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/ComModify.jsp">MyPage</a></li>
+						</c:if>
+
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/siteMap/siteMap.do">사이트맵</a></li>
 					</c:if>
 				</ul>
-			</nav> 
+			</nav>
+			<div id="displyUser">	
+				<c:if test="${sessionScope.id != null}">
+					<c:if test="${sessionScope.grade == 0}"><img src="../img/chick4.png"></c:if>
+					<c:if test="${sessionScope.grade == 1}"><img src="../img/chick3.png"></c:if>
+					<c:if test="${sessionScope.grade == 2}"><img src="../img/chick2.png"></c:if>
+					${sessionScope.id}님 환영합니다.
+				</c:if>
+			</div>
 		</div>
 		<div id="menubar">
 			<nav id="topmenu">
