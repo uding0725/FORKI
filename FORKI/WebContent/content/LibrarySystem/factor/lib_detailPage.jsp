@@ -177,14 +177,14 @@
 		<script>
 		if(${type=='tour'}){
 		// 마커 이미지의 주소
-			var markerImageUrl = '../../img/marker3.png'
+			var markerImageUrl = '../img/marker3.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
 		    };
 		}
 		if(${type=='p'}){
-			var markerImageUrl = '../../img/marker2.png'
+			var markerImageUrl = '../img/marker2.png'
 			    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 			    markerImageOptions = { 
 			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표

@@ -220,7 +220,7 @@
 					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 				    mapOption = {	
 		    		    center: new daum.maps.LatLng(37.541,126.986), 
-		        		level: 4, // 지도의 확대 레벨
+		        		level: 2, // 지도의 확대 레벨
 		        		mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 		    					}; // 지도의 중심좌표
 						
@@ -230,7 +230,7 @@
 					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 				    mapOption = {
 						 center: new daum.maps.LatLng(x[0],y[0]),
-						 level: 4, // 지도의 확대 레벨
+						 level: 5, // 지도의 확대 레벨
 				         mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 				    			}; 
 							}
