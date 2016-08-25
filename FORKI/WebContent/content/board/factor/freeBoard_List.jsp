@@ -8,10 +8,16 @@
  <html>  
 <head>
 <script>
+function writeMessage(ids,writer) {
+	url = '/FORKI/content/MyPage/WriteMessage.do?id=' + ids+"&writer="+writer
+	window.open(url, 'popup',
+			'scrollbars=no, resizable=no, width=530,height=450');
+}
 function writeReport(ids,sub,subid,loc){
 	url='/FORKI/content/MyPage/WriteReport.do?id='+ids+'&sub='+sub+'&subid='+subid+'&loc='+loc
 	window.open(url,'popup','scrollbars=no, resizable=no, width=530,height=450');
 }
+
 </script>
 <style>
 #free-wrap{
@@ -34,7 +40,7 @@ function writeReport(ids,sub,subid,loc){
 <div id="write-wrap">
 	<div id="write-header">
 		<div id="header">
-			<img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:5px;"><font size="+2" style="position: relative; top:5px; left:5px;">맘을전해요</font> 
+			<img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:10px;"> <font size="+2" style="position: relative; top:5px; left:5px;">맘을전해요</font> 
 			<span style='position: absolute; right: 10px; top: 20px;'>
 				<a href="/FORKI/content/main/main.do">
 				<img style="position: relative; top:3px;" src="../img/home.png" width="20" height="20"></a>
@@ -42,7 +48,6 @@ function writeReport(ids,sub,subid,loc){
 				<a href="">맘을전해요</a>
 			</span> 
 		</div>
-		<hr>
 		<hr>
 		<div>
 			<div style="width: 210px; position: relative; float: left;">
@@ -61,7 +66,7 @@ function writeReport(ids,sub,subid,loc){
 						<option value="1">유익한 경로</option>
 						<option value="2">기타</option>
 					</select> 
-					<input type="text" name=searchn size="30">
+					<input type="text" name=searchn size="10">
 					<input type="submit" value="검색">
 					 <c:if test="${sessionScope.id != null}">
 						<input type="button" value="글쓰기" onclick="document.location.href='/FORKI/content/board/freeBoardWrite.do'">
@@ -70,10 +75,6 @@ function writeReport(ids,sub,subid,loc){
 			</form>
 		</div>	
 	</div>
-		<div>
-	
-
-
 <c:if test="${count == 0}">
 <table width="700" border="1" cellpadding="0" cellspacing="0">
   <tr>
@@ -85,9 +86,6 @@ function writeReport(ids,sub,subid,loc){
 </c:if>
 
 <c:if test="${count > 0}"> 
-	
-
-    
    <div id="write-content">
 		<table>
 			<tr>
@@ -106,24 +104,37 @@ function writeReport(ids,sub,subid,loc){
 				<c:forEach var="article" items="${articleList}">
 					<tr>
 						<td width="100" align="center" bgcolor=""><c:out value="${number}" /> <c:set var="number" value="${number-1}" /></td>
-						<td width="300" align="center" bgcolor=""><a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}">
-								${article.subject} </a></td>
+						<td width="300" align="center" bgcolor=""><a href="/FORKI/content/board/freeBoardContent.do?num=${article.num}&pageNum=${currentPage}">
+						${article.title} ${article.subject} </a></td>
 						<td width="100" align="center" bgcolor="">
-						<nav id="topmenu" style="width=100px;">
-						<ul>
-						<li class="topMenuLi"><a class="menuLink">${article.writer}</a>
-							<ul class="submenu">
-							<li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','자유게시판 글')" class="submenuLink longLink">신고하기</a></li>
-						</ul></li>
-				  		</ul>
-				  		</nav>
-						</td>
+						<c:if test="${sessionScope.id==null }">
+				  		${article.writer}</c:if>
+				  		 <c:if test="${sessionScope.id==article.id}">
+				  		${article.writer}
+				  		</c:if> 
+					  	<c:if test="${sessionScope.id!=null }">
+						<c:if test="${sessionScope.id!=article.id}">
+						<div id="menubar">
+						<nav id="contentMenu">
+							<ul>
+								<li class="contentMenuLi"><a class="conmenuLink">${article.writer}</a>
+									<ul class="contentMenusub">
+										<li class="pop-up"><a onclick="writeMessage('${article.id}','${article.writer}')"
+															class="consubmenuLink longLink">쪽지보내기</a></li>
+									    <li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','건의사항 글')" class="consubmenuLink longLink">신고하기</a></li>
+													</ul></li>
+											</ul>
+										</nav>
+									</div>
+								</c:if>
+							</c:if></td>
 						<td width="100" align="center" bgcolor="">${article.readcount}</td>
-						<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>
+						<td width="150" align="center" bgcolor="">${date.format(article.reg_date)}</td>
 					</tr>
 				</c:forEach>
 			</c:if>
 		</table>
+		</div>
 </c:if>
 
 <p align="center">
@@ -147,8 +158,7 @@ function writeReport(ids,sub,subid,loc){
 				</c:if>
 			</c:if>
 		</p>
-
-</center> 
-</body>W
+</div>
+</body>
 </html>
 

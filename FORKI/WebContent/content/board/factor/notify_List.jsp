@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
-<link href="../../CSS/popup.css" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
 <script>
 function writeMessage(ids){
 	url='/FORKI/content/MyPage/WriteMessage.do?id='+ids
@@ -72,7 +70,7 @@ function writeMessage(ids){
           			${article.subject}</a>
           			
 				  	</td>
-				  	<td width="100">
+				  	<td width="100"align="center">
 				  		${article.writer}
 				  	</td>
 				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>

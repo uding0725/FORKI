@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>게시판</title>
+<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 <link href="style.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="script.js"></script>
 <script>
@@ -48,10 +49,10 @@ function writeSave(){
  <tr>
 	 <td><img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:5px;"> <b>글쓰기</b> </td>
  		<td colspan="2" align="right">  
- 		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
-		<a href="#">>게시판</a>
-		<a href="#">>맘을 전해요</a>
-		<a href="#">>글쓰기</a>
+ 		<a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a>
+		<a href="/FORKI/content/board/notifyList.do">>게시판</a>
+		<a href="/FORKI/content/board/freeBoardList.do">>맘을 전해요</a>
+		<a href="">>글쓰기</a>
 	</td>			 
  </tr>
   <tr>

@@ -68,10 +68,10 @@ a {
 <div id="secret-header">
   <img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:5px;"> <font size="+2" >건의사항글</font>
    <span style='position: absolute; right: 60px'> 
-    <a href="#"><img src="img/home.png" width="20" height="20"></a> 
-    <a href="#">>게시판</a>
+    <a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a> 
+    <a href="/FORKI/content/board/notifyList.do">>게시판</a>
     <a href="/FORKI/content/board/recommendList.do?pageNum=${pageNum}">>건의사항</a>
-    <a href="#">>건의사항글</a> 
+    <a href="">>건의사항글</a> 
     </span>
   </div> 
 <div id="secret-wrap">

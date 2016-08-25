@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 <script>
 function deleteConfirm(){
 	var selectDel = confirm("정말로 삭제하시겠습니까?")
