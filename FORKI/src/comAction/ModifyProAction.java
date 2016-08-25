@@ -27,6 +27,8 @@ public class ModifyProAction implements CommandAction{
 		member.setSex(request.getParameter("sex"));
 		member.setSchul_num(request.getParameter("schul_num"));
 		member.setSchul_nm(request.getParameter("schul_nm"));
+		System.out.println("사업자번호::"+request.getParameter("schul_num"));
+		System.out.println("유치원명::"+request.getParameter("schul_nm"));
 		
 		LogonDBBean manager = LogonDBBean.getInstance();
 		manager.updateMEMBER(member);
