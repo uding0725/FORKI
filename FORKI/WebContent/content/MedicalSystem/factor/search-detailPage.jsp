@@ -70,8 +70,28 @@
 			</div>
 		</c:if>
 		<div id="mddp-map">
+		
 			<div id="map" style="width: 100%; height: 100%;"></div>
-		</div>
+		<script>
+		if(${check==1}){
+		// 마커 이미지의 주소 
+			var markerImageUrl = '../../img/marker3.png'
+		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
+		}
+		if(${check!=1}){
+			var markerImageUrl = '../../img/marker2.png'
+			    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+			    markerImageOptions = { 
+			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+			    };
+		}
+		
+		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+		
+		</script>
 		<script>
 			var mapContainer = document.getElementById('map'), mapOption = {
 				center : new daum.maps.LatLng(37.541, 126.986),
@@ -81,12 +101,14 @@
 
 			var markerPosition = new daum.maps.LatLng(x, y);
 			var marker = new daum.maps.Marker({
+				image : markerImage,
 				position : markerPosition
 			});
 			marker.setMap(map);
 			map.setCenter(markerPosition);
 		</script>
 		<input type="button" value="닫기">
+	</div>
 	</div>
 </body>
 </html>
