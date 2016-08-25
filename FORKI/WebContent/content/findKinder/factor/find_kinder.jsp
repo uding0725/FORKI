@@ -7,7 +7,7 @@
 	padding-bottom: 0px;
 	padding-right: 0px;
 	padding-left: 0px;
-	background: url(../../img/icon_star2.gif) 0px 0px;
+	background: url(../img/icon_star2.gif) 0px 0px;
 	float: left;
 	margin: 0px;
 	width: 90px;
@@ -17,13 +17,14 @@
 #score_over {
 	padding-right: 0px;
 	padding-left: 0px;
-	background: url(../../img/icon_star.gif) 0px 0px;
+	background: url(../img/icon_star.gif) 0px 0px;
 	padding-bottom: 0px;
 	margin: 0px;
 	padding-top: 0px;
 	height: 18px;
 }
 </style>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
 	function viewDetail(num) {
 		url = "/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=" + num;
@@ -35,10 +36,6 @@
 	var y = new Array();
 
 	var coord = new Array();
-	
-	$(function score(over,total) {
-		$(over).css("width", total);
-	});
 </script>
 <div id="mdK-wrap">
 	<div style="width: 940px; height: 40px; margin:auto; position:relative; font-family: 'Jeju Gothic', serif;">
@@ -100,15 +97,18 @@
 			<c:if test="${count==0}">
         		 검색 결과가 없습니다.
         	</c:if>
+        	<c:if test="${count>0}">
 			<c:forEach var="kinder" items="${vecList}">
-			<c:set var="number" value="${number=number+1}"/>
+			<c:set var="number" value="${number+1}"/>
 				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>
-				평점:<div id="score" ><p id="score_over" class="score_over${number}"></p></div>&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
-        	${kinder.telno}<br>
-
         	${kinder.adres}<br>
+        	${kinder.telno }<br>
+        	<div id="score" ><p id="score_over" class="score_over${number}"></p></div>&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
 			<script>
-			score('.score_over${number}','${kinder.tsdata.t_score}');
+			$(function (){
+				$(".score_over${number}").css("width", "${kinder.tsdata.t_score}");
+				});
+			 
         	title.push('${kinder.schul_nm}');
         	x.push('${kinder.x}');
         	y.push('${kinder.y}');
@@ -117,6 +117,7 @@
 			<%-- <c:forEach var="kinderGarten" items="${searchList}">
 			<a href="javascript:sendAddress('${number}')">${name}</a>
          	</c:forEach> --%>
+         	</c:if>
 		</div>
 
 		<div id="mdK-inmap">
