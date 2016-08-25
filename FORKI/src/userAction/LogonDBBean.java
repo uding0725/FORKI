@@ -217,7 +217,6 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println("eD??????");
 				certify = rs.getString("certify");
 				if ("y".equals(certify)){
 					x = 1;// 인증됨
@@ -813,7 +812,7 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 	}
 
 	// SchulCheck.jsp
-	public Vector SchulRead(String dong) {
+	public Vector SchulRead(String schul_nm) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -821,7 +820,7 @@ public class LogonDBBean {// DB와 관련된 일을 하는 클래스: DBBean, DAO
 
 		try {
 			con = getConnection();
-			String strQuery = "select * from KINDERGARTEN where dong like '" + dong + "%'";
+			String strQuery = "select * from KINDERGARTEN where schul_nm like '" + schul_nm + "%'";
 			pstmt = con.prepareStatement(strQuery);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {

@@ -7,8 +7,8 @@
 <script>
 	function dongCheck() {
 		if (document.SchulForm.dong.value == "") {
-			alert("동이름을 입력하세요");
-			document.SchulForm.dong.focus();
+			alert("유치원명을 입력하세요");
+			document.SchulForm.schul_nm.focus();
 			return;
 		}
 		document.SchulForm.submit();
@@ -27,7 +27,7 @@
 			<form name="SchulForm" method="post"
 				action="/FORKI/content/join/factor/user/SchulCheck.do?num=${param.num}">
 				<tr>
-					<td><br> 도로명 주소 입력 : <input name="dong" type="text">
+					<td><br> 유치원명 입력 : <input name="schul_nm" type="text">
 						<input type="button" value="검색" onclick="dongCheck();"></td>
 				</tr>
 				<input type="hidden" name="check" value="n">

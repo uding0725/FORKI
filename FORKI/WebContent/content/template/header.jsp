@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
 <script>
-	function checkIt() {
+	function checkIt2() {
 		inputForm = eval("document.inform");
 		if (!inputForm.id.value) {
 			alert("아이디를 입력하세요.");
@@ -90,7 +90,7 @@
 			<div class="pop-conts">
 				<!--content //-->
 				<div style="text-align: center;">
-					<form id="inform" name="inform" method="post" onSubmit="return checkIt();">
+					<form id="inform" name="inform" method="post" onSubmit="return checkIt2();">
 						아이디<br> <input type="text" name="id" size="15" maxlength="10"><br> 비밀번호<br> <input type="password" name="passwd"
 							size="15" maxlength="10"><br>
 					</form>

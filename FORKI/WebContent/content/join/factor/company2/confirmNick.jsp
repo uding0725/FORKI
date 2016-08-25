@@ -16,7 +16,7 @@
   <tr>
     <td align="center">
        다른 아이디를 선택하세요.<p>
-       <input type="text" size="10" maxlength="12" name="id">
+       <input type="text" size="10" maxlength="12" name="nickname">
        <input type="submit" value="NickName중복확인">
     </td>
   </tr>
@@ -27,12 +27,11 @@
 <table width="270" border="0" cellspacing="0" cellpadding="5">
   <tr>
     <td align="center">
-      <p>입력하신 ${nickname} 는 사용하실 수 있는 NickName입니다. </p>
+      <p>입력하신 ${nickname} 는 사용하실 수 있는 닉네임입니다. </p>
       <input type="button" value="닫기" onclick="setnickname()">
     </td>
   </tr>
 </table>
-<a href="javascript:history.go(-1)">[돌아가기]</a>
 </c:if>
 </body>
 </html>
