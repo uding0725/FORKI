@@ -31,12 +31,13 @@
 	float: left;
 }
 
+#board_table {
+	width: 700px;
+	text-align: center"
+}
+
 a {
 	text-decoration: none;
 	color:black;
 }
 
-table {
-	width: 700px;
-	text-align: center"
-}

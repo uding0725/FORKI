@@ -25,8 +25,7 @@ public class InsertScoreAction implements CommandAction {
 			if (id.equals("admin")) {
 				check = 1;
 			} else {
-				check = DBpro.checkScore(id);
-				System.out.println(check);
+				check = DBpro.checkScore(id, kinderNum);
 			}
 
 			if (check == 1) {

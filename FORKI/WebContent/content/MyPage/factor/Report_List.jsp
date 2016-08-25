@@ -49,7 +49,7 @@
 						<td align="center" width="100">${article.sub_report}</td>
 						<td align="center" width="100">${article.location}</td>
 						<td align="center" width="150">${article.content}</td>
-						<td align="center" width="180">${article.date}</td>
+						<td align="center" width="180">${article.r_date}</td>
 						<td align="center" width="70"><a href="#"
 							onClick="javascript:window.open('/FORKI/content/MyPage/factor/ReportContent.do?num=${article.num}','popup','scrollbars=no, resizable=no, width=530,height=450')">자세히</td>
 

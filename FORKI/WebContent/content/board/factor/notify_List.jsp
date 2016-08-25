@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
-<link href="../../CSS/popup.css" rel="stylesheet" type="text/css">
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
 <script>
 function writeMessage(ids){
 	url='/FORKI/content/MyPage/WriteMessage.do?id='+ids
@@ -17,7 +15,7 @@ function writeMessage(ids){
 <div id="write-wrap">
 	<div id="write-header">
 		<div id="header">
-			<font size="+2" style="position: relative; top:5px; left:5px;">공지사항</font> 
+			<img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:10px;"> <font size="+2" style="position: relative; top:5px; left:5px;">공지사항</font> 
 			<span style='position: absolute; right: 10px; top: 20px;'>
 				<a href="/FORKI/content/main/main.do">
 				<img style="position: relative; top:3px;" src="../img/home.png" width="20" height="20"></a>
@@ -47,7 +45,7 @@ function writeMessage(ids){
 		</div>	
 	</div>
 	<div id="write-content">
-		<table>
+		<table id="board_table">
 			<tr>
 				<td width="100" height="30" align="center" bgcolor="">번호</td>
 				<td width="300" height="30" bgcolor="" align="center">공지사항</td>
@@ -72,7 +70,7 @@ function writeMessage(ids){
           			${article.subject}</a>
           			
 				  	</td>
-				  	<td width="100">
+				  	<td width="100"align="center">
 				  		${article.writer}
 				  	</td>
 				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>

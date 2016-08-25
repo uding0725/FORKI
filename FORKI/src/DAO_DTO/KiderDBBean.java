@@ -60,7 +60,8 @@ public class KiderDBBean {
 		}
 		return DBdata;
 	}
-		public KiderDataBean selectKid(int SCHUL_NUM) throws Exception {
+
+	public KiderDataBean selectKid(int SCHUL_NUM) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -127,23 +128,23 @@ public class KiderDBBean {
 			pstmt.setString(16, kidmember.getState());
 			pstmt.setTimestamp(17, kidmember.getReg_date());
 			pstmt.executeUpdate();
-			pstmt=con.prepareStatement("insert into total_score(schul_num,t_score,count) values(?,0,0)");
+			pstmt = con.prepareStatement("insert into total_score(schul_num,t_score,count) values(?,0,0)");
 			pstmt.setInt(1, kidmember.getSchul_num());
 			pstmt.executeUpdate();
 			con.commit();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 
 			e.printStackTrace();
 
 			JdbcUtil.rollback(con);
-		}finally{
+		} finally {
 
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(con);
-			if(con!=null){
+			if (con != null) {
 				con.setAutoCommit(false);
 			}
-			
+
 		}
 	}
 
@@ -332,17 +333,20 @@ public class KiderDBBean {
 				}
 			} else {
 				if (Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,x,y,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'");
+					pstmt = conn.prepareStatement(
+							"select schul_num,schul_nm,adres,telno,x,y,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'");
 
 				} else if (!Dong.equals("") && Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,x,y,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and dong=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,x,y,t_score,count from kindergarten natural join total_score where matr_gu=" + "'"
+							+ gunm[gunum] + "'" + " and dong=?");
 					pstmt.setString(1, Dong);
 				} else if (Dong.equals("") && !Schul_nm.equals("")) {
-					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,x,y,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,x,y,t_score,count from kindergarten natural join total_score where matr_gu=" + "'"
+							+ gunm[gunum] + "'" + " and schul_nm=?");
 					pstmt.setString(1, schul_nm);
 				} else {
-					pstmt = conn
-							.prepareStatement("select schul_num,schul_nm,adres,telno,x,y,t_score,count from kindergarten natural join total_score where matr_gu=" + "'" + gunm[gunum] + "'" + " and schul_nm=? and dong=?");
+					pstmt = conn.prepareStatement("select schul_num,schul_nm,adres,telno,x,y,t_score,count from kindergarten natural join total_score where matr_gu=" + "'"
+							+ gunm[gunum] + "'" + " and schul_nm=? and dong=?");
 					pstmt.setString(1, Schul_nm);
 					pstmt.setString(2, Dong);
 				}
@@ -351,7 +355,7 @@ public class KiderDBBean {
 			if (rs.next()) {
 				do {
 					KiderDataBean kdb = new KiderDataBean();
-					TSDataBean tdata=new TSDataBean();
+					TSDataBean tdata = new TSDataBean();
 					tdata.setT_score(rs.getString("t_score"));
 					tdata.setCount(rs.getString("count"));
 					kdb.setTsdata(tdata);
@@ -380,7 +384,7 @@ public class KiderDBBean {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int x = -1;
-		try {  
+		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement("select*from kindergarten where schul_num=? and state='y'");
 			pstmt.setInt(1, schul_num);
@@ -429,7 +433,7 @@ public class KiderDBBean {
 
 		return favoriteList;
 	}
-	
+
 	public List getList(String favoriteList) throws Throwable {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -445,7 +449,7 @@ public class KiderDBBean {
 		}
 		List favorList = null;
 		favorList = new ArrayList(size);
-		
+
 		try {
 			conn = getConnection();
 			if (check != -1) {
@@ -483,8 +487,8 @@ public class KiderDBBean {
 
 		return favorList;
 	}
-	
-	/*총점을 가져오기*/
+
+	/* 총점을 가져오기 */
 	public String getTotal(String SCHUL_NUM) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -493,13 +497,13 @@ public class KiderDBBean {
 		String totalPer = "0%";
 		double total = 0;
 		int check = 0;
-		
+
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select count(*) From TOTAL_SCORE where SCHUL_NUM = ?");			
+			pstmt = conn.prepareStatement("select count(*) From TOTAL_SCORE where SCHUL_NUM = ?");
 			pstmt.setString(1, SCHUL_NUM);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				check = rs.getInt(1);
 			}
@@ -522,17 +526,43 @@ public class KiderDBBean {
 		}
 		return totalPer;
 	}
-	
-	public int updateKinder(KiderDataBean kdata)throws Exception{
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		int x=0;
-		String sql="";
-		try{
-			conn=getConnection();
-			sql="update kindergarten set schul_nm=?,ofcdc=?,matr_gu=?,dong=?,fond=?,telno=?,zip=?,adres=?,";
-			sql+="stdnt_co_sm=?,grlstdn_co=?,clas_co=?,frl_tcher_co_sm=?,frl_female_tcher_co=?,rm=? where schul_num=?";
-			pstmt=conn.prepareStatement(sql);
+
+	/* 이미지 등록여부 확인 */
+	public int imgCheck(String num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select count(*) From IMAGES where SCHUL_NUM = ?");
+			pstmt.setString(1, num);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				check = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return check;
+	}
+
+	public int updateKinder(KiderDataBean kdata) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int x = 0;
+		String sql = "";
+		try {
+			conn = getConnection();
+			sql = "update kindergarten set schul_nm=?,ofcdc=?,matr_gu=?,dong=?,fond=?,telno=?,zip=?,adres=?,";
+			sql += "stdnt_co_sm=?,grlstdn_co=?,clas_co=?,frl_tcher_co_sm=?,frl_female_tcher_co=?,rm=? where schul_num=?";
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, kdata.getSchul_nm());
 			pstmt.setString(2, kdata.getOfcdc());
 			pstmt.setString(3, kdata.getMatr_gu());
@@ -548,13 +578,127 @@ public class KiderDBBean {
 			pstmt.setInt(13, kdata.getFrl_female_tcher_co());
 			pstmt.setString(14, kdata.getRm());
 			pstmt.setInt(15, kdata.getSchul_num());
-			x=pstmt.executeUpdate();
-		}catch(SQLException e){
+			x = pstmt.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
 		return x;
+	}
+	// 이미지를 저장
+	public int insertImg(ImgDataBean DBdata) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("insert into IMAGES values (?,?,?,?)");
+			pstmt.setString(1, DBdata.getSchul_num());
+			pstmt.setString(2, DBdata.getFile_name());
+			pstmt.setString(3, DBdata.getPath());
+			pstmt.setString(4, DBdata.getMessage());
+			
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				check = 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return check;
+	}
+
+	/* 이미지 정보 가져오기 */
+	public List getImgList(String id, int check) throws Exception {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List imgList = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from IMAGES where SCHUL_NUM = ?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				imgList = new ArrayList(check);
+				do {
+					ImgDataBean article = new ImgDataBean();
+					String realPath = rs.getString(3) + "\\" + rs.getString(2);
+					article.setPath(realPath);
+					article.setFile_name(rs.getString(2));
+					article.setMessage(rs.getString(4));
+					imgList.add(article);
+				} while (rs.next());
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return imgList;
+	}
+	
+	/* 이미지 삭제*/
+	public int deleteImg(String schul_num, String name) throws Exception {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("delete from IMAGES where SCHUL_NUM = ? and FILE_NAME = ?");
+			pstmt.setString(1, schul_num);
+			pstmt.setString(2, name);
+
+			rs = pstmt.executeQuery();
+			
+			pstmt = conn.prepareStatement("select count(*) from IMAGES where SCHUL_NUM = ? and FILE_NAME = ?");
+			pstmt.setString(1, schul_num);
+			pstmt.setString(2, name);
+			
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				check = rs.getInt(1);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return check;
 	}
 }
