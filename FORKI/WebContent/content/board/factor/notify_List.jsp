@@ -83,7 +83,6 @@ function writeMessage(ids){
 						<li class="topMenuLi"><a class="menuLink">${article.writer}</a>
 							<ul class="submenu">
 							<li class="pop-up"><a onclick="writeMessage('${article.id}')" class="submenuLink longLink">쪽지보내기</a></li>
-							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">신고하기</a></li>
 						</ul></li>
 				  	</ul>
 				  	</nav>
