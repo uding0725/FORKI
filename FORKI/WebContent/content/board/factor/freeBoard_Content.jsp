@@ -82,7 +82,7 @@ function reDeleteConfirm(re_num,num,writer,pageNum){
 			<input type=hidden name=re_num	value="${re_max = re_max+1}"> 
 			<input type=hiddeN name=re_page value="${currentRePage}"> 
 			<input type=hidden name=id value="${sessionScope.id}">
-			<c:if test=${sessionScope.id !=null }>
+			<c:if test="${sessionScope.id != null}">
 			<tr>
 				<td><textarea cols=70 rows=5 name="re_content"></textarea></td>
 				<td><input type="submit" style="height: 80;" value="댓글달기" /></td>
