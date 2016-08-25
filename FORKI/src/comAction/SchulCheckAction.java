@@ -14,9 +14,9 @@ public class SchulCheckAction implements CommandAction{
 			request.setCharacterEncoding("UTF-8");
 
 		   String check = request.getParameter("check");//y or n
-		   String schul_nm = request.getParameter("schul_nm");//유치원명
+		   String schul_num = request.getParameter("schul_num");//유치원명
 		   LogonDBBean manager = LogonDBBean.getInstance();  
-		   Vector SchulList = manager.SchulRead(schul_nm);
+		   Vector SchulList = manager.SchulRead(schul_num);
 		   
 		   request.setAttribute("check", check);
 		   request.setAttribute("SchulList", SchulList);

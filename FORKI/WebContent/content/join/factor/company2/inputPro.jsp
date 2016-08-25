@@ -7,7 +7,6 @@
 				<tr>
 					<td align="center">
 						<p>등록되었습니다. 발송된 이메일로 인증 후 이용해주세요..</p><br>
-						<p>(꼭!!)이메일 인증 후 확인버튼을 눌러주세요</p>
 						<meta http-equiv="Refresh" content="url=/FORKI/content/main/main.do">
 					</td>
 				</tr>
