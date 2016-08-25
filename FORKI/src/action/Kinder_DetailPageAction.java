@@ -16,6 +16,9 @@ public class Kinder_DetailPageAction implements CommandAction {
 		String kinderNum = request.getParameter("num");
 		KiderDataBean  DBData= DBpro.selectDetKid(kinderNum);
 		String totalPer = DBpro.getTotal(kinderNum);
+		int check = DBpro.imgCheck(kinderNum);
+		
+		request.setAttribute("check", check);
 		
 		request.setAttribute("name", DBData.getSchul_nm());
 		request.setAttribute("addres", DBData.getAdres());

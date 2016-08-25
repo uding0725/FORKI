@@ -1,35 +1,43 @@
 package DAO_DTO;
 //아이정보 DTO
 
-
 public class KidDataBean {
 
-	private String id;
-	private int num;
-	private String name;
-	private String schul_nm;
-	public String getId() {
-		return id;
+	private String schul_num;
+	private String file_name;
+	private String path;
+	private String message;
+
+	public String getSchul_num() {
+		return schul_num;
 	}
-	public void setId(String id) {
-		this.id = id;
+
+	public void setSchul_num(String schul_num) {
+		this.schul_num = schul_num;
 	}
-	public int getNum() {
-		return num;
+
+	public String getFile_name() {
+		return file_name;
 	}
-	public void setNum(int num) {
-		this.num = num;
+
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
-	public String getName() {
-		return name;
+
+	public String getPath() {
+		return path;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setPath(String path) {
+		this.path = path;
 	}
-	public String getSchul_nm() {
-		return schul_nm;
+
+	public String getMessage() {
+		return message;
 	}
-	public void setSchul_nm(String schul_nm) {
-		this.schul_nm = schul_nm;
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
 }
