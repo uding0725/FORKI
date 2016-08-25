@@ -99,7 +99,7 @@ function writeReport(ids,sub,subid,loc){
 	</form>
 	</table>
 
-
+  
 
 	<c:if test="${reCount > 0}">
 		<c:set var="rePageCount"
