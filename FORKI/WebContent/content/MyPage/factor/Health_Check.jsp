@@ -415,7 +415,7 @@ table {
 							<tr>
 								<input type="hidden" name="count">
 								<td><input type="text" name="kidName${article2.num}" value="${article2.name}"></td>
-								<td><input type="text" name="kinderName${article2.num}" value="${article2.schul_nm}"></td>
+								<td><input type="text" name="kinderName${article2.num}" value="${article2.schul_nm}" readonly></td>
 								<td><input type="button" onClick="SchulCheck(${article2.num})" value="유치원검색"></td>
 								<script>
 									listSize = ${article2.num};

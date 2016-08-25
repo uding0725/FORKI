@@ -700,4 +700,56 @@ public class KiderDBBean {
 		}
 		return check;
 	}
+	
+	/* 관심유치원 등록 */
+	public int setFavor(String id, String kinderNum) throws Exception {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+		String favor = null;
+
+		List imgList = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from P_ETC where id = ?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				favor = rs.getString(5);
+				if (favor != null) {
+					if (favor.contains(kinderNum)) {
+						return check = -1;
+					}
+					favor = favor + "@" + kinderNum;
+				} else {
+					favor = kinderNum;
+				}
+				pstmt = conn.prepareStatement("update P_ETC set FAVORITE = ? where id = ?");
+				pstmt.setString(1, favor);
+				pstmt.setString(2, id);
+				pstmt.executeQuery();
+				check = 1;
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return check;
+	}
+	
 }
