@@ -13,15 +13,7 @@
 <link href="../../CSS/style.css?var=1.4" rel="stylesheet"
 	type="text/css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$(".star_rating a").click(function() {
-			$(this).parent().children("a").removeClass("on");
-			$(this).addClass("on").prevAll("a").addClass("on");
-			return false;
-		});
-	});
-</script>
+
 <script
 	src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
 <script>
@@ -67,17 +59,13 @@
 			<font size="+1"><b>${hosp.h_nm}</b></font>
 			<div id="mddp-detailview">
 				<p>세부정보</p>
-				<p>주소: ${hosp.gu_nm} ${hosp.dong}</p>
+				<p>주소 : ${hosp.gu_nm} ${hosp.dong}</p>
 				<p>
-					진료시간:${hosp.week_time}<br>
+					진료시간 : ${hosp.week_time}<br>
 				</p>
-				${hosp.rm} <br>
+				휴무 : ${hosp.rm} <br>
 				<div class="wrapper" style="bottom: 180px;">
 					<!-- 별점  -->
-					<p class="star_rating">
-						<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
-							href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
-					</p>
 				</div>
 			</div>
 		</c:if>

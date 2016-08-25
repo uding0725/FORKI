@@ -100,7 +100,8 @@ public class MedicalDBBean {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Vector vecList =new Vector();
-		String[] gunm={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ì‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ë‘êµ¬","ì¤‘êµ¬"};
+		String[] gunm = { "ÀüÃ¼", "°­³²±¸", "°­µ¿±¸", "°­ºÏ±¸", "°­¼­±¸", "°ü¾Ç±¸", "±¤Áø±¸", "±¸·Î±¸", "±İÃµ±¸", "³ë¿ø±¸", "µµºÀ±¸", "µ¿´ë¹®±¸", "µ¿ÀÛ±¸", "¸¶Æ÷±¸", "¼­´ë¹®±¸", "¼­ÃÊ±¸", "¼ºµ¿±¸", "¼ººÏ±¸", "¼ÛÆÄ±¸", "¾çÃµ±¸", "¿µµîÆ÷±¸",
+				"¿ë»ê±¸", "ÀºÆò±¸", "Á¾·Î±¸", "Áß¶û±¸", "Áß±¸" };
 		try{
 			
 			conn=getConnection();
@@ -108,30 +109,26 @@ public class MedicalDBBean {
 				if(dong.equals("")&&h_nm.equals("")){
 					pstmt=conn.prepareStatement("select * from hosp");
 				}else if(!dong.equals("")&&h_nm.equals("")){
-					pstmt=conn.prepareStatement("select * from hosp where dong=?");
-					pstmt.setString(1,dong);
+					pstmt=conn.prepareStatement("select * from hosp where dong like '%"+dong+"%'");
 				}else if(dong.equals("")&&!h_nm.equals("")){
-					pstmt=conn.prepareStatement("select * from hosp where h_nm=?");
-					pstmt.setString(1,h_nm);
+					pstmt=conn.prepareStatement("select * from hosp where h_nm like '%"+h_nm+"%'");
+
 				}else{
-					pstmt=conn.prepareStatement("select * from hosp where h_nm=? and dong=?");
-					pstmt.setString(1,h_nm);
-					pstmt.setString(2,dong);
+					pstmt=conn.prepareStatement("select * from hosp where h_nm like '%"+h_nm+"%' and dong like '%"+dong+"%'");
+	
 				}
 			}else{
 			if(dong.equals("")&&h_nm.equals("")){
 				pstmt=conn.prepareStatement("select * from hosp where gu_nm="+"'"+gunm[n]+"'");
 				
 			}else if(!dong.equals("")&&h_nm.equals("")){
-				pstmt=conn.prepareStatement("select * from hosp where gu_nm="+"'"+gunm[n]+"'"+" and dong=?");
-				pstmt.setString(1,dong);
+				pstmt=conn.prepareStatement("select * from hosp where gu_nm="+"'"+gunm[n]+"'"+" and dong like '%"+dong+"%'");
 			}else if(dong.equals("")&&!h_nm.equals("")){
-				pstmt=conn.prepareStatement("select * from hosp where gu_nm="+"'"+gunm[n]+"'"+" and h_nm=?");
-				pstmt.setString(1,h_nm);
+				pstmt=conn.prepareStatement("select * from hosp where gu_nm="+"'"+gunm[n]+"'"+" and h_nm like '%"+h_nm+"%'");
+
 			}else{
-				pstmt=conn.prepareStatement("select * from hosp where gu_nm="+"'"+gunm[n]+"'"+" and h_nm=? and dong=?");
-				pstmt.setString(1,h_nm);
-				pstmt.setString(2,dong);
+				pstmt=conn.prepareStatement("select * from hosp where gu_nm="+"'"+gunm[n]+"'"+" and h_nm like '%"+h_nm+"%' and dong like '%"+dong+"%'");
+
 			}
 			}
 			rs=pstmt.executeQuery();
@@ -162,7 +159,8 @@ public class MedicalDBBean {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			Vector vecList =new Vector();
-			String[] gunm={"ì „ì²´","ê°•ë‚¨êµ¬","ê°•ë™êµ¬","ê°•ë¶êµ¬","ê°•ì„œêµ¬","ê´€ì•…êµ¬","ê´‘ì§„êµ¬","êµ¬ë¡œêµ¬","ê¸ˆì²œêµ¬","ë…¸ì›êµ¬","ë„ë´‰êµ¬","ë™ëŒ€ë¬¸êµ¬","ë™ì‘êµ¬","ë§ˆí¬êµ¬","ì„œëŒ€ë¬¸êµ¬","ì„œì´ˆêµ¬","ì„±ë™êµ¬","ì„±ë¶êµ¬","ì†¡íŒŒêµ¬","ì–‘ì²œêµ¬","ì˜ë“±í¬êµ¬","ìš©ì‚°êµ¬","ì€í‰êµ¬","ì¢…ë¡œêµ¬","ì¤‘ë‘êµ¬","ì¤‘êµ¬"};
+			String[] gunm = { "ÀüÃ¼", "°­³²±¸", "°­µ¿±¸", "°­ºÏ±¸", "°­¼­±¸", "°ü¾Ç±¸", "±¤Áø±¸", "±¸·Î±¸", "±İÃµ±¸", "³ë¿ø±¸", "µµºÀ±¸", "µ¿´ë¹®±¸", "µ¿ÀÛ±¸", "¸¶Æ÷±¸", "¼­´ë¹®±¸", "¼­ÃÊ±¸", "¼ºµ¿±¸", "¼ººÏ±¸", "¼ÛÆÄ±¸", "¾çÃµ±¸", "¿µµîÆ÷±¸",
+					"¿ë»ê±¸", "ÀºÆò±¸", "Á¾·Î±¸", "Áß¶û±¸", "Áß±¸" };
 			try{
 				
 				conn=getConnection();
@@ -170,30 +168,22 @@ public class MedicalDBBean {
 					if(dong.equals("")&&h_nm.equals("")){
 						pstmt=conn.prepareStatement("select * from health_center");
 					}else if(!dong.equals("")&&h_nm.equals("")){
-						pstmt=conn.prepareStatement("select * from health_center where dong=?");
-						pstmt.setString(1,dong);
+						pstmt=conn.prepareStatement("select * from health_center where dong like '%"+dong+"%'");
 					}else if(dong.equals("")&&!h_nm.equals("")){
-						pstmt=conn.prepareStatement("select * from health_center where h_nm=?");
-						pstmt.setString(1,h_nm);
+						pstmt=conn.prepareStatement("select * from health_center where h_nm like '%"+h_nm+"%'");
 					}else{
-						pstmt=conn.prepareStatement("select * from health_center where h_nm=? and dong=?");
-						pstmt.setString(1,h_nm);
-						pstmt.setString(2,dong);
+						pstmt=conn.prepareStatement("select * from health_center where h_nm like '%"+h_nm+"%' and dong like '%"+dong+"%'");
 					}
 				}else{
 				if(dong.equals("")&&h_nm.equals("")){
 					pstmt=conn.prepareStatement("select * from health_center where gu_nm="+"'"+gunm[n]+"'");
 					
 				}else if(!dong.equals("")&&h_nm.equals("")){
-					pstmt=conn.prepareStatement("select * from health_center where gu_nm="+"'"+gunm[n]+"'"+" and dong=?");
-					pstmt.setString(1,dong);
+					pstmt=conn.prepareStatement("select * from health_center where gu_nm="+"'"+gunm[n]+"'"+" and dong like '%"+dong+"%'");
 				}else if(dong.equals("")&&!h_nm.equals("")){
-					pstmt=conn.prepareStatement("select * from health_center where gu_nm="+"'"+gunm[n]+"'"+" and h_nm=?");
-					pstmt.setString(1,h_nm);
+					pstmt=conn.prepareStatement("select * from health_center where gu_nm="+"'"+gunm[n]+"'"+" and  h_nm like '%"+h_nm+"%'");
 				}else{
-					pstmt=conn.prepareStatement("select * from health_center where gu_nm="+"'"+gunm[n]+"'"+" and h_nm=? and dong=?");
-					pstmt.setString(1,h_nm);
-					pstmt.setString(2,dong);
+					pstmt=conn.prepareStatement("select * from health_center where gu_nm="+"'"+gunm[n]+"'"+" and h_nm like '%"+h_nm+"%' and dong like '%"+dong+"%'");
 				}
 				}
 				rs=pstmt.executeQuery();

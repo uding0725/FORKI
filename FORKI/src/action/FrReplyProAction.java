@@ -15,8 +15,8 @@ public class FrReplyProAction implements CommandAction{
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		int num = Integer.parseInt(request.getParameter("num"));
 		
-		String re_writer = "re_writer";
-		request.getSession().setAttribute("re_writer",re_writer );
+		
+		
 		int re_num = Integer.parseInt(request.getParameter("re_num"));
 		String content = request.getParameter("re_content");
 		Timestamp reg_date = new Timestamp(System.currentTimeMillis());
@@ -29,7 +29,7 @@ public class FrReplyProAction implements CommandAction{
 		FrReplyDataBean frdb = new FrReplyDataBean();
 		frdb.setNum(num);
 		frdb.setId((String)request.getSession().getAttribute("id"));
-		frdb.setWriter((String)request.getSession().getAttribute("re_writer"));
+		frdb.setWriter((String)request.getSession().getAttribute("rwriter"));
 		frdb.setRe_num(re_num);
 		frdb.setContent(content);
 		frdb.setReg_date(reg_date);
