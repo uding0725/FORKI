@@ -22,7 +22,7 @@ public class FreeBoardWriteProAction implements CommandAction{
 		FreeBoardDataBean article = new FreeBoardDataBean();// �뜲�씠�꽣泥섎━ 鍮�
 		article.setNum(Integer.parseInt(request.getParameter("num")));
 		article.setId((String)request.getSession().getAttribute("id"));
-		article.setWriter(request.getParameter("writer"));
+		article.setWriter((String)request.getSession().getAttribute("writer"));
 		article.setTitle(request.getParameter("title"));
 		article.setSubject(request.getParameter("subject"));
 		article.setContent(request.getParameter("content"));

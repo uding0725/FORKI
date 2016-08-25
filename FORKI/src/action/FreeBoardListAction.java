@@ -24,9 +24,6 @@ public class FreeBoardListAction implements CommandAction {
 		}
 
 	
-	//	int title = Integer.parseInt(request.getParameter("title"));
-
-		//String searchn = request.getParameter("searchn");
 		int pageSize = 10;// 한 페이지의 글의 개수 한글
 
 
@@ -47,7 +44,7 @@ public class FreeBoardListAction implements CommandAction {
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();// DB연동
 		
 
-		/*if(searchn == null && title >= 0){*/
+		
 		count = fbdbb.getArticleCount(type,title,searchn);// 전체 글의 수
 
 
