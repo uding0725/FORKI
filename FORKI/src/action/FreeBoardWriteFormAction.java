@@ -7,7 +7,7 @@ public class FreeBoardWriteFormAction implements CommandAction {
 	
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 	int num=0;
-	String writer = "ho";
+	
 	
 	
 	try{
@@ -17,7 +17,7 @@ public class FreeBoardWriteFormAction implements CommandAction {
 		}catch(Exception e){e.printStackTrace();}
 			//해당 뷰에서 사용할 속성
 			request.setAttribute("num", new Integer(num));
-			request.getSession().setAttribute("writer", writer);
+		
 			
 			
 			

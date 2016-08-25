@@ -17,7 +17,7 @@ public class FrReplyDelProAction implements CommandAction {
 		int re_num = Integer.parseInt(request.getParameter("re_num"));
 		
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
-		String writer = request.getParameter("writer");
+		String writer = (String)request.getSession().getAttribute("writer");
 		
 		System.out.println("num ::" + num + "re_num ::" + re_num + "writer ::" + writer );
 		
