@@ -8,8 +8,8 @@
 </head>
 <body>
 <script>
-
+history.go(-1);
 </script>
-인설트성공
+
 </body>
 </html>
