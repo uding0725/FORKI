@@ -219,7 +219,6 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println("eD??????");
 				certify = rs.getString("certify");
 				if ("y".equals(certify)){
 					x = 1;// ������
@@ -831,7 +830,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 	}
 
 	// SchulCheck.jsp
-	public Vector SchulRead(String dong) {
+	public Vector SchulRead(String schul_nm) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -839,7 +838,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 
 		try {
 			con = getConnection();
-			String strQuery = "select * from KINDERGARTEN where dong like '" + dong + "%'";
+			String strQuery = "select * from KINDERGARTEN where schul_nm like '" + schul_nm + "%'";
 			pstmt = con.prepareStatement(strQuery);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
