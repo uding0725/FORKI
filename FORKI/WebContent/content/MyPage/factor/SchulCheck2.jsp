@@ -1,24 +1,22 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>유치원/어린이집 검색</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<link href="style.css" rel="stylesheet" type="text/css">
 <script>
 	function dongCheck() {
 		if (document.SchulForm.dong.value == "") {
-			alert("동이름을 입력하세요");
-			document.SchulForm.dong.focus();
+			alert("유치원명을 입력하세요");
+			document.SchulForm.schul_nm.focus();
 			return;
 		}
 		document.SchulForm.submit();
 	}
-
-	function sendAddress(schul_nm) {
-		var Schul_nm = schul_nm;
-		opener.document.userinput.kinderName${param.num}.value = Schul_nm;		
-		self.close(); 	
+	function sendAddress(schul_nm,adres){
+	var Schul_nm =schul_nm;
+	opener.document.userinput.kinderName${param.num}.value=Schul_nm;
+	self.close();
 	}
 </script>
 </head>
@@ -26,9 +24,11 @@
 	<center>
 		<b>유치원/어린이집 찾기</b>
 		<table>
-			<form name="SchulForm" method="post" action="/FORKI/content/MyPage/factor/SchulCheck2.do?num=${patam.num}">
+			<form name="SchulForm" method="post"
+				action="/FORKI/content/join/factor/user/SchulCheck.do?num=${param.num}">
 				<tr>
-					<td><br> 도로명 주소 입력 : <input name="dong" type="text"> <input type="button" value="검색" onclick="dongCheck();"></td>
+					<td><br> 유치원명 입력 : <input name="schul_nm" type="text">
+						<input type="button" value="검색" onclick="dongCheck();"></td>
 				</tr>
 				<input type="hidden" name="check" value="n">
 			</form>
@@ -52,7 +52,8 @@
 						<c:set var="temptAdres" value="${i.adres}" />
 
 						<tr>
-							<td><a href="javascript:sendAddress('${tempSchul_nm}')"> ${tempSchul_nm}&nbsp;${temptAdres}</a><br>
+							<td><a href="javascript:sendAddress('${tempSchul_nm}','${temptAdres}')">
+									${tempSchul_nm}&nbsp;${temptAdres}</a><br>
 					</c:forEach>
 				</c:if>
 			</c:if>
