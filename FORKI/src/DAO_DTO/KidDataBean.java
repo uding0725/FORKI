@@ -3,41 +3,33 @@ package DAO_DTO;
 
 public class KidDataBean {
 
-	private String schul_num;
-	private String file_name;
-	private String path;
-	private String message;
-
-	public String getSchul_num() {
-		return schul_num;
+	private String id;
+	private int num;
+	private String name;
+	private String schul_nm;
+	public String getId() {
+		return id;
 	}
-
-	public void setSchul_num(String schul_num) {
-		this.schul_num = schul_num;
+	public void setId(String id) {
+		this.id = id;
 	}
-
-	public String getFile_name() {
-		return file_name;
+	public int getNum() {
+		return num;
 	}
-
-	public void setFile_name(String file_name) {
-		this.file_name = file_name;
+	public void setNum(int num) {
+		this.num = num;
 	}
-
-	public String getPath() {
-		return path;
+	public String getName() {
+		return name;
 	}
-
-	public void setPath(String path) {
-		this.path = path;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	public String getMessage() {
-		return message;
+	public String getSchul_nm() {
+		return schul_nm;
 	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
+	public void setSchul_nm(String schul_nm) {
+		this.schul_nm = schul_nm;
+	}	
 
 }

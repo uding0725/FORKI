@@ -185,10 +185,10 @@ a:hover {
 					<!-- 데모 이미지 끝 -->
 					
 					<!-- 목록을 불러와 이미지 슬라이드 생성 -->
-					<c:if test="${check < 1}">
-						<c:forEach var="imageList" items="${imageList}">
-							<div data-src="../../images/slides/${imageList.file_name}">
-								<div class="camera_caption fadeFromBottom">${imageList.message}</div>
+					<c:if test="${check >= 1}">
+						<c:forEach var="article" items="${imgList}">
+							<div data-src="../../images/slides/${article.file_name}">
+								<div class="camera_caption fadeFromBottom">${article.message}</div>
 							</div>
 						</c:forEach>
 					</c:if>
@@ -216,7 +216,7 @@ a:hover {
 			</div>
 			<div style="float: left; width: 10%;"><input id="input" type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/InsertScore.do?num=${param.num}&score=1'" value="입력"></div>
 			<div style="float: left; width: 46%; text-align: right;">
-				<c:if test="${param.schul_num == sessionScope.schul_num}">
+				<c:if test="${param.num == sessionScope.schul_num}">		
 					<input type="button" onclick="document.location.href='/FORKI/content/findKinder/factor/ModifyImg.do?num=${param.num}'" value="수정">
 				</c:if>
 				<input type="button" onclick="self.close()" value="닫기">

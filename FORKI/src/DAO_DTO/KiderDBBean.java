@@ -587,8 +587,8 @@ public class KiderDBBean {
 		}
 		return x;
 	}
-
-	public int insertGoods(String g) {
+	// 이미지를 저장
+	public int insertImg(ImgDataBean DBdata) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -596,12 +596,16 @@ public class KiderDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select count(*) From IMAGES where SCHUL_NUM = ?");
-			pstmt.setString(1, g);
+			pstmt = conn.prepareStatement("insert into IMAGES values (?,?,?,?)");
+			pstmt.setString(1, DBdata.getSchul_num());
+			pstmt.setString(2, DBdata.getFile_name());
+			pstmt.setString(3, DBdata.getPath());
+			pstmt.setString(4, DBdata.getMessage());
+			
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				check = rs.getInt(1);
+				check = 1;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -609,6 +613,91 @@ public class KiderDBBean {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
+		}
+		return check;
+	}
+
+	/* 이미지 정보 가져오기 */
+	public List getImgList(String id, int check) throws Exception {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List imgList = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from IMAGES where SCHUL_NUM = ?");
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				imgList = new ArrayList(check);
+				do {
+					ImgDataBean article = new ImgDataBean();
+					String realPath = rs.getString(3) + "\\" + rs.getString(2);
+					article.setPath(realPath);
+					article.setFile_name(rs.getString(2));
+					article.setMessage(rs.getString(4));
+					imgList.add(article);
+				} while (rs.next());
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return imgList;
+	}
+	
+	/* 이미지 삭제*/
+	public int deleteImg(String schul_num, String name) throws Exception {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = 0;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("delete from IMAGES where SCHUL_NUM = ? and FILE_NAME = ?");
+			pstmt.setString(1, schul_num);
+			pstmt.setString(2, name);
+
+			rs = pstmt.executeQuery();
+			
+			pstmt = conn.prepareStatement("select count(*) from IMAGES where SCHUL_NUM = ? and FILE_NAME = ?");
+			pstmt.setString(1, schul_num);
+			pstmt.setString(2, name);
+			
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				check = rs.getInt(1);
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
 		}
 		return check;
 	}

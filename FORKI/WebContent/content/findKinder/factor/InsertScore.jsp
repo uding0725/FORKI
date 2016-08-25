@@ -4,7 +4,7 @@
 	<script>
 		alert("별점주셔서 감사합니다.^^");
 	</script>
-	<meta http-equiv="Refresh" content="0;url=/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=${num}&score=1">
+	<meta http-equiv="Refresh" content="0;url=/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=${num}">
 </c:if>
 
 <c:if test="${check == 0}">
