@@ -19,6 +19,11 @@ function reDeleteConfirm(re_num,num,writer,pageNum){
 		document.location.href="/FORKI/content/board/frReplyDelete.do?re_num="+re_num+"&num="+num+"&writer="+writer+"&pageNum="+pageNum
 	}
 }
+
+function writeReport(ids,sub,subid,loc){
+	url='/FORKI/content/MyPage/WriteReport.do?id='+ids+'&sub='+sub+'&subid='+subid+'&loc='+loc
+	window.open(url,'popup','scrollbars=no, resizable=no, width=530,height=450');
+}
 </script>
 
 </head>
@@ -53,7 +58,7 @@ function reDeleteConfirm(re_num,num,writer,pageNum){
 
 	<table width="700" cellspacing="0" cellpadding="0">
 		<tr>
-			<td>댓글 (${reCount}개)</td>
+			<td colsapn="3">댓글 (${reCount}개)</td>
 		</tr>
 		<c:if test="${reCount>0}">
 			<form name="replyForm">
@@ -61,15 +66,17 @@ function reDeleteConfirm(re_num,num,writer,pageNum){
 				<c:forEach var="reply" items="${replyList}">
   
 					<tr>
-						<td>${reply.content} ${reply.num} ${reply.re_num}</td>
-						<td>
+						<td width="400">${reply.content}</td>
+						<td width="100">${reply.writer} </td>
+						<td width="100">
 						<c:if test="${sessionScope.id == reply.id}">
 						<input type=hidden name=re_num value="${reply.re_num}">
 							<input type=hidden name=writer value="${reply.writer}" />
-							<input type="button" value="신고"> 
 							<input type="button"value="삭제" onClick="reDeleteConfirm(${reply.re_num},${reply.num},'${reply.writer}',${pageNum});">
 						</c:if>
-
+						<c:if test="${sessionScope.id != reply.id}}">	
+						<input type="button" value="신고" onclick="writeReport('${sessionScope.id}','${reply.writer}','${reply.id}','자유게시판 댓글')"> 
+						</c:if>	
 						</td>
 					</tr>
 				</c:forEach> 
@@ -84,7 +91,7 @@ function reDeleteConfirm(re_num,num,writer,pageNum){
 			<input type=hidden name=id value="${sessionScope.id}">
 			<c:if test="${sessionScope.id != null}">
 			<tr>
-				<td><textarea cols=70 rows=5 name="re_content"></textarea></td>
+				<td><textarea cols=80 rows=5 name="re_content"></textarea></td>
 				<td><input type="submit" style="height: 80;" value="댓글달기" /></td>
 			</tr>
 			</c:if>
