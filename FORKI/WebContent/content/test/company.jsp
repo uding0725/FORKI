@@ -3,7 +3,7 @@
 session.removeAttribute("compNum");
 session.setAttribute("id", "comp2");
 session.setAttribute("grade", "2");
-session.setAttribute("compNum", "13800885");
+session.setAttribute("schul_num", "13800558");
 session.setAttribute("name", "com");
 %>
 <script>

@@ -24,7 +24,7 @@ public class ScoreDBBean {
 	}
 
 	// 참여여부 확인
-	public int checkScore(String id) throws Exception {
+	public int checkScore(String id, String kinderNum) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -32,8 +32,9 @@ public class ScoreDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select * from USER_SCORE where id = ?");
+			pstmt = conn.prepareStatement("select * from USER_SCORE where id = ? and SCHUL_NUM = ?");
 			pstmt.setString(1, id);
+			pstmt.setString(2, kinderNum);
 
 			rs = pstmt.executeQuery();
 			if (rs.next()) {

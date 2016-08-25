@@ -1,7 +1,6 @@
 package DAO_DTO;
 //아이정보 DTO
 
-
 public class KidDataBean {
 
 	private String id;
@@ -31,5 +30,6 @@ public class KidDataBean {
 	}
 	public void setSchul_nm(String schul_nm) {
 		this.schul_nm = schul_nm;
-	}
+	}	
+
 }
