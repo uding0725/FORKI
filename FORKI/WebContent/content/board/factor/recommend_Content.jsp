@@ -90,11 +90,13 @@ a {
  					  	<input type="button" value="삭제하기" onclick="deleteConfirm();">
   					  	<input type="button" value="목록으로" onclick="document.location.href='/FORKI/content/board/recommendList.do?pageNum=${pageNum}'">
 				</c:if>
+				<c:if test="${article.id!=sessionScope.id}">
 				<c:if test="${sessionScope.id=='admin'}">
 					 <input type="button" value="답글쓰기" onclick="document.location.href='/FORKI/content/board/recommendWrite.do?num=${num}&ref=${article.ref}&re_step=${article.re_step}&re_level=${article.re_level}'">
  					  	<input type="button" value="삭제하기" onclick="deleteConfirm();">
   					  	<input type="button" value="목록으로" onclick="document.location.href='/FORKI/content/board/recommendList.do?pageNum=${pageNum}'">
 				</c:if> 		   	
+				</c:if>
  		   </div>
  	</div>
 </div>

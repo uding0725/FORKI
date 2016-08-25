@@ -12,7 +12,7 @@ public class KinderViewAction implements CommandAction{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response)throws Throwable{
 		request.setCharacterEncoding("utf-8");
 		int schul_num=0;
-		String num=(String)request.getSession().getAttribute("compNum");
+		String num=(String)request.getSession().getAttribute("schul_num");
 		schul_num=Integer.parseInt(num);
 		KiderDBBean kdb=KiderDBBean.getInstance();
 		int check=0;  

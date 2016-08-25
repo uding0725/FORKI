@@ -100,9 +100,9 @@
         	<c:if test="${count>0}">
 			<c:forEach var="kinder" items="${vecList}">
 			<c:set var="number" value="${number+1}"/>
-				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>
-        	${kinder.adres}<br>
-        	${kinder.telno }<br>
+			명칭 : <a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a><br>
+        	주소 : ${kinder.adres}<br>
+        	전화번호 : ${kinder.telno }<br>
         	<div id="score" ><p id="score_over" class="score_over${number}"></p></div>&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
 			<script>
 			$(function (){
