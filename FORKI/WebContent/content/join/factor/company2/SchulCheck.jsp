@@ -6,19 +6,19 @@
 <title>유치원/어린이집 검색</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script>
-	function dongCheck(){
-		if (document.SchulForm.dong.value == ""){
+	function schulCheck(){
+		if (document.SchulForm.schul_nm.value == ""){
 			alert("동이름을 입력하세요");
-			document.SchulForm.dong.focus();
+			document.SchulForm.schul_nm.focus();
 			return;
 		}
 		document.SchulForm.submit();
 	}
 	
-function sendAddress(schul_nm,adres){
-var Schul_nm =schul_nm;
-opener.document.userinput.schul_nm.value=Schul_nm;
-self.close();
+function sendAddress(schul_nm,schul_num){ 
+	opener.document.userinput.schul_nm.value=schul_nm;
+	opener.document.userinput.schul_num.value=schul_num;
+	self.close();
 	}
 </script>
 </head>
@@ -26,11 +26,11 @@ self.close();
 <center>
 <b>유치원/어린이집 찾기</b>
 <table>
-<form name="SchulForm" method="post" action="/FORKI/content/join/factor/user/SchulCheck.do">
+<form name="SchulForm" method="post" action="/FORKI/content/join/factor/company2/SchulCheck.do">
       <tr>
         <td><br>
-          도로명 주소 입력 : <input name="dong" type="text">
-          <input type="button" value="검색" onclick= "dongCheck();">
+          유치원명 입력 : <input name="schul_nm" type="text">
+          <input type="button" value="검색" onclick= "schulCheck();">
         </td>
       </tr>
      <input type="hidden" name="check" value="n">
@@ -49,12 +49,12 @@ self.close();
 
 <c:forEach var="i" items="${SchulList}">
 <c:set var="tempSchul_nm" value="${i.schul_nm}"/>
-<c:set var="temptAdres" value="${i.adres}"/>
+<c:set var="tempSchul_num" value="${i.schul_num}"/>
+<c:set var="tempAdres" value="${i.adres}"/>
 
 <tr><td>
-<a href="javascript:sendAddress(
-'${tempSchul_nm}','${temptAdres}')">
- ${tempSchul_nm}&nbsp;${temptAdres}</a><br>
+<a href="javascript:sendAddress('${tempSchul_nm}','${tempSchul_num}')">
+ ${tempSchul_nm}&nbsp;${tempSchul_num}&nbsp;${tempAdres}</a><br>
 </c:forEach>
 </c:if>
 </c:if>

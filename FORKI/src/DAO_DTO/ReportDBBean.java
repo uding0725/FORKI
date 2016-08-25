@@ -32,7 +32,7 @@ public class ReportDBBean {
 		
 		try{
 			conn = getConnection();
-			pstmt = conn.prepareStatement("insert into report_list(num,reporter,sub_reporter,location,content,r_date) values(report_num,?,?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into report_list(num,reporter,sub_report,location,content,r_date) values(report_num.NEXTVAl,?,?,?,?,?)");
 			pstmt.setString(1,member.getReporter());
 			pstmt.setString(2, member.getSub_report());
 			pstmt.setString(3, member.getLocation());
@@ -85,8 +85,8 @@ public class ReportDBBean {
 		List messageList = null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select r, NUM, REPORTER, SUB_REPORT, LOCATION, CONTENT, REG_DATE "
-					+ "from (select rownum r, NUM, REPORTER, SUB_REPORT, LOCATION, CONTENT, REG_DATE "
+			pstmt = conn.prepareStatement("select r, NUM, REPORTER, SUB_REPORT, LOCATION, CONTENT, R_DATE "
+					+ "from (select rownum r, NUM, REPORTER, SUB_REPORT, LOCATION, CONTENT, R_DATE "
 					+ "from (select * from REPORT_LIST) order by r asc) where r >= ? and r <= ?");
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
@@ -104,7 +104,7 @@ public class ReportDBBean {
 					if (subCon.length() >= 10)
 						subCon = subCon.substring(0, 10) + "...";
 					article.setContent(subCon);
-					article.setR_date(rs.getTimestamp("REG_DATE"));
+					article.setR_date(rs.getTimestamp("R_DATE"));
 					messageList.add(article);
 				} while (rs.next());
 			}
@@ -177,8 +177,8 @@ public class ReportDBBean {
 		List messageList = null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select r, NUM, REPORTER, SUB_REPORT, LOCATION, CONTENT, REG_DATE "
-					+ "from (select rownum r, NUM, REPORTER, SUB_REPORT, LOCATION, CONTENT, REG_DATE "
+			pstmt = conn.prepareStatement("select r, NUM, REPORTER, SUB_REPORT, LOCATION, CONTENT, R_DATE "
+					+ "from (select rownum r, NUM, REPORTER, SUB_REPORT, LOCATION, CONTENT, R_DATE "
 					+ "from (select * from REPORT_LIST where ? = ?) order by r asc) where r >= ? and r <= ?");
 			pstmt.setString(1, type);
 			pstmt.setString(1, id);
@@ -198,7 +198,7 @@ public class ReportDBBean {
 					if (subCon.length() >= 10)
 						subCon = subCon.substring(0, 10) + "...";
 					article.setContent(subCon);
-					article.setR_date(rs.getTimestamp("REG_DATE"));
+					article.setR_date(rs.getTimestamp("R_DATE"));
 					messageList.add(article);
 				} while (rs.next());
 			}

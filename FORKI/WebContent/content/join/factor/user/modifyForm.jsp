@@ -192,16 +192,12 @@
 						"toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 
-	function SchulCheck(i) {
+/* 	function SchulCheck(i) {
 
 		url = "/FORKI/content/join/factor/user/SchulCheck.do?num="+i;
 
-		window
-				.open(
-						url,
-						"post",
-						"toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
-	}
+		window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
+	} */
 </script>
 
 <%
@@ -209,8 +205,7 @@
 %>
 
 <body>
-	<form method="post" action="/FORKI/content/join/UserModifyPro.do"
-		name="userinput" onSubmit="return checkIt()">
+	<form method="post" action="/FORKI/content/join/UserModifyPro.do" name="userinput" onSubmit="return checkIt()">
 		<!--   <table id="example" width="400" border="1" cellspacing="0" cellpadding="3" align="center" > -->
 		<table id="mytable" width="400" border="1" cellspacing="0"
 			cellpadding="3" align="center">
@@ -351,8 +346,8 @@
 
 			<tr>
 				<td colspan="4">
-				<input type="button" id="btn-add-row1" value="아이추가">
-				<input type="button" id="btn-delete-row1" value="아이삭제">
+				<input type="button" id="btn-add-row" value="아이추가">
+				<input type="button" id="btn-delete-row" value="아이삭제">
 			<hr></td>
 			</tr>
 			<!-- <table id="mytable" border="1" cellspacing="0"> -->

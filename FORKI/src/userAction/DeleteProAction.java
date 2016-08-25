@@ -17,18 +17,15 @@ public class DeleteProAction implements CommandAction{
 	String id = (String) session.getAttribute("id");
 	String passwd  = request.getParameter("passwd");
 	int check = 0;
-	int delete = 0;
 	
 	LogonDBBean manager = LogonDBBean.getInstance();
-	
-	delete = manager.deleteKID_DATA(id,passwd);
-	System.out.println("delete::"+delete);
+		manager.deleteHealth(id);
+		manager.deleteKID_DATA(id,passwd);
 	
 	if(manager.deleteP_ETC(id,passwd)==1){
 		check = manager.deleteMEMBER(id,passwd);
 	}
 	
-	System.out.println("[[[["+check+"]]]]");
 	request.setAttribute("check", new Integer(check));
 	
 	return "/content/join/UserDeletePro.jsp";//ÇØ´ç ºä

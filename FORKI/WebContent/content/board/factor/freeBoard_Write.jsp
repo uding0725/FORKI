@@ -46,7 +46,7 @@ function writeSave(){
 
 <table width="750" cellspacing="0" cellpadding="0"  align="center">
  <tr>
-	 <td> <b>글쓰기</b> </td>
+	 <td><img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:5px;"> <b>글쓰기</b> </td>
  		<td colspan="2" align="right">  
  		<a href="#"><img src="../img/home.png" width="20" height="20"></a>
 		<a href="#">>게시판</a>

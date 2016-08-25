@@ -17,7 +17,7 @@ function writeMessage(ids){
 <div id="write-wrap">
 	<div id="write-header">
 		<div id="header">
-			<font size="+2" style="position: relative; top:5px; left:5px;">공지사항</font> 
+			<img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:10px;"> <font size="+2" style="position: relative; top:5px; left:5px;">공지사항</font> 
 			<span style='position: absolute; right: 10px; top: 20px;'>
 				<a href="/FORKI/content/main/main.do">
 				<img style="position: relative; top:3px;" src="../img/home.png" width="20" height="20"></a>
@@ -68,26 +68,12 @@ function writeMessage(ids){
 				  	<c:out value="${number}"/>
 				  	<c:set var="number" value="${number-1}"/></td>
 				  	<td width="300" align="center" bgcolor="">
-				  	<a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}">
+				  	<a href="/FORKI/content/board/notifyContent.do?num=${article.num}&pageNum=${currentPage}" style="text-decoration:none;color:black;">
           			${article.subject}</a>
           			
 				  	</td>
 				  	<td width="100">
-				  	<c:if test="${sessionScope.id==article.id}">
 				  		${article.writer}
-				  	</c:if>
-				  	<c:if test="${sessionScope.id!=article.id}">
-				  	<div id="menubar" style="width=100px;">
-					<nav id="topmenu" style="width=100px;">
-						<ul>
-						<li class="topMenuLi"><a class="menuLink">${article.writer}</a>
-							<ul class="submenu">
-							<li class="pop-up"><a onclick="writeMessage('${article.id}')" class="submenuLink longLink">쪽지보내기</a></li>
-						</ul></li>
-				  	</ul>
-				  	</nav>
-				  	</div>
-				  	</c:if>
 				  	</td>
 				  	<td width="100" align="center" bgcolor="">${article.readcount}</td>
 				  	<td width="150" align="center" bgcolor="">${sim.format(article.reg_date)}</td>

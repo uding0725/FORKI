@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>건의사항 글 화면</title>
+<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 <style>
 #secret-wrap{
  width : 750px;
@@ -48,12 +49,12 @@ a {
 </head>
 <body>
 <div id="secret-header">
-  <font size="+2" >글쓰기</font>
-   <span style='position: absolute; right: 60px'> 
-    <a href="#"><img src="img/home.png" width="20" height="20"></a> 
-    <a href="#">>게시판</a>
-    <a href="#">>건의사항</a>
-    <a href="#">>글쓰기</a> 
+  <img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:5px;"> <font size="+2" >글쓰기</font>
+   <span style='float:right; size:"+1";'> 
+    <a href="/FORKI/content/main/main.do"><img src="../img/home.png" width="20" height="20"></a> 
+    <a href="/FORKI/content/board/notifyList.do">>게시판</a>
+    <a href="/FORKI/content/board/recommendList.do">>건의사항</a>
+    <a href="">>글쓰기</a> 
     </span>
   </div> 
 <div id="secret-wrap">

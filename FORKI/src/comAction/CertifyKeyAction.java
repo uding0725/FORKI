@@ -16,15 +16,13 @@ public class CertifyKeyAction implements CommandAction {
 		String id = (String) session.getAttribute("id");  
 		String key = request.getParameter("key"); /*이메일에서 전송된 파라메타 파라메터로 키값을 받아옴*/
 		String sessionKey = (String) session.getAttribute("certifyKey"); /*세션에 저장되 있던 키값*/
+		System.out.println("id:::"+id);
+		System.out.println("key:::"+key);
+		System.out.println("sessionKey:::"+sessionKey);
 		LogonDBBean dbPro = LogonDBBean.getInstance();
 		int check = 0 ; //인증성공여부를 전달하기 위한 변수
-		System.out.println("id::"+id);
-		System.out.println("key::"+key);
-		System.out.println("sessionKey::"+sessionKey);
-		System.out.println();
 		if (key.equals(sessionKey)){
 			check = dbPro.Certify(id);
-		System.out.println("check::"+check);
 		/*세션에 저장된 키값과 파라메터로 받은 키값을 비교하여 인증값을 바꾸는 메서드 실행*/
 		}
 		request.setAttribute("check", new Integer(check));

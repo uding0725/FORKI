@@ -7,9 +7,12 @@ import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import DAO_DTO.FreeBoardDBBean;
+import DAO_DTO.FreeBoardDataBean;
 import action.*;
 
-public class MemberCareAction implements CommandAction{
+public class ApprobationAction implements CommandAction{
 	
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable{
@@ -28,15 +31,15 @@ public class MemberCareAction implements CommandAction{
 			int count = 0;
 			int number = 0;
 			
-		      List Memlist = null;
+		      List articleList = null;
 		      SystemDBBean DBAPPRO = SystemDBBean.getInstance();// DB연동
-		      count = DBAPPRO.getMemberCount();// 전체 글의 수
+		      count = DBAPPRO.getApproCount();// 전체 글의 수
 
 
 				if (count > 0) {
-					Memlist = DBAPPRO.getMemCareList(startRow, endRow);// 현재 페이지에 해당하는 글의 갯수
+				 articleList = DBAPPRO.getApproList(startRow, endRow);// 현재 페이지에 해당하는 글의 갯수
 				} else {
-					Memlist = Collections.EMPTY_LIST;//목록
+					articleList = Collections.EMPTY_LIST;//목록
 				}
 
 			request.setAttribute("currentPage", new Integer(currentPage));
@@ -45,8 +48,9 @@ public class MemberCareAction implements CommandAction{
 			request.setAttribute("count", new Integer(count));
 			request.setAttribute("pageSize", new Integer(pageSize));
 			request.setAttribute("number", new Integer(number));
-			request.setAttribute("Memlist", Memlist);
-			return "/content/adminPage/SysMemberCare.jsp";
+			request.setAttribute("articleList", articleList);
+			
+			return "/content/adminPage/SysApprobation.jsp";
 			
 	}
 

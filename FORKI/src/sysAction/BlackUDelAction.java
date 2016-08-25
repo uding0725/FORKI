@@ -20,8 +20,6 @@ public class BlackUDelAction implements CommandAction{
 			
 			String id = request.getParameter("id");
 			String m_grade = request.getParameter("m_grade");
-			System.out.println("id:::"+id);
-			System.out.println("m_grade:::"+m_grade);
 			
 			SystemDBBean sysmanager = SystemDBBean.getInstance();
 			int check = 0;
@@ -40,7 +38,6 @@ public class BlackUDelAction implements CommandAction{
 					check = sysmanager.deleteMEMBER(id);
 				}
 			}
-			System.out.println("check::"+check);
 			request.setAttribute("check", check);
 
 			/*SystemDBBean manager = SystemDBBean.getInstance();

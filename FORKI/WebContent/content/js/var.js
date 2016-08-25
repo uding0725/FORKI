@@ -21,3 +21,4 @@ function SchulCheck(listSize){
 	url="/FORKI/content/join/factor/user/SchulCheck.do?num="+listSize;
 	
 	window.open(url,"post","toolbar=no ,width=500 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
+}

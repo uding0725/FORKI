@@ -17,7 +17,6 @@ public class UpdatePWDAction implements CommandAction{
 		LogonDBBean manager = LogonDBBean.getInstance();
 		
 		int x = manager.updatePwd(passwd,id);
-		System.out.println(x);
 		
 		request.setAttribute("x", x);
 		return "/content/join/UserUpdatePWD.jsp";
