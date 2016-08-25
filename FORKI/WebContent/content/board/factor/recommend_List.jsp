@@ -20,29 +20,27 @@
 </script>
 
 <div id="write-wrap">
-
 	<div id="write-header">
 		<div id="header">
 			<img src="../img/chick/icon5.png" width="30" height="30"  style="position:relative; top:10px;"> <font size="+2" style="position: relative; top: 5px; left: 5px;">건의사항</font>
-			<span style='position: absolute; right: 10px; top: 20px;'> <a
-				href="/FORKI/content/main/main.do"> <img
-					style="position: relative; top: 3px;" src="../img/home.png"
-					width="20" height="20"></a> <a
-				href="/FORKI/content/board/notifyList.do">>게시판</a> <a href="">>건의사항</a>
+			<span style='position: absolute; right: 10px; top: 20px;'>
+				<a href="/FORKI/content/main/main.do">
+				<img style="position: relative; top: 3px;" src="../img/home.png" width="20" height="20"></a>
+				<a href="/FORKI/content/board/notifyList.do">>게시판</a> <a href="">>건의사항</a>
 			</span>
 		</div>
 		<hr>
 		<div>
-			<div style="width: 250px; position: relative; float: left;">총
-				${count}건이 검색되었습니다.</div>
-			<form
-				style="width: 400px; position: relative; float: right; margin-right: 5px; text-align: right;">
-				<span> <select name="searchn">
+			<div style="width: 250px; position: relative; float: left;">
+				총 ${count}건이 검색되었습니다.</div>
+				<form style="width: 400px; position: relative; float: right; margin-right: 5px; text-align: right;">
+					<span> <select name="searchn">
 						<option value="0">제목</option>
 						<option value="1">내용</option>
-				</select> <input type="text" style="width: 50%;" name="search"> <input
-					type="submit" name="search" value="검색"> <c:if
-						test="${sessionScope.id!=null}">
+					</select> 
+					<input type="text" style="width: 50%;" name="search"> 
+					<input type="submit" name="search" value="검색"> 
+						<c:if test="${sessionScope.id!=null}">
 						<input type="button" name="write" value="글쓰기"
 							onClick="document.location.href='/FORKI/content/board/recommendWrite.do'">
 					</c:if>
@@ -51,7 +49,7 @@
 		</div>
 	</div>
 	<div id="write-content">
-		<<table id="board_table">>
+		<table id="board_table">
 			<tr>
 				<td width="100" height="30" align="center" bgcolor="">번호</td>
 				<td width="300" height="30" bgcolor="" align="center">건의사항</td>
