@@ -8,14 +8,14 @@ public class ReportDataBean {
 	private String sub_report;
 	private String location;
 	private String content;
-	private Timestamp date;
+	private Timestamp r_date;
 	
 	
-	public Timestamp getDate() {
-		return date;
+	public Timestamp getR_date() {
+		return r_date;
 	}
-	public void setDate(Timestamp date) {
-		this.date = date;
+	public void setR_date(Timestamp r_date) {
+		this.r_date = r_date;
 	}
 	public int getNum() {
 		return num;

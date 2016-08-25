@@ -59,7 +59,7 @@
   	</form> 
   	</td>  
     <td>
-       <input type="button" value="글쓰기" onclick="document.location.href='/FORKI/content/board/freeBoardWrite.do">
+       <input type="button" value="글쓰기" onclick="document.location.href='/FORKI/content/board/freeBoardWrite.do'">
    </td>
   </tr>
 </table>
@@ -104,7 +104,17 @@
   </c:if> --%>
 </td>
     <td align="center"  width="130">
-       ${article.writer}</a>
+       <div id="menubar">
+					<nav id="topmenu">
+						<ul>
+						<li class="topMenuLi"><a class="menuLink">${article.writer}</a>
+							<ul class="submenu">
+							<li class="pop-up"><a href="/FORKI/content/findKinder/findkinder.do" class="submenuLink longLink">쪽지보내기</a></li>
+							<li class="pop-up"><a href="/FORKI/content/MyPage/WriteReport.do?sub=${article.writer}" class="submenuLink longLink">신고하기</a></li>
+						</ul></li>
+				  	</ul>
+				  	</nav>
+				  	</div>
 </td>
     <td align="center"  width="50">${article.readcount}
 </td>

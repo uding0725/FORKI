@@ -25,12 +25,31 @@ public class ReportDBBean {
 		 
 	}
 	
-	//½Å°íÁ¢¼ö
+	//ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void insertReport(ReportDataBean member) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		
+		try{
+			conn = getConnection();
+			pstmt = conn.prepareStatement("insert into report_list(num,reporter,sub_reporter,location,content,r_date) values(report_num,?,?,?,?,?)");
+			pstmt.setString(1,member.getReporter());
+			pstmt.setString(2, member.getSub_report());
+			pstmt.setString(3, member.getLocation());
+			pstmt.setString(4, member.getContent());
+			pstmt.setTimestamp(5, member.getR_date());
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
 	}
 
-	// ÆäÀÌÂ¡À» À§ÇØ ÀüÃ¼ DB¿¡ ÀÔ·ÂµÈ ÇàÀÇ ¼ö ÇÊ¿ä
+	// ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ DBï¿½ï¿½ ï¿½Ô·Âµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¿ï¿½
 	public int getReportCount() throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -56,7 +75,7 @@ public class ReportDBBean {
 		return x;
 	}
 	
-	// ½Å°í¸ñ·Ï Á¶È¸
+	// ï¿½Å°ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	public List getReportList(int startRow, int endRow) throws Exception {
 
 		Connection conn = null;
@@ -85,7 +104,7 @@ public class ReportDBBean {
 					if (subCon.length() >= 10)
 						subCon = subCon.substring(0, 10) + "...";
 					article.setContent(subCon);
-					article.setDate(rs.getTimestamp("REG_DATE"));
+					article.setR_date(rs.getTimestamp("REG_DATE"));
 					messageList.add(article);
 				} while (rs.next());
 			}
@@ -107,7 +126,7 @@ public class ReportDBBean {
 		return messageList;
 	}
 	
-	//½Å°í »ó¼¼º¸±â
+	//ï¿½Å°ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	public ReportDataBean selectReport(String num) throws Exception{
 
 		Connection conn = null;
@@ -128,7 +147,7 @@ public class ReportDBBean {
 				DBdata.setSub_report(rs.getString(3));
 				DBdata.setLocation(rs.getString(4));
 				DBdata.setContent(rs.getString(5));
-				DBdata.setDate(rs.getTimestamp(6));
+				DBdata.setR_date(rs.getTimestamp(6));
 			}
 			
 		} catch (Exception ex) {
@@ -148,7 +167,7 @@ public class ReportDBBean {
 		return DBdata;
 	}
 	
-	//½Å°í¸ñ·Ïº¸±â ¾ÆÀÌµð·Î Á¶È¸
+	//ï¿½Å°ï¿½ï¿½Ïºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½È¸
 	public List selectReportId(String type, String id, int startRow , int endRow) throws Exception{
 
 		Connection conn = null;
@@ -179,7 +198,7 @@ public class ReportDBBean {
 					if (subCon.length() >= 10)
 						subCon = subCon.substring(0, 10) + "...";
 					article.setContent(subCon);
-					article.setDate(rs.getTimestamp("REG_DATE"));
+					article.setR_date(rs.getTimestamp("REG_DATE"));
 					messageList.add(article);
 				} while (rs.next());
 			}
