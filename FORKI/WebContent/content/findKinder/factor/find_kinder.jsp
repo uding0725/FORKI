@@ -72,8 +72,8 @@
 				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>&nbsp;총점:${kinder.tsdata.t_score}&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
         	${kinder.telno}<br>
 
-        	${kinder.adres}<%-- <input type="button" value="찾기" onclick="searchkid('${kinder.adres}','${kinder.schul_nm}')"> --%><br>
-
+        	${kinder.adres}<input type="button" value="찾기" onclick="searchkid('${kinder.adres}','${kinder.schul_nm}')"><br>
+			<script>
         	title.push('${kinder.schul_nm}');
         	coord.push('${kinder.adres}')
         	
@@ -120,7 +120,7 @@
 			
 	        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
 	        // 결과값으로 받은 위치를 마커로 표시합니다
-	              console.log(result.addr[0].lat +","+result.addr[0].lng);    
+	             console.log(result.addr[0].lat +","+result.addr[0].lng);  
 	        var marker = new daum.maps.Marker({
 	            map: map,
 	            position: coords
@@ -138,7 +138,8 @@
 			        map.setCenter(coords);
 			     }
 			});
-/* 			
+			
+		
 function searchkid(coord,title){
 	geocoder.addr2coord(coord, function(status, result) {
 			
@@ -150,8 +151,7 @@ function searchkid(coord,title){
 	        map.setCenter(coords);
 	     }
 	});
-} */
-
+} 
 		</script>
 	</div>
 </div>
