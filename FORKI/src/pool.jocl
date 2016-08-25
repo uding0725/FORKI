@@ -7,8 +7,8 @@
 		<string value="jdbc:oracle:thin:@localhost:1521:XE"/>
 		
 
-		<string value="you"/>	
-		<string value="0258"/>
+		<string value="uding"/>	
+		<string value="1234"/>
   
 
 	</object>
