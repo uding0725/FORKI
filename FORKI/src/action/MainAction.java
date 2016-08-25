@@ -18,11 +18,9 @@ public class MainAction implements CommandAction {
 		
 		NotifyDBBean ndbb = NotifyDBBean.getInstance();
 		n = ndbb.getMain();
-		System.out.println(n.size());
 		
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();
 		b = fbdbb.getMain();
-		System.out.println(b.size());
 		
 		request.setAttribute("n", n);
 		request.setAttribute("b", b);
