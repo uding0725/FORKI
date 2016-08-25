@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="../CSS/board.css?ver=1.5" rel="stylesheet" type="text/css">
 <div id=factor>
 	<h2>게시판</h2>
 	
