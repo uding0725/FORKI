@@ -7,13 +7,39 @@
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	var title =new Array();
-
 	var x = new Array();
 	var y = new Array();
-
-	var coord = new Array();
-
+	
+	$function score(star,t_score,function(){ 
+		$(function() {
+			$("#score_over").css("width", "${totalPer}");
+		});
+	});
 </script>
+<style>
+#score {
+	clear: both;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	background: url(../img/icon_star2.gif) 0px 0px;
+	float: left;
+	margin: 0px;
+	width: 90px;
+	height: 18px;
+}
+
+#score_over {
+	padding-right: 0px;
+	padding-left: 0px;
+	background: url(../img/icon_star.gif) 0px 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	padding-top: 0px;
+	height: 18px;
+}
+</style>
 <div id="mdK-wrap">
 	<div style="width: 940px; height: 40px; margin:auto; position:relative; font-family: 'Jeju Gothic', serif;">
 		<img src="../img/chick2.png"style="position:relative; top:10px;" width="35" height="35"> <font size="+2">유치원찾기</font>
@@ -75,12 +101,14 @@
         		 검색 결과가 없습니다.
         	</c:if>
 			<c:forEach var="kinder" items="${vecList}">
-				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a>
-				&nbsp;총점:${kinder.tsdata.t_score}&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
+			<c:out value="${number}"/><c:set var="number" value="${number+1}" />
+				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a><BR>
         	${kinder.telno}<br>
-
         	${kinder.adres}<br>
+        	평점: <div id="score"><p id="score_over"></p></div> &nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
+     
 			<script>
+			score('star${number}','${kinder.tsdata.t_score}');		
         	title.push('${kinder.schul_nm}');
         	x.push('${kinder.x}');
         	y.push('${kinder.y}');
