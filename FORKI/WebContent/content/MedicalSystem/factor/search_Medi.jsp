@@ -104,7 +104,7 @@
 
 		</div>
 		<div id="md-map">
-			<div style="height: 35px; width: 100%; border-bottom: 1px solid">
+			<div style="height: 35px; width: 100%; border-bottom: 1px solid"> 
 				<img src="../img/marker3.png" style="position: relative; top: 0px;" width="25" height="25">: 보건소 
 				<img src="../img/marker2.png" style="position: relative; top: 2px;" width="25" height="25">: 병원
 			</div>
