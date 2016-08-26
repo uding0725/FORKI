@@ -16,6 +16,7 @@
 		window.open(url,'popup','scrollbars=no, resizable=no, width=530,height=450');
 	}
 
+	
 </script>
 
 <div id="write-wrap">
