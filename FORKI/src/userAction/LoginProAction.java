@@ -38,9 +38,10 @@ public class LoginProAction implements CommandAction{
 			
 			LogonDataBean DBdata1 = manager1.getDBdata(id);
 			grade = DBdata1.getM_grade();
+			String aa =  Integer.toString(grade);
 			session.setAttribute("id", id);
 
-			session.setAttribute("grade", grade);
+			session.setAttribute("grade", aa);
 			
 			//愿�由ъ옄�굹 �씪諛섑쉶�썝�� 湲��벐湲고븷�븣 �땳�꽕�엫異쒕젰
 			if(DBdata1.getM_grade()==0||DBdata1.getM_grade()==1){
