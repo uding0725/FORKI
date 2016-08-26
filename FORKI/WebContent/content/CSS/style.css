@@ -186,7 +186,7 @@
 /*------------------------------------------------------------*/
 /* 컨텐트 메뉴바 */
 #contentMenu {
-	height: 50px; /* 컨텐트 메뉴의 높이 */
+	height: 25px; /* 컨텐트 메뉴의 높이 */
 	width: 100px; /* 컨텐트 메뉴의 넓이 */
 }
 
@@ -201,7 +201,7 @@
 	color: black; /* 글씨 색을 검정색으로 설정 */
 	background-color: #ffffff; /* 배경 색을 설정 */
 	float: left; /* 왼쪽으로 나열되도록 설정 */
-	line-height: 50px; /* 텍스트 한 줄의 높이  설정 */
+	line-height: 25px; /* 텍스트 한 줄의 높이  설정 */
 	vertical-align: middle; /* 세로 정렬을 가운데로 설정 */
 	text-align: center; /* 텍스트를 가운데로 정렬 */
 	position: relative; /* 해당 li 태그 내부의 top/left 포지션 초기화 */
@@ -226,7 +226,7 @@
 }
 
 .consubmenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */
-	line-height: 50px; /* 텍스트 한 줄의 높이 설정 */
+	line-height: 25px; /* 텍스트 한 줄의 높이 설정 */
 	color: #black; /* 글씨 색 설정 */
 	background-color: white; /* 배경색을 흰색으로 설정 */
 	border: solid 1px black; /* 테두리를 설정 */
