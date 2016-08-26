@@ -8,7 +8,7 @@
 </c:if>
 <c:if test="${check != 1}">
 	<script>
-		alert("잘못죈접근입니다.");
-		histoy.go(-1);
+		alert("잘못된접근입니다.");
+		history.go(-1);
 	</script>
 </c:if>
