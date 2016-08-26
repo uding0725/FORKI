@@ -356,9 +356,9 @@ public class KiderDBBean {
 					TSDataBean tdata = new TSDataBean();
 
 					schul_num=rs.getString("schul_num");
-					System.out.println("사업자번호 ::: "+schul_num);
+			
 					t_score= getTotal(schul_num);
-					System.out.println("스코어:::"+t_score);
+
 					tdata.setT_score(t_score);
 					tdata.setCount(rs.getString("count"));
 					kdb.setTsdata(tdata);

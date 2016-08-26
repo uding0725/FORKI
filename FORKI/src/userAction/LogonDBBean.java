@@ -593,7 +593,7 @@ public class LogonDBBean {// DB占쏙옙 占쏙옙占시듸옙 占쏙옙占쏙�
             pstmt = conn.prepareStatement("select * from KID_DATA where id = ?");
             pstmt.setString(1, member.getId());
             rs = pstmt.executeQuery();
-            System.out.println("K_ETC 占싯삼옙 占쏙옙占쏙옙");
+
             if (rs.next()) {
             	pstmt = conn.prepareStatement("update KID_DATA set name=?, schul_nm=? " + " where id=? and num=?");
             	pstmt.setString(1, member.getChild_name());
@@ -602,7 +602,7 @@ public class LogonDBBean {// DB占쏙옙 占쏙옙占시듸옙 占쏙옙占쏙�
             	pstmt.setInt(4, member.getChild_num());
     			
     			pstmt.executeUpdate();
-    			System.out.println("K_ETC NEXT확占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙트 占쏙옙占쏙옙");
+    		
             }else{
             	pstmt = conn.prepareStatement("insert into KID_DATA values (?,?,?,?)");
             	pstmt.setString(1, member.getId());
@@ -612,7 +612,7 @@ public class LogonDBBean {// DB占쏙옙 占쏙옙占시듸옙 占쏙옙占쏙�
     			
             	
             	pstmt.executeUpdate();
-    			System.out.println("K_ETC NEXT확占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙트 占쏙옙占쏙옙");
+    			
             }
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -807,7 +807,7 @@ public class LogonDBBean {// DB占쏙옙 占쏙옙占시듸옙 占쏙옙占쏙�
 			}
 
 		} catch (Exception ex) {
-			System.out.println("Exception" + ex);
+			ex.printStackTrace();
 		} finally {
 			if (rs != null)
 				try {
@@ -848,7 +848,7 @@ public class LogonDBBean {// DB占쏙옙 占쏙옙占시듸옙 占쏙옙占쏙�
 			}
 
 		} catch (Exception ex) {
-			System.out.println("Exception" + ex);
+			ex.printStackTrace();
 		} finally {
 			if (rs != null)
 				try {

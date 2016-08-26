@@ -30,7 +30,7 @@ public class FrReplyDBBean {
 		PreparedStatement pstmt = null;
 		
 		try{
-			System.out.println("인설트시작");
+		
 			conn = getConnection();
 			pstmt = conn.prepareStatement("insert into  free_reply(num,id,writer,re_num,content,reg_date) values(?,?,?,?,?,?)");
 			pstmt.setInt(1, frdb.getNum());
@@ -41,7 +41,7 @@ public class FrReplyDBBean {
 			pstmt.setTimestamp(6, frdb.getReg_date());
 			int x=0;
 			x=pstmt.executeUpdate();
-			System.out.println("댓글 인설트 "+x);
+
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}finally{

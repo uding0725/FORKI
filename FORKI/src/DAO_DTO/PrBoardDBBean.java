@@ -165,7 +165,7 @@ public class PrBoardDBBean {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
-		System.out.println(articleList.size());
+		
 		return articleList;
 		
 	}
@@ -209,7 +209,7 @@ public class PrBoardDBBean {
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
-		System.out.println(articleList.size());
+
 		return articleList;
 		
 	}
