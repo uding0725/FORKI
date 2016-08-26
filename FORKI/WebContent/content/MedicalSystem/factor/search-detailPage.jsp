@@ -107,7 +107,7 @@
 			marker.setMap(map);
 			map.setCenter(markerPosition);
 		</script>
-		<input type="button" value="닫기">
+	
 	</div>
 	</div>
 </body>

@@ -6,3 +6,7 @@
 <meta http-equiv="Refresh"
 		content="0;url=/FORKI/content/board/freeBoardList.do">
 </c:if>
+<c:if test="${check != 1}">
+<meta http-equiv="Refresh"
+		content="0;url=/FORKI/content/board/freeBoardList.do">
+</c:if>
