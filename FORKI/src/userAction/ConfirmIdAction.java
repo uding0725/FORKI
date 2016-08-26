@@ -20,5 +20,6 @@ public class ConfirmIdAction implements CommandAction{
 		
 		return "/content/join/factor/user/confirmId.jsp";
 	}
+	
 
 }
