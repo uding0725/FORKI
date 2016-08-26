@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <c:if test="${article.id!=sessionScope.id}">
-<c:if test="${sessionScope.id!='admin'}">
-<script>
-alert("권한이 없습니다."+"${article.id}"+"  "+"${sessionScope.id}");
-history.go(-1);
-</script>
-</c:if>
+	<c:if test="${sessionScope.id!='admin'}">
+		<script>
+			alert("권한이 없습니다."+"${article.id}"+"  "+"${sessionScope.id}");
+			history.go(-1);
+		</script>
+	</c:if>
 </c:if>
 <script>
 function deleteConfirm(){

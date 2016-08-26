@@ -24,20 +24,30 @@ public class LoginProAction implements CommandAction{
 		int certi = manager1.certifyCheck(id,passwd);
 		int reg_check = manager2.getDBK_ETCdata(id);
 		int grade = 0;
-		String schul_num = "";
+		String schul_num = "";		
 		if(check==1){
+			//블랙리스트 유무 검사
+			String black = manager1.userBlack(id);
+			System.out.println("DDDDD" + black);
+			if (black != null && !black.equals("")) {	
+				request.setAttribute("blackCheck", "black");
+				request.setAttribute("content", black);
+				
+				return "/content/join/factor/user/loginPro.jsp";
+			}
+			
 			LogonDataBean DBdata1 = manager1.getDBdata(id);
 			grade = DBdata1.getM_grade();
 			session.setAttribute("id", id);
 
 			session.setAttribute("grade", grade);
 			
-			//관리자나 일반회원은 글쓰기할때 닉네임출력
+			//愿�由ъ옄�굹 �씪諛섑쉶�썝�� 湲��벐湲고븷�븣 �땳�꽕�엫異쒕젰
 			if(DBdata1.getM_grade()==0||DBdata1.getM_grade()==1){
 			session.setAttribute("writer", DBdata1.getNickname());
 			}
 			
-			//기업은 글쓰기할때 닉네임 출력
+			//湲곗뾽�� 湲��벐湲고븷�븣 �땳�꽕�엫 異쒕젰
 			if(DBdata1.getM_grade()==2){
 			session.setAttribute("writer", DBdata1.getSchul_nm());
 			
@@ -46,13 +56,14 @@ public class LoginProAction implements CommandAction{
 			session.setAttribute("schul_num", schul_num);
 			}
 		}
+		
 
 		request.setAttribute("check", new Integer(check));
 		request.setAttribute("certi", new Integer(certi));
 		request.setAttribute("grade", new Integer(grade));
 		request.setAttribute("reg_check", new Integer(reg_check));
 		
-		return "/content/join/factor/user/loginPro.jsp";//�ش� ��
+		return "/content/join/factor/user/loginPro.jsp";//占쌔댐옙 占쏙옙
 		
 	}
 }
