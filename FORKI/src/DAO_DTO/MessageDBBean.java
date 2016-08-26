@@ -33,7 +33,7 @@ public class MessageDBBean {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("insert into MESSAGE values (image_num.nextVal, ?, ?, ?, '0', sysdate)");
+			pstmt = conn.prepareStatement("insert into MESSAGE values (?, ?, ?, '0', sysdate)");
 			pstmt.setString(1, sendId);
 			pstmt.setString(2, receiveId);
 			pstmt.setString(3, message);
