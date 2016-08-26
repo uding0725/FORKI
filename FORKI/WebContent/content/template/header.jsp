@@ -54,7 +54,7 @@
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/main/main.do">HOME</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/factor/user/logout.do">로그아웃</a></li>
 						<c:if test="${sessionScope.grade == 0}">
-							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/adminPage/SysMemberCare.do">MyPage</a></li>
+							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/adminPage/SysMemberCare.do">관리하기</a></li>
 						</c:if>
 						<c:if test="${sessionScope.grade == 1}">
 							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/UserModify.jsp">MyPage</a></li>
