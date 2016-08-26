@@ -567,7 +567,7 @@
 }
 #mdSTL-content {
 	width: 350px;
-	height: 270px;
+	height: 290px;
 	padding: 0px;
 	margin: 0px;
 	float: left;
@@ -577,7 +577,7 @@
 }
 #mdSTR-content {
 	width: 350px;
-	height: 270px;
+	height: 290px;
 	padding: 0px;
 	margin: 0px;
 	float: right;
@@ -589,7 +589,7 @@
 }
 #mdSBL-content {
 	width: 350px;
-	height: 270px;
+	height: 290px;
 	padding: 0px;
 	margin: 0px;
 	float: left;
@@ -600,7 +600,7 @@
 }
 #mdSBR-content {
 	width: 350px;
-	height: 270px;
+	height: 290px;
 	padding: 0px;
 	margin: 0px;
 	float: right;
@@ -613,4 +613,5 @@
 .siteMap{
 	text-decoration:none;
 	 color:#000000;
+	 font-size: 12px;
 }
