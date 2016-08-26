@@ -10,7 +10,6 @@
 		url = '/FORKI/content/MyPage/WriteMessage.do?id=' + ids+"&writer="+writer
 		window.open(url, 'popup',
 				'scrollbars=no, resizable=no, width=530,height=450');
-		alert(ids);
 	}
 	function writeReport(ids,sub,subid,loc){
 		url='/FORKI/content/MyPage/WriteReport.do?id='+ids+'&sub='+sub+'&subid='+subid+'&loc='+loc
