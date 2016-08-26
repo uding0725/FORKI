@@ -135,16 +135,11 @@ public class KiderDBBean {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-
 			JdbcUtil.rollback(con);
 		} finally {
 
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(con);
-			if (con != null) {
-				con.setAutoCommit(false);
-			}
-
 		}
 	}
 

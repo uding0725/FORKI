@@ -33,7 +33,7 @@
 	var title =new Array();
 	var x = new Array();
 	var y = new Array();
-
+	var coords;
 </script>
 <style>
 #score {
@@ -131,8 +131,12 @@
 				$(".score_over${number}").css("width", "${kinder.tsdata.t_score}");
 			});
         	title.push('${kinder.schul_nm}');
+        	if(${kinder.x}!=null){
         	x.push('${kinder.x}');
         	y.push('${kinder.y}');
+        	}else{
+        		coords='${kinder.adres}'
+        	}
         	</script>
 			</c:forEach>
 			<%-- <c:forEach var="kinderGarten" items="${searchList}">
@@ -163,6 +167,7 @@
 		}
 		var map = new daum.maps.Map(mapContainer,mapOption);
 		// 지도에 마커를 생성하고 표시한다
+		if(x.length>0){
 		for(i=0; i<title.length; i++ ){
 			
 			var	mposition = new daum.maps.LatLng(x[i], y[i]);
@@ -198,6 +203,30 @@
 	    }
 	    
 		}
+		}else{
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new daum.maps.services.Geocoder();
+			
+			// 주소로 좌표를 검색합니다
+			geocoder.addr2coord(coord, function(status, result) {
+			
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === daum.maps.services.Status.OK) {
+			
+			        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+			
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new daum.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+			
+			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			        map.setCenter(coords);
+			    } 
+			});
+		}
+		
 		</script>
 	</div>
 </div>
