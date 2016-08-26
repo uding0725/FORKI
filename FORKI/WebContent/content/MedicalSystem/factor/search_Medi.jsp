@@ -5,7 +5,7 @@
 		url = "/FORKI/content/MedicalSystem/factor/searchdetailPage.do?num=" + num+"&check="+i;
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
-	var title1 =new Array();
+	var title =new Array();
 	var title2 =new Array();
 	var x = new Array();
 	var y = new Array();
@@ -72,44 +72,50 @@
 		<div style="height: 30px; width:740px; margin: auto; bottom: 10px;">
 			<p>총 검색 건수 : ${count} 건 </p>
 		</div>
-		<div id="md-content"  style="overflow: auto; overflow-x: hidden">
+		<div id="md-content" style="overflow: auto; overflow-x: hidden">
 			<c:if test="${count==0}">
 				검색 결과가 없습니다. 
 			</c:if>
 			<c:if test="${count>=0}">
 				<c:if test="${!empty vecList2}">
 					<c:forEach var="health" items="${vecList2}">
-						 	<a href="javascript:viewDetail('${health.num}',1)">${health.h_nm}</a><br>
+						<a href="javascript:viewDetail('${health.num}',1)">${health.h_nm}</a>
+						<br>
 						 	${health.location}<br>
-					<script>
-					title1.push('${health.h_nm}')
+						<script>
+					title.push('${health.h_nm}')
 					x.push('${health.x}');
 					y.push('${health.y}');
-					</script>	
+					</script>
 					</c:forEach>
 				</c:if>
 				<c:if test="${!empty vecList}">
 					<c:forEach var="hosp" items="${vecList}">
-						명칭 : <a href="javascript:viewDetail('${hosp.num}',2)">${hosp.h_nm}</a><br>
+						명칭 : <a href="javascript:viewDetail('${hosp.num}',2)">${hosp.h_nm}</a>
+						<br>
 						주소 : 서울특별시	${hosp.gu_nm} ${hosp.dong}<br>
-					<script>
-					title2.push('${hosp.h_nm}')
+						<script>
+					title.push('${hosp.h_nm}')
 					x.push('${hosp.x}');
 					y.push('${hosp.y}');
-					</script>	
+					</script>
 					</c:forEach>
 				</c:if>
 			</c:if>
-		
+
 		</div>
 		<div id="md-map">
-		<img src="../img/marker3.png"style="position:relative; top:10px;" width="25" height="25">: 보건소
-	<img src="../img/marker2.png"style="position:relative; top:10px;" width="25" height="25">: 병원
-		<div id="map" style="width:100%;height:100%;"></div>
-		
+			<div style="height: 35px; width: 100%; border-bottom: 1px solid"> 
+				<img src="../img/marker3.png" style="position: relative; top: 0px;" width="25" height="25">: 보건소 
+				<img src="../img/marker2.png" style="position: relative; top: 2px;" width="25" height="25">: 병원
+			</div>
+				
+			<div id="map" style="width: 100%; height: 564px;"></div>
+
 		</div>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
 		<script>
+
 		if(${count}==0){
 			var mapContainer =document.getElementById('map'),
 			mapOption={
@@ -125,6 +131,7 @@
 		}
 		var map = new daum.maps.Map(mapContainer,mapOption);
 		</script>
+
 	<script>
 		if(title1.length>0){
 		// 마커 이미지의 주소
@@ -141,7 +148,8 @@
 			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
 			    };
 		}
-		</script>
+		
+		</script> -->
 		<script>
 		// 지도에 마커를 생성하고 표시한다
 		for(i=0; i<x.length; i++){
