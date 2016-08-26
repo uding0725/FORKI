@@ -9,7 +9,7 @@
 	var title2 =new Array();
 	var x = new Array();
 	var y = new Array();
-
+var title1=new Array();
 </script>
 <div id="md-wrap">
 	<div id="md-title">
@@ -79,11 +79,12 @@
 			<c:if test="${count>=0}">
 				<c:if test="${!empty vecList2}">
 					<c:forEach var="health" items="${vecList2}">
-						<a href="javascript:viewDetail('${health.num}',1)">${health.h_nm}</a>
+						명칭 : <a href="javascript:viewDetail('${health.num}',1)">${health.h_nm}</a>
 						<br>
-						 	${health.location}<br>
+						주소 : 	${health.location}<br>
 						<script>
 					title.push('${health.h_nm}')
+					title1.push('${health.h_nm}')
 					x.push('${health.x}');
 					y.push('${health.y}');
 					</script>
@@ -95,7 +96,8 @@
 						<br>
 						주소 : 서울특별시	${hosp.gu_nm} ${hosp.dong}<br>
 						<script>
-					title.push('${hosp.h_nm}')
+						title.push('${hosp.h_nm}')
+					title2.push('${hosp.h_nm}')
 					x.push('${hosp.x}');
 					y.push('${hosp.y}');
 					</script>
@@ -131,30 +133,17 @@
 		}
 		var map = new daum.maps.Map(mapContainer,mapOption);
 		</script>
-
-	<script>
-		if(title1.length>0){
-		// 마커 이미지의 주소
-			var markerImageUrl1 = '../../img/marker3.png'
-		    ,markerImageSize1 = new daum.maps.Size(40, 42), // 마커 이미지의 크기
-		    markerImageOptions1= { 
-		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
-		    };
-		}
-		if(title2.length>0){
-			var markerImageUrl2 = '../../img/marker2.png'
-			    ,markerImageSize2= new daum.maps.Size(40, 42), // 마커 이미지의 크기
-			    markerImageOptions2 = { 
-			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
-			    };
-		}
-		
-		</script> -->
 		<script>
 		// 지도에 마커를 생성하고 표시한다
-		for(i=0; i<x.length; i++){
+		if(title1.length>0){
+			var markerImageUrl = '../img/marker3.png'
+			    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+			    markerImageOptions= { 
+			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+			    };
+			var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+		for(i=0; i<title1.length; i++){
 			
-			for(j=0;j<)
 			var	mposition = new daum.maps.LatLng(x[i], y[i]);
 			
 			var marker = new daum.maps.Marker({
@@ -189,6 +178,55 @@
 	    }
 	    
 		}
+	}
+		</script>
+			<script>
+		
+		if(title2.length>0){
+			var markerImageUrl = '../img/marker2.png'
+			    ,markerImageSize= new daum.maps.Size(40, 42), // 마커 이미지의 크기
+			    markerImageOptions = { 
+			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+			    };
+			var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+			for(i=title1.length; i<(title1.length+title2.length); i++){
+				
+				var	mposition = new daum.maps.LatLng(x[i], y[i]);
+				
+				var marker = new daum.maps.Marker({
+			  	 	position: mposition, // 마커의 좌표
+			   		image : markerImage, //마커이미지
+			  	 	map: map // 마커를 표시할 지도 객체
+					});
+			
+				 var iwContent = title[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			
+				// 인포윈도우를 생성합니다
+				var infowindow = new daum.maps.InfoWindow({
+			    	content : iwContent,
+			    	position : mposition
+						}); 
+			
+			daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+		    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+			
+		  	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+		    function makeOverListener(map, marker, infowindow) {
+		        return function() {
+		            infowindow.open(map, marker);
+		        };
+		    }
+
+		    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+		    function makeOutListener(infowindow) {
+		        return function() {
+		            infowindow.close();
+		        };
+		    }
+		    
+			}
+		}
+		
 		</script>
 	</div>
 </div>
