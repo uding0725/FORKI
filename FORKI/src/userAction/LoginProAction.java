@@ -28,7 +28,8 @@ public class LoginProAction implements CommandAction{
 		if(check==1){
 			//블랙리스트 유무 검사
 			String black = manager1.userBlack(id);
-			if (!black.equals("")) {	
+			System.out.println("DDDDD" + black);
+			if (black != null && !black.equals("")) {	
 				request.setAttribute("blackCheck", "black");
 				request.setAttribute("content", black);
 				

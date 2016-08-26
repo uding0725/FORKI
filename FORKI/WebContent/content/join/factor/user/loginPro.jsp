@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:if test="${blackCheck == black}">
+<c:if test="${blackCheck == 'black'}">
 	<script>
 		alert("다음과 같은 사유로 현제 이용이 중지된 계정입니다 :: ${content}");
 		history.go(-1);
