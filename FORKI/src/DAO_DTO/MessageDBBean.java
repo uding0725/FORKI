@@ -53,6 +53,7 @@ public class MessageDBBean {
 				}
 		}
 
+		
 	}
 
 	// 페이징을 위해 전체 DB에 입력된 행의 수 필요
