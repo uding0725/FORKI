@@ -28,17 +28,50 @@ public class PrBoardDBBean {
 	public void insertArticle(PrBoardDataBean article)throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
-		
-		try{
+		ResultSet rs = null;
+        //답변글인지 일반글인지를 구분해서 입력시켜주는 로직!!!
+		int num=article.getNum();
+		int ref=article.getRef();
+		int re_step=article.getRe_step();
+		int re_level=article.getRe_level();
+		int number=0;
+        String sql="";
+
+        try {
+            conn = getConnection();
+
+            pstmt = conn.prepareStatement("select max(num) from prop_board");
+	    rs = pstmt.executeQuery();
+
+	    if (rs.next())
+	      number=rs.getInt(1)+1;
+	    else
+	      number=1;
+  
+	    if (num!=0)
+	    { 
+	      sql="update prop_board set re_step=re_step+1 where ref= ? and re_step> ?";
+	      pstmt = conn.prepareStatement(sql);
+	      pstmt.setInt(1, ref);
+	      pstmt.setInt(2, re_step);
+	      pstmt.executeUpdate();
+	      re_step=re_step+1;
+	      re_level=re_level+1;
+	    }else{
+		      ref=number;
+	      re_step=0;
+	      re_level=0;
+	    }
+
 			conn=getConnection();
 			pstmt=conn.prepareStatement("insert into prop_board values(propboardnum.NEXTVAL,?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, article.getId());
 			pstmt.setString(2,article.getWriter());
 			pstmt.setString(3,article.getSubject());
 			pstmt.setString(4, article.getContent());
-			pstmt.setInt(5, article.getRef());
-			pstmt.setInt(6, article.getRe_step());
-			pstmt.setInt(7,article.getRe_level());
+			pstmt.setInt(5, ref);
+			pstmt.setInt(6, re_step);
+			pstmt.setInt(7,re_level);
 			pstmt.setInt(8,article.getReadcount());
 			pstmt.setTimestamp(9,article.getReg_date());
 			pstmt.executeUpdate();
