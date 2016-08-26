@@ -4,7 +4,7 @@
 	<script>
 		alert("인증되었습니다..^^");
 	</script>
-	<meta http-equiv="Refresh" content="0;url=/FORKI/content/main/main.do">
+	<meta http-equiv="Refresh" content="0;url=/FORKI/content/main/main.do"> 
 </c:if>
 <c:if test="${check != 1}">
 	<script>
