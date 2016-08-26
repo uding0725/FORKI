@@ -78,22 +78,21 @@
 							</c:if> <a
 							href="/FORKI/content/board/recommendContent.do?num=${article.num}&pageNum=${currentPage}"
 							style="text-decoration: none;"> ${article.subject}</a></td>
-						<td width="100" align="center" bgcolor="">
-						<c:if test="${sessionScope.id==null }">
-				  		${article.writer}</c:if>
-				  		 <c:if test="${sessionScope.id==article.id}">
-				  		${article.writer}
-				  		</c:if> 
-					  	<c:if test="${sessionScope.id!=null }">
-						<c:if test="${sessionScope.id!=article.id}">
-						<div id="menubar">
-						<nav id="contentMenu">
-							<ul>
-								<li class="contentMenuLi"><a class="conmenuLink">${article.writer}</a>
-									<ul class="contentMenusub">
-										<li class="pop-up"><a onclick="writeMessage('${article.id}','${article.writer}')"
-															class="consubmenuLink longLink">쪽지보내기</a></li>
-														<li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','건의사항 글')" class="consubmenuLink longLink">신고하기</a></li>
+						<td width="100" align="center" bgcolor=""><c:if test="${sessionScope.id==null }">
+				  			${article.writer}
+				  		</c:if> <c:if test="${sessionScope.id==article.id}">
+				  			${article.writer}
+				  		</c:if>
+				  			<c:if test="${sessionScope.id!=null }">
+								<c:if test="${sessionScope.id!=article.id}">
+									<div class="menubar">
+										<nav id="contentMenu">
+											<ul>
+												<li class="contentMenuLi"><a class="conmenuLink">${article.writer}</a>
+													<ul class="contentMenusub">
+														<li class="pop-up"><a onclick="writeMessage('${article.id}','${article.writer}')" class="consubmenuLink longLink">쪽지보내기</a></li>
+														<li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','건의사항 글')"
+															class="consubmenuLink longLink">신고하기</a></li>
 													</ul></li>
 											</ul>
 										</nav>

@@ -16,6 +16,7 @@ public class Find_KinderAction implements CommandAction{
 		int guNum=0;
 		String dong= request.getParameter("dong");
 		String schul_nm=request.getParameter("schul_nm");
+		
 		Vector vecList=new Vector();
 		if(dong==null)
 			dong="";
@@ -25,17 +26,19 @@ public class Find_KinderAction implements CommandAction{
 			gu="0";
 			if(!dong.equals("")||!schul_nm.equals("")){
 			guNum=Integer.parseInt(gu);
-			vecList=kdb.selectKinder(guNum,dong,schul_nm);}
+			vecList=kdb.selectKinder(guNum,dong,schul_nm);
+			}
 		}else{
 			guNum=Integer.parseInt(gu);
 			vecList=kdb.selectKinder(guNum,dong,schul_nm);
+			
 		}
-		
-			int count=0;
-			int number=0;
+		int number = 0;
+		int count=0; 
 		count=vecList.size();
 		request.setAttribute("count",new Integer(count));
 		request.setAttribute("number",new Integer(number));
+
 		request.setAttribute("vecList", vecList);
 		return "findkinder.jsp";
 	}

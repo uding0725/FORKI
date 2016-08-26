@@ -267,21 +267,47 @@ public class PrBoardDBBean {
 		return x;
 	}
 	//건의사항 삭제할 글
-	public int deleteArticle(int num)throws Exception{
-		Connection conn =null;
+	public int deleteArticle(int num,int ref,int re_level,int re_step)throws Exception{
+		Connection conn=null;
 		PreparedStatement pstmt=null;
-		int check=0;
+		ResultSet rs=null;
+		String dbpasswd="";
+		int dbref=0;
+		int dbre_step=0;
+		int dbre_level=0;
+		int dbre_step2=0;
+		int x=-1;
 		try{
 			conn=getConnection();
-			pstmt=conn.prepareStatement("delete from prop_board where num=?");
+			pstmt=conn.prepareStatement("select * from prop_board where num=?");
 			pstmt.setInt(1, num);
-			check =pstmt.executeUpdate();
-		}catch(SQLException e){
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				dbref=rs.getInt("ref");
+				dbre_step=rs.getInt("re_step");
+				dbre_level=rs.getInt("re_level");
+				String sql1="select ref,re_step,re_level from prop_board where ref="+dbref+" and re_step >"+dbre_step+ " and re_level ="+dbre_level;
+				pstmt=conn.prepareStatement(sql1);
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+					dbre_step2=rs.getInt("re_step");
+					String sql="delete from prop_board where ref="+dbref+" and "+dbre_step+" <=re_step <"+dbre_step2+ " and re_level>="+dbre_level;
+					pstmt=conn.prepareStatement(sql);
+					pstmt.executeUpdate();
+				}else{
+					String sql="delete from prop_board where ref="+dbref+" and re_step>="+dbre_step;
+					pstmt=conn.prepareStatement(sql);
+					pstmt.executeUpdate();
+				}
+					x=1;
+			}
+		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
+			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
 		}
-		return check;
+		return x;
 	}
 }

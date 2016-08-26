@@ -14,7 +14,7 @@ history.go(-1);
 function deleteConfirm(){
 	var selectDel = confirm("정말로 삭제하시겠습니까?")
 	if (selectDel) {
-		document.location.href="/FORKI/content/board/recommendDelete.do?pageNum=${pageNum}&num=${num}"
+		document.location.href="/FORKI/content/board/recommendDelete.do?pageNum=${pageNum}&num=${num}&ref=${article.ref}&re_step=${article.re_step}&re_level=${article.re_level}'"
 	}
 }
 </script>
