@@ -33,13 +33,11 @@ textarea {
 			<div style="width: 400; height: 200px; text-align: left; flow: left; overflow: auto; overflow-x: hidden; border: 1px solid;">
 			<textarea name="content" cols="70" rows="13"></textarea></div>
 			<div style="height: 60px; width: 100%; text-align: center;">
-				
-				
-				<br> <input type="submit" value="보내기"> <input type="button" onclick="self.close()" value="닫기">
-			</div>
 			<input type="hidden" name="loc" value="${param.loc}" >
 			<input type="hidden" name="subid" value="${param.subid}" >
-		</form>
+			<input type="submit" value="보내기"> <input type="button" onclick="self.close()" value="닫기">
+			</div>
+			
 	
 	</div>
 </body>

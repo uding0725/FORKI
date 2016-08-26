@@ -78,12 +78,13 @@ function writeReport(ids,sub,subid,loc){
 							<input type=hidden name=writer value="${reply.writer}" />
 							<input type="button"value="삭제" onClick="reDeleteConfirm(${reply.re_num},${reply.num},'${reply.writer}',${pageNum});">
 						</c:if>
-						<c:if test="${sessionScope.id != reply.id}}">	
+						<c:if test="${sessionScope.id != reply.id}">	
 						<input type="button" value="신고" onclick="writeReport('${sessionScope.id}','${reply.writer}','${reply.id}','자유게시판 댓글')"> 
 						</c:if>	
 						<c:if test="${sessionScope.grade == 0}">
 						<input type=hidden name=re_num value="${reply.re_num}">
 							<input type=hidden name=writer value="${reply.writer}" />
+							
 							<input type="button"value="삭제" onClick="reDeleteConfirm(${reply.re_num},${reply.num},'${reply.writer}',${pageNum});">
 						</c:if>
 						</td>
