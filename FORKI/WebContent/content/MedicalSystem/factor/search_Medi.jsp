@@ -126,27 +126,27 @@
 		var map = new daum.maps.Map(mapContainer,mapOption);
 		</script>
 	<script>
-		if(${vecList2}!=null || ${vecList}==null){
+		if(title1.length>0){
 		// 마커 이미지의 주소
-			var markerImageUrl = '../../img/marker3.png'
-		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
-		    markerImageOptions = { 
+			var markerImageUrl1 = '../../img/marker3.png'
+		    ,markerImageSize1 = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+		    markerImageOptions1= { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
 		    };
 		}
-		if(${vecList2}!=null && ${vecList}!=null){
-			var markerImageUrl = '../../img/marker2.png'
-			    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
-			    markerImageOptions = { 
+		if(title2.length>0){
+			var markerImageUrl2 = '../../img/marker2.png'
+			    ,markerImageSize2= new daum.maps.Size(40, 42), // 마커 이미지의 크기
+			    markerImageOptions2 = { 
 			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
 			    };
 		}
 		</script>
 		<script>
 		// 지도에 마커를 생성하고 표시한다
-		for(i=0; i<title.length; i++ ){
+		for(i=0; i<x.length; i++){
 			
-			
+			for(j=0;j<)
 			var	mposition = new daum.maps.LatLng(x[i], y[i]);
 			
 			var marker = new daum.maps.Marker({

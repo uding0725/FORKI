@@ -11,10 +11,13 @@ public class RecommendDeleteAction implements CommandAction{
 		
 		request.setCharacterEncoding("utf-8");
 		int num =Integer.parseInt(request.getParameter("num"));
+		int ref=Integer.parseInt(request.getParameter("ref"));
+		int re_level=Integer.parseInt(request.getParameter("re_level"));
+		int re_step=Integer.parseInt(request.getParameter("re_step"));
 		String pageNum=request.getParameter("pageNum");
 		int check=0;
 		PrBoardDBBean pbdb=PrBoardDBBean.getInstance();
-		check=pbdb.deleteArticle(num);
+		check=pbdb.deleteArticle(num, ref, re_level, re_step);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("check", check);
 		return "recommendDelete.jsp";
