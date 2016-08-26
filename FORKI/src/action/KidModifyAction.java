@@ -45,11 +45,7 @@ public class KidModifyAction implements CommandAction {
 			} while (i < size);
 		}
 		
-		/*for (Object obj : kidData) {
-			KidDataBean p = (KidDataBean) obj;
-			System.out.println("데이터 : " + p.getName());
-			System.out.println("데이터 : " + p.getSchul_nm());
-		}*/
+		
 		
 		DBpro.updateKid(id, size, kidData); 
 

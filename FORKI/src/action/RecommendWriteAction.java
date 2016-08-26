@@ -15,7 +15,7 @@ public class RecommendWriteAction implements CommandAction{
 			re_step=Integer.parseInt(request.getParameter("re_step"));
 		}
 		String writer =(String)request.getSession().getAttribute("writer");
-		System.out.println("글쓰는 사람 :"+writer);
+		
 		request.setAttribute("writer",writer);;
 		request.setAttribute("num", new Integer(num));
 		request.setAttribute("ref", new Integer(ref));

@@ -11,10 +11,10 @@ import DAO_DTO.FrReplyDataBean;
 public class FrReplyProAction implements CommandAction{
 
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
-		System.out.println("replyPro 시작");
+		
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		int num = Integer.parseInt(request.getParameter("num"));
-		System.out.println("넘버값 :" +num);
+		
 		
 		
 		int re_num = Integer.parseInt(request.getParameter("re_num"));
@@ -34,7 +34,7 @@ public class FrReplyProAction implements CommandAction{
 		frdb.setContent(content);
 		frdb.setReg_date(reg_date);
 
-		System.out.println((String)request.getSession().getAttribute("id"));
+		
 		
 		FrReplyDBBean frdbb = FrReplyDBBean.getInstance();
 		frdbb.insertReply(frdb);

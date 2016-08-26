@@ -12,7 +12,7 @@ public class LibSearchAction implements CommandAction {
 	
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
 		 
-		System.out.println("search action 시작");
+		
 		String select = request.getParameter("select");
 		String gu_nm =request.getParameter("gu_nm");
 		String dongName = request.getParameter("dongName");
@@ -26,18 +26,16 @@ public class LibSearchAction implements CommandAction {
 		int count = 0;
 		int gu_n =0;
 		
-		System.out.println("se:"+select+ "g_n::" + gu_nm);
-		System.out.println("dongName:"+dongName+ "sN::" + searchName);
 		
 		if(gu_nm == null){
 			gu_nm = "1";
 		}
 		gu_n = Integer.parseInt(gu_nm);
 		
-		System.out.println("gu_n::"+gu_n);
+		
 		
 		String tour="";
-		System.out.println("tour::"+tour);
+		
 				
 		LibDBBean ldbb = LibDBBean.getInstance();
 		
@@ -62,7 +60,7 @@ public class LibSearchAction implements CommandAction {
 		
 		
 		
-		System.out.println(tour);
+		
 		
 			if(select==null){	
 			}
@@ -77,7 +75,7 @@ public class LibSearchAction implements CommandAction {
 			}
 				
 		
-		System.out.println( "count::"+count);
+		
 		
 		
 		request.setAttribute("select", select);

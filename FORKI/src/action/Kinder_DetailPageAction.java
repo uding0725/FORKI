@@ -17,9 +17,7 @@ public class Kinder_DetailPageAction implements CommandAction {
 		
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		System.out.println("占쏙옙占쏙옙占�"+request.getParameter("num"));
-		System.out.println("id"+ session.getAttribute("id"));
-		System.out.println("grade"+session.getAttribute("grade"));
+		
 		String schul_num = request.getParameter("num");
 		String id = (String) session.getAttribute("id");
 		String grade = (String) session.getAttribute("grade");

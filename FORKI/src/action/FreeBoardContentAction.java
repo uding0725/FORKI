@@ -25,22 +25,21 @@ public class FreeBoardContentAction implements CommandAction {
 		if(request.getParameter("pageNum")==null){
 			pageNum="1";
 		}
-		
-		System.out.println(num); 
+		 
 		
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();
 		FreeBoardDataBean article = fbdbb.getArticle(num);
 		
-		System.out.println("updateGetArticle 성공 ");
+		
 		List replyList = null;
 		int replySize = 10;// 한 페이지의 글의 개수 한글
 		String rePage = request.getParameter("rePageNum");
 		if(rePage == null){
 			rePage = "1";
 		}
-		System.out.println("repage::"+rePage);
+		
 		int currentRePage = Integer.parseInt(rePage);
-		System.out.println("cureentrePage:"+ currentRePage);
+		
 		int startRow = (currentRePage - 1) * replySize + 1;// 한 페이지의 시작글 번호
 		int endRow = currentRePage * replySize;// 한 페이지의 마지막 글번호
 		int reCount = 0;
@@ -50,7 +49,7 @@ public class FreeBoardContentAction implements CommandAction {
 		
 		
 		reCount=frdbb.getReplyCount(num);
-		System.out.println("reCount::"+ reCount);
+		
 		int re_max = 0;
 		
 		if (reCount > 0) {

@@ -13,7 +13,7 @@ public class DeleteMessageAction implements CommandAction {
 		request.setCharacterEncoding("UTF-8");
 
 		String num = request.getParameter("num");
-		System.out.println("ds" + num);
+		
 		MessageDBBean DBpro = MessageDBBean.getInstance();
 		int check = DBpro.deleteMessage(num);
 		return "DeleteMessage.jsp";

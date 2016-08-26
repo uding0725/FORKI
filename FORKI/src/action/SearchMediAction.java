@@ -19,7 +19,7 @@ public class SearchMediAction implements CommandAction{
 		String dong=request.getParameter("dong");
 		String select=request.getParameter("select");
 		String h_nm=request.getParameter("h_nm");
-		System.out.println("check  "+check+ "   start    "+start);
+	
 		int n=0;
 		int gu_n=0;
 		int StTime=0;
@@ -36,7 +36,7 @@ public class SearchMediAction implements CommandAction{
 				search="0";
 			}
 			n=Integer.parseInt(search);
-			System.out.println("n" +n);
+		
 			StTime=Integer.parseInt(start);
 			if(StTime<=9){
 				h_code="1377101";
@@ -48,17 +48,17 @@ public class SearchMediAction implements CommandAction{
 			}
 			if(n==0){
 				vecList= mdb.searchHosp(h_code);
-				System.out.println("h_code  " +  h_code);
+			
 				if(h_code.equals("0")&&StTime>=9&&StTime<=18){
 				vecList2=mdb.searchHeal();
-				System.out.println("h_code 0일때" +  h_code);
+				
 				}
 			}else if(n==1){
 				vecList=mdb.searchHosp(h_code);	
-				System.out.println("h_code병원  " +  h_code);
+				
 			}else{
 					if(h_code.equals("0")){
-						System.out.println("h_code 보건소" +  h_code);
+						
 						vecList=mdb.searchHeal();
 					}
 			}
@@ -79,7 +79,7 @@ public class SearchMediAction implements CommandAction{
 		}
 		int count=0;
 		count = vecList.size()+vecList2.size();
-		System.out.println("갯수 :::" + count);
+		
 		request.setAttribute("count", count);
 		request.setAttribute("vecList", vecList);
 		request.setAttribute("vecList2", vecList2);

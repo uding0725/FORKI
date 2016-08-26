@@ -28,7 +28,7 @@ public class FreeBoardWriteProAction implements CommandAction{
 		article.setContent(request.getParameter("content"));
 		article.setReadcount(Integer.parseInt(request.getParameter("readcount")));
 		article.setReg_date(new Timestamp(System.currentTimeMillis()));
-		System.out.println();
+	
 		
 		FreeBoardDBBean fbdbb = FreeBoardDBBean.getInstance();// DB泥섎━
 		fbdbb.insertArticle(article);

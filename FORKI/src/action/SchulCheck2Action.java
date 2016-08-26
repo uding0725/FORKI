@@ -15,11 +15,10 @@ public class SchulCheck2Action implements CommandAction{
 			request.setCharacterEncoding("UTF-8");
 
 		   String check = request.getParameter("check");//y or n
-		   String dong = request.getParameter("dong");//µ¿ÀÌ¸§
+		   String dong = request.getParameter("dong");//ï¿½ï¿½ï¿½Ì¸ï¿½
 		   LogonDBBean manager = LogonDBBean.getInstance();  
 		   Vector SchulList = manager.SchulRead(dong);
-		   System.out.println(SchulList.size());
-		   System.out.println(check);
+		
 		   request.setAttribute("check", check);
 		   request.setAttribute("SchulList", SchulList);
 		   

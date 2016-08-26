@@ -40,7 +40,7 @@ public class ReportListAction implements CommandAction {
 		}
 
 		number = count - (currentPage - 1) * pageSize;
-		System.out.println("safdsad number :: " + number);
+		
 		request.setAttribute("currentPage", new Integer(currentPage));
 		request.setAttribute("startRow", new Integer(startRow));
 		request.setAttribute("endRow", new Integer(endRow));

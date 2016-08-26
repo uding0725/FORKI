@@ -11,7 +11,7 @@ import DAO_DTO.Toy_LibDataBean;
 public class LibDetailAction implements CommandAction {
 	
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable{
-		System.out.println("libDetailAction 시작");
+	
 		
 		request.setCharacterEncoding("UTF-8");
 		String adres = request.getParameter("adres");
@@ -20,8 +20,6 @@ public class LibDetailAction implements CommandAction {
 		
 		LibDBBean ldbb = LibDBBean.getInstance();
 		
-		System.out.println("select :: " + select);
-		System.out.println("type ::" + type);
 		
 		if(type==null){
 			
@@ -38,13 +36,13 @@ public class LibDetailAction implements CommandAction {
 			article = ldbb.viewToy(adres);
 			request.setAttribute("article", article);
 		} else{
-			System.out.println("type::"+ type);
+			
 		}
 		
 		
 		request.setAttribute("type",type);
 		
-		System.out.println("detailAction 끝");
+		
 		
 		return "lib_detailPage.jsp";
 	}

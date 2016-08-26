@@ -12,8 +12,7 @@ public class WriteMessageAction implements CommandAction{
 	
 		request.setCharacterEncoding("utf-8");
 		String ids=(String)request.getParameter("id");
-		System.out.println("writeMessageAction "+ids);
-		System.out.println("session id "+request.getSession().getAttribute("id"));
+	
 		request.setAttribute("id", ids);
 		return "WriteMessage.jsp";
 	}

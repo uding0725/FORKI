@@ -21,11 +21,7 @@ public class ReportProAction implements CommandAction {
 		rdb.setContent(request.getParameter("content"));
 		rdb.setR_date(new Timestamp(System.currentTimeMillis()));
 		
-		System.out.println("id::"+request.getParameter("id"));
-		System.out.println("subid::"+request.getParameter("subid"));
-		System.out.println("loc::"+request.getParameter("loc"));
-		System.out.println("cont::"+request.getParameter("content"));
-		System.out.println("time::"+new Timestamp(System.currentTimeMillis()));
+
 		ReportDBBean rdbb = ReportDBBean.getInstance();
 		rdbb.insertReport(rdb);
 		
