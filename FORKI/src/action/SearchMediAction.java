@@ -57,9 +57,9 @@ public class SearchMediAction implements CommandAction{
 				vecList=mdb.searchHosp(h_code);	
 				
 			}else{
-					if(h_code.equals("0")){
+				if(h_code.equals("0")&&StTime>=9&&StTime<=18){
 						
-						vecList=mdb.searchHeal();
+						vecList2=mdb.searchHeal();
 					}
 			}
 		}else{

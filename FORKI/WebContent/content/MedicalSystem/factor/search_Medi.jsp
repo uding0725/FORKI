@@ -81,7 +81,7 @@ var title1=new Array();
 					<c:forEach var="health" items="${vecList2}">
 						명칭 : <a href="javascript:viewDetail('${health.num}',1)">${health.h_nm}</a>
 						<br>
-						주소 : 	${health.location}<br>
+						주소 : ${health.location}<br>
 						<script>
 					title.push('${health.h_nm}')
 					title1.push('${health.h_nm}')
