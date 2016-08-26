@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원관리</title>
+<title>기업승인</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -17,7 +17,8 @@
 		</table>
 	</c:if>
 	<c:if test="${count > 0}">
-<div style="position:relative; height: 330px; width: 750px;">
+<div style="position:relative; height: 380px; width: 750px;">
+	<img src="../img/chick/icon6.png" width="30" height="30"  style="position:relative; top:5px;"><font size="+2">기업 승인 신청</font>
 		<table width="750" border="1" cellspacing="0" cellpadding="3" align="center">
 			<form name="memForm" method="post"
 				action="/FORKI/content/adminPage/SysApprobation.do">

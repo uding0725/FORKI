@@ -6,7 +6,7 @@ import java.util.Vector;
 import jdbc.JdbcUtil;
 
 
-public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ����: DBBean, DAO
+public class LogonDBBean {// DB占쏙옙 占쏙옙占시듸옙 占쏙옙占쏙옙 占싹댐옙 클占쏙옙占쏙옙: DBBean, DAO
 
 
 	private static LogonDBBean instance = new LogonDBBean();
@@ -173,11 +173,11 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 			if (rs.next()) {
 				dbpasswd = rs.getString("PWD");
 				if (dbpasswd.equals(passwd))
-					x = 1; // ���� ����
+					x = 1; // 占쏙옙占쏙옙 占쏙옙占쏙옙
 				else
-					x = 0; // ��й�ȣ Ʋ��
+					x = 0; // 占쏙옙橘占싫� 틀占쏙옙
 			} else
-				x = -1;// �ش� ���̵� ����
+				x = -1;// 占쌔댐옙 占쏙옙占싱듸옙 占쏙옙占쏙옙
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -202,7 +202,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 	}
 
 
-	// certifyȮ��
+	// certify확占쏙옙
 	public int certifyCheck(String id, String passwd) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -219,12 +219,11 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				System.out.println("eD??????");
 				certify = rs.getString("certify");
 				if ("y".equals(certify)){
-					x = 1;// ������
+					x = 1;// 占쏙옙占쏙옙占쏙옙
 				}else {
-					x = 0;// ���� �ȵ�
+					x = 0;// 占쏙옙占쏙옙 占싫듸옙
 				}
 			}
 		} catch (Exception ex) {
@@ -266,7 +265,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 				DBdata.setId(rs.getString("id"));
 				DBdata.setM_grade(rs.getInt("m_grade"));
 					if(rs.getInt("m_grade")==1 || rs.getInt("m_grade")==0){
-						pstmt = conn.prepareStatement("select NICKNAME from P_ETC where id = ?");
+						pstmt = conn.prepareStatement("select nickname from P_ETC where id = ?");
 						pstmt.setString(1, id);
 						rs = pstmt.executeQuery();
 						if (rs.next()) {
@@ -310,7 +309,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int x = -1;// ����� ��
+		int x = -1;// 占쏙옙占쏙옙占� 占쏙옙
 
 		try {
 			conn = getConnection();
@@ -320,9 +319,9 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 			rs = pstmt.executeQuery();
 
 			if (rs.next())
-				x = 1; // �ش� ���̵� ����
+				x = 1; // 占쌔댐옙 占쏙옙占싱듸옙 占쏙옙占쏙옙
 			else
-				x = -1;// �ش� ���̵� ����
+				x = -1;// 占쌔댐옙 占쏙옙占싱듸옙 占쏙옙占쏙옙
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -350,7 +349,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int x = -1;// ����� ��
+		int x = -1;// 占쏙옙占쏙옙占� 占쏙옙
 
 		try {
 			conn = getConnection();
@@ -360,9 +359,9 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 			rs = pstmt.executeQuery();
 
 			if (rs.next())
-				x = 1; // �ش� �г��� ����
+				x = 1; // 占쌔댐옙 占싻놂옙占쏙옙 占쏙옙占쏙옙
 			else
-				x = -1;// �ش� �г��� ����
+				x = -1;// 占쌔댐옙 占싻놂옙占쏙옙 占쏙옙占쏙옙
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
@@ -561,10 +560,9 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 		try {
 			conn = getConnection();
 
-			pstmt = conn.prepareStatement("update P_ETC set nickname=?,sex=?" + " where id=?");
+			pstmt = conn.prepareStatement("update P_ETC set nickname=? " + " where id=?");
 			pstmt.setString(1, member.getNickname());
-			pstmt.setString(2, member.getSex());
-			pstmt.setString(3, member.getId());
+			pstmt.setString(2, member.getId());
 
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
@@ -595,7 +593,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
             pstmt = conn.prepareStatement("select * from KID_DATA where id = ?");
             pstmt.setString(1, member.getId());
             rs = pstmt.executeQuery();
-            System.out.println("K_ETC �˻� ����");
+            System.out.println("K_ETC 占싯삼옙 占쏙옙占쏙옙");
             if (rs.next()) {
             	pstmt = conn.prepareStatement("update KID_DATA set name=?, schul_nm=? " + " where id=? and num=?");
             	pstmt.setString(1, member.getChild_name());
@@ -604,7 +602,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
             	pstmt.setInt(4, member.getChild_num());
     			
     			pstmt.executeUpdate();
-    			System.out.println("K_ETC NEXTȮ�� �� ������ ������Ʈ ����");
+    			System.out.println("K_ETC NEXT확占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙트 占쏙옙占쏙옙");
             }else{
             	pstmt = conn.prepareStatement("insert into KID_DATA values (?,?,?,?)");
             	pstmt.setString(1, member.getId());
@@ -614,7 +612,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
     			
             	
             	pstmt.executeUpdate();
-    			System.out.println("K_ETC NEXTȮ�� �� ������ ������Ʈ ����");
+    			System.out.println("K_ETC NEXT확占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙트 占쏙옙占쏙옙");
             }
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -646,9 +644,9 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 					pstmt = conn.prepareStatement("delete from MEMBER where id=?");
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
-					x = 1; // ȸ��Ż�� ����
+					x = 1; // 회占쏙옙탈占쏙옙 占쏙옙占쏙옙
 				} else
-					x = 0; // ��й�ȣ Ʋ��
+					x = 0; // 占쏙옙橘占싫� 틀占쏙옙
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -693,9 +691,9 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 					pstmt = conn.prepareStatement("delete from P_ETC where id=?");
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
-					x = 1; // ȸ��Ż�� ����
+					x = 1; // 회占쏙옙탈占쏙옙 占쏙옙占쏙옙
 				} else
-					x = 0; // ��й�ȣ Ʋ��
+					x = 0; // 占쏙옙橘占싫� 틀占쏙옙
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -741,9 +739,9 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
             pstmt = conn.prepareStatement("delete from KID_DATA where id=?");
             pstmt.setString(1, id);
             pstmt.executeUpdate();
-            x= 1; //ȸ��Ż�� ����
+            x= 1; //회占쏙옙탈占쏙옙 占쏙옙占쏙옙
             }else
-            x= 0; //��й�ȣ Ʋ��
+            x= 0; //占쏙옙橘占싫� 틀占쏙옙
             }
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -754,7 +752,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
         }
         return x;
     }
-    //health_check ����
+    //health_check 占쏙옙占쏙옙
     public int deleteHealth(String id) throws Exception {
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -773,9 +771,9 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
             pstmt = conn.prepareStatement("delete from HEALTH_CHECK where id=?");
             pstmt.setString(1, id);
             pstmt.executeUpdate();
-            x= 1; //ȸ��Ż�� ����
+            x= 1; //회占쏙옙탈占쏙옙 占쏙옙占쏙옙
             }else
-            x= 0; //��й�ȣ Ʋ��
+            x= 0; //占쏙옙橘占싫� 틀占쏙옙
             
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -831,7 +829,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 	}
 
 	// SchulCheck.jsp
-	public Vector SchulRead(String dong) {
+	public Vector SchulRead(String schul_nm) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -839,7 +837,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 
 		try {
 			con = getConnection();
-			String strQuery = "select * from KINDERGARTEN where dong like '" + dong + "%'";
+			String strQuery = "select * from KINDERGARTEN where schul_nm like '" + schul_nm + "%'";
 			pstmt = con.prepareStatement(strQuery);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -981,7 +979,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 		return x;
 	}
 
-	// certify.jsp(EMAIL����)
+	// certify.jsp(EMAIL占쏙옙占쏙옙)
 	public int Certify(String id) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -991,7 +989,7 @@ public class LogonDBBean {// DB�� ���õ� ���� �ϴ� Ŭ�
 			conn = getConnection();
 
 			pstmt = conn.prepareStatement("update MEMBER set CERTIFY = ? where ID = ?");
-			pstmt.setString(1, "y"); /* �������ΰ��� y�� ���� */
+			pstmt.setString(1, "y"); /* 占쏙옙占쏙옙占쏙옙占싸곤옙占쏙옙 y占쏙옙 占쏙옙占쏙옙 */
 			pstmt.setString(2, id);
 
 			x = pstmt.executeUpdate();

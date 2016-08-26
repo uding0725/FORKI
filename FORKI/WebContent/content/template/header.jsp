@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/popup.js?ver=1.1"></script>
 <script>
-	function checkIt() {
+	function checkIt2() { 
 		inputForm = eval("document.inform");
 		if (!inputForm.id.value) {
 			alert("아이디를 입력하세요.");
@@ -53,11 +53,28 @@
 					<c:if test="${sessionScope.id != null}">
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/main/main.do">HOME</a></li>
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/factor/user/logout.do">로그아웃</a></li>
-						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/MyPage/InfoModify.jsp">MyPage</a></li>
+						<c:if test="${sessionScope.grade == 0}">
+							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/adminPage/SysMemberCare.do">MyPage</a></li>
+						</c:if>
+						<c:if test="${sessionScope.grade == 1}">
+							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/UserModify.jsp">MyPage</a></li>
+						</c:if>
+						<c:if test="${sessionScope.grade == 2}">
+							<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/join/ComModify.jsp">MyPage</a></li>
+						</c:if>
+
 						<li class="topMenuLi-sub"><a class="menuLink-sub" href="/FORKI/content/siteMap/siteMap.do">사이트맵</a></li>
 					</c:if>
 				</ul>
-			</nav> 
+			</nav>
+			<div id="displyUser">	
+				<c:if test="${sessionScope.id != null}">
+					<c:if test="${sessionScope.grade == 0}"><img src="../img/chick4.png"></c:if>
+					<c:if test="${sessionScope.grade == 1}"><img src="../img/chick3.png"></c:if>
+					<c:if test="${sessionScope.grade == 2}"><img src="../img/chick2.png"></c:if>
+					${sessionScope.id}님 환영합니다.
+				</c:if>
+			</div>
 		</div>
 		<div id="menubar">
 			<nav id="topmenu">
@@ -90,7 +107,7 @@
 			<div class="pop-conts">
 				<!--content //-->
 				<div style="text-align: center;">
-					<form id="inform" name="inform" method="post" onSubmit="return checkIt();">
+					<form id="inform" name="inform" method="post" onSubmit="return checkIt2();">
 						아이디<br> <input type="text" name="id" size="15" maxlength="10"><br> 비밀번호<br> <input type="password" name="passwd"
 							size="15" maxlength="10"><br>
 					</form>

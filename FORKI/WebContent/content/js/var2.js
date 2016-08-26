@@ -5,7 +5,7 @@ $(document).ready(function() {
         	listSize++
             $('#mytable > tbody:last').append('<tr><input type="hidden" name="count">'
             		+ '<td><input type="text" name="kidName'+listSize+'"></td>'
-            		+ '<td><input type="text" name="kinderName'+listSize+'" id="kinderName'+listSize+'"></td>'
+            		+ '<td><input type="text" name="kinderName'+listSize+'"></td>'
             		+ '<td><input type="button" onClick="SchulCheck('+listSize+')" value="유치원검색"></td></tr>');
         });
         $('#btn-delete-row').click(function() {

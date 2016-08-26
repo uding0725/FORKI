@@ -205,17 +205,22 @@
 			</c:if> 
 	</c:if>		
 		</div>
-	<div id="md-map">
-		<div id="map" style="width:100%;height:100%;"></div>
-
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
-<script>
+		<div id="md-map">
+			<div style="height: 35px; width: 100%; border-bottom: 1px solid">
+				<img src="../img/marker3.png" style="position: relative; top: 0px;" width="25" height="25">: 산과 공원
+				<img src="../img/marker2.png" style="position: relative; top: 2px;" width="25" height="25">: 도서관
+				<img src="../img/marker4.png" style="position: relative; top: 1px;" width="25" height="25">: 장난감 도서관
+			</div>
+			
+			<div id="map" style="width: 100%; height: 564px;"></div>
+			<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
+			<script>
 		
 			if(${count}==0){
 					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 				    mapOption = {	
 		    		    center: new daum.maps.LatLng(37.541,126.986), 
-		        		level: 4, // 지도의 확대 레벨
+		        		level: 2, // 지도의 확대 레벨
 		        		mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 		    					}; // 지도의 중심좌표
 						
@@ -225,7 +230,7 @@
 					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 				    mapOption = {
 						 center: new daum.maps.LatLng(x[0],y[0]),
-						 level: 4, // 지도의 확대 레벨
+						 level: 5, // 지도의 확대 레벨
 				         mapTypeId : daum.maps.MapTypeId.ROADMAP // 지도종류
 				    			}; 
 							}
@@ -235,12 +240,12 @@
 			
 		
 </script>
-<script>	
+			<script>	
 
 	if(tour.length>0){
 			
 		// 마커 이미지의 주소
-			var markerImageUrl = '../img/tree.png'
+			var markerImageUrl = '../img/marker3.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
@@ -292,10 +297,10 @@
 
 	}
 </script>
-<script>			
+			<script>			
 if(pub.length>0){
 		// 마커 이미지의 주소
-			var markerImageUrl = '../img/book.jpg'
+			var markerImageUrl = '../img/marker2.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
@@ -341,10 +346,10 @@ if(pub.length>0){
 			}
 	}
 </script>
-<script>			
+			<script>			
 	if(toy.length>0){
 		// 마커 이미지의 주소
-			var markerImageUrl = '../img/toy.png'
+			var markerImageUrl = '../img/marker4.png'
 		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
 		    markerImageOptions = { 
 		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
@@ -390,7 +395,7 @@ if(pub.length>0){
 	  		  }	
 		}
 	}
-</script> 
+</script>
 		</div>
 	</div>
 </div>

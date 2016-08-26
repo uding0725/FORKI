@@ -7,9 +7,9 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 <script>
 	function schulCheck(){
-		if (document.SchulForm.schul_nm.value == ""){
-			alert("동이름을 입력하세요");
-			document.SchulForm.schul_nm.focus();
+		if (document.SchulForm.schul_num.value == ""){
+			alert("사업자번호를 입력하세요");
+			document.SchulForm.schul_num.focus();
 			return;
 		}
 		document.SchulForm.submit();
@@ -29,7 +29,7 @@ function sendAddress(schul_nm,schul_num){
 <form name="SchulForm" method="post" action="/FORKI/content/join/factor/company2/SchulCheck.do">
       <tr>
         <td><br>
-          유치원명 입력 : <input name="schul_nm" type="text">
+          사업자번호 입력 : <input name="schul_num" type="text">
           <input type="button" value="검색" onclick= "schulCheck();">
         </td>
       </tr>

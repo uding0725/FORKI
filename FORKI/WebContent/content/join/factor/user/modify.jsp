@@ -1,9 +1,16 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 
-  <body>
-    <p>
-    <a href="/FORKI/content/join/UserModifyForm.do">정보수정</a>
-    <a href="/FORKI/content/join/UserDeleteForm.do">탈퇴</a>
-    </p>
-  </body>
-</html>
+<body>
+	<div id="body">
+		<div style="width: 760px;">
+			<div style="width: 350px; padding: 15px; margin: auto; float: left;">
+				<input type="button" style="width: 350px; height: 400px;" value="정보수정" class="button1"
+					onClick="document.location.href='/FORKI/content/join/UserModifyForm.do'">
+			</div>
+			<div style="width: 350px; padding: 15px; margin: auto; float: right;">
+				<input type="button" style="width: 350px; height: 400px;" value="탈퇴" class="button2"
+					onClick="document.location.href='/FORKI/content/join/UserDeleteForm.do'">
+			</div>
+		</div>
+	</div>
+</body>

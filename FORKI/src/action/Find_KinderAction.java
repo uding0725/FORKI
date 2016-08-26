@@ -34,10 +34,11 @@ public class Find_KinderAction implements CommandAction{
 			
 		}
 		int number = 0;
-			int count=0;
+		int count=0; 
 		count=vecList.size();
-		request.setAttribute("number", number);
-		request.setAttribute("count", count);
+		request.setAttribute("count",new Integer(count));
+		request.setAttribute("number",new Integer(number));
+
 		request.setAttribute("vecList", vecList);
 		return "findkinder.jsp";
 	}

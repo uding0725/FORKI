@@ -13,8 +13,7 @@ body {
 	margin: auto;
 }
 
-<
-div style ="height: 40px ; text-align: center ;"> <B>쪽지함 </B> </div>#top {
+#top {
 	height: 150px;
 	width: 960px;
 	position: relative;
@@ -87,14 +86,32 @@ div style ="height: 40px ; text-align: center ;"> <B>쪽지함 </B> </div>#top {
 #submenu {
 	float: left;
 	height: 100px;
-	wldth: 540px;
+	width: 540px;
 	position: relative;
 	float: left;
+}
+
+#displyUser {
+	float: right;
+	width: 200px;
+	position: relative;
+	top: 4px;
+	text-align: right;
+	font-family: 'Jeju Gothic', serif;
+	font-size: 11pt;
+	font-family: 'Jeju Gothic', serif;
+}
+
+#displyUser>img {
+	width: 30px;
+	height: 30px;
+	position: relative;
+	top: 10px;
 }
 
 #menubar {
 	float: left;
 	height: 50px;
-	wldth: 540px;
+	width: 540px;
 	position: relative;
 }

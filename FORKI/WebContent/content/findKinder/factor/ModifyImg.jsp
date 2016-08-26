@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>파일업로드</title>
+<title>파일업로드</title> 
 </head>
 <body>
 	<div style="width: 800px; margin: auto;">
@@ -44,9 +44,9 @@
 			<form action="/FORKI/content/findKinder/factor/UploadImg.do" method="post" enctype="multipart/form-data">
 				<hr>
 				메세지 : <input type="text" name="message" style="width: 90%" required><br> 
-				<input type="file" name="img">
-				<input type="submit" value="등록">
-				<input type="reset" onclick="document.location.href='/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=${sessionScope.schul_num}'"
+				<input style="margin-left: 10px; float: left;" type="file" name="img">
+				<input style="margin-right: 20px; float: right;" type="submit" value="등록">
+				<input style="margin-right: 10px; float: right;" type="reset" onclick="document.location.href='/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=${sessionScope.schul_num}'"
 					value="뒤로가기"><br>
 			</form>
 		</div>

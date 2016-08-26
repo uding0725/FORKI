@@ -32,7 +32,6 @@
     </td>
   </tr>
 </table>
-<a href="javascript:history.go(-1)">[돌아가기]</a>
 
 </body>
 </html>

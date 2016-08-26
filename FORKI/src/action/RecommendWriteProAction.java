@@ -11,7 +11,7 @@ import DAO_DTO.PrBoardDataBean;
 public class RecommendWriteProAction implements CommandAction {
 
 	public String requestPro(HttpServletRequest request,HttpServletResponse response)throws Throwable{
-		
+		request.setCharacterEncoding("utf-8");
 		PrBoardDataBean article =new PrBoardDataBean();
 		article.setNum(Integer.parseInt(request.getParameter("num")));
 		article.setId((String)request.getSession().getAttribute("id"));

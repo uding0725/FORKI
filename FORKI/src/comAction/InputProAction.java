@@ -76,7 +76,7 @@ public class InputProAction implements CommandAction {
 		}
 		//EMAIL인증
 		if (check == 1) {
-			session.setAttribute("id", getId); /*회원가입한 회원의 아이디값을 세션의 저장*/
+			session.setAttribute("certufyId", getId); /*회원가입한 회원의 아이디값을 세션의 저장*/
 			session.setAttribute("certifyKey", getKey); /*회원가입한 회원의 키값을 세션의 저장*/
 			sendEmail.sendCode(getEmail, getKey, 1);
 		}

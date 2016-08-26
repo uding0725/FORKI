@@ -1,6 +1,30 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+#score {
+	clear: both;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	background: url(../img/icon_star2.gif) 0px 0px;
+	float: left;
+	margin: 0px;
+	width: 90px;
+	height: 18px;
+}
 
+#score_over {
+	padding-right: 0px;
+	padding-left: 0px;
+	background: url(../img/icon_star.gif) 0px 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	padding-top: 0px;
+	height: 18px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script>
 	function viewDetail(num) {
 		url = "/FORKI/content/findKinder/factor/kinder_DetailPage.do?num=" + num;
@@ -9,12 +33,7 @@
 	var title =new Array();
 	var x = new Array();
 	var y = new Array();
-	
-	$function score(star,t_score,function(){ 
-		$(function() {
-			$("#score_over").css("width", "${totalPer}");
-		});
-	});
+
 </script>
 <style>
 #score {
@@ -100,15 +119,17 @@
 			<c:if test="${count==0}">
         		 검색 결과가 없습니다.
         	</c:if>
+        	<c:if test="${count>0}">
 			<c:forEach var="kinder" items="${vecList}">
-			<c:out value="${number}"/><c:set var="number" value="${number+1}" />
-				<a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a><BR>
-        	${kinder.telno}<br>
-        	${kinder.adres}<br>
-        	평점: <div id="score"><p id="score_over"></p></div> &nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
-     
+			<c:set var="number" value="${number+1}"/>
+			명칭 : <a href="javascript:viewDetail('${kinder.schul_num}')">${kinder.schul_nm}</a><br>
+        	주소 : ${kinder.adres}<br>
+        	전화번호 : ${kinder.telno }<br>
+        	<div id="score" ><p id="score_over" class="score_over${number}"></p></div>&nbsp; 참여자수:(${kinder.tsdata.count}) <br>	
 			<script>
-			score('star${number}','${kinder.tsdata.t_score}');		
+			$(function(){
+				$(".score_over${number}").css("width", "${kinder.tsdata.t_score}");
+			});
         	title.push('${kinder.schul_nm}');
         	x.push('${kinder.x}');
         	y.push('${kinder.y}');
@@ -117,6 +138,7 @@
 			<%-- <c:forEach var="kinderGarten" items="${searchList}">
 			<a href="javascript:sendAddress('${number}')">${name}</a>
          	</c:forEach> --%>
+         	</c:if>
 		</div>
 
 		<div id="mdK-inmap">
@@ -125,9 +147,7 @@
 			<!-- 지도 종료 -->
 		</div>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
-
 		<script>
-
 		if(${count}==0){
 			var mapContainer =document.getElementById('map'),
 			mapOption={

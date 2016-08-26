@@ -5,7 +5,8 @@
 		url = "/FORKI/content/MedicalSystem/factor/searchdetailPage.do?num=" + num+"&check="+i;
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
-	var title =new Array();
+	var title1 =new Array();
+	var title2 =new Array();
 	var x = new Array();
 	var y = new Array();
 
@@ -81,7 +82,7 @@
 						 	<a href="javascript:viewDetail('${health.num}',1)">${health.h_nm}</a><br>
 						 	${health.location}<br>
 					<script>
-					title.push('${health.h_nm}')
+					title1.push('${health.h_nm}')
 					x.push('${health.x}');
 					y.push('${health.y}');
 					</script>	
@@ -89,10 +90,10 @@
 				</c:if>
 				<c:if test="${!empty vecList}">
 					<c:forEach var="hosp" items="${vecList}">
-						<a href="javascript:viewDetail('${hosp.num}',2)">${hosp.h_nm}</a><br>
-						 	${hosp.gu_nm} ${hosp.dong}<br>
+						명칭 : <a href="javascript:viewDetail('${hosp.num}',2)">${hosp.h_nm}</a><br>
+						주소 : 서울특별시	${hosp.gu_nm} ${hosp.dong}<br>
 					<script>
-					title.push('${hosp.h_nm}')
+					title2.push('${hosp.h_nm}')
 					x.push('${hosp.x}');
 					y.push('${hosp.y}');
 					</script>	
@@ -102,11 +103,13 @@
 		
 		</div>
 		<div id="md-map">
+		<img src="../img/marker3.png"style="position:relative; top:10px;" width="25" height="25">: 보건소
+	<img src="../img/marker2.png"style="position:relative; top:10px;" width="25" height="25">: 병원
 		<div id="map" style="width:100%;height:100%;"></div>
+		
 		</div>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
 		<script>
-
 		if(${count}==0){
 			var mapContainer =document.getElementById('map'),
 			mapOption={
@@ -121,14 +124,35 @@
 			}
 		}
 		var map = new daum.maps.Map(mapContainer,mapOption);
+		</script>
+	<script>
+		if(${vecList2}!=null || ${vecList}==null){
+		// 마커 이미지의 주소
+			var markerImageUrl = '../../img/marker3.png'
+		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
+		}
+		if(${vecList2}!=null && ${vecList}!=null){
+			var markerImageUrl = '../../img/marker2.png'
+			    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+			    markerImageOptions = { 
+			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+			    };
+		}
+		</script>
+		<script>
 		// 지도에 마커를 생성하고 표시한다
 		for(i=0; i<title.length; i++ ){
+			
 			
 			var	mposition = new daum.maps.LatLng(x[i], y[i]);
 			
 			var marker = new daum.maps.Marker({
 		  	 	position: mposition, // 마커의 좌표
-		   		 map: map // 마커를 표시할 지도 객체
+		   		image : markerImage, //마커이미지
+		  	 	map: map // 마커를 표시할 지도 객체
 				});
 		
 			 var iwContent = title[i]; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다

@@ -13,15 +13,7 @@
 <link href="../../CSS/style.css?var=1.4" rel="stylesheet"
 	type="text/css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$(".star_rating a").click(function() {
-			$(this).parent().children("a").removeClass("on");
-			$(this).addClass("on").prevAll("a").addClass("on");
-			return false;
-		});
-	});
-</script>
+
 <script
 	src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5"></script>
 <script>
@@ -67,23 +59,39 @@
 			<font size="+1"><b>${hosp.h_nm}</b></font>
 			<div id="mddp-detailview">
 				<p>세부정보</p>
-				<p>주소: ${hosp.gu_nm} ${hosp.dong}</p>
+				<p>주소 : ${hosp.gu_nm} ${hosp.dong}</p>
 				<p>
-					진료시간:${hosp.week_time}<br>
+					진료시간 : ${hosp.week_time}<br>
 				</p>
-				${hosp.rm} <br>
+				휴무 : ${hosp.rm} <br>
 				<div class="wrapper" style="bottom: 180px;">
 					<!-- 별점  -->
-					<p class="star_rating">
-						<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
-							href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
-					</p>
 				</div>
 			</div>
 		</c:if>
 		<div id="mddp-map">
+		
 			<div id="map" style="width: 100%; height: 100%;"></div>
-		</div>
+		<script>
+		if(${check==1}){
+		// 마커 이미지의 주소 
+			var markerImageUrl = '../../img/marker3.png'
+		    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+		    markerImageOptions = { 
+		        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+		    };
+		}
+		if(${check!=1}){
+			var markerImageUrl = '../../img/marker2.png'
+			    ,markerImageSize = new daum.maps.Size(40, 42), // 마커 이미지의 크기
+			    markerImageOptions = { 
+			        offset : new daum.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
+			    };
+		}
+		
+		var markerImage = new daum.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
+		
+		</script>
 		<script>
 			var mapContainer = document.getElementById('map'), mapOption = {
 				center : new daum.maps.LatLng(37.541, 126.986),
@@ -93,12 +101,14 @@
 
 			var markerPosition = new daum.maps.LatLng(x, y);
 			var marker = new daum.maps.Marker({
+				image : markerImage,
 				position : markerPosition
 			});
 			marker.setMap(map);
 			map.setCenter(markerPosition);
 		</script>
 		<input type="button" value="닫기">
+	</div>
 	</div>
 </body>
 </html>

@@ -462,10 +462,9 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
             conn = getConnection();
            
             pstmt = conn.prepareStatement(
-            "update P_ETC set nickname=?,sex=?" + " where id=?");
+            "update P_ETC set nickname=?" + " where id=?");
             pstmt.setString(1, member.getNickname());
-            pstmt.setString(2, member.getSex());
-            pstmt.setString(3, member.getId());
+            pstmt.setString(2, member.getId());
            
             pstmt.executeUpdate();
         } catch(Exception ex) {
@@ -646,7 +645,7 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
     }
     
     //SchulCheck.jsp
-    public Vector SchulRead(String schul_nm)  {
+    public Vector SchulRead(String schul_num)  {
         Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -654,7 +653,7 @@ public class LogonDBBean {//DB와 관련된 일을 하는 클래스: DBBean, DAO
         
         try {
             con = getConnection();
-            String strQuery = "select * from KINDERGARTEN where schul_nm like '"+schul_nm+"%'";
+            String strQuery = "select * from KINDERGARTEN where schul_num like '"+schul_num+"%'";
             pstmt = con.prepareStatement(strQuery);
             rs = pstmt.executeQuery();
             while(rs.next()){

@@ -8,6 +8,7 @@
  <html>  
 <head>
 <script>
+
 function writeMessage(ids,writer) {
 	url = '/FORKI/content/MyPage/WriteMessage.do?id=' + ids+"&writer="+writer
 	window.open(url, 'popup',
@@ -104,7 +105,8 @@ function writeReport(ids,sub,subid,loc){
 				<c:forEach var="article" items="${articleList}">
 					<tr>
 						<td width="100" align="center" bgcolor=""><c:out value="${number}" /> <c:set var="number" value="${number-1}" /></td>
-						<td width="300" align="center" bgcolor=""><a href="/FORKI/content/board/freeBoardContent.do?num=${article.num}&pageNum=${currentPage}">
+						<td width="300" align="center" bgcolor="">
+						<a href="/FORKI/content/board/freeBoardContent.do?num=${article.num}&pageNum=${currentPage}">
 						${article.title} ${article.subject} </a></td>
 						<td width="100" align="center" bgcolor="">
 						<c:if test="${sessionScope.id==null }">
@@ -112,7 +114,7 @@ function writeReport(ids,sub,subid,loc){
 				  		 <c:if test="${sessionScope.id==article.id}">
 				  		${article.writer}
 				  		</c:if> 
-					  	<c:if test="${sessionScope.id!=null }">
+					  <c:if test="${sessionScope.id!=null }"> 
 						<c:if test="${sessionScope.id!=article.id}">
 						<div id="menubar">
 						<nav id="contentMenu">
@@ -121,13 +123,14 @@ function writeReport(ids,sub,subid,loc){
 									<ul class="contentMenusub">
 										<li class="pop-up"><a onclick="writeMessage('${article.id}','${article.writer}')"
 															class="consubmenuLink longLink">쪽지보내기</a></li>
-									    <li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','건의사항 글')" class="consubmenuLink longLink">신고하기</a></li>
+									    <li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','자유게시판 글')" class="consubmenuLink longLink">신고하기</a></li>
 													</ul></li>
 											</ul>
 										</nav>
 									</div>
 								</c:if>
-							</c:if></td>
+								</c:if>
+							</td>
 						<td width="100" align="center" bgcolor="">${article.readcount}</td>
 						<td width="150" align="center" bgcolor="">${date.format(article.reg_date)}</td>
 					</tr>
