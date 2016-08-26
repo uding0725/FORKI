@@ -116,7 +116,7 @@ function writeReport(ids,sub,subid,loc){
 				  		</c:if> 
 					  <c:if test="${sessionScope.id!=null }"> 
 						<c:if test="${sessionScope.id!=article.id}">
-						<div id="menubar">
+						<div class="menubar">
 						<nav id="contentMenu">
 							<ul>
 								<li class="contentMenuLi"><a class="conmenuLink">${article.writer}</a>
