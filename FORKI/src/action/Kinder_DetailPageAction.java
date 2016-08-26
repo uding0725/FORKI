@@ -28,7 +28,7 @@ public class Kinder_DetailPageAction implements CommandAction {
 		int check = DBpro.imgCheck(schul_num);
 		int number = 0;
 		int checkFavor = 0;
-		
+		 
 		if (grade == "1") {
 			checkFavor = DBpro.checkFavor(id, schul_num);
 		}
