@@ -24,7 +24,7 @@ textarea {
 </head>
 <body>
 	<div style="margin: auto; width: 500px; height: 430px; overflow: hidden;">
-		<form name="insertMessage" action="/FORKI/MyPage/factor/SendMessage.do?id=${param.id}" method="post"
+		<form name="insertMessage" action="/FORKI/content/MyPage/factor/SendMessage.do?id=${param.id}" method="post"
 		onSubmit="return checkIt()">
 			<div style="height: 100px;"><img src="../img/logoo.png" width="200px" height="100%"></div>
 			<div style="height: 70px; text-align: left;">받는사람 :${param.writer}(${param.id})<br><br>내용</div>

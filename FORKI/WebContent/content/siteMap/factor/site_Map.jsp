@@ -24,9 +24,9 @@
 						<div style="width:100%; height:45px; border-bottom:1px solid;"><img src="../img/chick3.png" style="position:relative; top:10px;" width="35" height="35"><b><font size="+1">회원정보</font></b></div>
 				<br>
 		
-					&nbsp;<a class="siteMap" href="#">회원관리</a><br><br>
+					&nbsp;<a class="siteMap" href="/FORKI/content/adminPage/SysMemberCare.do">회원관리</a><br><br>
 					&nbsp;<a class="siteMap" href="/FORKI/content/adminPage/SysBlack_list.do">블랙리스트</a><br><br>
-					&nbsp;<a class="siteMap" href="#">기업가입신청</a><br><br>
+					&nbsp;<a class="siteMap" href="/FORKI/content/adminPage/SysApprobation.do">기업가입신청</a><br><br>
 					&nbsp;<a class="siteMap" href="/FORKI/content/adminPage/signUp.do">유치원등록신청</a><br><br>
 					&nbsp;<a class="siteMap" href="/FORKI/content/MyPage/ReportList.do">신고함</a><br><br>
 				</c:if>
