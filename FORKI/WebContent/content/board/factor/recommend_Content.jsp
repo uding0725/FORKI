@@ -5,7 +5,7 @@
 <c:if test="${idCheck != 1}">
 	<c:if test="${sessionScope.id!='admin'}">
 		<script>
-			alert("권한이 없습니다.");
+			alert("권한이 없습니다."); 
 			history.go(-1);
 		</script>
 	</c:if>
