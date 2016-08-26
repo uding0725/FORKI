@@ -48,6 +48,10 @@ function writeReport(ids,sub,subid,loc){
 				<input type="button" value="수정하기" onclick="document.location.href='/FORKI/content/board/freeBoardUpdate.do?num=${num}&pageNum=${pageNum}'">
 				<input type="button" value="삭제하기" onclick="deleteConfirm();">
 			</c:if>
+			<c:if test="${sessionScope.grade==0}">
+			<input type="button" value="수정하기" onclick="document.location.href='/FORKI/content/board/freeBoardUpdate.do?num=${num}&pageNum=${pageNum}'">
+				<input type="button" value="삭제하기" onclick="deleteConfirm();">
+			</c:if>
 				<input type="button" value="목록으로"
 				onclick="document.location.href='/FORKI/content/board/freeBoardList.do?pageNum=${pageNum}'">
 			</td>
@@ -77,6 +81,11 @@ function writeReport(ids,sub,subid,loc){
 						<c:if test="${sessionScope.id != reply.id}}">	
 						<input type="button" value="신고" onclick="writeReport('${sessionScope.id}','${reply.writer}','${reply.id}','자유게시판 댓글')"> 
 						</c:if>	
+						<c:if test="${sessionScope.grade == 0}">
+						<input type=hidden name=re_num value="${reply.re_num}">
+							<input type=hidden name=writer value="${reply.writer}" />
+							<input type="button"value="삭제" onClick="reDeleteConfirm(${reply.re_num},${reply.num},'${reply.writer}',${pageNum});">
+						</c:if>
 						</td>
 					</tr>
 				</c:forEach> 

@@ -25,23 +25,23 @@ public class FrReplyDBBean {
 		return DriverManager.getConnection(jdbdDriver);
 	}
 	
-	//댓글 입력
 	public void insertReply(FrReplyDataBean frdb) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
 		try{
+			System.out.println("�μ�Ʈ����");
 			conn = getConnection();
-			pstmt = conn.prepareStatement("insert into free_reply values(?,?,?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into  free_reply(num,id,writer,re_num,content,reg_date) values(?,?,?,?,?,?)");
 			pstmt.setInt(1, frdb.getNum());
 			pstmt.setString(2, frdb.getId());
 			pstmt.setString(3, frdb.getWriter());
 			pstmt.setInt(4, frdb.getRe_num());
 			pstmt.setString(5, frdb.getContent());
 			pstmt.setTimestamp(6, frdb.getReg_date());
-			
-			pstmt.executeUpdate();
-			
+			int x=0;
+			x=pstmt.executeUpdate();
+			System.out.println("��� �μ�Ʈ "+x);
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}finally{
@@ -49,8 +49,7 @@ public class FrReplyDBBean {
 			JdbcUtil.close(conn);
 		}
 	}
-	
-	//댓글가져오기
+
 	public ArrayList getReply(int num) throws Exception{
 	
 		Connection conn=null;
@@ -90,7 +89,7 @@ public class FrReplyDBBean {
 		
 	}
 	
-	//댓글갯수
+	
 	public int getReplyCount(int num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -194,7 +193,7 @@ public class FrReplyDBBean {
 		return x;
 	}
 
-	//댓글삭제
+
 	public int deleteReply(int num, String writer, int re_num) throws Exception{
 		Connection conn=null;
 		PreparedStatement pstmt=null;
@@ -221,8 +220,7 @@ public class FrReplyDBBean {
 		}
 		return x;
 	}
-	
-	//글삭제시 댓글삭제
+
 		public int deleteReply(int num, String id) throws Exception{
 			Connection conn=null;
 			PreparedStatement pstmt=null;

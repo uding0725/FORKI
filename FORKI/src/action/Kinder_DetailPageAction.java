@@ -17,13 +17,13 @@ public class Kinder_DetailPageAction implements CommandAction {
 		
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		System.out.println("»ç¾÷ÀÚ"+request.getParameter("num"));
+		System.out.println("å ì™ì˜™å ì™ì˜™å ï¿½"+request.getParameter("num"));
 		System.out.println("id"+ session.getAttribute("id"));
 		System.out.println("grade"+session.getAttribute("grade"));
 		String schul_num = request.getParameter("num");
 		String id = (String) session.getAttribute("id");
-		int grade = (int) session.getAttribute("grade");
-		
+		String grade = (String) session.getAttribute("grade");
+
 		KiderDBBean DBpro = KiderDBBean.getInstance();
 		KiderDataBean  DBData= DBpro.selectDetKid(schul_num);
 		String totalPer = DBpro.getTotal(schul_num);
@@ -31,8 +31,9 @@ public class Kinder_DetailPageAction implements CommandAction {
 		int check = DBpro.imgCheck(schul_num);
 		int number = 0;
 		int checkFavor = 0;
-		 
-		if (grade == 1) {
+
+		if (grade == "1") {
+
 			checkFavor = DBpro.checkFavor(id, schul_num);
 		}
 		

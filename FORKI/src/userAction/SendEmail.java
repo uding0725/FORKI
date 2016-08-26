@@ -23,7 +23,7 @@ public class SendEmail {
         String recipient = address;
         if (state == 1) {
 	        subject = "U-ding 가입을 죽하합니다."; /*이메일의 제목*/
-	        code = "http://localhost:8088/FORKI/content/join/factor/user/certifyKey.do?key=" + key; /*키값을 키 파라메터에 입력*/
+	        code = "http://192.168.20.34:8088/FORKI/content/join/factor/user/certifyKey.do?key=" + key; /*키값을 키 파라메터에 입력*/
 	        content = "위 주소를 클릭하시면 회원가입이 완료됩니다."; /*전송할 메세지*/
     	}
         if (state == 2) {

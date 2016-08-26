@@ -94,10 +94,11 @@
 			var marker = new daum.maps.Marker({
 				image : markerImage,
 				position : markerPosition
-			});
+			});  
 			marker.setMap(map);
 			map.setCenter(markerPosition);
 		</script>
+
 	</div>
 	</div>
 </body>
