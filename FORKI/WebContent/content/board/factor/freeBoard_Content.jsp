@@ -101,7 +101,7 @@ function writeReport(ids,sub,subid,loc){
 			<input type=hidden name=id value="${sessionScope.id}">
 			<c:if test="${sessionScope.id != null}">
 			<tr>
-				<td><textarea cols=80 rows=5 name="re_content"></textarea></td>
+				<td><textarea cols=60 rows=5 name="re_content"></textarea></td>
 				<td><input type="submit" style="height: 80;" value="댓글달기" /></td>
 			</tr>
 			</c:if>
