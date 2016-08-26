@@ -1010,6 +1010,47 @@ public class LogonDBBean {// DB占쏙옙 占쏙옙占시듸옙 占쏙옙占쏙�
 		}
 		return x;
 	}
+	// 블랙fl스트 체크
+	public String userBlack(String id) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String content = null;
+
+		try {
+			conn = getConnection();
+
+			pstmt = conn.prepareStatement("select * from BLACK_LIST where id = ?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String state = rs.getString(5);
+				if (!state.equals(""));
+					content = rs.getString(4);
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (conn != null)
+				try {
+					conn.close();
+				} catch (SQLException ex) {
+				}
+		}
+		return content;
+	}
 	
 	
 }
