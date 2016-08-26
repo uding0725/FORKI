@@ -29,7 +29,7 @@ public class FrReplyProAction implements CommandAction{
 		FrReplyDataBean frdb = new FrReplyDataBean();
 		frdb.setNum(num);
 		frdb.setId((String)request.getSession().getAttribute("id"));
-		frdb.setWriter((String)request.getSession().getAttribute("rwriter"));
+		frdb.setWriter((String)request.getSession().getAttribute("writer"));
 		frdb.setRe_num(re_num);
 		frdb.setContent(content);
 		frdb.setReg_date(reg_date);

@@ -123,7 +123,7 @@ function writeReport(ids,sub,subid,loc){
 									<ul class="contentMenusub">
 										<li class="pop-up"><a onclick="writeMessage('${article.id}','${article.writer}')"
 															class="consubmenuLink longLink">쪽지보내기</a></li>
-									    <li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','건의사항 글')" class="consubmenuLink longLink">신고하기</a></li>
+									    <li class="pop-up"><a onclick="writeReport('${sessionScope.id}','${article.writer}','${article.id}','자유게시판 글')" class="consubmenuLink longLink">신고하기</a></li>
 													</ul></li>
 											</ul>
 										</nav>
