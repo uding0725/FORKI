@@ -71,41 +71,46 @@
 		<div style="height: 30px; width:740px; margin: auto; bottom: 10px;">
 			<p>총 검색 건수 : ${count} 건 </p>
 		</div>
-		<div id="md-content"  style="overflow: auto; overflow-x: hidden">
+		<div id="md-content" style="overflow: auto; overflow-x: hidden">
 			<c:if test="${count==0}">
 				검색 결과가 없습니다. 
 			</c:if>
 			<c:if test="${count>=0}">
 				<c:if test="${!empty vecList2}">
 					<c:forEach var="health" items="${vecList2}">
-						 	<a href="javascript:viewDetail('${health.num}',1)">${health.h_nm}</a><br>
+						<a href="javascript:viewDetail('${health.num}',1)">${health.h_nm}</a>
+						<br>
 						 	${health.location}<br>
-					<script>
+						<script>
 					title.push('${health.h_nm}')
 					x.push('${health.x}');
 					y.push('${health.y}');
-					</script>	
+					</script>
 					</c:forEach>
 				</c:if>
 				<c:if test="${!empty vecList}">
 					<c:forEach var="hosp" items="${vecList}">
-						명칭 : <a href="javascript:viewDetail('${hosp.num}',2)">${hosp.h_nm}</a><br>
+						명칭 : <a href="javascript:viewDetail('${hosp.num}',2)">${hosp.h_nm}</a>
+						<br>
 						주소 : 서울특별시	${hosp.gu_nm} ${hosp.dong}<br>
-					<script>
+						<script>
 					title.push('${hosp.h_nm}')
 					x.push('${hosp.x}');
 					y.push('${hosp.y}');
-					</script>	
+					</script>
 					</c:forEach>
 				</c:if>
 			</c:if>
-		
+
 		</div>
 		<div id="md-map">
-		<img src="../img/marker3.png"style="position:relative; top:10px;" width="25" height="25">: 보건소
-	<img src="../img/marker2.png"style="position:relative; top:10px;" width="25" height="25">: 병원
-		<div id="map" style="width:100%;height:100%;"></div>
-		
+			<div style="height: 35px; width: 100%; border-bottom: 1px solid">
+				<img src="../img/marker3.png" style="position: relative; top: 0px;" width="25" height="25">: 보건소 
+				<img src="../img/marker2.png" style="position: relative; top: 2px;" width="25" height="25">: 병원
+			</div>
+				
+			<div id="map" style="width: 100%; height: 564px;"></div>
+
 		</div>
 		<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9c621079df04238fb4709d93de7268c5&libraries=services"></script>
 		<script>
