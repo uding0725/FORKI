@@ -57,6 +57,3 @@
 		history.go(-1);
 	</script>
 </c:if>
-<script>
-	history.go(-1);
-</script>
