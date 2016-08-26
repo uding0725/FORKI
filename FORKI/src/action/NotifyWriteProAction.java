@@ -15,8 +15,7 @@ public class NotifyWriteProAction implements CommandAction {
 		request.setCharacterEncoding("utf-8");
 		NotifyDataBean ndata= new NotifyDataBean();
 		ndata.setId((String)request.getSession().getAttribute("id"));
-		String admin ="admin";
-		ndata.setWriter(admin);
+		ndata.setWriter((String)request.getSession().getAttribute("writer"));
 		ndata.setSubject(request.getParameter("subject"));
 		ndata.setContent(request.getParameter("content"));
 		ndata.setReadcount(0);

@@ -44,14 +44,7 @@
 				<p>주말진료시간: ${hel.weekend_time}<br>
 				<p>점심시간 : ${hel.break_time}</p> 
 				<p>비고 : ${hel.rm}</p>
-				<div class="wrapper" style="bottom: 180px;">
 
-					<!-- 별점  -->
-					<p class="star_rating">
-						<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
-							href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
-					</p>
-				</div>
 			</div>
 		</c:if>
 		<c:if test="${check!=1}">
@@ -64,9 +57,7 @@
 					진료시간 : ${hosp.week_time}<br>
 				</p>
 				휴무 : ${hosp.rm} <br>
-				<div class="wrapper" style="bottom: 180px;">
-					<!-- 별점  -->
-				</div>
+
 			</div>
 		</c:if>
 		<div id="mddp-map">
@@ -107,7 +98,7 @@
 			marker.setMap(map);
 			map.setCenter(markerPosition);
 		</script>
-	
+
 	</div>
 	</div>
 </body>
