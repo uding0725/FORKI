@@ -6,6 +6,7 @@
 		window.open(url, "post", "toolbar=no ,width=1000 ,height=700,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	var title =new Array();
+	var title2 =new Array();
 	var x = new Array();
 	var y = new Array();
 

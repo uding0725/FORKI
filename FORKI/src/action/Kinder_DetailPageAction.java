@@ -17,10 +17,12 @@ public class Kinder_DetailPageAction implements CommandAction {
 		
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		System.out.println("»ç¾÷ÀÚ"+request.getParameter("num"));
+		System.out.println("id"+ session.getAttribute("id"));
+		System.out.println("grade"+session.getAttribute("grade"));
 		String schul_num = request.getParameter("num");
 		String id = (String) session.getAttribute("id");
 		String grade = (String) session.getAttribute("grade");
-		
 		KiderDBBean DBpro = KiderDBBean.getInstance();
 		KiderDataBean  DBData= DBpro.selectDetKid(schul_num);
 		String totalPer = DBpro.getTotal(schul_num);
