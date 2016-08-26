@@ -109,7 +109,7 @@
 				<div style="text-align: center;">
 					<form id="inform" name="inform" method="post" onSubmit="return checkIt2();">
 						아이디<br> <input type="text" name="id" size="15" maxlength="10"><br> 비밀번호<br> <input type="password" name="passwd"
-							size="15" maxlength="10"><br>
+							size="13" maxlength="10" style="font-family: serif;"><br>
 					</form>
 				</div>
 				<div class="btn-r">
