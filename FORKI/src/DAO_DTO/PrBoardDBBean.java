@@ -343,4 +343,30 @@ public class PrBoardDBBean {
 		}
 		return x;
 	}
+	
+	//
+	public int idCheck(String id, String ref )throws Exception{
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		PrBoardDataBean article=null;
+		int idCheck= 0;
+		try{
+			conn=getConnection();		
+			pstmt=conn.prepareStatement("select * from prop_board where id = ? and ref = ?");
+			pstmt.setString(1, id);
+			pstmt.setString(2, ref);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				idCheck = 1;
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			JdbcUtil.close(conn);
+		}
+		return idCheck;
+	}
 }

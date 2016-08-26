@@ -76,7 +76,7 @@
 								<img src="../images/level.gif" width="${5 * article.re_level}"
 									height="16">
 							</c:if> <a
-							href="/FORKI/content/board/recommendContent.do?num=${article.num}&pageNum=${currentPage}"
+							href="/FORKI/content/board/recommendContent.do?num=${article.num}&pageNum=${currentPage}&ref=${article.ref}"
 							style="text-decoration: none;"> ${article.subject}</a></td>
 						<td width="100" align="center" bgcolor=""><c:if test="${sessionScope.id==null }">
 				  			${article.writer}
